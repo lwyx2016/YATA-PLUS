@@ -26,8 +26,8 @@ Features to add:
 - *Other things*
 
 Thanks to:
-Reisyukaku for the original application.
-Team Fail for the source of 3DS .CWAV dumper
-Xextil for the source of "Custom Theme Cwavs".
-HCS for vgmstream.
-And everyone everyone who contributed indirectly fromGBAtemp and 3dbrew.org !!
+- Reisyukaku for the original application.
+- Team Fail for the source of 3DS .CWAV dumper
+- Xextil for the source of "Custom Theme Cwavs".
+- HCS for vgmstream.
+- And everyone everyone who contributed indirectly fromGBAtemp and 3dbrew.org !!
