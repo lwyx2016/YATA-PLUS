@@ -117,9 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>TOP SCREEN TEXTURES:
+If the top screen texture is static, the image needs to be 512x256px and the drawable area is 412x240px (From top left).
+If the top screen texture scrolls, the image needs to be 1024x256px and the drawable area is 1008x240px.
+
+BOTTOM SCREEN TEXTURES:
+If the bottom screen texture is static, the image needs to be 512x256px and the drawable area is 320x240px.
+If the bottom screen texture scrolls, the image needs to be 1024x256px and the drawable area is 1008x240px.
+If the bottom screen texture is animated, the image needs to be 1024x256px and is  split into three separate 320x240px frames.
+
+MENU ITEMS:
+CLOSED FOLDER: the image needs to be 128x64px and the drawable area is 74x64px.
+OPENED FOLDER: the image needs to be 128x64px and the drawable area is 82x64px.
+BIG APPLICATION ICON: the image needs to be 64x128px and the drawable area is 36x72px.
+LITTLE APPLICATION ICON: the image needs to be 32x64px and the drawable area is 20x50px.
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

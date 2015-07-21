@@ -23,6 +23,7 @@ namespace YATA {
         Image news = Properties.Resources.news;
         Image web = Properties.Resources.web;
         Image mii = Properties.Resources.miiverse;
+
         int frameCnt = 0;
 
         public Sim() {
@@ -91,21 +92,78 @@ namespace YATA {
             }
         }
 
-        private void updateGUI(){
-            using (Graphics gr = Graphics.FromImage(topImage.Image)) {
-                gr.DrawImage(bat, new Point(368, -6));
-                gr.DrawImage(inter, new Point(1, 0));
-                gr.Flush();
-                gr.Dispose();
+        private void updateGUI()
+        {
+            if (Form1.APP_ShowUI_Sim & !Form1.generating_preview)
+            {
+                using (Graphics gr = Graphics.FromImage(topImage.Image))
+                {
+                    gr.DrawImage(bat, new Point(368, -6));
+                    gr.DrawImage(inter, new Point(1, 0));
+                    gr.Flush();
+                    gr.Dispose();
+                }
+                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
+                {
+
+                    gr.DrawImage(note, new Point(63, 3));
+                    gr.DrawImage(friend, new Point(104, 3));
+                    gr.DrawImage(news, new Point(146, 3));
+                    gr.DrawImage(web, new Point(188, 3));
+                    gr.DrawImage(mii, new Point(228, 3));
+                    gr.Flush();
+                    gr.Dispose();
+
+                }
             }
-            using (Graphics gr = Graphics.FromImage(bottomImage.Image)) {
-                gr.DrawImage(note, new Point(63, 3));
-                gr.DrawImage(friend, new Point(104, 3));
-                gr.DrawImage(news, new Point(146, 3));
-                gr.DrawImage(web, new Point(188, 3));
-                gr.DrawImage(mii, new Point(228, 3));
-                gr.Flush();
-                gr.Dispose();
+            else if (Form1.APP_ShowUI_preview & Form1.generating_preview)
+            {
+                using (Graphics gr = Graphics.FromImage(topImage.Image))
+                {
+                    gr.DrawImage(bat, new Point(368, -6));
+                    gr.DrawImage(inter, new Point(1, 0));
+                    gr.Flush();
+                    gr.Dispose();
+                }
+                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
+                {
+
+                    gr.DrawImage(note, new Point(63, 3));
+                    gr.DrawImage(friend, new Point(104, 3));
+                    gr.DrawImage(news, new Point(146, 3));
+                    gr.DrawImage(web, new Point(188, 3));
+                    gr.DrawImage(mii, new Point(228, 3));
+                    gr.Flush();
+                    gr.Dispose();
+
+                }
+            }
+        }
+
+        private void Sim_Load(object sender, EventArgs e)
+        {
+            if (Form1.generating_preview)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "png file|*.png";
+                save.Title = "save preview";
+                if (Form1.Preview_PATH == null && save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Image preview = new Bitmap(400, 240);
+                    Graphics g = Graphics.FromImage(preview);
+                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel);
+                    preview.Save(save.FileName);
+                    this.Close();
+                }
+                else if (Form1.Preview_PATH != null)
+                {
+                    Image preview = new Bitmap(400, 240);
+                    Graphics g = Graphics.FromImage(preview);
+                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel);
+                    preview.Save(Form1.Preview_PATH);
+                    this.Close();
+                }
+                else this.Close(); 
             }
         }
 

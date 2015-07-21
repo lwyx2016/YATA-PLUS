@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YATA</RootNamespace>
     <AssemblyName>YATA</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>YATA.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>yata.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,11 +53,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Credits.Designer.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CwavReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CwavReplace.Designer.cs">
+      <DependentUpon>CwavReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CWAVs dumper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CWAVs dumper.Designer.cs">
+      <DependentUpon>CWAVs dumper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImgSIZES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImgSIZES.Designer.cs">
+      <DependentUpon>ImgSIZES.cs</DependentUpon>
     </Compile>
     <Compile Include="LZ11.cs" />
     <Compile Include="Prefs.cs">
@@ -79,8 +109,20 @@
     <Compile Include="Sim.Designer.cs">
       <DependentUpon>Sim.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CwavReplace.resx">
+      <DependentUpon>CwavReplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CWAVs dumper.resx">
+      <DependentUpon>CWAVs dumper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImgSIZES.resx">
+      <DependentUpon>ImgSIZES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prefs.resx">
       <DependentUpon>Prefs.cs</DependentUpon>
@@ -88,6 +130,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Sett.resx">
       <DependentUpon>Sett.cs</DependentUpon>
@@ -109,6 +152,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\body_empty.bin" />
     <None Include="Resources\friends.png" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +172,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HudNetAtnInt_00.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\in_vgmstream.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\libg7221_decode.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\libmpg123-0.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\libvorbis.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="yata.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

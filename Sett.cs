@@ -91,119 +91,120 @@ namespace YATA {
             byte[] tempbytes;
             List <Color> tempcolors;
 
-            tempbytes = cols[0];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
-            colCursor = tempcolors.ToArray();
+                tempbytes = cols[0];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
+                colCursor = tempcolors.ToArray();
 
-            tempbytes = cols[1];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            col3DFolder = tempcolors.ToArray();
+                tempbytes = cols[1];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                col3DFolder = tempcolors.ToArray();
 
-            tempbytes = cols[2];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            colFiles = tempcolors.ToArray();
+                tempbytes = cols[2];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                colFiles = tempcolors.ToArray();
+         
+                tempbytes = cols[3];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                colArrowBut = tempcolors.ToArray();
 
-            tempbytes = cols[3];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            colArrowBut = tempcolors.ToArray();
+                tempbytes = cols[4];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                colArrow = tempcolors.ToArray();
 
-            tempbytes = cols[4];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            colArrow = tempcolors.ToArray();
+                tempbytes = cols[5];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
+                colBotBut = tempcolors.ToArray(); //In his version rei swapped this line with..
+         
+                tempbytes = cols[6];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
+                colClose = tempcolors.ToArray();// .. this one
+ 
+                tempbytes = cols[7];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
+                colGameTxt = tempcolors.ToArray();
 
-            tempbytes = cols[5];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
-            colClose = tempcolors.ToArray();
+                tempbytes = cols[8];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
+                colBotSolid = tempcolors.ToArray();
 
-            tempbytes = cols[6];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
-            colBotBut = tempcolors.ToArray();
+                tempbytes = cols[9];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                colBotOuter = tempcolors.ToArray();
 
-            tempbytes = cols[7];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
-            colGameTxt = tempcolors.ToArray();
+                tempbytes = cols[10];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
+                colFolderBG = tempcolors.ToArray();
 
-            tempbytes = cols[8];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
-            colBotSolid = tempcolors.ToArray();
+                tempbytes = cols[11];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                colFolderArrow = tempcolors.ToArray();
 
-            tempbytes = cols[9];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            colBotOuter = tempcolors.ToArray();
+                tempbytes = cols[12];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[12], tempbytes[13], tempbytes[14]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[15], tempbytes[16], tempbytes[17]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[18], tempbytes[19], tempbytes[20]));
+                colIconResize = tempcolors.ToArray();
 
-            tempbytes = cols[10];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
-            colFolderBG = tempcolors.ToArray();
+                tempbytes = cols[13];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
+                colTopOverlay = tempcolors.ToArray();
 
-            tempbytes = cols[11];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            colFolderArrow = tempcolors.ToArray();
+                tempbytes = cols[14];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                colDemoMsg = tempcolors.ToArray();
 
-            tempbytes = cols[12];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[12], tempbytes[13], tempbytes[14]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[15], tempbytes[16], tempbytes[17]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[18], tempbytes[19], tempbytes[20]));
-            colIconResize = tempcolors.ToArray();
-
-            tempbytes = cols[13];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
-            colTopOverlay = tempcolors.ToArray();
-
-            tempbytes = cols[14];
-            tempcolors = new List<Color>();
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
-            colDemoMsg = tempcolors.ToArray();
         }
 
         private void setColors() {  //So hacky

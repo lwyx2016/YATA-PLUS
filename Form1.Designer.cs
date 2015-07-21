@@ -31,23 +31,39 @@
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.generatePreviewForCHMMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.prefToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.EditDropDown = new System.Windows.Forms.ToolStripDropDownButton();
             this.importImage = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.importCWAVButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCWAVButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.editCWAVsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cWAVsWavToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wAVsCWAVsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSettings = new System.Windows.Forms.ToolStripButton();
             this.SimToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileLZ = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveTheme = new System.Windows.Forms.SaveFileDialog();
             this.savePng = new System.Windows.Forms.SaveFileDialog();
             this.openNewImg = new System.Windows.Forms.OpenFileDialog();
             this.saveCWAVDialog = new System.Windows.Forms.SaveFileDialog();
             this.openCWAVDialog = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -58,10 +74,14 @@
             this.FileDropDown,
             this.EditDropDown,
             this.toolStripSettings,
-            this.SimToolStrip});
+            this.SimToolStrip,
+            this.toolStripSeparator6,
+            this.toolStripButton1,
+            this.toolStripSeparator7,
+            this.StatusLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(556, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(658, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -74,6 +94,8 @@
             this.openFile,
             this.saveFile,
             this.saveAsFile,
+            this.generatePreviewForCHMMToolStripMenuItem,
+            this.toolStripSeparator4,
             this.prefToolStrip});
             this.FileDropDown.Image = ((System.Drawing.Image)(resources.GetObject("FileDropDown.Image")));
             this.FileDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -85,19 +107,19 @@
             // newFile
             // 
             this.newFile.Name = "newFile";
-            this.newFile.Size = new System.Drawing.Size(135, 22);
+            this.newFile.Size = new System.Drawing.Size(189, 22);
             this.newFile.Text = "New";
             this.newFile.Click += new System.EventHandler(this.newFile_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(135, 22);
+            this.openFile.Size = new System.Drawing.Size(189, 22);
             this.openFile.Text = "Open";
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
@@ -105,7 +127,7 @@
             // 
             this.saveFile.Enabled = false;
             this.saveFile.Name = "saveFile";
-            this.saveFile.Size = new System.Drawing.Size(135, 22);
+            this.saveFile.Size = new System.Drawing.Size(189, 22);
             this.saveFile.Text = "Save";
             this.saveFile.Click += new System.EventHandler(this.saveFile_Click);
             // 
@@ -113,14 +135,27 @@
             // 
             this.saveAsFile.Enabled = false;
             this.saveAsFile.Name = "saveAsFile";
-            this.saveAsFile.Size = new System.Drawing.Size(135, 22);
+            this.saveAsFile.Size = new System.Drawing.Size(189, 22);
             this.saveAsFile.Text = "Save As...";
             this.saveAsFile.Click += new System.EventHandler(this.saveAsFile_Click);
+            // 
+            // generatePreviewForCHMMToolStripMenuItem
+            // 
+            this.generatePreviewForCHMMToolStripMenuItem.Enabled = false;
+            this.generatePreviewForCHMMToolStripMenuItem.Name = "generatePreviewForCHMMToolStripMenuItem";
+            this.generatePreviewForCHMMToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.generatePreviewForCHMMToolStripMenuItem.Text = "Generate png preview";
+            this.generatePreviewForCHMMToolStripMenuItem.Click += new System.EventHandler(this.generatePreviewForCHMMToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(186, 6);
             // 
             // prefToolStrip
             // 
             this.prefToolStrip.Name = "prefToolStrip";
-            this.prefToolStrip.Size = new System.Drawing.Size(135, 22);
+            this.prefToolStrip.Size = new System.Drawing.Size(189, 22);
             this.prefToolStrip.Text = "Preferences";
             this.prefToolStrip.Click += new System.EventHandler(this.prefToolStrip_Click);
             // 
@@ -130,8 +165,14 @@
             this.EditDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importImage,
             this.saveImage,
+            this.toolStripSeparator2,
             this.importCWAVButton,
-            this.saveCWAVButton});
+            this.saveCWAVButton,
+            this.editCWAVsToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.cWAVsWavToolStripMenuItem,
+            this.wAVsCWAVsToolStripMenuItem,
+            this.toolStripSeparator5});
             this.EditDropDown.Image = ((System.Drawing.Image)(resources.GetObject("EditDropDown.Image")));
             this.EditDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditDropDown.Name = "EditDropDown";
@@ -142,7 +183,7 @@
             // 
             this.importImage.Enabled = false;
             this.importImage.Name = "importImage";
-            this.importImage.Size = new System.Drawing.Size(152, 22);
+            this.importImage.Size = new System.Drawing.Size(251, 22);
             this.importImage.Text = "Import Image";
             this.importImage.Click += new System.EventHandler(this.importToolstrip_Click);
             // 
@@ -150,25 +191,63 @@
             // 
             this.saveImage.Enabled = false;
             this.saveImage.Name = "saveImage";
-            this.saveImage.Size = new System.Drawing.Size(152, 22);
+            this.saveImage.Size = new System.Drawing.Size(251, 22);
             this.saveImage.Text = "Save Image";
             this.saveImage.Click += new System.EventHandler(this.saveImage_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(248, 6);
             // 
             // importCWAVButton
             // 
             this.importCWAVButton.Enabled = false;
             this.importCWAVButton.Name = "importCWAVButton";
-            this.importCWAVButton.Size = new System.Drawing.Size(152, 22);
-            this.importCWAVButton.Text = "Import CWAVs";
+            this.importCWAVButton.Size = new System.Drawing.Size(251, 22);
+            this.importCWAVButton.Text = "Import CWAVs chunk";
             this.importCWAVButton.Click += new System.EventHandler(this.importCWAVButton_Click);
             // 
             // saveCWAVButton
             // 
             this.saveCWAVButton.Enabled = false;
             this.saveCWAVButton.Name = "saveCWAVButton";
-            this.saveCWAVButton.Size = new System.Drawing.Size(152, 22);
-            this.saveCWAVButton.Text = "Save CWAVs";
+            this.saveCWAVButton.Size = new System.Drawing.Size(251, 22);
+            this.saveCWAVButton.Text = "Export CWAVs chunk";
             this.saveCWAVButton.Click += new System.EventHandler(this.saveCWAVButton_Click);
+            // 
+            // editCWAVsToolStripMenuItem
+            // 
+            this.editCWAVsToolStripMenuItem.Enabled = false;
+            this.editCWAVsToolStripMenuItem.Name = "editCWAVsToolStripMenuItem";
+            this.editCWAVsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.editCWAVsToolStripMenuItem.Text = "Create CWAVs chunk";
+            this.editCWAVsToolStripMenuItem.Click += new System.EventHandler(this.editCWAVsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(248, 6);
+            // 
+            // cWAVsWavToolStripMenuItem
+            // 
+            this.cWAVsWavToolStripMenuItem.Enabled = false;
+            this.cWAVsWavToolStripMenuItem.Name = "cWAVsWavToolStripMenuItem";
+            this.cWAVsWavToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.cWAVsWavToolStripMenuItem.Text = "CWAVs -> Wav (CWAVs Dumper)";
+            this.cWAVsWavToolStripMenuItem.Click += new System.EventHandler(this.cWAVsWavToolStripMenuItem_Click);
+            // 
+            // wAVsCWAVsToolStripMenuItem
+            // 
+            this.wAVsCWAVsToolStripMenuItem.Name = "wAVsCWAVsToolStripMenuItem";
+            this.wAVsCWAVsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.wAVsCWAVsToolStripMenuItem.Text = "WAVs -> CWAVs";
+            this.wAVsCWAVsToolStripMenuItem.Click += new System.EventHandler(this.wAVsCWAVsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(248, 6);
             // 
             // toolStripSettings
             // 
@@ -177,8 +256,8 @@
             this.toolStripSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSettings.Image")));
             this.toolStripSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSettings.Name = "toolStripSettings";
-            this.toolStripSettings.Size = new System.Drawing.Size(53, 22);
-            this.toolStripSettings.Text = "Settings";
+            this.toolStripSettings.Size = new System.Drawing.Size(92, 22);
+            this.toolStripSettings.Text = "Theme settings";
             this.toolStripSettings.Click += new System.EventHandler(this.toolStripSettings_Click);
             // 
             // SimToolStrip
@@ -192,12 +271,41 @@
             this.SimToolStrip.Text = "Simulate";
             this.SimToolStrip.Click += new System.EventHandler(this.SimToolStrip_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(71, 22);
+            this.toolStripButton1.Text = "Images size";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(164, 22);
+            this.StatusLabel.Text = "Saving theme,please wait.....";
+            this.StatusLabel.Visible = false;
+            // 
             // imgListBox
             // 
             this.imgListBox.FormattingEnabled = true;
             this.imgListBox.Location = new System.Drawing.Point(12, 41);
             this.imgListBox.Name = "imgListBox";
-            this.imgListBox.Size = new System.Drawing.Size(143, 251);
+            this.imgListBox.Size = new System.Drawing.Size(143, 225);
             this.imgListBox.TabIndex = 1;
             this.imgListBox.SelectedIndexChanged += new System.EventHandler(this.imgListBox_SelectedIndexChanged);
             // 
@@ -213,14 +321,6 @@
             // openFileLZ
             // 
             this.openFileLZ.FileName = "body_LZ.bin";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(161, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1024, 256);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // saveTheme
             // 
@@ -242,17 +342,75 @@
             // 
             this.openCWAVDialog.Filter = "CTR Wave Chunk|*.bin";
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(12, 274);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "open in your photo editor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(618, 300);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 33);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Credits";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(178, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(305, 87);
+            this.label3.TabIndex = 6;
+            this.label3.Text = resources.GetString("label3.Text");
+            this.label3.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(161, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1024, 256);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(158, 300);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 301);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(658, 315);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.imgListBox);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(674, 354);
             this.Name = "Form1";
-            this.Text = "YATA by Rei";
+            this.Text = "YATA PLUS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -287,6 +445,22 @@
         private System.Windows.Forms.SaveFileDialog saveCWAVDialog;
         private System.Windows.Forms.ToolStripMenuItem importCWAVButton;
         private System.Windows.Forms.OpenFileDialog openCWAVDialog;
+        private System.Windows.Forms.ToolStripMenuItem generatePreviewForCHMMToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem cWAVsWavToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem editCWAVsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem wAVsCWAVsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripLabel StatusLabel;
+        private System.Windows.Forms.Label label4;
     }
 }
 
