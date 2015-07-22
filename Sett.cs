@@ -27,7 +27,24 @@ namespace YATA {
         private Color[] colIconResize;
         private Color[] colTopOverlay;
         private Color[] colDemoMsg;
-      
+        private Color[] ColTopScreen;
+        private string[] description = new string[16] { "1: Shading\r\n2: main color\r\n3: unk\r\n4: expanded glow colour", 
+                                                        "1: Shading\r\n2: main color",
+                                                        "1: bottom shadow\r\n2: main color\r\n3: highlight",
+                                                        "1: highlight\r\n2: main colour\r\n3: shadow",
+                                                        "1: edge color\r\n2: unpressed color\r\n3: pressed color",
+                                                        "1: Shading\r\n2: Default\r\n3: Highlight\r\n4: Text shadow\r\n5: Text color\r\n6: Pressed text",
+                                                        "1: Shading\r\n2: Default\r\n3: Highlight\r\n4: Unk (Text shadow ?)\r\n5: Text color\r\n6: Pressed text",
+                                                        "1: Background color\r\n2: Text color",
+                                                        "",
+                                                        "",
+                                                        "1: Top shadow\r\n2: Default\r\n3: Bottom shadow\r\n4: Unk ",
+                                                        "Unknown",
+                                                        "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shding and pressed color\r\n7:Lower edges highlight",
+                                                        "1: Overlay background\r\n2/3:Unknown\r\n4: Text color",
+                                                        "1: Background color\r\n2: Text color",
+                                                        "" };
+
         public Sett() {
             InitializeComponent();
             getColors();
@@ -46,6 +63,7 @@ namespace YATA {
             Button[] col13 = AddButtons(7, 12, colIconResize, Form1.enableSec[13] == 1 ? true : false);
             Button[] col14 = AddButtons(4, 13, colTopOverlay, Form1.enableSec[14] == 1 ? true : false);
             Button[] col15 = AddButtons(2, 14, colDemoMsg, Form1.enableSec[15] == 1 ? true : false);
+            Button[] col16 = AddButtons(1, 15, ColTopScreen, Form1.topColorOff != 0 ? true : false);
             foreach (Button b in col1) this.groupBox2.Controls.Add(b);
             foreach (Button b in col2) this.groupBox2.Controls.Add(b);
             foreach (Button b in col3) this.groupBox2.Controls.Add(b);
@@ -61,6 +79,7 @@ namespace YATA {
             foreach (Button b in col13) this.groupBox2.Controls.Add(b);
             foreach (Button b in col14) this.groupBox2.Controls.Add(b);
             foreach (Button b in col15) this.groupBox2.Controls.Add(b);
+            this.groupBox2.Controls.Add(col16[0]);
             flags = Form1.enableSec.ToArray();
             CB_topDraw.SelectedIndex = (int)Form1.topDraw;
             CB_topFrame.SelectedIndex = (int)Form1.topFrame;
@@ -84,7 +103,8 @@ namespace YATA {
             CHK15.Checked = flags[15] == 1 ? true : false;
             CHK16.Checked = flags[16] == 1 ? true : false;
             CHK17.Checked = Form1.useBGM == 1 ? true : false;
-            
+            numericUpDown1.Enabled = Form1.topColorOff != 0 ? true : false;
+            numericUpDown2.Enabled = Form1.topColorOff != 0 ? true : false;
         }
 
         private void getColors() {
@@ -205,6 +225,13 @@ namespace YATA {
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 colDemoMsg = tempcolors.ToArray();
 
+                tempbytes = Form1.topcol[0];
+                tempcolors = new List<Color>();
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                numericUpDown2.Value = tempbytes[3];
+                numericUpDown1.Value = tempbytes[4];
+                ColTopScreen = tempcolors.ToArray();
+
         }
 
         private void setColors() {  //So hacky
@@ -275,6 +302,10 @@ namespace YATA {
 
             cols[14][0] = colDemoMsg[0].R; cols[14][1] = colDemoMsg[0].G; cols[14][2] = colDemoMsg[0].B;
             cols[14][3] = colDemoMsg[1].R; cols[14][4] = colDemoMsg[1].G; cols[14][5] = colDemoMsg[1].B;
+
+            Form1.topcol[0][0] = ColTopScreen[0].R; Form1.topcol[0][1] = ColTopScreen[0].G; Form1.topcol[0][2] = ColTopScreen[0].B;
+            Form1.topcol[0][3] = Convert.ToByte(numericUpDown2.Value);
+            Form1.topcol[0][4] = Convert.ToByte(numericUpDown1.Value);
         }
 
         private void buttonSaveSett_Click(object sender, EventArgs e) {
@@ -312,6 +343,12 @@ namespace YATA {
 
         private void closeForm() {
             this.Close();
+        }
+
+        private void HelpPressed(object sender, EventArgs e) 
+        {
+            int button =  Convert.ToInt32((((Button)sender).Name.Substring(4)));
+            MessageBox.Show(description[button - 1]);
         }
 
         private void colorSelect(object sender, EventArgs e) {
@@ -365,17 +402,20 @@ namespace YATA {
                     case 14:
                         colDemoMsg[button] = colDialog.Color;
                         break;
+                    case 15:
+                        ColTopScreen[0] = colDialog.Color;
+                        break;
                 }
             }
         }
 
-        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab) {
+        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab, string desc = "") {
             Button[] btnArray = new Button[amount + 1];
             for (int i = 0; i < amount; i++) { 
                 btnArray[i] = new Button();
                 btnArray[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 btnArray[i].Size = new System.Drawing.Size(20, 20);
-                btnArray[i].Location = new System.Drawing.Point(90 + (i*22), 20 + (25*yPos));
+                btnArray[i].Location = new System.Drawing.Point(110 + (i*22), 20 + (25*yPos));
                 btnArray[i].Name = yPos+"-"+i;
                 btnArray[i].Click += new System.EventHandler(colorSelect);
                 btnArray[i].Enabled = enab;

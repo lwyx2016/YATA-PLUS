@@ -127,7 +127,6 @@
             this.checkBox4.TabIndex = 8;
             this.checkBox4.Text = "Wait the editor before resuming application";
             this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // checkBox5
             // 

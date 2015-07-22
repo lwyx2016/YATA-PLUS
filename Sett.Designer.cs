@@ -30,6 +30,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.help15 = new System.Windows.Forms.Button();
+            this.help14 = new System.Windows.Forms.Button();
+            this.help13 = new System.Windows.Forms.Button();
+            this.help12 = new System.Windows.Forms.Button();
+            this.help11 = new System.Windows.Forms.Button();
+            this.help10 = new System.Windows.Forms.Button();
+            this.help9 = new System.Windows.Forms.Button();
+            this.help8 = new System.Windows.Forms.Button();
+            this.help7 = new System.Windows.Forms.Button();
+            this.help6 = new System.Windows.Forms.Button();
+            this.help5 = new System.Windows.Forms.Button();
+            this.help4 = new System.Windows.Forms.Button();
+            this.help3 = new System.Windows.Forms.Button();
+            this.help2 = new System.Windows.Forms.Button();
+            this.help1 = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -45,6 +61,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
             this.buttonSaveSett = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.CB_botFrame = new System.Windows.Forms.ComboBox();
@@ -72,10 +92,14 @@
             this.CHK0 = new System.Windows.Forms.CheckBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.colDialog = new System.Windows.Forms.ColorDialog();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -84,9 +108,9 @@
             this.groupBox1.Controls.Add(this.CB_topDraw);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(5, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 94);
+            this.groupBox1.Size = new System.Drawing.Size(209, 94);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Draw Type";
@@ -137,6 +161,22 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.help15);
+            this.groupBox2.Controls.Add(this.help14);
+            this.groupBox2.Controls.Add(this.help13);
+            this.groupBox2.Controls.Add(this.help12);
+            this.groupBox2.Controls.Add(this.help11);
+            this.groupBox2.Controls.Add(this.help10);
+            this.groupBox2.Controls.Add(this.help9);
+            this.groupBox2.Controls.Add(this.help8);
+            this.groupBox2.Controls.Add(this.help7);
+            this.groupBox2.Controls.Add(this.help6);
+            this.groupBox2.Controls.Add(this.help5);
+            this.groupBox2.Controls.Add(this.help4);
+            this.groupBox2.Controls.Add(this.help3);
+            this.groupBox2.Controls.Add(this.help2);
+            this.groupBox2.Controls.Add(this.help1);
+            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label17);
@@ -152,17 +192,178 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(12, 112);
+            this.groupBox2.Location = new System.Drawing.Point(5, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 395);
+            this.groupBox2.Size = new System.Drawing.Size(417, 423);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Colors";
             // 
+            // help15
+            // 
+            this.help15.Location = new System.Drawing.Point(4, 368);
+            this.help15.Name = "help15";
+            this.help15.Size = new System.Drawing.Size(20, 20);
+            this.help15.TabIndex = 50;
+            this.help15.Text = "?";
+            this.help15.UseVisualStyleBackColor = true;
+            this.help15.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help14
+            // 
+            this.help14.Location = new System.Drawing.Point(4, 343);
+            this.help14.Name = "help14";
+            this.help14.Size = new System.Drawing.Size(20, 20);
+            this.help14.TabIndex = 49;
+            this.help14.Text = "?";
+            this.help14.UseVisualStyleBackColor = true;
+            this.help14.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help13
+            // 
+            this.help13.Location = new System.Drawing.Point(4, 318);
+            this.help13.Name = "help13";
+            this.help13.Size = new System.Drawing.Size(20, 20);
+            this.help13.TabIndex = 48;
+            this.help13.Text = "?";
+            this.help13.UseVisualStyleBackColor = true;
+            this.help13.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help12
+            // 
+            this.help12.Location = new System.Drawing.Point(4, 292);
+            this.help12.Name = "help12";
+            this.help12.Size = new System.Drawing.Size(20, 20);
+            this.help12.TabIndex = 47;
+            this.help12.Text = "?";
+            this.help12.UseVisualStyleBackColor = true;
+            this.help12.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help11
+            // 
+            this.help11.Location = new System.Drawing.Point(4, 267);
+            this.help11.Name = "help11";
+            this.help11.Size = new System.Drawing.Size(20, 20);
+            this.help11.TabIndex = 46;
+            this.help11.Text = "?";
+            this.help11.UseVisualStyleBackColor = true;
+            this.help11.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help10
+            // 
+            this.help10.Location = new System.Drawing.Point(4, 242);
+            this.help10.Name = "help10";
+            this.help10.Size = new System.Drawing.Size(20, 20);
+            this.help10.TabIndex = 45;
+            this.help10.Text = "?";
+            this.help10.UseVisualStyleBackColor = true;
+            this.help10.Visible = false;
+            this.help10.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help9
+            // 
+            this.help9.Location = new System.Drawing.Point(4, 217);
+            this.help9.Name = "help9";
+            this.help9.Size = new System.Drawing.Size(20, 20);
+            this.help9.TabIndex = 44;
+            this.help9.Text = "?";
+            this.help9.UseVisualStyleBackColor = true;
+            this.help9.Visible = false;
+            this.help9.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help8
+            // 
+            this.help8.Location = new System.Drawing.Point(4, 191);
+            this.help8.Name = "help8";
+            this.help8.Size = new System.Drawing.Size(20, 20);
+            this.help8.TabIndex = 43;
+            this.help8.Text = "?";
+            this.help8.UseVisualStyleBackColor = true;
+            this.help8.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help7
+            // 
+            this.help7.Location = new System.Drawing.Point(4, 166);
+            this.help7.Name = "help7";
+            this.help7.Size = new System.Drawing.Size(20, 20);
+            this.help7.TabIndex = 42;
+            this.help7.Text = "?";
+            this.help7.UseVisualStyleBackColor = true;
+            this.help7.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help6
+            // 
+            this.help6.Location = new System.Drawing.Point(4, 141);
+            this.help6.Name = "help6";
+            this.help6.Size = new System.Drawing.Size(20, 20);
+            this.help6.TabIndex = 41;
+            this.help6.Text = "?";
+            this.help6.UseVisualStyleBackColor = true;
+            this.help6.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help5
+            // 
+            this.help5.Location = new System.Drawing.Point(4, 116);
+            this.help5.Name = "help5";
+            this.help5.Size = new System.Drawing.Size(20, 20);
+            this.help5.TabIndex = 40;
+            this.help5.Text = "?";
+            this.help5.UseVisualStyleBackColor = true;
+            this.help5.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help4
+            // 
+            this.help4.Location = new System.Drawing.Point(4, 90);
+            this.help4.Name = "help4";
+            this.help4.Size = new System.Drawing.Size(20, 20);
+            this.help4.TabIndex = 39;
+            this.help4.Text = "?";
+            this.help4.UseVisualStyleBackColor = true;
+            this.help4.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help3
+            // 
+            this.help3.Location = new System.Drawing.Point(4, 65);
+            this.help3.Name = "help3";
+            this.help3.Size = new System.Drawing.Size(20, 20);
+            this.help3.TabIndex = 38;
+            this.help3.Text = "?";
+            this.help3.UseVisualStyleBackColor = true;
+            this.help3.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help2
+            // 
+            this.help2.Location = new System.Drawing.Point(4, 40);
+            this.help2.Name = "help2";
+            this.help2.Size = new System.Drawing.Size(20, 20);
+            this.help2.TabIndex = 37;
+            this.help2.Text = "?";
+            this.help2.UseVisualStyleBackColor = true;
+            this.help2.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // help1
+            // 
+            this.help1.Location = new System.Drawing.Point(4, 15);
+            this.help1.Name = "help1";
+            this.help1.Size = new System.Drawing.Size(20, 20);
+            this.help1.TabIndex = 36;
+            this.help1.Text = "?";
+            this.help1.UseVisualStyleBackColor = true;
+            this.help1.Click += new System.EventHandler(this.HelpPressed);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 391);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(90, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Top screen color:";
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(14, 170);
+            this.label19.Location = new System.Drawing.Point(31, 169);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(70, 13);
             this.label19.TabIndex = 30;
@@ -171,7 +372,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(53, 70);
+            this.label18.Location = new System.Drawing.Point(70, 69);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(31, 13);
             this.label18.TabIndex = 29;
@@ -180,7 +381,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(23, 371);
+            this.label17.Location = new System.Drawing.Point(40, 370);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(61, 13);
             this.label17.TabIndex = 28;
@@ -189,7 +390,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 345);
+            this.label16.Location = new System.Drawing.Point(33, 344);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(68, 13);
             this.label16.TabIndex = 27;
@@ -198,7 +399,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(23, 320);
+            this.label15.Location = new System.Drawing.Point(40, 319);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(61, 13);
             this.label15.TabIndex = 26;
@@ -207,7 +408,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 295);
+            this.label14.Location = new System.Drawing.Point(32, 294);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 13);
             this.label14.TabIndex = 25;
@@ -216,7 +417,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(27, 270);
+            this.label13.Location = new System.Drawing.Point(44, 269);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 13);
             this.label13.TabIndex = 24;
@@ -225,7 +426,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 244);
+            this.label12.Location = new System.Drawing.Point(29, 243);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 23;
@@ -234,7 +435,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 220);
+            this.label11.Location = new System.Drawing.Point(32, 219);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 13);
             this.label11.TabIndex = 22;
@@ -243,7 +444,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 195);
+            this.label10.Location = new System.Drawing.Point(39, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 21;
@@ -252,7 +453,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 145);
+            this.label9.Location = new System.Drawing.Point(34, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 13);
             this.label9.TabIndex = 20;
@@ -261,7 +462,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 120);
+            this.label8.Location = new System.Drawing.Point(64, 119);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 19;
@@ -270,7 +471,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 95);
+            this.label7.Location = new System.Drawing.Point(30, 94);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 14;
@@ -279,7 +480,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 45);
+            this.label6.Location = new System.Drawing.Point(45, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 7;
@@ -288,16 +489,58 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 20);
+            this.label5.Location = new System.Drawing.Point(61, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 6;
             this.label5.Text = "Cursor:";
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(160, 23);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown2.TabIndex = 35;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(45, 25);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(109, 13);
+            this.label22.TabIndex = 34;
+            this.label22.Text = "Background gradient:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(292, 23);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown1.TabIndex = 33;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(211, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(84, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "squares opacity:";
+            // 
             // buttonSaveSett
             // 
             this.buttonSaveSett.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSaveSett.Location = new System.Drawing.Point(538, 481);
+            this.buttonSaveSett.Location = new System.Drawing.Point(540, 564);
             this.buttonSaveSett.Name = "buttonSaveSett";
             this.buttonSaveSett.Size = new System.Drawing.Size(90, 26);
             this.buttonSaveSett.TabIndex = 2;
@@ -572,7 +815,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(428, 481);
+            this.cancelButton.Location = new System.Drawing.Point(430, 564);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(90, 26);
             this.cancelButton.TabIndex = 5;
@@ -580,11 +823,25 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.numericUpDown2);
+            this.groupBox5.Controls.Add(this.numericUpDown1);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Location = new System.Drawing.Point(5, 541);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(417, 50);
+            this.groupBox5.TabIndex = 36;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Top Screen \"simple themes\" settings";
+            // 
             // Sett
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 519);
+            this.ClientSize = new System.Drawing.Size(640, 593);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -599,10 +856,14 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -657,5 +918,26 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox CHK17;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button help1;
+        private System.Windows.Forms.Button help15;
+        private System.Windows.Forms.Button help14;
+        private System.Windows.Forms.Button help13;
+        private System.Windows.Forms.Button help12;
+        private System.Windows.Forms.Button help11;
+        private System.Windows.Forms.Button help10;
+        private System.Windows.Forms.Button help9;
+        private System.Windows.Forms.Button help8;
+        private System.Windows.Forms.Button help7;
+        private System.Windows.Forms.Button help6;
+        private System.Windows.Forms.Button help5;
+        private System.Windows.Forms.Button help4;
+        private System.Windows.Forms.Button help3;
+        private System.Windows.Forms.Button help2;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

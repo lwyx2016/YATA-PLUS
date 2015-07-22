@@ -53,8 +53,11 @@ namespace YATA {
         private uint[] imgLens;
         private uint[] colorOffs;
         public static byte[][] colChunks;
-        private uint topColorOff = 0;
+        public static uint topColorOff = 0;
         private uint addTopColorOff = 0;
+
+        public static byte[][] topcol;
+
         public static Bitmap[] imageArray;
         private static List<uint> RGBOffs = new List<uint>();
         private uint unk = 0;
@@ -341,6 +344,10 @@ namespace YATA {
                 }
                 cnt++;
             }
+            List<byte[]> TopColor = new List<byte[]>();
+            dec_br.BaseStream.Position = topColorOff;
+            TopColor.Add(dec_br.ReadBytes(0x5));
+            topcol = TopColor.ToArray();
             dec_br.Close();
             colChunks = cols.ToArray();
         }
@@ -656,14 +663,25 @@ namespace YATA {
                 StatusLabel.Text = "Saving theme,please wait.....11%";
                 this.Refresh();
                 //Then when writing the new data goes back and writes the new offsets
-              
-                //top image
+
+                Debug.Print("STARTING DATA SECTION AT " + bw.BaseStream.Position.ToString());
+                //top screen COLORS
                 uint oldOFFS = (uint)bw.BaseStream.Position;
+                bw.BaseStream.Position = 0x14;
+                bw.Write(oldOFFS); //imgOffs[0]
+                topColorOff = oldOFFS;
+                bw.BaseStream.Position = oldOFFS;
+                bw.Write(topcol[0]);
+                StatusLabel.Text = "Saving theme,please wait.....13%";
+                this.Refresh();
+
+                //top image
+                oldOFFS = (uint)bw.BaseStream.Position;
                 bw.BaseStream.Position = 0x18;
                 bw.Write(oldOFFS); //imgOffs[0]
                 imgOffs[0] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                if (topDraw == 2 || topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
+                if (topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
                 StatusLabel.Text = "Saving theme,please wait.....15%";
                 this.Refresh();
 
@@ -1041,6 +1059,7 @@ namespace YATA {
         private void Form1_Load(object sender, EventArgs e)
         {
             load_prefs();
+            Debug_menu.Visible = Debugger.IsAttached;
         }
 
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1140,6 +1159,17 @@ namespace YATA {
         {
             ImgSIZES dlg = new ImgSIZES();
             dlg.ShowDialog();
+        }
+
+        private void printColorDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Debug.Print(topcol[0][0].ToString() + " " + topcol[0][1].ToString() + " " + topcol[0][2].ToString() + " " + topcol[0][3].ToString() + " " + topcol[0][4].ToString());
+        }
+
+        private void printColorOffsetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Debug.Print(topColorOff.ToString());
+            Debug.Print(addTopColorOff.ToString());
         }
 
     }

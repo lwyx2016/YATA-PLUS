@@ -50,6 +50,9 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.Debug_menu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,6 +67,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +83,7 @@
             this.toolStripSeparator6,
             this.toolStripButton1,
             this.toolStripSeparator7,
+            this.Debug_menu,
             this.StatusLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -291,6 +297,35 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
+            // Debug_menu
+            // 
+            this.Debug_menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Debug_menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printColorDataToolStripMenuItem,
+            this.printColorOffsetToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem});
+            this.Debug_menu.Image = ((System.Drawing.Image)(resources.GetObject("Debug_menu.Image")));
+            this.Debug_menu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Debug_menu.Name = "Debug_menu";
+            this.Debug_menu.Size = new System.Drawing.Size(89, 22);
+            this.Debug_menu.Text = "Debug menu";
+            this.Debug_menu.Visible = false;
+            // 
+            // printColorDataToolStripMenuItem
+            // 
+            this.printColorDataToolStripMenuItem.Name = "printColorDataToolStripMenuItem";
+            this.printColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.printColorDataToolStripMenuItem.Text = "Print TOPcolor data";
+            this.printColorDataToolStripMenuItem.Click += new System.EventHandler(this.printColorDataToolStripMenuItem_Click);
+            // 
+            // printColorOffsetToolStripMenuItem
+            // 
+            this.printColorOffsetToolStripMenuItem.Name = "printColorOffsetToolStripMenuItem";
+            this.printColorOffsetToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.printColorOffsetToolStripMenuItem.Text = "Print TOPcolor offset";
+            this.printColorOffsetToolStripMenuItem.Click += new System.EventHandler(this.printColorOffsetToolStripMenuItem_Click);
+            // 
             // StatusLabel
             // 
             this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -392,6 +427,17 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 7;
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(396, 6);
+            // 
+            // thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem
+            // 
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Name = "thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem";
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Text = "Those functions are only for testing, doesn\'t affect the theme ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,6 +507,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripLabel StatusLabel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripDropDownButton Debug_menu;
+        private System.Windows.Forms.ToolStripMenuItem printColorDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printColorOffsetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem;
     }
 }
 

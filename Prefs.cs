@@ -64,10 +64,5 @@ namespace YATA {
                 textBox1.Text = openFileDialog1.FileName;
             }
         }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox4.Checked == false) MessageBox.Show("With this unchecked, this applications won't check for modification of the image after you close the editing program");
-        }
     }
 }

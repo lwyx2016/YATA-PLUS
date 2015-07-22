@@ -15,4 +15,5 @@ namespace YATA {
             Application.Run(new Form1());
         }
     }
+	//Project updated to .NET framework 4
 }

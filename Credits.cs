@@ -23,7 +23,7 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the original version of YATA: \r\n -Support for every image editor \r\n -Fixed bug that swaps Close button colors with Bottom Btns ones in Theme settings\r\n -Support for user preferences\r\n -Loadin uncompressed themes (like the ones from everey file explorer)\r\n -CWAVs to WAVs converter \r\n -WAVs to CWAVs converter(you'll need the 3ds sdk for this)\r\n -Fixed some bugs that corrupt the theme when saving\r\n -other minor fixes and functions");
+            MessageBox.Show("Main changes from the previous version of YATA+: \r\n -Support for 'Simple' 3ds themes\r\n -Theme settings now describes every color");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
