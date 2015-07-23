@@ -132,6 +132,7 @@ Changes in this version of YATA+:
  -Fixed some bugs with the CWAVs dumper
  -Full support for "simple themes", such as "simple orange" and "mood matrix"
  -Now vgmstream and his DLLs aren't deleted anymore
+ -Fixed a bug that makes YATA read the wrong colors from an image
  -Some other minor fixes
 
 Remember that this is still a beta, so it could crash or corrupt themes, be shure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report here is the official thread:

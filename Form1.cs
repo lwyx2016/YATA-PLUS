@@ -29,7 +29,7 @@ namespace YATA {
         }
         //Constants
         private const int RGB565 = 0;
-        private const int RGB888 = 1;
+        private const int BGR888 = 1;
         private const int A8 = 2;
         private readonly string[] imgEnum = { 
                                          "Top",
@@ -221,7 +221,7 @@ namespace YATA {
             imgLens = lens.ToArray();
             for (int i = 0; i < imgOffs.Length; i++)
             {
-                if (imgLens[i] == 0x8000) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? RGB888 : RGB565));
+                if (imgLens[i] == 0x8000) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? BGR888 : RGB565));
             }
             if (cwavOff > 0) cwav = getCWAV();
             imageArray = images.ToArray();
@@ -490,7 +490,7 @@ namespace YATA {
                         i++;
                     }
                 }
-                else if (type == RGB888)
+                else if (type == BGR888)
                 {
                     for (uint i = 0; i < length / 8; i++)
                     {
@@ -500,7 +500,7 @@ namespace YATA {
                         x += (uint)(tile % p) * 8;
                         y += (uint)(tile / p) * 8;
                         byte[] data = dec_br.ReadBytes(3);
-                        img.SetPixel((int)x, (int)y, Color.FromArgb(0xFF, data[0], data[1], data[2])); 
+                        img.SetPixel((int)x, (int)y, Color.FromArgb(0xFF, data[2], data[1], data[0])); 
                     }
                 }
                 else if (type == A8)
@@ -554,7 +554,7 @@ namespace YATA {
                         array.Add((byte)(val & 0xFF));
                         array.Add((byte)((val >> 8) & 0xFF));
                     }
-                    else if (format == RGB888)
+                    else if (format == BGR888)
                     {
                         array.Add((byte)c.R);
                         array.Add((byte)c.G);
@@ -793,7 +793,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[2]
                 imgOffs[2] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[2], RGB888));
+                if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[2], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....31%";
                 this.Refresh();
 
@@ -803,7 +803,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[3]
                 imgOffs[3] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[3], RGB888));
+                if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[3], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....35%";
                 this.Refresh();
 
@@ -823,7 +823,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[4]
                 imgOffs[4] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[4], RGB888));
+                if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[4], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....43%";
                 this.Refresh();
 
@@ -833,7 +833,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[5]
                 imgOffs[5] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[5], RGB888));
+                if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[5], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....47%";
                 this.Refresh();
 
@@ -973,8 +973,15 @@ namespace YATA {
 
         private void SimToolStrip_Click(object sender, EventArgs e)
         {
-            Sim sim = new Sim();
-            sim.ShowDialog();
+            if (topDraw == 3 && bottomDraw == 3)
+            {
+                Sim sim = new Sim();
+                sim.ShowDialog();
+            }
+            else 
+            {
+                MessageBox.Show("The simulator doesn't support this kind of themes,yet");
+            }
         }
 
         private void toolStripSettings_Click(object sender, EventArgs e)
@@ -1302,6 +1309,11 @@ namespace YATA {
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
