@@ -94,10 +94,10 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Items.AddRange(new object[] {
-            "Launch App",
             "Move cursor",
-            "Close App",
+            "Launch App",
             "Create/Delete Folder",
+            "Close App",
             "Open 3DS",
             "Bottom screen - frame 1",
             "Bottom screen - frame 2",

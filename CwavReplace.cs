@@ -159,9 +159,9 @@ namespace YATA
            BinaryWriter binWRITER = new BinaryWriter(writer);
            binWRITER.Write(2);
            binWRITER.Write(UInt32.Parse("64", System.Globalization.NumberStyles.HexNumber));
-           if (EnabledList[1])
+           if (EnabledList[0])
            {
-               binWRITER.Write(CwavCheck(FileList[1]));
+               binWRITER.Write(CwavCheck(FileList[0]));
                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
                binWRITER.Write(cursor);
            }
@@ -170,22 +170,11 @@ namespace YATA
                binWRITER.Write(0);
                binWRITER.Write(1);
            }
-           if (EnabledList[0])
+           if (EnabledList[1])
            {
-               binWRITER.Write(CwavCheck(FileList[0]));
+               binWRITER.Write(CwavCheck(FileList[1]));
                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
                binWRITER.Write(LaunchApp);
-           }
-           else
-           {
-               binWRITER.Write(0);
-               binWRITER.Write(1);
-           }
-           if (EnabledList[3])
-           {
-               binWRITER.Write(CwavCheck(FileList[3]));
-               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(Folder);
            }
            else
            {
@@ -196,6 +185,17 @@ namespace YATA
            {
                binWRITER.Write(CwavCheck(FileList[2]));
                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+               binWRITER.Write(Folder);
+           }
+           else
+           {
+               binWRITER.Write(0);
+               binWRITER.Write(1);
+           }
+           if (EnabledList[3])
+           {
+               binWRITER.Write(CwavCheck(FileList[3]));
+               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
                binWRITER.Write(CloseApp);
            }
            else
@@ -203,7 +203,7 @@ namespace YATA
                binWRITER.Write(0);
                binWRITER.Write(1);
            }
-           if (EnabledList[1])
+           if (EnabledList[5])
            {
                binWRITER.Write(0);
                binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
@@ -216,9 +216,9 @@ namespace YATA
                binWRITER.Write(0);
                binWRITER.Write(0);
                binWRITER.Write(0);
-               binWRITER.Write(CwavCheck(FileList[1]));
+               binWRITER.Write(CwavCheck(FileList[5]));
                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(cursor);
+               binWRITER.Write(frame1);
            }
            else
            {
@@ -235,8 +235,26 @@ namespace YATA
                binWRITER.Write(0);
                binWRITER.Write(0);
                binWRITER.Write(1);
+           }
+           if (EnabledList[6])
+           {
+               binWRITER.Write(CwavCheck(FileList[6]));
+               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+               binWRITER.Write(frame2);
+           }
+           else
+           {
                binWRITER.Write(0);
                binWRITER.Write(1);
+           }
+           if (EnabledList[7])
+           {
+               binWRITER.Write(CwavCheck(FileList[7]));
+               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+               binWRITER.Write(frame3);
+           }
+           else
+           {
                binWRITER.Write(0);
                binWRITER.Write(1);
            }

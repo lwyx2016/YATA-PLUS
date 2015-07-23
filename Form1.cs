@@ -556,9 +556,9 @@ namespace YATA {
                     }
                     else if (format == BGR888)
                     {
-                        array.Add((byte)c.R);
-                        array.Add((byte)c.G);
                         array.Add((byte)c.B);
+                        array.Add((byte)c.G);
+                        array.Add((byte)c.R);
                     }
                     else if (format == A8)
                     {

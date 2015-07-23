@@ -69,7 +69,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(-1, 370);
+            this.label3.Location = new System.Drawing.Point(0, 381);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 3;
