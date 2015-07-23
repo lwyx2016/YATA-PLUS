@@ -36,11 +36,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 234);
+            this.button1.Location = new System.Drawing.Point(12, 230);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(164, 42);
             this.button1.TabIndex = 0;
@@ -95,31 +97,44 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(225, 244);
+            this.label1.Location = new System.Drawing.Point(228, 240);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "No files found";
             this.label1.Visible = false;
             // 
+            // Player
+            // 
+            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(-1, 282);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(394, 44);
+            this.Player.TabIndex = 6;
+            // 
             // CWAVs_dumper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 288);
+            this.ClientSize = new System.Drawing.Size(390, 282);
+            this.Controls.Add(this.Player);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(406, 327);
-            this.MinimumSize = new System.Drawing.Size(406, 327);
+            this.MinimumSize = new System.Drawing.Size(406, 321);
             this.Name = "CWAVs_dumper";
             this.Text = "CWAVs dumper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_closing);
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +149,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private AxWMPLib.AxWindowsMediaPlayer Player;
     }
 }

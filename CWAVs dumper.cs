@@ -88,10 +88,10 @@ namespace YATA
             {
                 listBox1.Items.Add(System.IO.Path.GetFileName(file.ToString()));
             }
-            File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
-            File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
-            File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
-            File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
             listBox1.Enabled = true;
             button1.Enabled = true;
             button3.Enabled = true;
@@ -140,18 +140,29 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
             try
             {
-                if (File.Exists("wav.wav")) File.Delete("wav.wav");
+            Player.Ctlcontrols.stop();
+            Player.close(); //Releases resource
+            if (!Directory.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\")) Directory.CreateDirectory(Path.GetTempPath() + @"DUMP\tmpWAVS\");
             string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\");
+            if (File.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav")) File.Delete(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
-            proc.StartInfo.Arguments = "-o wav.wav " +  files[listBox1.SelectedIndex];
+            proc.StartInfo.Arguments = "-o \"" + Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav\" "+ "\"" + files[listBox1.SelectedIndex] + "\"";
+            proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Process.Start("wav.wav");
+            Player.URL = Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav";
+            if (this.Size != new System.Drawing.Size(406, 364)) this.Size = new System.Drawing.Size(406, 364);
+            Player.Ctlcontrols.play();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message + "\r\n \r\n This error may happen when you try to play another cwav before closing the player of the older one"); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
             
         }
 
@@ -162,12 +173,18 @@ namespace YATA
 
         void clean() 
         {
+            Player.Ctlcontrols.stop();
+            Player.close();
             if (Directory.Exists(Path.GetTempPath() + "DUMP")) Directory.Delete(Path.GetTempPath() + "DUMP", true);
             return;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
              folderBrowserDialog1.ShowDialog();
             if (folderBrowserDialog1.SelectedPath == "") return;
             if (!Directory.Exists(Path.GetTempPath() + "DUMP\\Wav"))
@@ -186,6 +203,8 @@ namespace YATA
                   Process proc = new Process();
                   proc.StartInfo.FileName = "vgmstream.exe";
                   proc.StartInfo.Arguments = "-o " + Path.GetTempPath() + "DUMP\\Wav/" + System.IO.Path.GetFileName(file) + ".wav " + file;
+                  proc.StartInfo.UseShellExecute = false;
+                  proc.StartInfo.CreateNoWindow = true;
                   proc.Start();
                   proc.WaitForExit();
             }
@@ -199,11 +218,14 @@ namespace YATA
 
         private void Frm_closing(object sender, FormClosingEventArgs e)
         {
+            label1.Visible = true;
+            label1.Text = "Cleaning up...";
+            this.Refresh();
             clean();
-            File.Delete("vgmstream.exe");
-            File.Delete("libg7221_decode.dll");
-            File.Delete("libmpg123-0.dll");
-            File.Delete("libvorbis.dll");
+          /*  if (File.Exists("vgmstream.exe")) File.Delete("vgmstream.exe");
+            if (File.Exists("libg7221_decode.dll")) File.Delete("libg7221_decode.dll");
+            if (File.Exists("libmpg123-0.dll")) File.Delete("libmpg123-0.dll");
+            if (File.Exists("libvorbis.dll")) File.Delete("libvorbis.dll");*/
         }
     }
 }

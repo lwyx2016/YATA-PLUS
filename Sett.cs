@@ -63,7 +63,7 @@ namespace YATA {
             Button[] col13 = AddButtons(7, 12, colIconResize, Form1.enableSec[13] == 1 ? true : false);
             Button[] col14 = AddButtons(4, 13, colTopOverlay, Form1.enableSec[14] == 1 ? true : false);
             Button[] col15 = AddButtons(2, 14, colDemoMsg, Form1.enableSec[15] == 1 ? true : false);
-            Button[] col16 = AddButtons(1, 15, ColTopScreen, Form1.topColorOff != 0 ? true : false);
+            Button[] col16 = AddButtons(1, 0, ColTopScreen,true,15);
             foreach (Button b in col1) this.groupBox2.Controls.Add(b);
             foreach (Button b in col2) this.groupBox2.Controls.Add(b);
             foreach (Button b in col3) this.groupBox2.Controls.Add(b);
@@ -79,7 +79,7 @@ namespace YATA {
             foreach (Button b in col13) this.groupBox2.Controls.Add(b);
             foreach (Button b in col14) this.groupBox2.Controls.Add(b);
             foreach (Button b in col15) this.groupBox2.Controls.Add(b);
-            this.groupBox2.Controls.Add(col16[0]);
+            this.groupBox5.Controls.Add(col16[0]);
             flags = Form1.enableSec.ToArray();
             CB_topDraw.SelectedIndex = (int)Form1.topDraw;
             CB_topFrame.SelectedIndex = (int)Form1.topFrame;
@@ -103,8 +103,7 @@ namespace YATA {
             CHK15.Checked = flags[15] == 1 ? true : false;
             CHK16.Checked = flags[16] == 1 ? true : false;
             CHK17.Checked = Form1.useBGM == 1 ? true : false;
-            numericUpDown1.Enabled = Form1.topColorOff != 0 ? true : false;
-            numericUpDown2.Enabled = Form1.topColorOff != 0 ? true : false;
+            if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
         }
 
         private void getColors() {
@@ -409,13 +408,13 @@ namespace YATA {
             }
         }
 
-        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab, string desc = "") {
+        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab , int RemoveFromX = 0) {
             Button[] btnArray = new Button[amount + 1];
             for (int i = 0; i < amount; i++) { 
                 btnArray[i] = new Button();
                 btnArray[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 btnArray[i].Size = new System.Drawing.Size(20, 20);
-                btnArray[i].Location = new System.Drawing.Point(110 + (i*22), 20 + (25*yPos));
+                btnArray[i].Location = new System.Drawing.Point(110 + (i * 22) - RemoveFromX, 20 + (25 * yPos));
                 btnArray[i].Name = yPos+"-"+i;
                 btnArray[i].Click += new System.EventHandler(colorSelect);
                 btnArray[i].Enabled = enab;
@@ -423,6 +422,11 @@ namespace YATA {
                 if (enab) btnArray[i].BackColor = cols[i];
             }
             return btnArray;
+        }
+
+        private void CB_topDraw_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
         }
 
     }

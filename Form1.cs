@@ -19,6 +19,7 @@ namespace YATA {
         public static string APP_photo_edtor = "";
         public static bool APP_Wait_editor = true;
         public static bool APP_Clean_On_exit = false;
+        public static bool APP_Auto_Load_bgm = true;
         #endregion
 
         public Form1()
@@ -28,13 +29,15 @@ namespace YATA {
         //Constants
         private const int RGB565 = 0;
         private const int RGB888 = 1;
+        private const int A8 = 2;
         private readonly string[] imgEnum = { 
                                          "Top",
                                          "Bottom",
                                          "Folder Closed",
                                          "Folder Open",
                                          "Border-48px",
-                                         "Border-24px"
+                                         "Border-24px",
+                                         "Top screen squares"
                                          };
 
         //Flags
@@ -54,7 +57,7 @@ namespace YATA {
         private uint[] colorOffs;
         public static byte[][] colChunks;
         public static uint topColorOff = 0;
-        private uint addTopColorOff = 0;
+        private uint addTopTEXTUREOff = 0;
 
         public static byte[][] topcol;
 
@@ -108,8 +111,7 @@ namespace YATA {
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), "Error on reading file");
-                //Continue with old code
-                dsdecmp.Decompress(openFileLZ.FileName, path + "dec_" + filename);
+                return;
             }
 
             try
@@ -133,6 +135,9 @@ namespace YATA {
                 offs.Add((br.ReadBytes(4)).ToU32());
                 br.BaseStream.Position = 0xC0;  //cwav
                 cwavOff = (br.ReadBytes(4)).ToU32();
+                br.BaseStream.Position = 0x1C;
+                addTopTEXTUREOff = br.ReadBytes(4).ToU32(); //top screen add tex
+                offs.Add(addTopTEXTUREOff);
                 br.Close();
                 imgOffs = offs.ToArray();
             }
@@ -153,6 +158,34 @@ namespace YATA {
             importCWAVButton.Enabled = true;
             cWAVsWavToolStripMenuItem.Enabled = true;
             editCWAVsToolStripMenuItem.Enabled = true;
+            if (APP_Auto_Load_bgm && File.Exists(path + "bgm.bcstm")) 
+            {
+                if (useBGM != 1) MessageBox.Show("This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!");
+                LoadBGM(path + "bgm.bcstm");
+            }
+        }
+
+        void LoadBGM(string filepath)
+        {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
+
+            Player.Ctlcontrols.stop();
+            Player.close(); //Releases resource
+            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            Process proc = new Process();
+            proc.StartInfo.FileName = "vgmstream.exe";
+            if (filepath.Contains("♪")) MessageBox.Show("The path or the file name contains some special characters, the file won't be loaded");
+            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetTempPath() + "bgm.wav\" " + "\"" + filepath + "\"";
+            proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.UseShellExecute = false;
+            proc.Start();
+            proc.WaitForExit();
+            Player.URL = Path.GetTempPath() + "bgm.wav";
+            if (Player.Visible == false) Player.Visible = true;
+            Player.Ctlcontrols.play();
         }
 
         private void openFile_Click(object sender, EventArgs e)
@@ -169,7 +202,7 @@ namespace YATA {
             int e = 0;
             foreach (uint i in imgOffs)
             {
-                if (i > 0) strList.Add(imgEnum[e] + " (" + i.ToString("X08") + ")");
+                strList.Add(imgEnum[e] + " (" + i.ToString("X08") + ")");
                 e++;
             }
             imgListBox.DataSource = strList.ToArray();
@@ -181,10 +214,11 @@ namespace YATA {
             if (enableSec[2] > 0) lens.Add(0x10000); else lens.Add(0);
             if (enableSec[4] > 0) lens.Add(0x10000); else lens.Add(0);
             if (enableSec[4] > 0) lens.Add(0x4000); else lens.Add(0);
+            if (topDraw == 2) lens.Add(0x8000); else lens.Add(0);
             imgLens = lens.ToArray();
             for (int i = 0; i < imgOffs.Length; i++)
             {
-                if (imgLens[i] > 0) images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? RGB888 : RGB565));
+                if (imgLens[i] == 0x8000) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? RGB888 : RGB565));
             }
             if (cwavOff > 0) cwav = getCWAV();
             imageArray = images.ToArray();
@@ -283,7 +317,7 @@ namespace YATA {
             dec_br.BaseStream.Position = 0x14;
             topColorOff = dec_br.ReadBytes(4).ToU32();
             dec_br.BaseStream.Position = 0x1C;
-            addTopColorOff = dec_br.ReadBytes(4).ToU32();
+            addTopTEXTUREOff = dec_br.ReadBytes(4).ToU32();
             dec_br.BaseStream.Position = 0x30;
             offs.Add(dec_br.ReadBytes(4).ToU32());
             dec_br.BaseStream.Position = 0x38;
@@ -359,12 +393,13 @@ namespace YATA {
                 pictureBox1.Image = imageArray[i];
                 label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString() ;
                 button1.Enabled = true;
+                label5.Visible = false;
             }
-            catch (IndexOutOfRangeException ex)
+            catch (Exception)
             {
-                MessageBox.Show("This theme don't include this image");
+                label5.Visible = true;
                 button1.Enabled = false;
-                label4.Text = "";
+                label4.Visible = false;
             }
         }
 
@@ -389,6 +424,7 @@ namespace YATA {
 
         private Bitmap getImage(uint offset, uint length, int type)
         {
+            if (length == 0) { Debug.Print("Get image|| Off:" + offset.ToString() + "  Lenght: 0||"); return null; }
             int red = 0, green = 0, blue = 0;
             int imgWidth = 0, imgHeight = 0;
             if (offset != imgOffs[4])
@@ -411,6 +447,10 @@ namespace YATA {
                         imgWidth = 32;
                         imgHeight = 64;
                         break;
+                    case 0x8000:
+                        imgWidth = 64;
+                        imgHeight = 64;
+                        break;
                 }
             }
             else
@@ -418,6 +458,7 @@ namespace YATA {
                 imgWidth = 64;
                 imgHeight = 128;
             }
+            Debug.Print("Get image|| Off:" + offset.ToString() + "  Lenght:" + length.ToString() + " Type:" + type.ToString() + "  Size:"+ imgWidth.ToString() + "x" + imgHeight.ToString() +  " ||");
             Bitmap img = new Bitmap(imgWidth, imgHeight);
             BinaryReader dec_br = new BinaryReader(File.Open(path + "dec_" + filename, FileMode.Open));
             dec_br.BaseStream.Position = offset;
@@ -457,6 +498,19 @@ namespace YATA {
                         y += (uint)(tile / p) * 8;
                         byte[] data = dec_br.ReadBytes(3);
                         img.SetPixel((int)x, (int)y, Color.FromArgb(0xFF, data[0], data[1], data[2])); 
+                    }
+                }
+                else if (type == A8)
+                {
+                    for (uint i = 0; i < length / 8; i++)
+                    {
+                        d2xy(i % 64, out x, out y);
+                        uint tile = i / 64;
+                        // Shift Tile Coordinate into Tilemap
+                        x += (uint)(tile % p) * 8;
+                        y += (uint)(tile / p) * 8;
+                        byte data = dec_br.ReadByte();
+                        img.SetPixel((int)x, (int)y, Color.FromArgb(0xFF, data, data, data));
                     }
                 }
             }
@@ -502,6 +556,10 @@ namespace YATA {
                         array.Add((byte)c.R);
                         array.Add((byte)c.G);
                         array.Add((byte)c.B);
+                    }
+                    else if (format == A8)
+                    {
+                        array.Add((byte)c.R);
                     }
                 }
 
@@ -615,7 +673,7 @@ namespace YATA {
                 bw.Write(topFrame);
                 bw.Write(topColorOff);
                 bw.Write(imgOffs[0]); //imgOffs[0]
-                bw.Write(addTopColorOff);
+                bw.Write(addTopTEXTUREOff);
                 bw.Write(bottomDraw);
                 bw.Write(bottomFrame);
                 bw.Write(imgOffs[1]); //imgOffs[1]
@@ -683,6 +741,16 @@ namespace YATA {
                 bw.BaseStream.Position = oldOFFS;
                 if (topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
                 StatusLabel.Text = "Saving theme,please wait.....15%";
+                this.Refresh();
+
+                //top ALT image
+                oldOFFS = (uint)bw.BaseStream.Position;
+                bw.BaseStream.Position = 0x1C;
+                bw.Write(oldOFFS); //imgOffs[0]
+                addTopTEXTUREOff = oldOFFS;
+                bw.BaseStream.Position = oldOFFS;
+                if (topDraw == 2) bw.Write(bitmapToRawImg(imageArray[6], A8));
+                StatusLabel.Text = "Saving theme,please wait.....17%";
                 this.Refresh();
 
                 //bottom image
@@ -936,6 +1004,7 @@ namespace YATA {
                 {
                     imageArray[imgListBox.SelectedIndex] = mBitmap;
                     updatePicBox(imgListBox.SelectedIndex);
+                    if (imgListBox.SelectedIndex == 6 && topDraw != 2) MessageBox.Show("This image will be used only if the top screen draw type is set to 'Solid w/ Texture squares'");
                 }
                 else
                 {
@@ -1022,7 +1091,7 @@ namespace YATA {
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true" };
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1051,6 +1120,10 @@ namespace YATA {
                 else if (line.ToLower().StartsWith("clean_on_exit="))
                 {
                     APP_Clean_On_exit = Convert.ToBoolean(line.ToLower().Substring(14));
+                }
+                else if (line.ToLower().StartsWith("load_bgm="))
+                {
+                    APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
             }
             return;
@@ -1106,6 +1179,9 @@ namespace YATA {
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
+            Player.Ctlcontrols.stop();
+            Player.close(); //Releases resource
+            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
@@ -1169,7 +1245,15 @@ namespace YATA {
         private void printColorOffsetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Debug.Print(topColorOff.ToString());
-            Debug.Print(addTopColorOff.ToString());
+            Debug.Print(addTopTEXTUREOff.ToString());
+        }
+
+        private void loadBgmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.Title = "Load BGM";
+            opn.Filter = "Bcstm files| *.bcstm";
+            if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK) LoadBGM(opn.FileName);
         }
 
     }

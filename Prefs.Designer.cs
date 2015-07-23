@@ -35,6 +35,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -90,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 122);
+            this.label1.Location = new System.Drawing.Point(9, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 13);
             this.label1.TabIndex = 5;
@@ -98,14 +99,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 140);
+            this.textBox1.Location = new System.Drawing.Point(9, 156);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(266, 20);
             this.textBox1.TabIndex = 6;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(287, 138);
+            this.button3.Location = new System.Drawing.Point(281, 154);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 23);
             this.button3.TabIndex = 7;
@@ -121,7 +122,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(9, 166);
+            this.checkBox4.Location = new System.Drawing.Point(9, 182);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(227, 17);
             this.checkBox4.TabIndex = 8;
@@ -138,11 +139,23 @@
             this.checkBox5.Text = "Delete Body_LZ_dec.bin when closing YATA";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(12, 102);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(276, 30);
+            this.checkBox6.TabIndex = 10;
+            this.checkBox6.Text = "Automatically load bgm.bcstm when opening a theme\r\n        (This may slow down th" +
+    "e loading of themes)";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
             // Prefs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 254);
+            this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.button3);
@@ -179,5 +192,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }

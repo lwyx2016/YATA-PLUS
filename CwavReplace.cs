@@ -81,11 +81,14 @@ namespace YATA
         {
             FileList[listBox1.SelectedIndex] = "";
             EnabledList[listBox1.SelectedIndex] = false;
+            label4.ForeColor = Color.Red;
             label4.Text = "This CWAV is not enabled";
         }
 
         void Generate(bool import, string filename = "") //filename is used only if import = false
         {
+            //Backup old frame data
+            //
             if (import)
             {
                 if (System.IO.File.Exists(Path.GetTempPath() + "cwav_tmp.bin")) System.IO.File.Delete(Path.GetTempPath() + "cwav_tmp.bin");

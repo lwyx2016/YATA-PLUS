@@ -70,8 +70,10 @@ Bit 16-23 Disp LSBs
             long readBytes = 0;
             byte type = (byte)instream.ReadByte();
             if (type != 0x11)
+            {
                 throw new InvalidDataException("The provided stream is not a valid LZ-0x11 "
                 + "compressed stream (invalid type 0x" + type.ToString("X") + ")");
+            }
             byte[] sizeBytes = new byte[3];
             instream.Read(sizeBytes, 0, 3);
             int decompressedSize = IOUtils.ToNDSu24(sizeBytes, 0);

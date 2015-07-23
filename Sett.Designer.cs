@@ -45,7 +45,6 @@
             this.help3 = new System.Windows.Forms.Button();
             this.help2 = new System.Windows.Forms.Button();
             this.help1 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -140,6 +140,7 @@
             this.CB_topDraw.Name = "CB_topDraw";
             this.CB_topDraw.Size = new System.Drawing.Size(98, 21);
             this.CB_topDraw.TabIndex = 2;
+            this.CB_topDraw.SelectedIndexChanged += new System.EventHandler(this.CB_topDraw_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -176,7 +177,6 @@
             this.groupBox2.Controls.Add(this.help3);
             this.groupBox2.Controls.Add(this.help2);
             this.groupBox2.Controls.Add(this.help1);
-            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label17);
@@ -194,7 +194,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(5, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 423);
+            this.groupBox2.Size = new System.Drawing.Size(417, 396);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Colors";
@@ -351,15 +351,6 @@
             this.help1.UseVisualStyleBackColor = true;
             this.help1.Click += new System.EventHandler(this.HelpPressed);
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 391);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 13);
-            this.label20.TabIndex = 31;
-            this.label20.Text = "Top screen color:";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -495,9 +486,18 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Cursor:";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(1, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(90, 13);
+            this.label20.TabIndex = 31;
+            this.label20.Text = "Top screen color:";
+            // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(160, 23);
+            this.numericUpDown2.Location = new System.Drawing.Point(234, 23);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             255,
             0,
@@ -510,7 +510,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(45, 25);
+            this.label22.Location = new System.Drawing.Point(119, 25);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(109, 13);
             this.label22.TabIndex = 34;
@@ -518,7 +518,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(292, 23);
+            this.numericUpDown1.Location = new System.Drawing.Point(366, 23);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
@@ -531,7 +531,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(211, 25);
+            this.label21.Location = new System.Drawing.Point(285, 25);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(84, 13);
             this.label21.TabIndex = 32;
@@ -540,7 +540,7 @@
             // buttonSaveSett
             // 
             this.buttonSaveSett.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSaveSett.Location = new System.Drawing.Point(540, 564);
+            this.buttonSaveSett.Location = new System.Drawing.Point(538, 539);
             this.buttonSaveSett.Name = "buttonSaveSett";
             this.buttonSaveSett.Size = new System.Drawing.Size(90, 26);
             this.buttonSaveSett.TabIndex = 2;
@@ -815,7 +815,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(430, 564);
+            this.cancelButton.Location = new System.Drawing.Point(428, 539);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(90, 26);
             this.cancelButton.TabIndex = 5;
@@ -829,7 +829,8 @@
             this.groupBox5.Controls.Add(this.numericUpDown2);
             this.groupBox5.Controls.Add(this.numericUpDown1);
             this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Location = new System.Drawing.Point(5, 541);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Location = new System.Drawing.Point(5, 514);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(417, 50);
             this.groupBox5.TabIndex = 36;
@@ -840,7 +841,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 593);
+            this.ClientSize = new System.Drawing.Size(640, 572);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox4);
