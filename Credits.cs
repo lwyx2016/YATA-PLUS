@@ -23,7 +23,7 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Support for 'Simple' 3ds themes\r\n -Theme settings now describes every color\r\n -Adding images to themes that doesn't have\r\n -Now vgmstream and is DLLs isn't deleted anymore\r\n -Support for playing bgm.bcstm files\r\n -Built-in player for Cwavs\r\n -Other minor bugs fixed");
+            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Support for 'Simple' 3ds themes\r\n -Theme settings now describes every color\r\n -Adding images to themes that doesn't have\r\n -Now vgmstream and is DLLs aren't deleted anymore\r\n -Support for playing bgm.bcstm files\r\n -Built-in player for Cwavs\r\n -Other minor bugs fixed");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -45,5 +45,6 @@ namespace YATA
         {
             System.Diagnostics.Process.Start(linkLabel4.Text); 
         }
+
     }
 }

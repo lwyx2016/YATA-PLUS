@@ -104,6 +104,7 @@ namespace YATA {
             CHK16.Checked = flags[16] == 1 ? true : false;
             CHK17.Checked = Form1.useBGM == 1 ? true : false;
             if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
+            checkBox1.Checked = Form1.UseSecondTOPIMG;
         }
 
         private void getColors() {
@@ -333,6 +334,7 @@ namespace YATA {
             Form1.topFrame = (uint)CB_topFrame.SelectedIndex;
             Form1.bottomFrame = (uint)CB_botFrame.SelectedIndex;
             Form1.enableSec = flags;
+            Form1.UseSecondTOPIMG = checkBox1.Checked;
             closeForm();
         }
 

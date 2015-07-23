@@ -40,7 +40,7 @@ namespace YATA {
 
         void save_settings()
         {
-            string[] lines = new string[7];
+            string[] lines = new string[8];
             lines[0] = "ui_prev=" + checkBox1.Checked.ToString();
             lines[1] = "ui_sim=" + checkBox2.Checked.ToString();
             lines[2] = "gen_prev=" + checkBox3.Checked.ToString();
@@ -48,6 +48,7 @@ namespace YATA {
             lines[4] = "wait_editor=" + checkBox4.Checked.ToString();
             lines[5] = "clean_on_exit=" + checkBox5.Checked.ToString();
             lines[6] = "load_bgm=" + checkBox6.Checked.ToString();
+            lines[6] = "first_start=false";
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

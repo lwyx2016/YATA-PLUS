@@ -20,6 +20,7 @@ namespace YATA {
         public static bool APP_Wait_editor = true;
         public static bool APP_Clean_On_exit = false;
         public static bool APP_Auto_Load_bgm = true;
+        public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         #endregion
 
         public Form1()
@@ -37,7 +38,7 @@ namespace YATA {
                                          "Folder Open",
                                          "Border-48px",
                                          "Border-24px",
-                                         "Top screen squares"
+                                         "Top screen 'SIMPLE' Background"
                                          };
 
         //Flags
@@ -46,6 +47,7 @@ namespace YATA {
         public static uint topFrame = 0;  //0x10
         public static uint bottomDraw = 0;  //0x20
         public static uint bottomFrame = 0;   //0x24
+        public static bool UseSecondTOPIMG = false;
         public static uint[] enableSec;
 
         //Other
@@ -83,6 +85,7 @@ namespace YATA {
         void OPEN_FILE() 
         {
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename)) { System.IO.File.Delete(path + "dec_" + filename); }
+            UseSecondTOPIMG = false;
             imgOffs = null;
             imgLens = null;
             colorOffs = null;
@@ -208,7 +211,7 @@ namespace YATA {
             imgListBox.DataSource = strList.ToArray();
             List<uint> lens = new List<uint>();
             List<Bitmap> images = new List<Bitmap>();
-            if (topDraw >= 2) lens.Add((uint)(topFrame == 1 ? 0x40000 : 0x80000)); else lens.Add(0);
+            if (topDraw > 2) lens.Add((uint)(topFrame == 1 ? 0x40000 : 0x80000)); else if (topDraw == 2 && imgOffs[0] != imgOffs[6]) { lens.Add((uint)(0x8000)); UseSecondTOPIMG = true; } else lens.Add(0);
             if (bottomDraw == 3) lens.Add((uint)(bottomFrame == 1 ? 0x40000 : 0x80000)); else lens.Add(0);
             if (enableSec[2] > 0) lens.Add(0x10000); else lens.Add(0);
             if (enableSec[2] > 0) lens.Add(0x10000); else lens.Add(0);
@@ -740,6 +743,7 @@ namespace YATA {
                 imgOffs[0] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
                 if (topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
+                else if (topDraw == 2 && UseSecondTOPIMG) bw.Write(bitmapToRawImg(imageArray[0], A8));
                 StatusLabel.Text = "Saving theme,please wait.....15%";
                 this.Refresh();
 
@@ -1091,7 +1095,7 @@ namespace YATA {
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true" };
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1125,6 +1129,10 @@ namespace YATA {
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
+                else if (line.ToLower().StartsWith("first_start="))
+                {
+                    APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(12));
+                }
             }
             return;
         }
@@ -1133,6 +1141,10 @@ namespace YATA {
         {
             load_prefs();
             Debug_menu.Visible = Debugger.IsAttached;
+            if(APP_First_Start){
+                FirstStart dlg = new FirstStart();
+                dlg.ShowDialog();
+            }
         }
 
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1205,6 +1217,8 @@ namespace YATA {
                 MessageBox.Show("To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ");
                 return;
             }
+            try
+            {
                 OpenFileDialog opn = new OpenFileDialog();
                 opn.Filter = "WAV file|*.wav|Every file|*.*";
                 opn.Title = "Select a WAV file";
@@ -1217,13 +1231,15 @@ namespace YATA {
                     {
                         Process prc = new Process();
                         prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                        prc.StartInfo.Arguments = "-o " + sv.FileName + " " + opn.FileName ;
+                        prc.StartInfo.Arguments = "-o " + sv.FileName + " " + opn.FileName;
                         prc.Start();
                         prc.WaitForExit();
                         MessageBox.Show("Done !");
                     }
                 }
-             }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
 
         private void editCWAVsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1254,6 +1270,38 @@ namespace YATA {
             opn.Title = "Load BGM";
             opn.Filter = "Bcstm files| *.bcstm";
             if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK) LoadBGM(opn.FileName);
+        }
+
+        private void cWAVWAVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
+            try
+            {
+                OpenFileDialog opn = new OpenFileDialog();
+                opn.Filter = "BCWAVs|*.bcwav|CWAVs|*.cwav|Every file|*.*";
+                opn.Title = "Save the CWAV file";
+                if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    SaveFileDialog sv = new SaveFileDialog();
+                    sv.Filter = "WAV file|*.wav|Every file|*.*";
+                    sv.Title = "Select a WAV file";
+                    if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        Process prc = new Process();
+                        prc.StartInfo.FileName = "vgmstream.exe";
+                        prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" " + "\"" + opn.FileName + "\"";
+                        prc.StartInfo.CreateNoWindow = true;
+                        prc.StartInfo.UseShellExecute = false;
+                        prc.Start();
+                        prc.WaitForExit();
+                        MessageBox.Show("Done !");
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
         }
 
     }

@@ -49,7 +49,7 @@
             // button1
             // 
             this.button1.ContextMenuStrip = this.contextMenuStrip1;
-            this.button1.Location = new System.Drawing.Point(253, 258);
+            this.button1.Location = new System.Drawing.Point(253, 295);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 39);
             this.button1.TabIndex = 0;
@@ -74,7 +74,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 268);
+            this.label1.Location = new System.Drawing.Point(8, 305);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(239, 26);
             this.label1.TabIndex = 1;
@@ -102,7 +102,7 @@
             "Bottom screen - frame 1",
             "Bottom screen - frame 2",
             "Bottom screen - frame 3"});
-            this.listBox1.Location = new System.Drawing.Point(10, 71);
+            this.listBox1.Location = new System.Drawing.Point(10, 108);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(240, 173);
             this.listBox1.TabIndex = 4;
@@ -111,7 +111,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(261, 142);
+            this.button2.Location = new System.Drawing.Point(261, 179);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 23);
             this.button2.TabIndex = 5;
@@ -121,7 +121,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(266, 71);
+            this.label3.Location = new System.Drawing.Point(266, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 58);
             this.label3.TabIndex = 6;
@@ -135,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(250, 168);
+            this.label4.Location = new System.Drawing.Point(250, 205);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(123, 13);
             this.label4.TabIndex = 7;
@@ -145,7 +145,7 @@
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(261, 184);
+            this.button3.Location = new System.Drawing.Point(261, 221);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 35);
             this.button3.TabIndex = 8;
@@ -157,16 +157,14 @@
             // 
             this.label5.Location = new System.Drawing.Point(8, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(363, 46);
+            this.label5.Size = new System.Drawing.Size(363, 96);
             this.label5.TabIndex = 9;
-            this.label5.Text = "This will replace every cwav in the file, so If you want to use some cwavs from t" +
-    "his theme you need to export them from the CWAVs dumper and then import from her" +
-    "e";
+            this.label5.Text = resources.GetString("label5.Text");
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Location = new System.Drawing.Point(-6, 250);
+            this.panel1.Location = new System.Drawing.Point(-6, 287);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(390, 5);
             this.panel1.TabIndex = 10;
@@ -175,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 301);
+            this.ClientSize = new System.Drawing.Size(380, 337);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button3);
@@ -186,9 +184,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(396, 340);
             this.MinimumSize = new System.Drawing.Size(396, 340);
             this.Name = "CwavReplace";
             this.Text = "CWAV replace";
