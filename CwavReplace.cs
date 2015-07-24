@@ -32,6 +32,7 @@ namespace YATA
 
         private void CwavReplace_Load(object sender, EventArgs e)
         {
+            if (Form1.enableSec[16] == 0) { MessageBox.Show("To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings"); this.Close(); }
             FileList = new string[8] { "", "", "", "", "", "", "", "" };
             EnabledList = new bool[8] { false, false, false, false, false, false, false, false };
         }
@@ -85,6 +86,8 @@ namespace YATA
             label4.Text = "This CWAV is not enabled";
         }
 
+        bool importFrames;
+
         void Generate(bool import, string filename = "") //filename is used only if import = false
         {
             //Backup old frame data
@@ -100,31 +103,31 @@ namespace YATA
             if (EnabledList[0])
             {
                 read = new BinaryReader(File.Open(FileList[0], FileMode.Open));
-                LaunchApp = read.ReadBytes((int)read.BaseStream.Length);
-                read.Close();
-            }
-            else LaunchApp = null;
-            if (EnabledList[1])
-            {
-                read = new BinaryReader(File.Open(FileList[1], FileMode.Open));
                 cursor = read.ReadBytes((int)read.BaseStream.Length);
                 read.Close();
             }
             else cursor = null;
+            if (EnabledList[1])
+            {
+                read = new BinaryReader(File.Open(FileList[1], FileMode.Open));
+                LaunchApp  = read.ReadBytes((int)read.BaseStream.Length);
+                read.Close();
+            }
+            else LaunchApp = null;
             if (EnabledList[2])
             {
                 read = new BinaryReader(File.Open(FileList[2], FileMode.Open));
-                CloseApp = read.ReadBytes((int)read.BaseStream.Length);
-                read.Close();
-            }
-            else CloseApp = null;
-            if (EnabledList[3])
-            {
-                read = new BinaryReader(File.Open(FileList[3], FileMode.Open));
                 Folder = read.ReadBytes((int)read.BaseStream.Length);
                 read.Close();
             }
             else Folder = null;
+            if (EnabledList[3])
+            {
+                read = new BinaryReader(File.Open(FileList[3], FileMode.Open));
+                CloseApp = read.ReadBytes((int)read.BaseStream.Length);
+                read.Close();
+            }
+            else CloseApp = null;
             if (EnabledList[4])
             {
                 read = new BinaryReader(File.Open(FileList[4], FileMode.Open));
@@ -203,67 +206,118 @@ namespace YATA
                binWRITER.Write(0);
                binWRITER.Write(1);
            }
-           if (EnabledList[5])
+           if (importFrames)
            {
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(0);
-               binWRITER.Write(0);
-               binWRITER.Write(CwavCheck(FileList[5]));
-               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(frame1);
+               if (EnabledList[5])
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(CwavCheck(FileList[5]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(frame1);
+               }
+               else
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+               }
+               if (EnabledList[6])
+               {
+                   binWRITER.Write(CwavCheck(FileList[6]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(frame2);
+               }
+               else
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+               }
+               if (EnabledList[7])
+               {
+                   binWRITER.Write(CwavCheck(FileList[7]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(frame3);
+               }
+               else
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+               }
+               if (EnabledList[4])
+               {
+                   binWRITER.Write(CwavCheck(FileList[4]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(Open3DS);
+               }
            }
-           else
+           else 
            {
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-               binWRITER.Write(0);
-               binWRITER.Write(0);
-               binWRITER.Write(0);
-               binWRITER.Write(0);
-               binWRITER.Write(1);
+               if (EnabledList[5])
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(CwavCheck(FileList[5]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(frame1);
+               }
+               else
+               {
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+                   binWRITER.Write(0);
+                   binWRITER.Write(1);
+               }
+               if (EnabledList[4])
+               {
+                   binWRITER.Write(CwavCheck(FileList[4]));
+                   binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                   binWRITER.Write(Open3DS);
+               }
            }
-           if (EnabledList[6])
-           {
-               binWRITER.Write(CwavCheck(FileList[6]));
-               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(frame2);
-           }
-           else
-           {
-               binWRITER.Write(0);
-               binWRITER.Write(1);
-           }
-           if (EnabledList[7])
-           {
-               binWRITER.Write(CwavCheck(FileList[7]));
-               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(frame3);
-           }
-           else
-           {
-               binWRITER.Write(0);
-               binWRITER.Write(1);
-           }
-           if (EnabledList[4])
-           {
-               binWRITER.Write(CwavCheck(FileList[4]));
-               binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
-               binWRITER.Write(Open3DS);
-           }
+           
+          
            if (!binWRITER.BaseStream.Position.ToString("X").EndsWith("0"))
            {
                while (!binWRITER.BaseStream.Position.ToString("X").EndsWith("0"))
@@ -296,6 +350,12 @@ namespace YATA
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (Form1.bottomFrame != 2 || Form1.bottomFrame != 3 || Form1.bottomDraw != 3)
+            {
+                importFrames = false;
+                if ( EnabledList[6] || EnabledList[7]) MessageBox.Show("This theme is not set to include an animated bottom screen, the sounds for the frames won't be imported");
+            }
+            else { if (EnabledList[5] && EnabledList[6] && EnabledList[7]) importFrames = true; }
             Generate(true, "");
         }
 

@@ -48,22 +48,22 @@ namespace YATA {
         public Sett() {
             InitializeComponent();
             getColors();
-            Button[] col1 = AddButtons(4, 0, colCursor, Form1.enableSec[0] == 1 ? true : false);
-            Button[] col2 = AddButtons(2, 1, col3DFolder, Form1.enableSec[1] == 1 ? true : false);
-            Button[] col3 = AddButtons(3, 2, colFiles, Form1.enableSec[3] == 1 ? true : false);
-            Button[] col4 = AddButtons(3, 3, colArrowBut, Form1.enableSec[5] == 1 ? true : false);
-            Button[] col5 = AddButtons(3, 4, colArrow, Form1.enableSec[6] == 1 ? true : false);
-            Button[] col6 = AddButtons(6, 5, colBotBut, Form1.enableSec[7] == 1 ? true : false);
-            Button[] col7 = AddButtons(6, 6, colClose, Form1.enableSec[7] == 1 ? true : false);
-            Button[] col8 = AddButtons(2, 7, colGameTxt, Form1.enableSec[8] == 1 ? true : false);
-            Button[] col9 = AddButtons(4, 8, colBotSolid, Form1.enableSec[9] == 1 ? true : false);
-            Button[] col10 = AddButtons(3, 9, colBotOuter, Form1.enableSec[10] == 1 ? true : false);
-            Button[] col11 = AddButtons(4, 10, colFolderBG, Form1.enableSec[11] == 1 ? true : false);
-            Button[] col12 = AddButtons(1, 11, colFolderArrow, Form1.enableSec[12] == 1 ? true : false);
-            Button[] col13 = AddButtons(7, 12, colIconResize, Form1.enableSec[13] == 1 ? true : false);
-            Button[] col14 = AddButtons(4, 13, colTopOverlay, Form1.enableSec[14] == 1 ? true : false);
-            Button[] col15 = AddButtons(2, 14, colDemoMsg, Form1.enableSec[15] == 1 ? true : false);
-            Button[] col16 = AddButtons(1, 0, ColTopScreen,true,15);
+            Button[] col1 = AddButtons(4, 0, colCursor, Form1.enableSec[0] == 1 ? true : false,0);
+            Button[] col2 = AddButtons(2, 1, col3DFolder, Form1.enableSec[1] == 1 ? true : false,1);
+            Button[] col3 = AddButtons(3, 2, colFiles, Form1.enableSec[3] == 1 ? true : false,2);
+            Button[] col4 = AddButtons(3, 3, colArrowBut, Form1.enableSec[5] == 1 ? true : false,3);
+            Button[] col5 = AddButtons(3, 4, colArrow, Form1.enableSec[6] == 1 ? true : false,4);
+            Button[] col6 = AddButtons(6, 5, colBotBut, Form1.enableSec[7] == 1 ? true : false,5);
+            Button[] col7 = AddButtons(6, 6, colClose, Form1.enableSec[7] == 1 ? true : false,6);
+            Button[] col8 = AddButtons(2, 7, colGameTxt, Form1.enableSec[8] == 1 ? true : false,7);
+            Button[] col9 = AddButtons(4, 8, colBotSolid, Form1.enableSec[9] == 1 ? true : false,8);
+            Button[] col10 = AddButtons(3, 9, colBotOuter, Form1.enableSec[10] == 1 ? true : false,9);
+            Button[] col11 = AddButtons(4, 10, colFolderBG, Form1.enableSec[11] == 1 ? true : false,10);
+            Button[] col12 = AddButtons(1, 11, colFolderArrow, Form1.enableSec[12] == 1 ? true : false,11);
+            Button[] col13 = AddButtons(7, 12, colIconResize, Form1.enableSec[13] == 1 ? true : false,12);
+            Button[] col14 = AddButtons(4, 13, colTopOverlay, Form1.enableSec[14] == 1 ? true : false,13);
+            Button[] col15 = AddButtons(2, 14, colDemoMsg, Form1.enableSec[15] == 1 ? true : false,14);
+            Button[] col16 = AddButtons(1, 0, ColTopScreen,true,15,15); //the last two parametrers are for spoofing the group and for remove tot from the x value
             foreach (Button b in col1) this.groupBox2.Controls.Add(b);
             foreach (Button b in col2) this.groupBox2.Controls.Add(b);
             foreach (Button b in col3) this.groupBox2.Controls.Add(b);
@@ -410,14 +410,14 @@ namespace YATA {
             }
         }
 
-        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab , int RemoveFromX = 0) {
+        private Button[] AddButtons(int amount, int yPos, Color[] cols, bool enab ,int yPosNAME, int RemoveFromX = 0) {
             Button[] btnArray = new Button[amount + 1];
             for (int i = 0; i < amount; i++) { 
                 btnArray[i] = new Button();
                 btnArray[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 btnArray[i].Size = new System.Drawing.Size(20, 20);
                 btnArray[i].Location = new System.Drawing.Point(110 + (i * 22) - RemoveFromX, 20 + (25 * yPos));
-                btnArray[i].Name = yPos+"-"+i;
+                btnArray[i].Name = yPosNAME + "-" + i;
                 btnArray[i].Click += new System.EventHandler(colorSelect);
                 btnArray[i].Enabled = enab;
                 btnArray[i].ForeColor = enab == true ? Color.Black : Color.Gray;

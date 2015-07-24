@@ -96,6 +96,7 @@ namespace YATA
             button1.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
+            fs.Close();
         }
 
         public List<int> SearchBytePattern(byte[] pattern, Stream bytes)
@@ -175,6 +176,7 @@ namespace YATA
         {
             Player.Ctlcontrols.stop();
             Player.close();
+            //if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
             if (Directory.Exists(Path.GetTempPath() + "DUMP")) Directory.Delete(Path.GetTempPath() + "DUMP", true);
             return;
         }
@@ -222,10 +224,16 @@ namespace YATA
             label1.Text = "Cleaning up...";
             this.Refresh();
             clean();
+            if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
           /*  if (File.Exists("vgmstream.exe")) File.Delete("vgmstream.exe");
             if (File.Exists("libg7221_decode.dll")) File.Delete("libg7221_decode.dll");
             if (File.Exists("libmpg123-0.dll")) File.Delete("libmpg123-0.dll");
             if (File.Exists("libvorbis.dll")) File.Delete("libvorbis.dll");*/
+        }
+
+        private void CWAVs_dumper_Load(object sender, EventArgs e)
+        {
+            if (Form1.enableSec[16] == 0) { MessageBox.Show("This theme doesn't support CWAVs to add them check the 'Enable use of SFX' box in the theme settings and go to 'Create CWAVs chunk'"); this.Close(); }
         }
     }
 }

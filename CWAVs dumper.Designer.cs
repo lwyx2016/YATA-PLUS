@@ -134,6 +134,7 @@
             this.Name = "CWAVs_dumper";
             this.Text = "CWAVs dumper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_closing);
+            this.Load += new System.EventHandler(this.CWAVs_dumper_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
