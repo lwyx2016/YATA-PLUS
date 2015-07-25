@@ -21,7 +21,9 @@ namespace YATA {
             checkBox4.Checked = Form1.APP_Wait_editor;
             checkBox5.Checked = Form1.APP_Clean_On_exit;
             checkBox6.Checked = Form1.APP_Auto_Load_bgm;
+            checkBox7.Checked = Form1.APP_check_UPD;
             textBox1.Text = Form1.APP_photo_edtor;
+            numericUpDown1.Value = Form1.APP_Move_buttons_colors;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -32,6 +34,8 @@ namespace YATA {
             checkBox4.Checked = true;
             checkBox5.Checked = false;
             checkBox6.Checked = true;
+            checkBox7.Checked = true;
+            numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
             save_settings();
             Form1.load_prefs();
@@ -40,7 +44,7 @@ namespace YATA {
 
         void save_settings()
         {
-            string[] lines = new string[8];
+            string[] lines = new string[10];
             lines[0] = "ui_prev=" + checkBox1.Checked.ToString();
             lines[1] = "ui_sim=" + checkBox2.Checked.ToString();
             lines[2] = "gen_prev=" + checkBox3.Checked.ToString();
@@ -48,7 +52,9 @@ namespace YATA {
             lines[4] = "wait_editor=" + checkBox4.Checked.ToString();
             lines[5] = "clean_on_exit=" + checkBox5.Checked.ToString();
             lines[6] = "load_bgm=" + checkBox6.Checked.ToString();
-            lines[6] = "first_start=false";
+            lines[7] = "first_start=false";
+            lines[8] = "shift_btns=" + numericUpDown1.Value.ToString();
+            lines[9] = "check_updates=" + checkBox7.Checked.ToString();
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

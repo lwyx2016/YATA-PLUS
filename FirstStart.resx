@@ -126,9 +126,9 @@ this guide made by me for using YATA+:
 
 
 Changes in this version of YATA+:
- -Added an embedded player
+ -Added an embedded player for playng CWAVs/BCSTMs
  -Converting CWAVs to WAVs even if they aren't inside the theme
- -Playing BCSTM files
+ -Added option to choice the position of the buttons in the theme settings screen
  -Fixed some bugs with the CWAVs dumper
  -Full support for "simple themes", such as "simple orange" and "mood matrix"
  -Now vgmstream and his DLLs aren't deleted anymore

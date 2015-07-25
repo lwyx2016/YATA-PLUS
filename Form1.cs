@@ -20,7 +20,9 @@ namespace YATA {
         public static bool APP_Wait_editor = true;
         public static bool APP_Clean_On_exit = false;
         public static bool APP_Auto_Load_bgm = true;
+        public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
+        public static bool APP_check_UPD = true;
         #endregion
 
         public Form1()
@@ -1102,7 +1104,7 @@ namespace YATA {
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true" };
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1139,6 +1141,14 @@ namespace YATA {
                 else if (line.ToLower().StartsWith("first_start="))
                 {
                     APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(12));
+                }
+                else if (line.ToLower().StartsWith("shift_btns="))
+                {
+                    APP_Move_buttons_colors = Convert.ToInt32(line.ToLower().Substring(11));
+                }
+                else if (line.ToLower().StartsWith("check_updates="))
+                {
+                    APP_check_UPD = Convert.ToBoolean(line.ToLower().Substring(14));
                 }
             }
             return;

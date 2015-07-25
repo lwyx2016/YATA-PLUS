@@ -121,6 +121,7 @@
     <value>TOP SCREEN TEXTURES:
 If the top screen texture is static, the image needs to be 512x256px and the drawable area is 412x240px (From top left).
 If the top screen texture scrolls, the image needs to be 1024x256px and the drawable area is 1008x240px.
+If you are using the solid color o solid color with texture settings both the top screen image (Foreground, moving) and the the top screen "simple" background , must be 64x64 GREYSCALE !!
 
 BOTTOM SCREEN TEXTURES:
 If the bottom screen texture is static, the image needs to be 512x256px and the drawable area is 320x240px.
