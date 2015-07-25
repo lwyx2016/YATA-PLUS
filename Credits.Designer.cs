@@ -38,7 +38,6 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // button1
@@ -57,17 +56,17 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(36, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(274, 80);
+            this.label1.Size = new System.Drawing.Size(274, 60);
             this.label1.TabIndex = 1;
-            this.label1.Text = "                  YATA PLUS:\r\nYet Another Theme Application +\r\n\r\n                " +
-    "   Thanks to:";
+            this.label1.Text = "                  YATA PLUS:\r\nYet Another Theme Application +\r\n                  " +
+    " Thanks to:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 98);
+            this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 169);
+            this.label2.Size = new System.Drawing.Size(315, 195);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -93,7 +92,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(87, 189);
+            this.linkLabel1.Location = new System.Drawing.Point(87, 159);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(168, 13);
             this.linkLabel1.TabIndex = 5;
@@ -104,7 +103,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(37, 137);
+            this.linkLabel2.Location = new System.Drawing.Point(37, 107);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(275, 13);
             this.linkLabel2.TabIndex = 6;
@@ -115,7 +114,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(37, 112);
+            this.linkLabel3.Location = new System.Drawing.Point(37, 82);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(275, 13);
             this.linkLabel3.TabIndex = 7;
@@ -126,7 +125,7 @@
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(13, 163);
+            this.linkLabel4.Location = new System.Drawing.Point(13, 133);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(328, 13);
             this.linkLabel4.TabIndex = 8;
@@ -134,22 +133,11 @@
             this.linkLabel4.Text = "https://gbatemp.net/threads/release-custom-theme-cwavs.381132/";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // linkLabel5
-            // 
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(125, 52);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(105, 13);
-            this.linkLabel5.TabIndex = 9;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "Official thread HERE";
-            // 
             // Credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 296);
-            this.Controls.Add(this.linkLabel5);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
@@ -185,6 +173,5 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }

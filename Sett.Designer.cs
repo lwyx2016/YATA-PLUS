@@ -498,7 +498,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(404, 18);
+            this.numericUpDown2.Location = new System.Drawing.Point(234, 23);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             255,
             0,
@@ -511,7 +511,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(267, 20);
+            this.label22.Location = new System.Drawing.Point(119, 25);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(109, 13);
             this.label22.TabIndex = 34;
@@ -519,7 +519,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(570, 18);
+            this.numericUpDown1.Location = new System.Drawing.Point(366, 23);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
@@ -532,7 +532,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(467, 20);
+            this.label21.Location = new System.Drawing.Point(285, 25);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(84, 13);
             this.label21.TabIndex = 32;
@@ -541,7 +541,7 @@
             // buttonSaveSett
             // 
             this.buttonSaveSett.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSaveSett.Location = new System.Drawing.Point(532, 482);
+            this.buttonSaveSett.Location = new System.Drawing.Point(538, 539);
             this.buttonSaveSett.Name = "buttonSaveSett";
             this.buttonSaveSett.Size = new System.Drawing.Size(90, 26);
             this.buttonSaveSett.TabIndex = 2;
@@ -816,7 +816,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(428, 482);
+            this.cancelButton.Location = new System.Drawing.Point(428, 539);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(90, 26);
             this.cancelButton.TabIndex = 5;
@@ -834,7 +834,7 @@
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Location = new System.Drawing.Point(5, 514);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(623, 67);
+            this.groupBox5.Size = new System.Drawing.Size(417, 67);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Top Screen \"simple themes\" settings";
@@ -842,7 +842,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 44);
+            this.checkBox1.Location = new System.Drawing.Point(100, 44);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(317, 17);
             this.checkBox1.TabIndex = 36;
