@@ -23,6 +23,7 @@ namespace YATA {
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
+        public static int APP_Public_version = 2;
         #endregion
 
         public Form1()
@@ -1162,6 +1163,18 @@ namespace YATA {
                 FirstStart dlg = new FirstStart();
                 dlg.ShowDialog();
             }
+            try
+            {
+                if (APP_check_UPD)
+                {
+                    System.Net.WebClient d = new System.Net.WebClient();
+                    if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > APP_Public_version)
+                    {
+                        MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\n What are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\n You can disable the auto check for updates in the preferences");
+                    }
+                }
+            }
+            catch { }
         }
 
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1298,13 +1311,13 @@ namespace YATA {
             try
             {
                 OpenFileDialog opn = new OpenFileDialog();
-                opn.Filter = "BCWAVs|*.bcwav|CWAVs|*.cwav|Every file|*.*";
-                opn.Title = "Save the CWAV file";
+                opn.Filter = "|Every supported file|*.*";
+                opn.Title = "Open file";
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     SaveFileDialog sv = new SaveFileDialog();
                     sv.Filter = "WAV file|*.wav|Every file|*.*";
-                    sv.Title = "Select a WAV file";
+                    sv.Title = "Save file";
                     if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         Process prc = new Process();
