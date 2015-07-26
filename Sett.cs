@@ -431,5 +431,9 @@ namespace YATA {
             if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("None:Static image (both top and bottom screen) \r\nBOTTOM SCREEN: \r\n Flipbook tile:the order of frames will be 1-2-3-1-2-3 etc..\r\nFlipbook Cyclic:the order of frames will be 1-2-3-2-1-2-3-2 etc....");
+        }
     }
 }

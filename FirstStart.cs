@@ -36,5 +36,10 @@ namespace YATA
             System.IO.File.WriteAllLines("Settings.ini", lines);
             this.Close();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://gbatemp.net/threads/tutorial-creating-a-3ds-custom-theme-from-scratch-with-yata-v1-1.393602/");
+        }
     }
 }

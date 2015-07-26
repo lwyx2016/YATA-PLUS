@@ -1105,7 +1105,7 @@ namespace YATA {
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true" };
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true"};
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1311,7 +1311,7 @@ namespace YATA {
             try
             {
                 OpenFileDialog opn = new OpenFileDialog();
-                opn.Filter = "|Every supported file|*.*";
+                opn.Filter = "Every supported file|*.*";
                 opn.Title = "Open file";
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -1333,7 +1333,6 @@ namespace YATA {
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
         }
-
     }
 }
 

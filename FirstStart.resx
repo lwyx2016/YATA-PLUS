@@ -126,6 +126,7 @@ this guide made by me for using YATA+:
 
 
 Changes in this version of YATA+:
+ -Auto check for updates
  -Added an embedded player for playng CWAVs/BCSTMs
  -Converting CWAVs to WAVs even if they aren't inside the theme
  -Added option to choice the position of the buttons in the theme settings screen
@@ -135,7 +136,7 @@ Changes in this version of YATA+:
  -Fixed a bug that makes YATA read the wrong colors from an image
  -Some other minor fixes
 
-Remember that this is still a beta, so it could crash or corrupt themes, be shure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report here is the official thread:
+Remember that this is still a beta, so it could crash or corrupt themes, be shure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>
   </data>
 </root>

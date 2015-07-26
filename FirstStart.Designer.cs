@@ -50,7 +50,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(310, 361);
+            this.button1.Location = new System.Drawing.Point(310, 370);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 30);
             this.button1.TabIndex = 1;
@@ -69,7 +69,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 381);
+            this.label3.Location = new System.Drawing.Point(0, 385);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 3;
@@ -78,7 +78,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(32, 334);
+            this.linkLabel1.Location = new System.Drawing.Point(39, 349);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(359, 13);
             this.linkLabel1.TabIndex = 4;
@@ -89,18 +89,20 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(174, 143);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 145);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel2.Size = new System.Drawing.Size(426, 13);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "linkLabel2";
+            this.linkLabel2.Text = "https://gbatemp.net/threads/tutorial-creating-a-3ds-custom-theme-from-scratch-wit" +
+    "h-yat...";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // FirstStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 394);
+            this.ClientSize = new System.Drawing.Size(445, 401);
             this.ControlBox = false;
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
