@@ -18,7 +18,7 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -FULL support for 'Simple' 3ds themes\r\n -Theme settings now describes every color\r\n -Adding images to themes that doesn't have\r\n -Now vgmstream and his DLLs aren't deleted anymore\r\n -Support for playing bgm.bcstm files\r\n -Built-in player for Cwavs\r\n -Fixed a bug that makes YATA read the wrong colors from an image\r\n -Check for updates\r\n -Other minor bugs fixed");
+            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Conversions now support spaces\r\n -Conversions now support multiple files at once\r\n -Drag and drop support\r\n -New exception handling\r\n -Other minor fixes");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

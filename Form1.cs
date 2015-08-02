@@ -23,12 +23,39 @@ namespace YATA {
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 2;
+        public static int APP_Public_version = 3;
         #endregion
 
         public Form1()
         {
-            InitializeComponent();
+            try
+            {InitializeComponent();}
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                if (!File.Exists("AxInterop.WMPLib.dll") || !File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("The required DLLs weren't found, redownload the application from the official thread"); }
+                MessageBox.Show("A log file will be generated, please send me the content of this file.");
+                string[] LOG = new string[13];
+                LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
+                LOG[1] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
+                LOG[2] = "-------------------------------------------------";
+                LOG[3] = "msg: "+ ex.Message;
+                LOG[4] = "-------------------------------------------------";
+                LOG[5] = "InnerException" + ex.InnerException;
+                LOG[6] = "-------------------------------------------------";
+                LOG[7] = "Source:" + ex.Source;
+                LOG[8] = "-------------------------------------------------";
+                LOG[9] = "StackTrace:" + ex.StackTrace;
+                LOG[10] = "-------------------------------------------------";
+                LOG[11] = "StackTrace:" + ex.TargetSite;
+                LOG[12] = "-------------------------------------------------";
+                SaveFileDialog sv = new SaveFileDialog();
+                sv.Filter = "txt file|*.txt";
+                sv.Title = "Save debug file";
+                if (sv.ShowDialog() == DialogResult.OK) { System.IO.File.WriteAllLines(sv.FileName, LOG); }
+                MessageBox.Show("You can find more information in the event viewer");
+                InitializeComponent();
+            }
         }
         //Constants
         private const int RGB565 = 0;
@@ -87,6 +114,7 @@ namespace YATA {
 
         void OPEN_FILE() 
         {
+            label6.Visible = false;
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename)) { System.IO.File.Delete(path + "dec_" + filename); }
             UseSecondTOPIMG = false;
             imgOffs = null;
@@ -735,6 +763,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[0]
                 topColorOff = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Top screen colors: " + bw.BaseStream.Position.ToString());
                 bw.Write(topcol[0]);
                 StatusLabel.Text = "Saving theme,please wait.....13%";
                 this.Refresh();
@@ -745,6 +774,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[0]
                 imgOffs[0] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Top image " + bw.BaseStream.Position.ToString());
                 if (topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
                 else if (topDraw == 2 && UseSecondTOPIMG) bw.Write(bitmapToRawImg(imageArray[0], A8));
                 StatusLabel.Text = "Saving theme,please wait.....15%";
@@ -756,6 +786,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[0]
                 addTopTEXTUREOff = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Top alt image " + bw.BaseStream.Position.ToString());
                 if (topDraw == 2) bw.Write(bitmapToRawImg(imageArray[6], A8));
                 StatusLabel.Text = "Saving theme,please wait.....17%";
                 this.Refresh();
@@ -766,6 +797,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[1]
                 imgOffs[1] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Bottom image " + bw.BaseStream.Position.ToString());
                 if (bottomDraw == 3) bw.Write(bitmapToRawImg(imageArray[1], RGB565));
                 StatusLabel.Text = "Saving theme,please wait.....19%";
                 this.Refresh();
@@ -776,7 +808,9 @@ namespace YATA {
                 bw.Write(oldOFFS); //colorOffs[0]
                 colorOffs[0] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                /*if (enableSec[0] == 1)*/ bw.Write(colChunks[0]);
+                Debug.Print("Color 0 " + bw.BaseStream.Position.ToString());
+                /*if (enableSec[0] == 1)*/
+                bw.Write(colChunks[0]);
                 StatusLabel.Text = "Saving theme,please wait.....23%";
                 this.Refresh();
 
@@ -786,7 +820,9 @@ namespace YATA {
                 bw.Write(oldOFFS); //colorOffs[1]
                 colorOffs[1] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                /*if (enableSec[1] == 1)*/ bw.Write(colChunks[1]);
+                Debug.Print("Color1 " + bw.BaseStream.Position.ToString());
+                /*if (enableSec[1] == 1)*/
+                bw.Write(colChunks[1]);
                 StatusLabel.Text = "Saving theme,please wait.....27%";
                 this.Refresh();
 
@@ -796,6 +832,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[2]
                 imgOffs[2] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Image 2 " + bw.BaseStream.Position.ToString());
                 if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[2], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....31%";
                 this.Refresh();
@@ -806,6 +843,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[3]
                 imgOffs[3] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Image 3 " + bw.BaseStream.Position.ToString());
                 if (enableSec[2] == 1) bw.Write(bitmapToRawImg(imageArray[3], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....35%";
                 this.Refresh();
@@ -816,7 +854,9 @@ namespace YATA {
                 bw.Write(oldOFFS); //colorOffs[2]
                 colorOffs[2] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                /*if (enableSec[3] == 1)*/ bw.Write(colChunks[2]);
+                Debug.Print("Color 2 " + bw.BaseStream.Position.ToString());
+                /*if (enableSec[3] == 1)*/
+                bw.Write(colChunks[2]);
                 StatusLabel.Text = "Saving theme,please wait.....39%";
                 this.Refresh();
 
@@ -826,6 +866,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[4]
                 imgOffs[4] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Image 4 " + bw.BaseStream.Position.ToString());
                 if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[4], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....43%";
                 this.Refresh();
@@ -836,6 +877,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //imgOffs[5]
                 imgOffs[5] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Image 5 " + bw.BaseStream.Position.ToString());
                 if (enableSec[4] == 1) bw.Write(bitmapToRawImg(imageArray[5], BGR888));
                 StatusLabel.Text = "Saving theme,please wait.....47%";
                 this.Refresh();
@@ -846,7 +888,9 @@ namespace YATA {
                 bw.Write(oldOFFS); //colorOffs[3]
                 colorOffs[3] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-                /*if (enableSec[5] == 1) */bw.Write(colChunks[3]);
+                Debug.Print("Color 3+ " + bw.BaseStream.Position.ToString());
+                /*if (enableSec[5] == 1) */
+                bw.Write(colChunks[3]);
                 StatusLabel.Text = "Saving theme,please wait.....51%";
                 this.Refresh();
 
@@ -927,6 +971,10 @@ namespace YATA {
                 colorOffs[11] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
                 /*if (enableSec[12] == 1)*/ bw.Write(colChunks[11]);
+                bw.Write(0);
+                bw.Write(0);
+                bw.Write(0);
+                bw.Write(0);
                 StatusLabel.Text = "Saving theme,please wait.....83%";
                 this.Refresh();
 
@@ -956,7 +1004,9 @@ namespace YATA {
                 bw.Write(oldOFFS);
                 colorOffs[14] = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
-               /* if (enableSec[15] == 1)*/ bw.Write(colChunks[14]);
+                Debug.Print("...Color 14 " + bw.BaseStream.Position.ToString());
+                /* if (enableSec[15] == 1)*/
+                bw.Write(colChunks[14]);
                StatusLabel.Text = "Saving theme,please wait.....95%";
                this.Refresh();
 
@@ -966,6 +1016,7 @@ namespace YATA {
                 bw.Write(oldOFFS); //cwavOff
                 cwavOff = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
+                Debug.Print("Wav offset " + bw.BaseStream.Position.ToString());
                 if (enableSec[16] == 1) bw.Write(cwav);
                 StatusLabel.Text = "Saving theme,please wait.....99%";
                 this.Refresh();
@@ -1244,7 +1295,7 @@ namespace YATA {
         {
             if (!File.Exists("CTR_WaveConverter32.exe"))
             {
-                MessageBox.Show("To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ");
+                MessageBox.Show("To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ","Please understand",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             try
@@ -1252,18 +1303,34 @@ namespace YATA {
                 OpenFileDialog opn = new OpenFileDialog();
                 opn.Filter = "WAV file|*.wav|Every file|*.*";
                 opn.Title = "Select a WAV file";
+                opn.Multiselect = true;
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SaveFileDialog sv = new SaveFileDialog();
-                    sv.Filter = "BCWAVs|*.bcwav|CWAVs|*.cwav|Every file|*.*";
-                    sv.Title = "Save the CWAV file";
-                    if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    if (opn.FileNames.Length == 1)
                     {
-                        Process prc = new Process();
-                        prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                        prc.StartInfo.Arguments = "-o " + sv.FileName + " " + opn.FileName;
-                        prc.Start();
-                        prc.WaitForExit();
+                        SaveFileDialog sv = new SaveFileDialog();
+                        sv.Filter = "CWAVs|*.cwav|Every file|*.*";
+                        sv.Title = "Save the CWAV file";
+                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            Process prc = new Process();
+                            prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
+                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + opn.FileName + "\"";
+                            prc.Start();
+                            prc.WaitForExit();
+                            MessageBox.Show("Done !");
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < opn.FileNames.Length; i++)
+                        {
+                            Process prc = new Process();
+                            prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
+                            prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + opn.FileNames[i] + "\"";
+                            prc.Start();
+                            prc.WaitForExit();
+                         }
                         MessageBox.Show("Done !");
                     }
                 }
@@ -1285,13 +1352,12 @@ namespace YATA {
 
         private void printColorDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Debug.Print(topcol[0][0].ToString() + " " + topcol[0][1].ToString() + " " + topcol[0][2].ToString() + " " + topcol[0][3].ToString() + " " + topcol[0][4].ToString());
+            Debug.Print(colChunks[11][0].ToString() + " " + colChunks[11][1].ToString() + " " + colChunks[11][2].ToString() + " " + colChunks[11][3].ToString() + " " + colChunks[11][4].ToString());
         }
 
         private void printColorOffsetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Debug.Print(topColorOff.ToString());
-            Debug.Print(addTopTEXTUREOff.ToString());
+            Debug.Print(colChunks[12][0].ToString() + " " + colChunks[12][1].ToString() + " " + colChunks[12][2].ToString() + " " + colChunks[12][3].ToString() + " " + colChunks[12][4].ToString());
         }
 
         private void loadBgmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1313,26 +1379,70 @@ namespace YATA {
                 OpenFileDialog opn = new OpenFileDialog();
                 opn.Filter = "Every supported file|*.*";
                 opn.Title = "Open file";
+                opn.Multiselect = true;
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SaveFileDialog sv = new SaveFileDialog();
-                    sv.Filter = "WAV file|*.wav|Every file|*.*";
-                    sv.Title = "Save file";
-                    if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    if (opn.FileNames.Length == 1)
                     {
-                        Process prc = new Process();
-                        prc.StartInfo.FileName = "vgmstream.exe";
-                        prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" " + "\"" + opn.FileName + "\"";
-                        prc.StartInfo.CreateNoWindow = true;
-                        prc.StartInfo.UseShellExecute = false;
-                        prc.Start();
-                        prc.WaitForExit();
+                        SaveFileDialog sv = new SaveFileDialog();
+                        sv.Filter = "WAV file|*.wav|Every file|*.*";
+                        sv.Title = "Save file";
+                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            Process prc = new Process();
+                            prc.StartInfo.FileName = "vgmstream.exe";
+                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" " + "\"" + opn.FileName + "\"";
+                            prc.StartInfo.CreateNoWindow = true;
+                            prc.StartInfo.UseShellExecute = false;
+                            prc.Start();
+                            prc.WaitForExit();
+                            MessageBox.Show("Done !");
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < opn.FileNames.Length; i++)
+                        {
+                            Process prc = new Process();
+                            prc.StartInfo.FileName = "vgmstream.exe";
+                            prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] +  ".wav\" " + "\"" + opn.FileNames[i] + "\"";
+                            prc.StartInfo.CreateNoWindow = true;
+                            prc.StartInfo.UseShellExecute = false;
+                            prc.Start();
+                            prc.WaitForExit();
+                        }
                         MessageBox.Show("Done !");
                     }
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
         }
+
+        void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (File.Exists(files[0]))
+             {
+                BinaryReader reader = new BinaryReader(File.Open(files[0], FileMode.Open));
+                string[] MAGIC = new string[4] { reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString() };
+                reader.Close();
+                if (MAGIC[0] == "67" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//DEC: 67 83 84 77 = HEX: 43 53 54 4D = STRING: CSTM
+                {
+                    LoadBGM(files[0]);
+                }
+                else
+                {
+                    openFileLZ.FileName = files[0];
+                    OPEN_FILE();
+                }
+            }
+        }
+
     }
 }
 

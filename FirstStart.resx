@@ -126,17 +126,12 @@ this guide made by me for using YATA+:
 
 
 Changes in this version of YATA+:
- -Auto check for updates
- -Added an embedded player for playng CWAVs/BCSTMs
- -Converting CWAVs to WAVs even if they aren't inside the theme
- -Added option to choice the position of the buttons in the theme settings screen
- -Fixed some bugs with the CWAVs dumper
- -Full support for "simple themes", such as "simple orange" and "mood matrix"
- -Now vgmstream and his DLLs aren't deleted anymore
- -Fixed a bug that makes YATA read the wrong colors from an image
+ -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support spaces
+ -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support multiple files at once
+ -Implemented drag and drop
  -Some other minor fixes
 
-Remember that this is still a beta, so it could crash or corrupt themes, be shure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
+Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>
   </data>
 </root>

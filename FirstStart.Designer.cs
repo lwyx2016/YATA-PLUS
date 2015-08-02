@@ -73,7 +73,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "YATA+ v1.1 BETA";
+            this.label3.Text = "YATA+ v1.2 BETA";
             // 
             // linkLabel1
             // 

@@ -73,6 +73,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
@@ -337,14 +338,14 @@
             // 
             this.printColorDataToolStripMenuItem.Name = "printColorDataToolStripMenuItem";
             this.printColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.printColorDataToolStripMenuItem.Text = "Print TOPcolor data";
+            this.printColorDataToolStripMenuItem.Text = "Print col11 data";
             this.printColorDataToolStripMenuItem.Click += new System.EventHandler(this.printColorDataToolStripMenuItem_Click);
             // 
             // printColorOffsetToolStripMenuItem
             // 
             this.printColorOffsetToolStripMenuItem.Name = "printColorOffsetToolStripMenuItem";
             this.printColorOffsetToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.printColorOffsetToolStripMenuItem.Text = "Print TOPcolor offset";
+            this.printColorOffsetToolStripMenuItem.Text = "Print col12 data";
             this.printColorOffsetToolStripMenuItem.Click += new System.EventHandler(this.printColorOffsetToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
@@ -482,11 +483,24 @@
             this.label5.Text = "\r\n\r\n  This theme doesn\'t include this image !";
             this.label5.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.BackColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(211, 148);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(234, 62);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "\r\n\r\n             Drag your theme or BGM here !";
+            // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 358);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -503,6 +517,8 @@
             this.Text = "YATA PLUS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -563,6 +579,7 @@
         private System.Windows.Forms.ToolStripMenuItem loadBgmToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
+        private System.Windows.Forms.Label label6;
     }
 }
 
