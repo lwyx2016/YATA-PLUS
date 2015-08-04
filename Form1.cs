@@ -8,11 +8,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NAudio;
+using NAudio.Wave;
 
 namespace YATA {
     public partial class Form1 : Form
     {
         #region appSettings
+        //I decided to use a config.ini file to not leave traces in the pc that runs yata (i'm a portable apps maniac :P)
         public static bool APP_ShowUI_preview = false;
         public static bool APP_ShowUI_Sim = false;
         public static bool APP_AutoGen_preview = false;
@@ -23,18 +26,26 @@ namespace YATA {
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 3;
+        public static int APP_Public_version = 3; /*for the update check the application doesn't count the version, but the release number on gbatemp
+                                                    1: First public yata+ version
+                                                    2: Yata+ v1.1
+                                                    3: Yata+ v1.2 (this one)
+                                                    4,5,6,etc..: Future updates*/
         #endregion
 
         public Form1()
         {
+            int dll = 0;
+            if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            if (dll != 0) InitializeComponent();
             try
             {InitializeComponent();}
             catch (Exception ex)
-            {
+            {               
                 MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                if (!File.Exists("AxInterop.WMPLib.dll") || !File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("The required DLLs weren't found, redownload the application from the official thread"); }
-                MessageBox.Show("A log file will be generated, please send me the content of this file.");
+                MessageBox.Show("A log file will be generated, if you have every required dll,please send me the content of this file.");
                 string[] LOG = new string[13];
                 LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
                 LOG[1] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
@@ -53,7 +64,7 @@ namespace YATA {
                 sv.Filter = "txt file|*.txt";
                 sv.Title = "Save debug file";
                 if (sv.ShowDialog() == DialogResult.OK) { System.IO.File.WriteAllLines(sv.FileName, LOG); }
-                MessageBox.Show("You can find more information in the event viewer");
+                MessageBox.Show("You can find more information in the windows' event viewer");
                 InitializeComponent();
             }
         }
@@ -1225,7 +1236,7 @@ namespace YATA {
                     }
                 }
             }
-            catch { }
+            catch {/*Do nothing*/}
         }
 
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1313,11 +1324,20 @@ namespace YATA {
                         sv.Title = "Save the CWAV file";
                         if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
+                            Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
+                            WaveFormat New = new WaveFormat(8000, 8, 1);
+                            WaveStream Original = new WaveFileReader(opn.FileName);
+                            WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
+                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
+                            WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav", stream);
                             Process prc = new Process();
                             prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + opn.FileName + "\"";
+                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav\"";
                             prc.Start();
                             prc.WaitForExit();
+                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
+                            stream.Dispose();
+                            Original.Dispose();
                             MessageBox.Show("Done !");
                         }
                     }
@@ -1325,12 +1345,22 @@ namespace YATA {
                     {
                         for (int i = 0; i < opn.FileNames.Length; i++)
                         {
+                            Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                            WaveFormat New = new WaveFormat(8000, 8, 1);
+                            WaveStream Original = new WaveFileReader(opn.FileNames[i]);
+                            WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
+                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                            WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav", stream);
                             Process prc = new Process();
                             prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                            prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + opn.FileNames[i] + "\"";
+                            prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav\"";
+                            Debug.Print("Converting CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
                             prc.Start();
                             prc.WaitForExit();
-                         }
+                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                            stream.Dispose();
+                            Original.Dispose();
+                        }
                         MessageBox.Show("Done !");
                     }
                 }
@@ -1443,6 +1473,11 @@ namespace YATA {
             }
         }
 
+        private void tryRunningBrawllibToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nothing to see here !");
+          //I tryed to add wav -> brstm -> bcstm but the brawl lib dialog crashes......
+        }
     }
 }
 

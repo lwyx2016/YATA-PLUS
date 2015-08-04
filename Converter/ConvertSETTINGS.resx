@@ -117,21 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
-    <value>looks like this is the first time you use this version of yata on your pc,
-as first thing you should go to File -&gt; Preferences and set you photo editor and your preferences.
-
-If you never made a custom theme or you aren't so "expert" you should check out
-this guide made by me for using YATA+:
-
-
-Changes in this version of YATA+:
- -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support spaces
- -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support multiple files at once
- -Implemented drag and drop
- -Some other minor fixes
-
-Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
-</value>
-  </data>
 </root>

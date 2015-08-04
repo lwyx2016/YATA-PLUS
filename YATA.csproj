@@ -68,6 +68,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio">
+      <HintPath>..\..\..\..\Desktop\NAudio.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -80,28 +85,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Credits.cs">
+    <Compile Include="Converter\FileConverter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Credits.Designer.cs">
+    <Compile Include="Converter\FileConverter.Designer.cs">
+      <DependentUpon>FileConverter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\ConvertSETTINGS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Converter\ConvertSETTINGS.Designer.cs">
+      <DependentUpon>ConvertSETTINGS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Info_Forms\Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Info_Forms\Credits.Designer.cs">
       <DependentUpon>Credits.cs</DependentUpon>
     </Compile>
-    <Compile Include="CwavReplace.cs">
+    <Compile Include="CWAV managers\CwavReplace.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CwavReplace.Designer.cs">
+    <Compile Include="CWAV managers\CwavReplace.Designer.cs">
       <DependentUpon>CwavReplace.cs</DependentUpon>
     </Compile>
-    <Compile Include="CWAVs dumper.cs">
+    <Compile Include="CWAV managers\CWAVs dumper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CWAVs dumper.Designer.cs">
+    <Compile Include="CWAV managers\CWAVs dumper.Designer.cs">
       <DependentUpon>CWAVs dumper.cs</DependentUpon>
     </Compile>
-    <Compile Include="FirstStart.cs">
+    <Compile Include="Info_Forms\FirstStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FirstStart.Designer.cs">
+    <Compile Include="Info_Forms\FirstStart.Designer.cs">
       <DependentUpon>FirstStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -110,10 +127,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImgSIZES.cs">
+    <Compile Include="Info_Forms\ImgSIZES.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImgSIZES.Designer.cs">
+    <Compile Include="Info_Forms\ImgSIZES.Designer.cs">
       <DependentUpon>ImgSIZES.cs</DependentUpon>
     </Compile>
     <Compile Include="LZ11.cs" />
@@ -142,22 +159,28 @@
     <Compile Include="Sim.Designer.cs">
       <DependentUpon>Sim.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Credits.resx">
+    <EmbeddedResource Include="Converter\FileConverter.resx">
+      <DependentUpon>FileConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Converter\ConvertSETTINGS.resx">
+      <DependentUpon>ConvertSETTINGS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Info_Forms\Credits.resx">
       <DependentUpon>Credits.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CwavReplace.resx">
+    <EmbeddedResource Include="CWAV managers\CwavReplace.resx">
       <DependentUpon>CwavReplace.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CWAVs dumper.resx">
+    <EmbeddedResource Include="CWAV managers\CWAVs dumper.resx">
       <DependentUpon>CWAVs dumper.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FirstStart.resx">
+    <EmbeddedResource Include="Info_Forms\FirstStart.resx">
       <DependentUpon>FirstStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImgSIZES.resx">
+    <EmbeddedResource Include="Info_Forms\ImgSIZES.resx">
       <DependentUpon>ImgSIZES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prefs.resx">
@@ -273,6 +296,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

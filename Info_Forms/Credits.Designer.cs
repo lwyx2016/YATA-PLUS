@@ -39,6 +39,7 @@
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.button3 = new System.Windows.Forms.Button();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -57,14 +58,15 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 169);
+            this.label2.Size = new System.Drawing.Size(315, 208);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 280);
+            this.label3.Location = new System.Drawing.Point(0, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 3;
@@ -72,7 +74,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(119, 270);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button2.Location = new System.Drawing.Point(119, 314);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -89,7 +92,7 @@
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://hcs64.com/vgmstream.html";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabel1.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel2
             // 
@@ -100,7 +103,7 @@
             this.linkLabel2.TabIndex = 6;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "https://gbatemp.net/threads/3ds-cwav-dumper.361437/";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.linkLabel2.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel3
             // 
@@ -122,7 +125,7 @@
             this.linkLabel4.TabIndex = 8;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "https://gbatemp.net/threads/release-custom-theme-cwavs.381132/";
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.linkLabel4.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel5
             // 
@@ -137,7 +140,8 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(200, 270);
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button3.Location = new System.Drawing.Point(200, 314);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 23);
             this.button3.TabIndex = 10;
@@ -145,11 +149,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // linkLabel6
+            // 
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.Location = new System.Drawing.Point(87, 217);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(172, 13);
+            this.linkLabel6.TabIndex = 11;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = "https://github.com/naudio/NAudio";
+            this.linkLabel6.Click += new System.EventHandler(this.Link_CLICKED);
+            // 
             // Credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 296);
+            this.ClientSize = new System.Drawing.Size(353, 340);
+            this.Controls.Add(this.linkLabel6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.linkLabel5);
             this.Controls.Add(this.linkLabel4);
@@ -160,9 +176,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(369, 335);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(369, 335);
             this.Name = "Credits";
@@ -186,5 +202,6 @@
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.LinkLabel linkLabel6;
     }
 }

@@ -26,21 +26,6 @@ namespace YATA
             System.Diagnostics.Process.Start("https://gbatemp.net/threads/release-yet-another-theme-application-yata.379209/");
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(linkLabel1.Text); 
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(linkLabel2.Text); 
-        }
-
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(linkLabel4.Text); 
-        }
-
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://gbatemp.net/threads/relase-yet-another-theme-application-plus-yata-3ds-theme-editor.393355/");
@@ -58,6 +43,13 @@ namespace YATA
                 else MessageBox.Show("You're on the latest version of YATA+ !!");
             }
             catch { MessageBox.Show("Error while searching for updates"); }
+        }
+
+
+        private void Link_CLICKED(object sender, EventArgs e)
+        {
+            LinkLabel snd = (LinkLabel)sender;
+            System.Diagnostics.Process.Start(snd.Text);
         }
     }
 }

@@ -74,6 +74,7 @@
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.tryRunningBrawllibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
@@ -326,7 +327,8 @@
             this.printColorDataToolStripMenuItem,
             this.printColorOffsetToolStripMenuItem,
             this.toolStripSeparator8,
-            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem});
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem,
+            this.tryRunningBrawllibToolStripMenuItem});
             this.Debug_menu.Image = ((System.Drawing.Image)(resources.GetObject("Debug_menu.Image")));
             this.Debug_menu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Debug_menu.Name = "Debug_menu";
@@ -494,6 +496,13 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "\r\n\r\n             Drag your theme or BGM here !";
             // 
+            // tryRunningBrawllibToolStripMenuItem
+            // 
+            this.tryRunningBrawllibToolStripMenuItem.Name = "tryRunningBrawllibToolStripMenuItem";
+            this.tryRunningBrawllibToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.tryRunningBrawllibToolStripMenuItem.Text = "Try running brawllib";
+            this.tryRunningBrawllibToolStripMenuItem.Click += new System.EventHandler(this.tryRunningBrawllibToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -580,6 +589,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem tryRunningBrawllibToolStripMenuItem;
     }
 }
 
