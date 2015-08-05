@@ -18,7 +18,7 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Conversions now support spaces\r\n -Conversions now support multiple files at once\r\n -Drag and drop support\r\n -New exception handling\r\n -Auto theme reloading when importing CWAVs\r\n -WAV optimization before conversion\r\n -Other minor fixes");
+            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Conversions now support spaces\r\n -Conversions now support multiple files at once\r\n -Drag and drop support\r\n -New exception handling\r\n -Auto theme reloading when importing CWAVs\r\n -WAV optimization before conversion\r\n -Fixes in the CWAV dumper\r\n -Other minor fixes");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
