@@ -56,6 +56,9 @@
             this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tryRunningBrawllibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTheFileConverterFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
@@ -74,7 +77,6 @@
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tryRunningBrawllibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
@@ -327,8 +329,10 @@
             this.printColorDataToolStripMenuItem,
             this.printColorOffsetToolStripMenuItem,
             this.toolStripSeparator8,
-            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem,
-            this.tryRunningBrawllibToolStripMenuItem});
+            this.tryRunningBrawllibToolStripMenuItem,
+            this.openTheFileConverterFromToolStripMenuItem,
+            this.toolStripSeparator9,
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem});
             this.Debug_menu.Image = ((System.Drawing.Image)(resources.GetObject("Debug_menu.Image")));
             this.Debug_menu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Debug_menu.Name = "Debug_menu";
@@ -354,6 +358,25 @@
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(396, 6);
+            // 
+            // tryRunningBrawllibToolStripMenuItem
+            // 
+            this.tryRunningBrawllibToolStripMenuItem.Name = "tryRunningBrawllibToolStripMenuItem";
+            this.tryRunningBrawllibToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.tryRunningBrawllibToolStripMenuItem.Text = "Try running brawllib";
+            this.tryRunningBrawllibToolStripMenuItem.Click += new System.EventHandler(this.tryRunningBrawllibToolStripMenuItem_Click);
+            // 
+            // openTheFileConverterFromToolStripMenuItem
+            // 
+            this.openTheFileConverterFromToolStripMenuItem.Name = "openTheFileConverterFromToolStripMenuItem";
+            this.openTheFileConverterFromToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.openTheFileConverterFromToolStripMenuItem.Text = "Open the file converter from";
+            this.openTheFileConverterFromToolStripMenuItem.Click += new System.EventHandler(this.openTheFileConverterFromToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(396, 6);
             // 
             // thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem
             // 
@@ -496,13 +519,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "\r\n\r\n             Drag your theme or BGM here !";
             // 
-            // tryRunningBrawllibToolStripMenuItem
-            // 
-            this.tryRunningBrawllibToolStripMenuItem.Name = "tryRunningBrawllibToolStripMenuItem";
-            this.tryRunningBrawllibToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.tryRunningBrawllibToolStripMenuItem.Text = "Try running brawllib";
-            this.tryRunningBrawllibToolStripMenuItem.Click += new System.EventHandler(this.tryRunningBrawllibToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -590,6 +606,8 @@
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem tryRunningBrawllibToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTheFileConverterFromToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
     }
 }
 

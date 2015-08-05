@@ -194,6 +194,7 @@
             this.checkBox7.TabIndex = 14;
             this.checkBox7.Text = "Automatically check for updates on start up";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
             // Prefs
             // 

@@ -15,5 +15,27 @@ namespace YATA
         {
             InitializeComponent();
         }
+
+        private void FileConverter_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       public enum ConvertType
+        {
+            brstmTOwav,
+            wavTObrstm,
+            wavTObcstm,
+            brstmTObcstm,
+            wavTOcwav,
+            cwavTowav,
+            wavTOcwav_No_opt,
+            nothing
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using NAudio;
 using NAudio.Wave;
 
-namespace YATA {
+namespace YATA
+{
     public partial class Form1 : Form
     {
         #region appSettings
@@ -31,6 +27,7 @@ namespace YATA {
                                                     2: Yata+ v1.1
                                                     3: Yata+ v1.2 (this one)
                                                     4,5,6,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.2 BETA";
         #endregion
 
         public Form1()
@@ -135,6 +132,29 @@ namespace YATA {
             RGBOffs.Clear();
             colChunks = null;
             imgListBoxLoaded = false;
+            pictureBox1.Image = null;
+
+            saveAsFile.Enabled = false;
+            saveFile.Enabled = false;
+            saveAsFile.Enabled = false;
+            generatePreviewForCHMMToolStripMenuItem.Enabled = false;
+            importImage.Enabled = false;
+            saveImage.Enabled = false;
+            importCWAVButton.Enabled = false;
+            saveCWAVButton.Enabled = false;
+            editCWAVsToolStripMenuItem.Enabled = false;
+            cWAVsWavToolStripMenuItem.Enabled = false;
+            toolStripSettings.Enabled = false;
+            SimToolStrip.Enabled = false;
+            Player.Ctlcontrols.stop();
+            Player.close(); //Releases resource
+            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
+            {
+                System.IO.File.Delete(path + "dec_" + filename);
+            }
+            this.Refresh();
+
             path = openFileLZ.FileName.Substring(0, openFileLZ.FileName.LastIndexOf("\\") + 1);
             filename = openFileLZ.FileName.Substring(path.Length, openFileLZ.FileName.Length - path.Length);
             try
@@ -1167,7 +1187,7 @@ namespace YATA {
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true"};
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true", "happy_easter=false"};
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1201,9 +1221,9 @@ namespace YATA {
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start="))
+                else if (line.ToLower().StartsWith("first_start_v3="))
                 {
-                    APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(12));
+                    APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
                 }
                 else if (line.ToLower().StartsWith("shift_btns="))
                 {
@@ -1212,6 +1232,10 @@ namespace YATA {
                 else if (line.ToLower().StartsWith("check_updates="))
                 {
                     APP_check_UPD = Convert.ToBoolean(line.ToLower().Substring(14));
+                }
+                else if (line.ToLower().StartsWith("happy_easter="))
+                {
+                    if (Convert.ToBoolean(line.ToLower().Substring(13))) { MessageBox.Show(" Conglaturation !!!\r\n You found this easter egg. \r\n\r\n And you prooved that you are a easter egg hunter \r\n Now go and rest our hero !", "( ͡° ͜ʖ ͡°)"); MessageBox.Show("i hope you got it :P"); }
                 }
             }
             return;
@@ -1370,8 +1394,18 @@ namespace YATA {
 
         private void editCWAVsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (enableSec[16] == 0) { MessageBox.Show("To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings"); return; }
             CwavReplace frm = new CwavReplace();
             frm.ShowDialog();
+            if (MessageBox.Show("If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                makeTheme(path + "new_dec_" + filename);
+                dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+                File.Delete(path + "new_dec_" + filename);
+                StatusLabel.Visible = false;
+                OPEN_FILE();
+            }
+            else MessageBox.Show("If you don't save and reload the theme you may encounter some bugs");
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -1477,6 +1511,12 @@ namespace YATA {
         {
             MessageBox.Show("Nothing to see here !");
           //I tryed to add wav -> brstm -> bcstm but the brawl lib dialog crashes......
+        }
+
+        private void openTheFileConverterFromToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FileConverter conv = new FileConverter();
+            conv.Show();
         }
     }
 }

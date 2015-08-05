@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +74,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "YATA+ v1.2 BETA";
+            this.label3.Text = "{VERSION}";
             // 
             // linkLabel1
             // 
@@ -89,7 +90,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(12, 145);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 179);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(426, 13);
             this.linkLabel2.TabIndex = 5;
@@ -97,6 +98,17 @@
             this.linkLabel2.Text = "https://gbatemp.net/threads/tutorial-creating-a-3ds-custom-theme-from-scratch-wit" +
     "h-yat...";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(2, 141);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(442, 51);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "also, in the same thread there is a opened poll, where you can vote if you want m" +
+    "e to make some videos on how to use yata+ ,hurry up because you can only vote un" +
+    "til August 15\r\n (EXPIRED)";
             // 
             // FirstStart
             // 
@@ -107,15 +119,17 @@
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FirstStart";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Yet Another Theme Application PLUS";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FirstStart_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +143,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label label4;
     }
 }

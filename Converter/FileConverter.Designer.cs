@@ -69,6 +69,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -183,6 +184,7 @@
             this.MaximizeBox = false;
             this.Name = "FileConverter";
             this.Text = "Converter";
+            this.Load += new System.EventHandler(this.FileConverter_Load);
             this.panel_INFO.ResumeLayout(false);
             this.panel_INFO.PerformLayout();
             this.ResumeLayout(false);

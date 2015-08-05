@@ -39,12 +39,12 @@ namespace YATA
             byte[] magic = new byte[4];
             byte[] CWAVBytes_Little_end = new byte[] { 0x43, 0x57, 0x41, 0x56, 0xFF, 0xFE, 0x40, 0x00 };
             byte[] CWAVBytes_BIG_end = new byte[] { 0x43, 0x57, 0x41, 0x56, 0xFE, 0xFF, 0x40, 0x00 };
-            System.IO.FileStream fs = new System.IO.FileStream(Path.GetTempPath() + "snd_dump.bin", FileMode.Open, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(Path.GetTempPath() + "snd_dump.bin", FileMode.Open, FileAccess.ReadWrite);
             SearchBytePattern(CWAVBytes_Little_end, fs);
             SearchBytePattern(CWAVBytes_BIG_end, fs);
             if (source.Count == 0)
             {
-                button1.Enabled = true;
+                button1.Enabled = false;
                 label1.Visible = true;
                 return;
             }
@@ -83,6 +83,8 @@ namespace YATA
                 bytes = null;//forcefully destroy any data left and make the array become invalid until it is recreated.
             }
             fs.Close();
+            fs.Dispose();
+            if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
             string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\" );
             foreach (string file in files)
             {
@@ -93,10 +95,8 @@ namespace YATA
             if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
             listBox1.Enabled = true;
-            button1.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
-            fs.Close();
         }
 
         public List<int> SearchBytePattern(byte[] pattern, Stream bytes)
@@ -224,7 +224,6 @@ namespace YATA
             label1.Text = "Cleaning up...";
             this.Refresh();
             clean();
-            if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
           /*  if (File.Exists("vgmstream.exe")) File.Delete("vgmstream.exe");
             if (File.Exists("libg7221_decode.dll")) File.Delete("libg7221_decode.dll");
             if (File.Exists("libmpg123-0.dll")) File.Delete("libmpg123-0.dll");

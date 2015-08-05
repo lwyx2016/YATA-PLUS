@@ -70,7 +70,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 3;
-            this.label3.Text = "YATA + v1.2 BETA";
+            this.label3.Text = "{VERSION}";
             // 
             // button2
             // 
@@ -186,6 +186,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credits";
+            this.Load += new System.EventHandler(this.Credits_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
