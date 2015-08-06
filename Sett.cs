@@ -435,5 +435,11 @@ namespace YATA {
         {
             MessageBox.Show("None:Static image (both top and bottom screen) \r\nBOTTOM SCREEN: \r\n Flipbook tile:the order of frames will be 1-2-3-1-2-3 etc..\r\nFlipbook Cyclic:the order of frames will be 1-2-3-2-1-2-3-2 etc....");
         }
+
+        private void FORM_Closing(object sender, FormClosingEventArgs e)
+        {
+            Form1.APP_SETT_SIZE_X = this.Size.Width;
+            Form1.APP_SETT_SIZE_Y = this.Size.Height;
+        }
     }
 }

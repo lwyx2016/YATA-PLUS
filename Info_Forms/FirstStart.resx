@@ -129,12 +129,10 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support spaces
- -WAV -&gt; CWAV and CWAV -&gt; WAV conversions now support multiple files at once
- -Implemented drag and drop
- -Auto "optimization"  WAV files to 8-bit,8000hz,mono before converting to CWAVS
- -Fixes in the CWAV importing
- -Some other minor fixes
+ -Now the theme settings window is resizable
+
+
+
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>

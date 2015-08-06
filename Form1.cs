@@ -27,7 +27,9 @@ namespace YATA
                                                     2: Yata+ v1.1
                                                     3: Yata+ v1.2 (this one)
                                                     4,5,6,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.2 BETA";
+        public static string APP_STRING_version = "YATA+ v1.2.1 BETA";
+        public static int APP_SETT_SIZE_X = 656; //To remember the size
+        public static int APP_SETT_SIZE_Y = 625;
         #endregion
 
         public Form1()
@@ -1072,6 +1074,7 @@ namespace YATA
         private void toolStripSettings_Click(object sender, EventArgs e)
         {
             Sett settings = new Sett();
+            settings.Size = new System.Drawing.Size(APP_SETT_SIZE_X, APP_SETT_SIZE_Y);
             settings.ShowDialog();
         }
 
@@ -1236,6 +1239,11 @@ namespace YATA
                 else if (line.ToLower().StartsWith("happy_easter="))
                 {
                     if (Convert.ToBoolean(line.ToLower().Substring(13))) { MessageBox.Show(" Conglaturation !!!\r\n You found this easter egg. \r\n\r\n And you prooved that you are a easter egg hunter \r\n Now go and rest our hero !", "( ͡° ͜ʖ ͡°)"); MessageBox.Show("i hope you got it :P"); }
+                }
+                else if (line.ToLower().StartsWith("sett_size="))
+                {
+                    APP_SETT_SIZE_X = Convert.ToInt32(line.ToLower().Substring(10, 3));
+                    APP_SETT_SIZE_Y = Convert.ToInt32(line.ToLower().Substring(13, 3));
                 }
             }
             return;
