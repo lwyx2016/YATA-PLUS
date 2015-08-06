@@ -29,7 +29,43 @@ namespace YATA {
         public Sim() {
             InitializeComponent();
             imgs = Form1.imageArray;
+            Overlay_back_img.Parent = topImage;
+            overlay_text_img.Parent = Overlay_back_img;
+            setColors();
             loadImages();
+        }
+
+        void setColors()
+        {
+            byte[] tempbytes;
+            Bitmap img;
+            #region TopOverlay
+            //Top overlay
+            if (Form1.enableSec[14] == 1) //If custom color is enabled
+            {
+                tempbytes = Form1.colChunks[13];
+                img = new Bitmap(Overlay_back_img.Image);
+                Color back = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);
+                for (int i = 0; i < img.Width; i++)
+                {
+                    for (int ii = 0; ii < img.Height; ii++)
+                    {
+                        if (img.GetPixel(i, ii).A != 0) img.SetPixel(i, ii, back);
+                    }
+                }
+                Overlay_back_img.Image = img;
+                Color text = Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]);
+                img = new Bitmap(overlay_text_img.Image);
+                for (int i = 0; i < img.Width; i++)
+                {
+                    for (int ii = 0; ii < img.Height; ii++)
+                    {
+                        if (img.GetPixel(i, ii).A != 0) img.SetPixel(i, ii, text);
+                    }
+                }
+                overlay_text_img.Image = img;
+            }
+            #endregion
         }
 
         private void loadImages() {
@@ -151,16 +187,16 @@ namespace YATA {
                 {
                     Image preview = new Bitmap(400, 240);
                     Graphics g = Graphics.FromImage(preview);
-                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel);
-                    preview.Save(save.FileName);
+                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_back_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(overlay_text_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
+                        preview.Save(save.FileName);
                     this.Close();
                 }
                 else if (Form1.Preview_PATH != null)
                 {
                     Image preview = new Bitmap(400, 240);
                     Graphics g = Graphics.FromImage(preview);
-                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel);
-                    preview.Save(Form1.Preview_PATH);
+                    if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_back_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(overlay_text_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
+                        preview.Save(Form1.Preview_PATH);
                     this.Close();
                 }
                 else this.Close(); 

@@ -152,10 +152,10 @@
     <Compile Include="Sett.Designer.cs">
       <DependentUpon>Sett.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sim.cs">
+    <Compile Include="Simulators\Sim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sim.Designer.cs">
+    <Compile Include="Simulators\Sim.Designer.cs">
       <DependentUpon>Sim.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Converter\FileConverter.resx">
@@ -193,7 +193,7 @@
     <EmbeddedResource Include="Sett.resx">
       <DependentUpon>Sett.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sim.resx">
+    <EmbeddedResource Include="Simulators\Sim.resx">
       <DependentUpon>Sim.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -250,6 +250,8 @@
     <None Include="Resources\libvorbis.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\top_overlay_background.png" />
+    <None Include="Resources\top_overlay_text.png" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>
