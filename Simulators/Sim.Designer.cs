@@ -24,25 +24,38 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sim));
-            this.Overlay_back_img = new System.Windows.Forms.PictureBox();
+            this.Arrows_bottom = new System.Windows.Forms.PictureBox();
+            this.Overlay_LR_TOP_img = new System.Windows.Forms.PictureBox();
             this.bottomImage = new System.Windows.Forms.PictureBox();
             this.topImage = new System.Windows.Forms.PictureBox();
-            this.overlay_text_img = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Overlay_back_img)).BeginInit();
+            this.Help = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.overlay_text_img)).BeginInit();
             this.SuspendLayout();
             // 
-            // Overlay_back_img
+            // Arrows_bottom
             // 
-            this.Overlay_back_img.BackColor = System.Drawing.Color.Transparent;
-            this.Overlay_back_img.Image = global::YATA.Properties.Resources.top_overlay_background;
-            this.Overlay_back_img.Location = new System.Drawing.Point(0, 0);
-            this.Overlay_back_img.Name = "Overlay_back_img";
-            this.Overlay_back_img.Size = new System.Drawing.Size(400, 240);
-            this.Overlay_back_img.TabIndex = 2;
-            this.Overlay_back_img.TabStop = false;
+            this.Arrows_bottom.BackColor = System.Drawing.Color.Transparent;
+            this.Arrows_bottom.BackgroundImage = global::YATA.Properties.Resources.Bottom_arrow_back;
+            this.Arrows_bottom.Image = global::YATA.Properties.Resources.Bottom_arrow_fore;
+            this.Arrows_bottom.Location = new System.Drawing.Point(40, 240);
+            this.Arrows_bottom.Name = "Arrows_bottom";
+            this.Arrows_bottom.Size = new System.Drawing.Size(320, 240);
+            this.Arrows_bottom.TabIndex = 4;
+            this.Arrows_bottom.TabStop = false;
+            // 
+            // Overlay_LR_TOP_img
+            // 
+            this.Overlay_LR_TOP_img.BackColor = System.Drawing.Color.Transparent;
+            this.Overlay_LR_TOP_img.BackgroundImage = global::YATA.Properties.Resources.top_overlay_background;
+            this.Overlay_LR_TOP_img.Image = global::YATA.Properties.Resources.top_overlay_text;
+            this.Overlay_LR_TOP_img.Location = new System.Drawing.Point(0, 0);
+            this.Overlay_LR_TOP_img.Name = "Overlay_LR_TOP_img";
+            this.Overlay_LR_TOP_img.Size = new System.Drawing.Size(400, 240);
+            this.Overlay_LR_TOP_img.TabIndex = 2;
+            this.Overlay_LR_TOP_img.TabStop = false;
             // 
             // bottomImage
             // 
@@ -60,15 +73,16 @@
             this.topImage.TabIndex = 0;
             this.topImage.TabStop = false;
             // 
-            // overlay_text_img
+            // Help
             // 
-            this.overlay_text_img.BackColor = System.Drawing.Color.Transparent;
-            this.overlay_text_img.Image = global::YATA.Properties.Resources.top_overlay_text;
-            this.overlay_text_img.Location = new System.Drawing.Point(0, 0);
-            this.overlay_text_img.Name = "overlay_text_img";
-            this.overlay_text_img.Size = new System.Drawing.Size(400, 240);
-            this.overlay_text_img.TabIndex = 3;
-            this.overlay_text_img.TabStop = false;
+            this.Help.Location = new System.Drawing.Point(382, 465);
+            this.Help.Name = "Help";
+            this.Help.Size = new System.Drawing.Size(35, 25);
+            this.Help.TabIndex = 5;
+            this.Help.Text = "?";
+            this.Help.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Help.UseVisualStyleBackColor = true;
+            this.Help.Click += new System.EventHandler(this.Help_Click);
             // 
             // Sim
             // 
@@ -76,20 +90,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(400, 482);
-            this.Controls.Add(this.overlay_text_img);
-            this.Controls.Add(this.Overlay_back_img);
-            this.Controls.Add(this.bottomImage);
+            this.Controls.Add(this.Help);
+            this.Controls.Add(this.Arrows_bottom);
+            this.Controls.Add(this.Overlay_LR_TOP_img);
             this.Controls.Add(this.topImage);
+            this.Controls.Add(this.bottomImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Sim";
             this.Text = "Theme Simulator";
             this.Load += new System.EventHandler(this.Sim_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Sim_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.Overlay_back_img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.overlay_text_img)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -98,7 +113,8 @@
 
         private System.Windows.Forms.PictureBox topImage;
         private System.Windows.Forms.PictureBox bottomImage;
-        private System.Windows.Forms.PictureBox Overlay_back_img;
-        private System.Windows.Forms.PictureBox overlay_text_img;
+        private System.Windows.Forms.PictureBox Overlay_LR_TOP_img;
+        private System.Windows.Forms.PictureBox Arrows_bottom;
+        private System.Windows.Forms.Button Help;
     }
 }

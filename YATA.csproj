@@ -252,6 +252,8 @@
   <ItemGroup>
     <None Include="Resources\top_overlay_background.png" />
     <None Include="Resources\top_overlay_text.png" />
+    <None Include="Resources\Bottom_arrow_back.png" />
+    <None Include="Resources\Bottom_arrow_fore.png" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>
