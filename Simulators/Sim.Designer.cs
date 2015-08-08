@@ -24,16 +24,26 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sim));
+            this.Top_screen_overlay = new System.Windows.Forms.PictureBox();
             this.Arrows_bottom = new System.Windows.Forms.PictureBox();
             this.Overlay_LR_TOP_img = new System.Windows.Forms.PictureBox();
-            this.bottomImage = new System.Windows.Forms.PictureBox();
             this.topImage = new System.Windows.Forms.PictureBox();
-            this.Help = new System.Windows.Forms.Button();
+            this.bottomImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Top_screen_overlay
+            // 
+            this.Top_screen_overlay.BackColor = System.Drawing.Color.Transparent;
+            this.Top_screen_overlay.Location = new System.Drawing.Point(40, 240);
+            this.Top_screen_overlay.Name = "Top_screen_overlay";
+            this.Top_screen_overlay.Size = new System.Drawing.Size(320, 240);
+            this.Top_screen_overlay.TabIndex = 5;
+            this.Top_screen_overlay.TabStop = false;
             // 
             // Arrows_bottom
             // 
@@ -57,14 +67,6 @@
             this.Overlay_LR_TOP_img.TabIndex = 2;
             this.Overlay_LR_TOP_img.TabStop = false;
             // 
-            // bottomImage
-            // 
-            this.bottomImage.Location = new System.Drawing.Point(40, 240);
-            this.bottomImage.Name = "bottomImage";
-            this.bottomImage.Size = new System.Drawing.Size(320, 240);
-            this.bottomImage.TabIndex = 1;
-            this.bottomImage.TabStop = false;
-            // 
             // topImage
             // 
             this.topImage.Location = new System.Drawing.Point(0, 0);
@@ -73,16 +75,13 @@
             this.topImage.TabIndex = 0;
             this.topImage.TabStop = false;
             // 
-            // Help
+            // bottomImage
             // 
-            this.Help.Location = new System.Drawing.Point(382, 465);
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(35, 25);
-            this.Help.TabIndex = 5;
-            this.Help.Text = "?";
-            this.Help.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Help.UseVisualStyleBackColor = true;
-            this.Help.Click += new System.EventHandler(this.Help_Click);
+            this.bottomImage.Location = new System.Drawing.Point(40, 240);
+            this.bottomImage.Name = "bottomImage";
+            this.bottomImage.Size = new System.Drawing.Size(320, 240);
+            this.bottomImage.TabIndex = 1;
+            this.bottomImage.TabStop = false;
             // 
             // Sim
             // 
@@ -90,7 +89,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(400, 482);
-            this.Controls.Add(this.Help);
+            this.Controls.Add(this.Top_screen_overlay);
             this.Controls.Add(this.Arrows_bottom);
             this.Controls.Add(this.Overlay_LR_TOP_img);
             this.Controls.Add(this.topImage);
@@ -101,10 +100,11 @@
             this.Text = "Theme Simulator";
             this.Load += new System.EventHandler(this.Sim_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Sim_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,6 +115,6 @@
         private System.Windows.Forms.PictureBox bottomImage;
         private System.Windows.Forms.PictureBox Overlay_LR_TOP_img;
         private System.Windows.Forms.PictureBox Arrows_bottom;
-        private System.Windows.Forms.Button Help;
+        private System.Windows.Forms.PictureBox Top_screen_overlay;
     }
 }

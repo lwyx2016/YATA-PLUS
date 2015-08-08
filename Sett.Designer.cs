@@ -199,7 +199,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(5, 112);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 396);
+            this.groupBox2.Size = new System.Drawing.Size(416, 396);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Colors";
@@ -546,7 +546,7 @@
             // 
             this.buttonSaveSett.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaveSett.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSaveSett.Location = new System.Drawing.Point(532, 482);
+            this.buttonSaveSett.Location = new System.Drawing.Point(554, 482);
             this.buttonSaveSett.Name = "buttonSaveSett";
             this.buttonSaveSett.Size = new System.Drawing.Size(90, 26);
             this.buttonSaveSett.TabIndex = 2;
@@ -645,9 +645,9 @@
             this.groupBox4.Controls.Add(this.CHK2);
             this.groupBox4.Controls.Add(this.CHK1);
             this.groupBox4.Controls.Add(this.CHK0);
-            this.groupBox4.Location = new System.Drawing.Point(428, 12);
+            this.groupBox4.Location = new System.Drawing.Point(427, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 463);
+            this.groupBox4.Size = new System.Drawing.Size(223, 463);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Flags";
@@ -835,7 +835,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(428, 482);
+            this.cancelButton.Location = new System.Drawing.Point(437, 480);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(90, 26);
             this.cancelButton.TabIndex = 5;
@@ -855,7 +855,7 @@
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Location = new System.Drawing.Point(5, 514);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(623, 67);
+            this.groupBox5.Size = new System.Drawing.Size(645, 67);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Top Screen \"simple themes\" settings";
@@ -874,7 +874,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 586);
+            this.ClientSize = new System.Drawing.Size(662, 586);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox4);
@@ -883,9 +883,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(656, 625);
+            this.MinimumSize = new System.Drawing.Size(678, 625);
             this.Name = "Sett";
-            this.Text = "Theme Settings";
+            this.Text = "Theme settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FORM_Closing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

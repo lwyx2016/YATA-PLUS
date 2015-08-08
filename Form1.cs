@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using NAudio.Wave;
+using YATA.Converter;
 
 namespace YATA
 {
@@ -22,14 +23,16 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 3; /*for the update check the application doesn't count the version, but the release number on gbatemp
+        public static int APP_Public_version = 4; /*for the update check the application doesn't count the version, but the release number on gbatemp
                                                     1: First public yata+ version
                                                     2: Yata+ v1.1
-                                                    3: Yata+ v1.2 (this one)
-                                                    4,5,6,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.2.1 BETA";
+                                                    3: Yata+ v1.2
+                                                    4: Yata+ v1.3 (this one)
+                                                    5,6,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.3 BETA";
         public static int APP_SETT_SIZE_X = 656; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
+        public static bool APP_export_both_screens = true;
         #endregion
 
         public Form1()
@@ -1060,15 +1063,8 @@ namespace YATA
 
         private void SimToolStrip_Click(object sender, EventArgs e)
         {
-            if (topDraw == 3 && bottomDraw == 3)
-            {
                 Sim sim = new Sim();
                 sim.ShowDialog();
-            }
-            else 
-            {
-                MessageBox.Show("The simulator doesn't support this kind of themes,yet");
-            }
         }
 
         private void toolStripSettings_Click(object sender, EventArgs e)
@@ -1190,7 +1186,7 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true", "happy_easter=false"};
+                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false"};
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1245,6 +1241,10 @@ namespace YATA
                     APP_SETT_SIZE_X = Convert.ToInt32(line.ToLower().Substring(10, 3));
                     APP_SETT_SIZE_Y = Convert.ToInt32(line.ToLower().Substring(13, 3));
                 }
+                else if (line.ToLower().StartsWith("exp_both_screens="))
+                {
+                    APP_export_both_screens = Convert.ToBoolean(line.ToLower().Substring(17));
+                }
             }
             return;
         }
@@ -1264,7 +1264,7 @@ namespace YATA
                     System.Net.WebClient d = new System.Net.WebClient();
                     if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > APP_Public_version)
                     {
-                        MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\n What are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\n You can disable the auto check for updates in the preferences");
+                        MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\nWhat are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\nYou can disable the auto check for updates in the preferences");
                     }
                 }
             }
@@ -1515,16 +1515,56 @@ namespace YATA
             }
         }
 
-        private void tryRunningBrawllibToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Nothing to see here !");
-          //I tryed to add wav -> brstm -> bcstm but the brawl lib dialog crashes......
-        }
-
         private void openTheFileConverterFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("The form is not implemented");
             FileConverter conv = new FileConverter();
             conv.Show();
+        }
+
+        private void createBCSTMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.ShowDialog();
+            System.IO.File.WriteAllBytes(@"C:\users\ermes\desktop\lol.bcstm", BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(opn.FileName)));
+        }
+
+        private void wAVBRSTMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
+            if (!File.Exists("BrawlLib.dll")) File.WriteAllBytes("BrawlLib.dll", Properties.Resources.BrawlLib);
+            try
+            {
+                OpenFileDialog opn = new OpenFileDialog();
+                opn.Filter = "Wav file|*.wav";
+                opn.Title = "Open file";
+                opn.Multiselect = false;
+                if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                        SaveFileDialog sv = new SaveFileDialog();
+                        sv.Filter = "Brstm file|*.brstm";
+                        sv.Title = "Save file";
+                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            Process prc = new Process();
+                            prc.StartInfo.FileName = "BrstmConv.exe";
+                            prc.StartInfo.Arguments = "\"" + opn.FileName + "\" " + "\"" + sv.FileName + "\"";
+                            prc.StartInfo.CreateNoWindow = true;
+                            prc.StartInfo.UseShellExecute = false;
+                            prc.Start();
+                            prc.WaitForExit();
+                            if (File.Exists(sv.FileName)) MessageBox.Show("Done !");
+                        }
+                    }
+             
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        private void bRSTMBCSTMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("BRSTM2BCSTM.exe")) File.WriteAllBytes("BRSTM2BCSTM.exe", Properties.Resources.BRSTM2BCSTM);
+            System.Diagnostics.Process.Start("BRSTM2BCSTM");
         }
     }
 }

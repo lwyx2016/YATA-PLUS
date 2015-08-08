@@ -103,6 +103,46 @@ namespace YATA.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bottom_Resizer_mask {
+            get {
+                object obj = ResourceManager.GetObject("bottom_Resizer_mask", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] BrawlLib {
+            get {
+                object obj = ResourceManager.GetObject("BrawlLib", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] BRSTM2BCSTM {
+            get {
+                object obj = ResourceManager.GetObject("BRSTM2BCSTM", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] BrstmConv {
+            get {
+                object obj = ResourceManager.GetObject("BrstmConv", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap empty {
             get {
                 object obj = ResourceManager.GetObject("empty", resourceCulture);
@@ -186,6 +226,26 @@ namespace YATA.Properties {
         internal static System.Drawing.Bitmap notes {
             get {
                 object obj = ResourceManager.GetObject("notes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap prev_unsupported {
+            get {
+                object obj = ResourceManager.GetObject("prev_unsupported", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sim_bottom_mask {
+            get {
+                object obj = ResourceManager.GetObject("sim_bottom_mask", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -40,7 +40,7 @@ namespace YATA
         private void FirstStart_Load(object sender, EventArgs e)
         {
             label3.Text = Form1.APP_STRING_version;
-            if (DateTime.Today.Day <= 15 && DateTime.Today.Month == 8) { label4.Text = "Also, in the same thread there is a opened poll, where you can vote if you want me to make some videos on how to use yata + ,hurry up because you can only vote until August 15"; }
+            if (DateTime.Today.Day <= 15 && DateTime.Today.Month == 8) { label4.Text = "Also, in the same thread there is a opened poll, where you can vote if you want me to make some videos on how to use yata + ,hurry up because you can only vote until August 15"; } else { label4.ForeColor = Color.Black; }
         }
     }
 }

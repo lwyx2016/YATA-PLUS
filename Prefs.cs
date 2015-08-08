@@ -23,6 +23,7 @@ namespace YATA {
             checkBox5.Checked = Form1.APP_Clean_On_exit;
             checkBox6.Checked = Form1.APP_Auto_Load_bgm;
             checkBox7.Checked = Form1.APP_check_UPD;
+            checkBox8.Checked = Form1.APP_export_both_screens;
             textBox1.Text = Form1.APP_photo_edtor;
             numericUpDown1.Value = Form1.APP_Move_buttons_colors;
             numericUpDown2.Value = Form1.APP_SETT_SIZE_X;
@@ -39,6 +40,7 @@ namespace YATA {
             checkBox5.Checked = false;
             checkBox6.Checked = true;
             checkBox7.Checked = true;
+            checkBox8.Checked = true;
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
             save_settings();
@@ -48,7 +50,7 @@ namespace YATA {
 
         void save_settings()
         {
-            string[] lines = new string[12];
+            string[] lines = new string[13];
             lines[0] = "ui_prev=" + checkBox1.Checked.ToString();
             lines[1] = "ui_sim=" + checkBox2.Checked.ToString();
             lines[2] = "gen_prev=" + checkBox3.Checked.ToString();
@@ -61,6 +63,7 @@ namespace YATA {
             lines[9] = "check_updates=" + checkBox7.Checked.ToString();
             lines[10] = "happy_easter=false";
             lines[11] = "sett_size=" + numericUpDown2.Value.ToString()+numericUpDown3.Value.ToString();
+            lines[12] = "exp_both_screens=" + checkBox8.Checked.ToString();
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

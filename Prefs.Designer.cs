@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -70,7 +71,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 312);
+            this.button1.Location = new System.Drawing.Point(13, 335);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -80,7 +81,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(204, 312);
+            this.button2.Location = new System.Drawing.Point(204, 335);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 23);
             this.button2.TabIndex = 3;
@@ -101,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 149);
+            this.label1.Location = new System.Drawing.Point(12, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 13);
             this.label1.TabIndex = 5;
@@ -109,14 +110,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 167);
+            this.textBox1.Location = new System.Drawing.Point(12, 190);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(266, 20);
             this.textBox1.TabIndex = 6;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(284, 165);
+            this.button3.Location = new System.Drawing.Point(284, 188);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 23);
             this.button3.TabIndex = 7;
@@ -132,7 +133,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(12, 193);
+            this.checkBox4.Location = new System.Drawing.Point(12, 216);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(227, 17);
             this.checkBox4.TabIndex = 8;
@@ -142,7 +143,7 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(15, 95);
+            this.checkBox5.Location = new System.Drawing.Point(15, 118);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(240, 17);
             this.checkBox5.TabIndex = 9;
@@ -152,7 +153,7 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(15, 116);
+            this.checkBox6.Location = new System.Drawing.Point(15, 139);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(276, 30);
             this.checkBox6.TabIndex = 10;
@@ -162,7 +163,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(252, 229);
+            this.numericUpDown1.Location = new System.Drawing.Point(252, 252);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             150,
             0,
@@ -174,7 +175,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 218);
+            this.label2.Location = new System.Drawing.Point(12, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(234, 48);
             this.label2.TabIndex = 12;
@@ -204,7 +205,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 276);
+            this.label4.Location = new System.Drawing.Point(12, 299);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(319, 13);
             this.label4.TabIndex = 15;
@@ -213,7 +214,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(204, 274);
+            this.numericUpDown2.Location = new System.Drawing.Point(204, 297);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             999,
             0,
@@ -235,7 +236,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(276, 274);
+            this.numericUpDown3.Location = new System.Drawing.Point(276, 297);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             999,
             0,
@@ -255,11 +256,22 @@
             0,
             0});
             // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(15, 95);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(329, 17);
+            this.checkBox8.TabIndex = 18;
+            this.checkBox8.Text = "When exporting preview include both the top and bottom screen";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
             // Prefs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 338);
+            this.ClientSize = new System.Drawing.Size(341, 359);
+            this.Controls.Add(this.checkBox8);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label4);
@@ -315,5 +327,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }

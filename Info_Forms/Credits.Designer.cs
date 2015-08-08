@@ -40,6 +40,7 @@
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.button3 = new System.Windows.Forms.Button();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +59,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 208);
+            this.label2.Size = new System.Drawing.Size(315, 247);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -66,7 +67,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 324);
+            this.label3.Location = new System.Drawing.Point(0, 350);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 3;
@@ -75,7 +76,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(119, 314);
+            this.button2.Location = new System.Drawing.Point(119, 340);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -141,7 +142,7 @@
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(200, 314);
+            this.button3.Location = new System.Drawing.Point(200, 340);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 23);
             this.button3.TabIndex = 10;
@@ -152,7 +153,7 @@
             // linkLabel6
             // 
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(87, 217);
+            this.linkLabel6.Location = new System.Drawing.Point(87, 215);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(172, 13);
             this.linkLabel6.TabIndex = 11;
@@ -160,11 +161,22 @@
             this.linkLabel6.Text = "https://github.com/naudio/NAudio";
             this.linkLabel6.Click += new System.EventHandler(this.Link_CLICKED);
             // 
+            // linkLabel7
+            // 
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.Location = new System.Drawing.Point(75, 240);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(202, 13);
+            this.linkLabel7.TabIndex = 12;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "https://github.com/libertyernie/brawltools";
+            // 
             // Credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 340);
+            this.ClientSize = new System.Drawing.Size(353, 366);
+            this.Controls.Add(this.linkLabel7);
             this.Controls.Add(this.linkLabel6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.linkLabel5);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.LinkLabel linkLabel5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.LinkLabel linkLabel7;
     }
 }

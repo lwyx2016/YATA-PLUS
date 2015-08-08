@@ -110,43 +110,48 @@ namespace YATA {
         private void getColors() {
             byte[] tempbytes;
             List <Color> tempcolors;
-
-                tempbytes = cols[0];
+            #region colCursor
+            tempbytes = cols[0];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
                 colCursor = tempcolors.ToArray();
-
-                tempbytes = cols[1];
+            #endregion
+            #region col3DFolder
+            tempbytes = cols[1];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 col3DFolder = tempcolors.ToArray();
-
-                tempbytes = cols[2];
+            #endregion
+            #region colFiles
+            tempbytes = cols[2];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 colFiles = tempcolors.ToArray();
-         
-                tempbytes = cols[3];
+            #endregion
+            #region colArrowBut
+            tempbytes = cols[3];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 colArrowBut = tempcolors.ToArray();
-
-                tempbytes = cols[4];
+            #endregion
+            #region colArrow
+            tempbytes = cols[4];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 colArrow = tempcolors.ToArray();
-
-                tempbytes = cols[5];
+            #endregion
+            #region colBotBut
+            tempbytes = cols[5];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
@@ -155,8 +160,9 @@ namespace YATA {
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
                 colBotBut = tempcolors.ToArray(); //In his version rei swapped this line with..
-         
-                tempbytes = cols[6];
+            #endregion
+            #region colClose
+            tempbytes = cols[6];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]));
@@ -165,42 +171,48 @@ namespace YATA {
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
                 colClose = tempcolors.ToArray();// .. this one
- 
-                tempbytes = cols[7];
+            #endregion
+            #region colGameTxt
+            tempbytes = cols[7];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[10], tempbytes[11], tempbytes[12]));
                 colGameTxt = tempcolors.ToArray();
-
-                tempbytes = cols[8];
+            #endregion
+            #region colBotSolid
+            tempbytes = cols[8];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
                 colBotSolid = tempcolors.ToArray();
-
-                tempbytes = cols[9];
+            #endregion
+            #region colBotOuter
+            tempbytes = cols[9];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 colBotOuter = tempcolors.ToArray();
-
-                tempbytes = cols[10];
+            #endregion
+            #region colFolderBG
+            tempbytes = cols[10];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 tempcolors.Add(Color.FromArgb(tempbytes[9], tempbytes[10], tempbytes[11], tempbytes[12]));
                 colFolderBG = tempcolors.ToArray();
-
-                tempbytes = cols[11];
+            #endregion
+            #region colFolderArrow
+            tempbytes = cols[11];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 colFolderArrow = tempcolors.ToArray();
-
-                tempbytes = cols[12];
+            #endregion
+            #region colIconResize
+            tempbytes = cols[12];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
@@ -210,51 +222,60 @@ namespace YATA {
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[15], tempbytes[16], tempbytes[17]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[18], tempbytes[19], tempbytes[20]));
                 colIconResize = tempcolors.ToArray();
-
-                tempbytes = cols[13];
+            #endregion
+            #region colTopOverlay
+            tempbytes = cols[13];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[6], tempbytes[7], tempbytes[8]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]));
                 colTopOverlay = tempcolors.ToArray();
-
-                tempbytes = cols[14];
+            #endregion
+            #region colDemoMsg
+            tempbytes = cols[14];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 colDemoMsg = tempcolors.ToArray();
-
-                tempbytes = Form1.topcol[0];
+            #endregion
+            #region ColTopScreen
+            tempbytes = Form1.topcol[0];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
                 numericUpDown2.Value = tempbytes[3];
                 numericUpDown1.Value = tempbytes[4];
                 ColTopScreen = tempcolors.ToArray();
-
+            #endregion
         }
 
-        private void setColors() {  //So hacky
+        private void setColors() {
+            #region col3DFolder
             cols[0][0] = colCursor[0].R; cols[0][1] = colCursor[0].G; cols[0][2] = colCursor[0].B;
             cols[0][3] = colCursor[1].R; cols[0][4] = colCursor[1].G; cols[0][5] = colCursor[1].B;
             cols[0][6] = colCursor[2].R; cols[0][7] = colCursor[2].G; cols[0][8] = colCursor[2].B;
             cols[0][9] = colCursor[3].R; cols[0][10] = colCursor[3].G; cols[0][11] = colCursor[3].B;
-
+            #endregion
+            #region colFiles
             cols[1][0] = col3DFolder[0].R; cols[1][1] = col3DFolder[0].G; cols[1][2] = col3DFolder[0].B;
             cols[1][3] = col3DFolder[1].R; cols[1][4] = col3DFolder[1].G; cols[1][5] = col3DFolder[1].B;
-
+            #endregion
+            #region colArrowBut
             cols[2][0] = colFiles[0].R; cols[2][1] = colFiles[0].G; cols[2][2] = colFiles[0].B;
             cols[2][3] = colFiles[1].R; cols[2][4] = colFiles[1].G; cols[2][5] = colFiles[1].B;
             cols[2][6] = colFiles[2].R; cols[2][7] = colFiles[2].G; cols[2][8] = colFiles[2].B;
-
+            #endregion
+            #region colArrow
             cols[3][0] = colArrowBut[0].R; cols[3][1] = colArrowBut[0].G; cols[3][2] = colArrowBut[0].B;
             cols[3][3] = colArrowBut[1].R; cols[3][4] = colArrowBut[1].G; cols[3][5] = colArrowBut[1].B;
             cols[3][6] = colArrowBut[2].R; cols[3][7] = colArrowBut[2].G; cols[3][8] = colArrowBut[2].B;
-
+            #endregion
+            #region colBotBut
             cols[4][0] = colArrow[0].R; cols[4][1] = colArrow[0].G; cols[4][2] = colArrow[0].B;
             cols[4][3] = colArrow[1].R; cols[4][4] = colArrow[1].G; cols[4][5] = colArrow[1].B;
             cols[4][6] = colArrow[2].R; cols[4][7] = colArrow[2].G; cols[4][8] = colArrow[2].B;
-
+            #endregion
+            #region colClose
             cols[5][4] = colBotBut[0].R; cols[5][5] = colBotBut[0].G; cols[5][6] = colBotBut[0].B;
             cols[5][7] = colBotBut[1].R; cols[5][8] = colBotBut[1].G; cols[5][9] = colBotBut[1].B;
             cols[5][10] = colBotBut[2].R; cols[5][11] = colBotBut[2].G; cols[5][12] = colBotBut[2].B;
@@ -267,26 +288,32 @@ namespace YATA {
             cols[6][20] = colClose[3].R; cols[6][21] = colClose[3].G; cols[6][22] = colClose[3].B;
             cols[6][23] = colClose[4].R; cols[6][24] = colClose[4].G; cols[6][25] = colClose[4].B;
             cols[6][26] = colClose[5].R; cols[6][27] = colClose[5].G; cols[6][28] = colClose[5].B;
-
+            #endregion
+            #region colGameTxt
             cols[7][0] = colGameTxt[0].R; cols[7][1] = colGameTxt[0].G; cols[7][2] = colGameTxt[0].B;
             cols[7][10] = colGameTxt[1].R; cols[7][11] = colGameTxt[1].G; cols[7][12] = colGameTxt[1].B;
-
+            #endregion
+            #region colBotSolid
             cols[8][0] = colBotSolid[0].R; cols[8][1] = colBotSolid[0].G; cols[8][2] = colBotSolid[0].B;
             cols[8][3] = colBotSolid[1].R; cols[8][4] = colBotSolid[1].G; cols[8][5] = colBotSolid[1].B;
             cols[8][6] = colBotSolid[2].R; cols[8][7] = colBotSolid[2].G; cols[8][8] = colBotSolid[2].B;
             cols[8][9] = colBotSolid[3].A; cols[8][10] = colBotSolid[3].R; cols[8][11] = colBotSolid[3].G; cols[8][12] = colBotSolid[3].B;
-
+            #endregion
+            #region colBotOuter
             cols[9][0] = colBotOuter[0].R; cols[9][1] = colBotOuter[0].G; cols[9][2] = colBotOuter[0].B;
             cols[9][3] = colBotOuter[1].R; cols[9][4] = colBotOuter[1].G; cols[9][5] = colBotOuter[1].B;
             cols[9][6] = colBotOuter[2].R; cols[9][7] = colBotOuter[2].G; cols[9][8] = colBotOuter[2].B;
-
+            #endregion
+            #region colFolderBG
             cols[10][0] = colFolderBG[0].R; cols[10][1] = colFolderBG[0].G; cols[10][2] = colFolderBG[0].B;
             cols[10][3] = colFolderBG[1].R; cols[10][4] = colFolderBG[1].G; cols[10][5] = colFolderBG[1].B;
             cols[10][6] = colFolderBG[2].R; cols[10][7] = colFolderBG[2].G; cols[10][8] = colFolderBG[2].B;
             cols[10][9] = colFolderBG[3].A; cols[10][10] = colFolderBG[3].R; cols[10][11] = colFolderBG[3].G; cols[10][12] = colFolderBG[3].B;
-
+            #endregion
+            #region colFolderArrow
             cols[11][0] = colFolderArrow[0].R; cols[11][1] = colFolderArrow[0].G; cols[11][2] = colFolderArrow[0].B;
-
+            #endregion
+            #region colIconResize
             cols[12][0] = colIconResize[0].R; cols[12][1] = colIconResize[0].G; cols[12][2] = colIconResize[0].B;
             cols[12][3] = colIconResize[1].R; cols[12][4] = colIconResize[1].G; cols[12][5] = colIconResize[1].B;
             cols[12][6] = colIconResize[2].R; cols[12][7] = colIconResize[2].G; cols[12][8] = colIconResize[2].B;
@@ -294,18 +321,22 @@ namespace YATA {
             cols[12][12] = colIconResize[4].R; cols[12][13] = colIconResize[4].G; cols[12][14] = colIconResize[4].B;
             cols[12][15] = colIconResize[5].R; cols[12][16] = colIconResize[5].G; cols[12][17] = colIconResize[5].B;
             cols[12][18] = colIconResize[6].R; cols[12][19] = colIconResize[6].G; cols[12][20] = colIconResize[6].B;
-
+            #endregion
+            #region colTopOverlay
             cols[13][0] = colTopOverlay[0].R; cols[13][1] = colTopOverlay[0].G; cols[13][2] = colTopOverlay[0].B;
             cols[13][3] = colTopOverlay[1].R; cols[13][4] = colTopOverlay[1].G; cols[13][5] = colTopOverlay[1].B;
             cols[13][6] = colTopOverlay[2].R; cols[13][7] = colTopOverlay[2].G; cols[13][8] = colTopOverlay[2].B;
             cols[13][9] = colTopOverlay[3].R; cols[13][10] = colTopOverlay[3].G; cols[13][11] = colTopOverlay[3].B;
-
+            #endregion
+            #region colDemoMsg
             cols[14][0] = colDemoMsg[0].R; cols[14][1] = colDemoMsg[0].G; cols[14][2] = colDemoMsg[0].B;
             cols[14][3] = colDemoMsg[1].R; cols[14][4] = colDemoMsg[1].G; cols[14][5] = colDemoMsg[1].B;
-
+            #endregion
+            #region ColTopScreen
             Form1.topcol[0][0] = ColTopScreen[0].R; Form1.topcol[0][1] = ColTopScreen[0].G; Form1.topcol[0][2] = ColTopScreen[0].B;
             Form1.topcol[0][3] = Convert.ToByte(numericUpDown2.Value);
             Form1.topcol[0][4] = Convert.ToByte(numericUpDown1.Value);
+            #endregion
         }
 
         private void buttonSaveSett_Click(object sender, EventArgs e) {

@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\BRSTM_BCSTM_converter.cs" />
     <Compile Include="Converter\FileConverter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +255,12 @@
     <None Include="Resources\top_overlay_text.png" />
     <None Include="Resources\Bottom_arrow_back.png" />
     <None Include="Resources\Bottom_arrow_fore.png" />
+    <None Include="Resources\prev_unsupported.png" />
+    <None Include="Resources\bottom_Resizer_mask.png" />
+    <None Include="Resources\sim_bottom_mask.png" />
+    <None Include="Resources\BrawlLib.dll" />
+    <None Include="Resources\BrstmConv.exe" />
+    <None Include="Resources\BRSTM2BCSTM.exe" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>

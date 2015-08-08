@@ -44,9 +44,14 @@
             this.editCWAVsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cWAVsWavToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cWAVWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wAVsCWAVsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.bGMCONVERTERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wAVBRSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bRSTMBCSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.cWAVWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSettings = new System.Windows.Forms.ToolStripButton();
             this.SimToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,10 +61,10 @@
             this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tryRunningBrawllibToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTheFileConverterFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createBCSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,14 +77,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -194,9 +199,12 @@
             this.editCWAVsToolStripMenuItem,
             this.toolStripSeparator3,
             this.cWAVsWavToolStripMenuItem,
-            this.cWAVWAVToolStripMenuItem,
             this.wAVsCWAVsToolStripMenuItem,
-            this.toolStripSeparator5});
+            this.toolStripSeparator5,
+            this.bGMCONVERTERSToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.cWAVWAVToolStripMenuItem,
+            this.toolStripSeparator11});
             this.EditDropDown.Image = ((System.Drawing.Image)(resources.GetObject("EditDropDown.Image")));
             this.EditDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditDropDown.Name = "EditDropDown";
@@ -261,13 +269,6 @@
             this.cWAVsWavToolStripMenuItem.Text = "CWAVs Dumper";
             this.cWAVsWavToolStripMenuItem.Click += new System.EventHandler(this.cWAVsWavToolStripMenuItem_Click);
             // 
-            // cWAVWAVToolStripMenuItem
-            // 
-            this.cWAVWAVToolStripMenuItem.Name = "cWAVWAVToolStripMenuItem";
-            this.cWAVWAVToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.cWAVWAVToolStripMenuItem.Text = "CWAV/BCSTM/BRSTM -> WAV";
-            this.cWAVWAVToolStripMenuItem.Click += new System.EventHandler(this.cWAVWAVToolStripMenuItem_Click);
-            // 
             // wAVsCWAVsToolStripMenuItem
             // 
             this.wAVsCWAVsToolStripMenuItem.Name = "wAVsCWAVsToolStripMenuItem";
@@ -279,6 +280,46 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(235, 6);
+            // 
+            // bGMCONVERTERSToolStripMenuItem
+            // 
+            this.bGMCONVERTERSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wAVBRSTMToolStripMenuItem,
+            this.bRSTMBCSTMToolStripMenuItem});
+            this.bGMCONVERTERSToolStripMenuItem.Name = "bGMCONVERTERSToolStripMenuItem";
+            this.bGMCONVERTERSToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.bGMCONVERTERSToolStripMenuItem.Text = "BGM CONVERTERS";
+            // 
+            // wAVBRSTMToolStripMenuItem
+            // 
+            this.wAVBRSTMToolStripMenuItem.Name = "wAVBRSTMToolStripMenuItem";
+            this.wAVBRSTMToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wAVBRSTMToolStripMenuItem.Text = "WAV -> BRSTM";
+            this.wAVBRSTMToolStripMenuItem.Click += new System.EventHandler(this.wAVBRSTMToolStripMenuItem_Click);
+            // 
+            // bRSTMBCSTMToolStripMenuItem
+            // 
+            this.bRSTMBCSTMToolStripMenuItem.Name = "bRSTMBCSTMToolStripMenuItem";
+            this.bRSTMBCSTMToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.bRSTMBCSTMToolStripMenuItem.Text = "BRSTM -> BCSTM";
+            this.bRSTMBCSTMToolStripMenuItem.Click += new System.EventHandler(this.bRSTMBCSTMToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(235, 6);
+            // 
+            // cWAVWAVToolStripMenuItem
+            // 
+            this.cWAVWAVToolStripMenuItem.Name = "cWAVWAVToolStripMenuItem";
+            this.cWAVWAVToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.cWAVWAVToolStripMenuItem.Text = "CWAV/BCSTM/BRSTM -> WAV";
+            this.cWAVWAVToolStripMenuItem.Click += new System.EventHandler(this.cWAVWAVToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(235, 6);
             // 
             // toolStripSettings
             // 
@@ -329,10 +370,10 @@
             this.printColorDataToolStripMenuItem,
             this.printColorOffsetToolStripMenuItem,
             this.toolStripSeparator8,
-            this.tryRunningBrawllibToolStripMenuItem,
             this.openTheFileConverterFromToolStripMenuItem,
             this.toolStripSeparator9,
-            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem});
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem,
+            this.createBCSTMToolStripMenuItem});
             this.Debug_menu.Image = ((System.Drawing.Image)(resources.GetObject("Debug_menu.Image")));
             this.Debug_menu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Debug_menu.Name = "Debug_menu";
@@ -359,13 +400,6 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(396, 6);
             // 
-            // tryRunningBrawllibToolStripMenuItem
-            // 
-            this.tryRunningBrawllibToolStripMenuItem.Name = "tryRunningBrawllibToolStripMenuItem";
-            this.tryRunningBrawllibToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.tryRunningBrawllibToolStripMenuItem.Text = "Try running brawllib";
-            this.tryRunningBrawllibToolStripMenuItem.Click += new System.EventHandler(this.tryRunningBrawllibToolStripMenuItem_Click);
-            // 
             // openTheFileConverterFromToolStripMenuItem
             // 
             this.openTheFileConverterFromToolStripMenuItem.Name = "openTheFileConverterFromToolStripMenuItem";
@@ -383,6 +417,13 @@
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Name = "thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem";
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Text = "Those functions are only for testing, doesn\'t affect the theme ";
+            // 
+            // createBCSTMToolStripMenuItem
+            // 
+            this.createBCSTMToolStripMenuItem.Name = "createBCSTMToolStripMenuItem";
+            this.createBCSTMToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.createBCSTMToolStripMenuItem.Text = "Create BCSTM";
+            this.createBCSTMToolStripMenuItem.Click += new System.EventHandler(this.createBCSTMToolStripMenuItem_Click);
             // 
             // StatusLabel
             // 
@@ -450,9 +491,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(618, 343);
+            this.label2.Location = new System.Drawing.Point(606, 342);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 33);
+            this.label2.Size = new System.Drawing.Size(83, 34);
             this.label2.TabIndex = 5;
             this.label2.Text = "Credits";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -468,14 +509,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = resources.GetString("label3.Text");
             this.label3.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(214, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(971, 256);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // label4
             // 
@@ -519,6 +552,14 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "\r\n\r\n             Drag your theme or BGM here !";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(214, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(971, 256);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -546,8 +587,8 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -605,9 +646,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ToolStripMenuItem tryRunningBrawllibToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openTheFileConverterFromToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem createBCSTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bGMCONVERTERSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wAVBRSTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bRSTMBCSTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
     }
 }
 
