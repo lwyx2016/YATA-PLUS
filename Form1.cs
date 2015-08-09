@@ -459,9 +459,10 @@ namespace YATA
         private void updatePicBox(int i)
         {
             try
-            {
-                pictureBox1.Image = imageArray[i];
-                label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString() ;
+            {                
+                pictureBox1.Image = imageArray[i];                
+                label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString();
+                label4.Visible = true;
                 button1.Enabled = true;
                 label5.Visible = false;
             }

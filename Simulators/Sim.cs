@@ -57,11 +57,11 @@ namespace YATA {
             {
                 tempbytes = Form1.colChunks[13];
                 img = new Bitmap(Properties.Resources.top_overlay_background);
-                setColor(img, Color.FromArgb(225, tempbytes[0], tempbytes[1], tempbytes[2]));
+                setColor(img, Color.FromArgb(215, tempbytes[0], tempbytes[1], tempbytes[2]));
                 Overlay_LR_TOP_img.BackgroundImage = img;
                
                 img = new Bitmap(Properties.Resources.top_overlay_text);
-                setColor(img, Color.FromArgb(225, tempbytes[9], tempbytes[10], tempbytes[11]));
+                setColor(img, Color.FromArgb(215, tempbytes[9], tempbytes[10], tempbytes[11]));
                 Overlay_LR_TOP_img.Image = img;
             }
             #endregion

@@ -96,6 +96,7 @@
             this.Controls.Add(this.bottomImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Sim";
             this.Text = "Theme Simulator";
             this.Load += new System.EventHandler(this.Sim_Load);
