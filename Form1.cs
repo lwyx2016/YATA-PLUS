@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using NAudio.Wave;
 using YATA.Converter;
+using System.Text;
 
 namespace YATA
 {
@@ -1523,13 +1524,6 @@ namespace YATA
             conv.Show();
         }
 
-        private void createBCSTMToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opn = new OpenFileDialog();
-            opn.ShowDialog();
-            System.IO.File.WriteAllBytes(@"C:\users\ermes\desktop\lol.bcstm", BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(opn.FileName)));
-        }
-
         private void wAVBRSTMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
@@ -1564,8 +1558,33 @@ namespace YATA
 
         private void bRSTMBCSTMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("BRSTM2BCSTM.exe")) File.WriteAllBytes("BRSTM2BCSTM.exe", Properties.Resources.BRSTM2BCSTM);
-            System.Diagnostics.Process.Start("BRSTM2BCSTM");
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.Title = "Open a brstm file";
+            opn.Filter = "BRSTM file|*.brstm";
+            if (opn.ShowDialog() == DialogResult.OK)
+            {
+                SaveFileDialog sav = new SaveFileDialog();
+                sav.Title = "Save the BCSTM file";
+                sav.Filter = "BCSTM file|*.bcstm";
+                if (sav.ShowDialog() == DialogResult.OK)
+                {
+                    StreamReader strm = new StreamReader(opn.FileName);
+                    BinaryReader bin = new BinaryReader(strm.BaseStream);
+                    if (bin.ReadBytes(4) == Encoding.ASCII.GetBytes("RSTM"))
+                    {
+                        bin.Close();
+                        strm.Close();
+                        System.IO.File.WriteAllBytes(sav.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(opn.FileName)));
+                        MessageBox.Show("done !");
+                    }
+                    else
+                    {
+                        bin.Close();
+                        strm.Close();
+                        MessageBox.Show("The input file is not a valid BRSTM file");
+                    }
+                }
+            }
         }
     }
 }

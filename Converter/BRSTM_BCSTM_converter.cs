@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace YATA.Converter
 {
@@ -126,7 +127,7 @@ namespace YATA.Converter
         {
             MemoryStream stream = new MemoryStream();
             stream.Write(BRSTM, 0, BRSTM.Length);
-            int DATA_SECTION = SearchBytePattern(new byte[4] { 0x44, 0x41, 0x54, 0x41 }, stream);
+            int DATA_SECTION = FINDBytePattern(Encoding.ASCII.GetBytes("DATA"), stream);
             byte[] bcstm;
             List<byte> Data = new List<byte>();
             Data.AddRange(Encoding.ASCII.GetBytes("CSTM")); //MAGIC
@@ -156,8 +157,9 @@ namespace YATA.Converter
             Data.AddRange(new byte[4] { 0x5C, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x02, 0x01, 0x02, 0x00 });
             stream.Position = 0x64;
-            Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());//frequency ?
+            Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte()}.Reverse<byte>());//frequency ?
             Data.AddRange(new byte[2] { 0x00, 0x00 });
+            stream.Position = 0x68;
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             stream.Position = 0x74;
@@ -189,53 +191,73 @@ namespace YATA.Converter
             Data.AddRange(new byte[4] { 0x10, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x00, 0x03, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x36, 0x00, 0x00, 0x00 });
+            stream.Position = 0xC0;
+            while (Data.Count < 0xFB) Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte()}.Reverse<byte>());
+            Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            stream.Position = 0xE6;
+            while (Data.Count < 0x109) Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            stream.Position = 0xF8;
+            while (Data.Count < 0x129) Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            stream.Position = 0x11A;
+            Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            stream.Position = 0x120;
+            while (Data.Count < 0x13F) Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            Data.AddRange(new byte[4] { 0x53, 0x45, 0x45, 0x4B });
+            stream.Position = 0x144;
+            Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            stream.Position = 0x150;
+            MessageBox.Show(DATA_SECTION.ToString());
+            while (Data.Count < DATA_SECTION)
+            {
+                Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            }
+            stream.Position = DATA_SECTION + 4;
+            Data.AddRange(Encoding.ASCII.GetBytes("DATA")); //MAGIC
+            Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
+            while (Data.Count < stream.Length)
+            {
+                Data.Add((byte)stream.ReadByte());
+            }
 
-
-            Data.AddRange(new byte[4] { 0x00, (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>()); //Size
-            Data.AddRange(getEmptyBytes(24, 0x00)); //empty
-            Data.Add(0x02); //DSPADPCM
             bcstm = Data.ToArray();
             return bcstm;
         }
 
-        private static byte[] getEmptyBytes(int count, byte _byte)
-        {
-            byte[] res = new byte[count];
-            for (int i = 0; i < count; i++)
-            {
-                res[i] = _byte;
-            }
-            return res;
-        }
 
-        private static int SearchBytePattern(byte[] pattern, MemoryStream bytes)
+       private static int FINDBytePattern(byte[] pattern, MemoryStream bytes)
         {
-            int patternLength = pattern.Length;
-            long totalLength = bytes.Length;
-            byte firstMatchByte = pattern[0];
-            for (long i = 0; i < totalLength; i++)
+            bool found = false;
+            bytes.Position = 0;
+            while (found == false)
             {
-                if (firstMatchByte == bytes.ReadByte())
+                if (bytes.Position + 4 >= bytes.Length) return 0;
+                if ((byte)bytes.ReadByte() == pattern[0])
                 {
-                    bytes.Position--;
-                    byte[] match = new byte[patternLength];
-                    bytes.Read(match, 0, patternLength);
-                    if (match.SequenceEqual<byte>(pattern))
+                    MessageBox.Show(bytes.Position.ToString());
+                    if ((byte)bytes.ReadByte() == pattern[1])
                     {
-                        return Convert.ToInt32(bytes.Position) - 4;
+                        MessageBox.Show(bytes.Position.ToString());
+                        if ((byte)bytes.ReadByte() == pattern[2])
+                        {
+                            MessageBox.Show(bytes.Position.ToString());
+                            if ((byte)bytes.ReadByte() == pattern[3])
+                            {
+                                MessageBox.Show(bytes.Position.ToString());
+                                return Convert.ToInt32(bytes.Position) - 4;
+                            }
+                        }
                     }
                 }
-                if ((totalLength - bytes.Position) <= patternLength)
-                    break;
             }
-            bytes.Position = 0;
             return 0;
         }
-
-        public static byte Create_BRSTM(byte[] BCSTM)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

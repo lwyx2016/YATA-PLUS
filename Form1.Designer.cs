@@ -64,7 +64,6 @@
             this.openTheFileConverterFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createBCSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,6 +81,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.printBackArrowColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -369,11 +369,11 @@
             this.Debug_menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.printColorDataToolStripMenuItem,
             this.printColorOffsetToolStripMenuItem,
+            this.printBackArrowColorDataToolStripMenuItem,
             this.toolStripSeparator8,
             this.openTheFileConverterFromToolStripMenuItem,
             this.toolStripSeparator9,
-            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem,
-            this.createBCSTMToolStripMenuItem});
+            this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem});
             this.Debug_menu.Image = ((System.Drawing.Image)(resources.GetObject("Debug_menu.Image")));
             this.Debug_menu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Debug_menu.Name = "Debug_menu";
@@ -417,13 +417,6 @@
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Name = "thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem";
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Text = "Those functions are only for testing, doesn\'t affect the theme ";
-            // 
-            // createBCSTMToolStripMenuItem
-            // 
-            this.createBCSTMToolStripMenuItem.Name = "createBCSTMToolStripMenuItem";
-            this.createBCSTMToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.createBCSTMToolStripMenuItem.Text = "Create BCSTM";
-            this.createBCSTMToolStripMenuItem.Click += new System.EventHandler(this.createBCSTMToolStripMenuItem_Click);
             // 
             // StatusLabel
             // 
@@ -560,6 +553,12 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // printBackArrowColorDataToolStripMenuItem
+            // 
+            this.printBackArrowColorDataToolStripMenuItem.Name = "printBackArrowColorDataToolStripMenuItem";
+            this.printBackArrowColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.printBackArrowColorDataToolStripMenuItem.Text = "Print back arrow color data";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -648,12 +647,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem openTheFileConverterFromToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripMenuItem createBCSTMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bGMCONVERTERSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wAVBRSTMToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bRSTMBCSTMToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem printBackArrowColorDataToolStripMenuItem;
     }
 }
 
