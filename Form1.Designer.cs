@@ -558,6 +558,7 @@
             this.printBackArrowColorDataToolStripMenuItem.Name = "printBackArrowColorDataToolStripMenuItem";
             this.printBackArrowColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.printBackArrowColorDataToolStripMenuItem.Text = "Print back arrow color data";
+            this.printBackArrowColorDataToolStripMenuItem.Click += new System.EventHandler(this.printBackArrowColorDataToolStripMenuItem_Click);
             // 
             // Form1
             // 

@@ -389,6 +389,7 @@ namespace YATA
             topColorOff = dec_br.ReadBytes(4).ToU32();
             dec_br.BaseStream.Position = 0x1C;
             addTopTEXTUREOff = dec_br.ReadBytes(4).ToU32();
+
             dec_br.BaseStream.Position = 0x30;
             offs.Add(dec_br.ReadBytes(4).ToU32());
             dec_br.BaseStream.Position = 0x38;
@@ -1585,6 +1586,16 @@ namespace YATA
                     }
                 }
             }
+        }
+
+        private void printBackArrowColorDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string a = "";
+            for (int i = 0; i < colChunks[11].Length; i++)
+            {
+                a = a + " " + colChunks[11][i];
+            }
+            Debug.Print(a);
         }
     }
 }

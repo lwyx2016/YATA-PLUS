@@ -39,7 +39,7 @@ namespace YATA {
                                                         "1: Upper empty slot shading\r\n2: Main Color\r\n3: Bottom empty slot shading\r\n4: Unknown",
                                                         "1: Horizontal stripes behind bottom buttons\r\n2: Main Color\r\n3: Edges shadowing",
                                                         "1: Top shadow\r\n2: Default\r\n3: Bottom shadow\r\n4: Unk ",
-                                                        "Unknown",
+                                                        "1: Overlay color\r\n2: background color\r\n3: Second overlay (?)\r\n4: Arrow shadow\r\n5: Arrow unpressed color\r\n6: Arrow pressed color",
                                                         "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shding and pressed color\r\n7:Lower edges highlight",
                                                         "1: Overlay background\r\n2/3:Unknown\r\n4: Text color",
                                                         "1: Background color\r\n2: Text color",
@@ -59,7 +59,7 @@ namespace YATA {
             Button[] col9 = AddButtons(4, 8, colBotSolid, Form1.enableSec[9] == 1 ? true : false,8, -Form1.APP_Move_buttons_colors);
             Button[] col10 = AddButtons(3, 9, colBotOuter, Form1.enableSec[10] == 1 ? true : false,9, -Form1.APP_Move_buttons_colors);
             Button[] col11 = AddButtons(4, 10, colFolderBG, Form1.enableSec[11] == 1 ? true : false,10, -Form1.APP_Move_buttons_colors);
-            Button[] col12 = AddButtons(1, 11, colFolderArrow, Form1.enableSec[12] == 1 ? true : false,11, -Form1.APP_Move_buttons_colors);
+            Button[] col12 = AddButtons(6, 11, colFolderArrow, Form1.enableSec[12] == 1 ? true : false,11, -Form1.APP_Move_buttons_colors);
             Button[] col13 = AddButtons(7, 12, colIconResize, Form1.enableSec[13] == 1 ? true : false,12, -Form1.APP_Move_buttons_colors);
             Button[] col14 = AddButtons(4, 13, colTopOverlay, Form1.enableSec[14] == 1 ? true : false,13, -Form1.APP_Move_buttons_colors);
             Button[] col15 = AddButtons(2, 14, colDemoMsg, Form1.enableSec[15] == 1 ? true : false,14, -Form1.APP_Move_buttons_colors);
@@ -206,9 +206,20 @@ namespace YATA {
                 colFolderBG = tempcolors.ToArray();
             #endregion
             #region colFolderArrow
-            tempbytes = cols[11];
+                tempbytes = cols[11];
                 tempcolors = new List<Color>();
-                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[2], tempbytes[3], tempbytes[4]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[8], tempbytes[9], tempbytes[10]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[14], tempbytes[15], tempbytes[16]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]));
+                tempcolors.Add(Color.FromArgb(0xFF, tempbytes[26], tempbytes[27], tempbytes[28]));
+              /*  string a = "";
+                for (int i = 0; i < cols[11].Length; i++)
+                {
+                     a = a + " " + cols[11][i];
+                }
+                textBox1.Text = a;*/
                 colFolderArrow = tempcolors.ToArray();
             #endregion
             #region colIconResize
@@ -311,7 +322,23 @@ namespace YATA {
             cols[10][9] = colFolderBG[3].A; cols[10][10] = colFolderBG[3].R; cols[10][11] = colFolderBG[3].G; cols[10][12] = colFolderBG[3].B;
             #endregion
             #region colFolderArrow
-            cols[11][0] = colFolderArrow[0].R; cols[11][1] = colFolderArrow[0].G; cols[11][2] = colFolderArrow[0].B;
+            cols[11][2] = colFolderArrow[0].R; cols[11][3] = colFolderArrow[0].G; cols[11][4] = colFolderArrow[0].B;
+            cols[11][8] = colFolderArrow[1].R; cols[11][9] = colFolderArrow[1].G; cols[11][10] = colFolderArrow[1].B;
+            cols[11][14] = colFolderArrow[2].R; cols[11][15] = colFolderArrow[2].G; cols[11][16] = colFolderArrow[2].B;
+            cols[11][20] = colFolderArrow[3].R; cols[11][21] = colFolderArrow[3].G; cols[11][22] = colFolderArrow[3].B;
+            cols[11][23] = colFolderArrow[4].R; cols[11][24] = colFolderArrow[4].G; cols[11][25] = colFolderArrow[4].B;
+            cols[11][26] = colFolderArrow[5].R; cols[11][27] = colFolderArrow[5].G; cols[11][28] = colFolderArrow[5].B;
+            /*textBox1.Text = textBox1.Text.Trim();
+            string[] a = textBox1.Text.Split(Convert.ToChar(" "));
+            MessageBox.Show(a.Length.ToString());
+            if (a.Length != 32) { MessageBox.Show("The raw textbox must contain 0x20 bytes (32 bytes in dec)"); }
+            else
+            {
+                for (int i = 0; i < 32; i++)
+                {
+                    cols[11][i] = (byte)Convert.ToInt32(a[i]);
+                }
+            }*/
             #endregion
             #region colIconResize
             cols[12][0] = colIconResize[0].R; cols[12][1] = colIconResize[0].G; cols[12][2] = colIconResize[0].B;
