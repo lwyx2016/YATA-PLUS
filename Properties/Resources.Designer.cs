@@ -123,16 +123,6 @@ namespace YATA.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
-        internal static byte[] BRSTM2BCSTM {
-            get {
-                object obj = ResourceManager.GetObject("BRSTM2BCSTM", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
-        /// </summary>
         internal static byte[] BrstmConv {
             get {
                 object obj = ResourceManager.GetObject("BrstmConv", resourceCulture);

@@ -132,7 +132,7 @@ Changes in this version of YATA+:
  -Now the theme settings window is resizable
  -The theme simulator can render most of the home menu UI (it's not 100% precise, use it just to see if the color of the buttons is fine with the image )
  -WAV -&gt; BRSTM/BCSTM conversion
-
+ -Now the folder back arrow can be edited
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>

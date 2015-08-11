@@ -18,7 +18,7 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Now the Theme setting window can be resized\r\n -The theme simulator now can render the home menu UI too\r\n -WAV -> BRSTM/BCSTM conversion");
+            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Now the Theme setting window can be resized\r\n -The theme simulator now can render the home menu UI too\r\n -WAV -> BRSTM/BCSTM conversion\r\n -Now the folder back arrow can be edited");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
