@@ -12,7 +12,6 @@ namespace YATA.Converter
     public partial class ConvertSETTINGS : Form
     {
         public FileConverter.ConvertType RET { get; set; }
-
         public ConvertSETTINGS()
         {
             InitializeComponent();

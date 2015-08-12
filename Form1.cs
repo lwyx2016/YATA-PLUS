@@ -1483,6 +1483,7 @@ namespace YATA
                 if (MAGIC[0] == "67" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//DEC: 67 83 84 77 = HEX: 43 53 54 4D = STRING: CSTM
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.Text = "Convert settings TYPE:BCSTM";
                     dlg.button2.Enabled = false;
                     dlg.button5.Enabled = false;
                     dlg.button7.Enabled = false;
@@ -1494,6 +1495,7 @@ namespace YATA
                 else if (MAGIC[0] == "82" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//RSTM
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.Text = "Convert settings TYPE:BRSTM";
                     dlg.button2.Enabled = false;
                     dlg.button5.Enabled = false;
                     dlg.button7.Enabled = false;
@@ -1505,6 +1507,7 @@ namespace YATA
                 else if (MAGIC[0] == "82" && MAGIC[1] == "73" && MAGIC[2] == "70" && MAGIC[3] == "70")//WAV (RIFF)
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.Text = "Convert settings TYPE:WAV";
                     dlg.button3.Enabled = false;
                     dlg.button6.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
@@ -1522,6 +1525,7 @@ namespace YATA
                 else if (MAGIC[0] == "67" && MAGIC[1] == "87" && MAGIC[2] == "65" && MAGIC[3] == "86")//CWAV
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.Text = "Convert settings TYPE:CWAV";
                     dlg.button6.Enabled = false;
                     dlg.button2.Enabled = false;
                     dlg.button5.Enabled = false;
