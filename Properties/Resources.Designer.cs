@@ -63,6 +63,16 @@ namespace YATA.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adv {
+            get {
+                object obj = ResourceManager.GetObject("adv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap battery {
             get {
                 object obj = ResourceManager.GetObject("battery", resourceCulture);
@@ -236,6 +246,16 @@ namespace YATA.Properties {
         internal static System.Drawing.Bitmap sim_bottom_mask {
             get {
                 object obj = ResourceManager.GetObject("sim_bottom_mask", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap space {
+            get {
+                object obj = ResourceManager.GetObject("space", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

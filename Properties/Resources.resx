@@ -124,6 +124,9 @@
   <data name="libvorbis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\libvorbis.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="BrawlLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BrawlLib.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="battery" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HudBatBase_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,11 +142,17 @@
   <data name="libmpg123_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\libmpg123-0.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="prev_unsupported" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prev_unsupported.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="web" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LncApltPictWeb_00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="top_overlay_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\top_overlay_text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bottom_arrow_fore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bottom_arrow_fore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,11 +163,23 @@
   <data name="friends" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\friends.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BrstmConv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BrstmConv.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sim_bottom_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sim_bottom_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="space" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\space.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="test" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\test.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="news" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LncApltPictNews_00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bottom_Resizer_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bottom_Resizer_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="body_empty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\body_empty.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -166,22 +187,7 @@
   <data name="miiverse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LncApltPictOlv_00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bottom_arrow_fore" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bottom_arrow_fore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bottom_Resizer_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bottom_Resizer_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BrawlLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BrawlLib.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BrstmConv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BrstmConv.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="prev_unsupported" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\prev_unsupported.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sim_bottom_mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sim_bottom_mask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="adv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
