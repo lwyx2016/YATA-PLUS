@@ -1472,6 +1472,11 @@ namespace YATA
         {
             if (File.Exists(files[0]))
             {
+                if (files[0] == Player.URL)
+                {
+                    Player.Ctlcontrols.stop();
+                    Player.close(); //Releases resource
+                }
                 BinaryReader reader = new BinaryReader(File.Open(files[0], FileMode.Open));
                 string[] MAGIC = new string[4] { reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString() };
                 reader.Close();
@@ -1504,7 +1509,12 @@ namespace YATA
                     dlg.button6.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file) { Player.URL = (files[0]); }
+                    if (dlg.RET == FileConverter.ConvertType.play_file)
+                    {
+                        Player.URL = (files[0]);
+                        if (Player.Visible == false) Player.Visible = true;
+                        Player.Ctlcontrols.play();
+                    }
                     else if (dlg.RET == FileConverter.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
                     else if (dlg.RET == FileConverter.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
                     else if (dlg.RET == FileConverter.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
