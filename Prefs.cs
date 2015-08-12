@@ -16,7 +16,6 @@ namespace YATA {
         private void Prefs_Load(object sender, EventArgs e)
         {
             loading = true;
-            checkBox1.Checked = Form1.APP_ShowUI_preview;
             checkBox2.Checked = Form1.APP_ShowUI_Sim;
             checkBox3.Checked = Form1.APP_AutoGen_preview;
             checkBox4.Checked = Form1.APP_Wait_editor;
@@ -33,7 +32,6 @@ namespace YATA {
 
         private void button2_Click(object sender, EventArgs e)
         {
-            checkBox1.Checked = true;
             checkBox2.Checked = true;
             checkBox3.Checked = false;
             checkBox4.Checked = true;
@@ -50,20 +48,19 @@ namespace YATA {
 
         void save_settings()
         {
-            string[] lines = new string[13];
-            lines[0] = "ui_prev=" + checkBox1.Checked.ToString();
-            lines[1] = "ui_sim=" + checkBox2.Checked.ToString();
-            lines[2] = "gen_prev=" + checkBox3.Checked.ToString();
-            lines[3] = "photo_edit=" + textBox1.Text;
-            lines[4] = "wait_editor=" + checkBox4.Checked.ToString();
-            lines[5] = "clean_on_exit=" + checkBox5.Checked.ToString();
-            lines[6] = "load_bgm=" + checkBox6.Checked.ToString();
-            lines[7] = "first_start_v3=false";
-            lines[8] = "shift_btns=" + numericUpDown1.Value.ToString();
-            lines[9] = "check_updates=" + checkBox7.Checked.ToString();
-            lines[10] = "happy_easter=false";
-            lines[11] = "sett_size=" + numericUpDown2.Value.ToString()+numericUpDown3.Value.ToString();
-            lines[12] = "exp_both_screens=" + checkBox8.Checked.ToString();
+            string[] lines = new string[12];
+            lines[0] = "ui_sim=" + checkBox2.Checked.ToString();
+            lines[1] = "gen_prev=" + checkBox3.Checked.ToString();
+            lines[2] = "photo_edit=" + textBox1.Text;
+            lines[3] = "wait_editor=" + checkBox4.Checked.ToString();
+            lines[4] = "clean_on_exit=" + checkBox5.Checked.ToString();
+            lines[5] = "load_bgm=" + checkBox6.Checked.ToString();
+            lines[6] = "first_start_v4=false";
+            lines[7] = "shift_btns=" + numericUpDown1.Value.ToString();
+            lines[8] = "check_updates=" + checkBox7.Checked.ToString();
+            lines[9] = "happy_easter=false";
+            lines[10] = "sett_size=" + numericUpDown2.Value.ToString()+numericUpDown3.Value.ToString();
+            lines[11] = "exp_both_screens=" + checkBox8.Checked.ToString();
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

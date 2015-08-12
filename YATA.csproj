@@ -260,7 +260,6 @@
     <None Include="Resources\sim_bottom_mask.png" />
     <None Include="Resources\BrawlLib.dll" />
     <None Include="Resources\BrstmConv.exe" />
-    <None Include="Resources\BRSTM2BCSTM.exe" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>

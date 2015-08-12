@@ -26,7 +26,7 @@ namespace YATA
             string[] settings = System.IO.File.ReadAllLines("Settings.ini");
             List<string> NEWsettings = new List<string>();
             NEWsettings.AddRange(settings);
-            NEWsettings.Add("first_start_v3=false");
+            NEWsettings.Add("first_start_v4=false");
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", NEWsettings.ToArray());
             this.Close();

@@ -164,8 +164,8 @@ namespace YATA.Converter
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             stream.Position = 0x74;
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
-            Data.AddRange(new byte[4] { 0x00, 0x20, 0x02, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x38, 0x02, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x20, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x38, 0x00, 0x00 });
             stream.Position = 0x80;
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
@@ -208,12 +208,11 @@ namespace YATA.Converter
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+/*            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
+            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });*/
             stream.Position = 0x150;
-            MessageBox.Show(DATA_SECTION.ToString());
             while (Data.Count < DATA_SECTION)
             {
                 Data.AddRange(new byte[2] { (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
@@ -241,16 +240,12 @@ namespace YATA.Converter
                 if (bytes.Position + 4 >= bytes.Length) return 0;
                 if ((byte)bytes.ReadByte() == pattern[0])
                 {
-                    MessageBox.Show(bytes.Position.ToString());
                     if ((byte)bytes.ReadByte() == pattern[1])
                     {
-                        MessageBox.Show(bytes.Position.ToString());
                         if ((byte)bytes.ReadByte() == pattern[2])
                         {
-                            MessageBox.Show(bytes.Position.ToString());
                             if ((byte)bytes.ReadByte() == pattern[3])
                             {
-                                MessageBox.Show(bytes.Position.ToString());
                                 return Convert.ToInt32(bytes.Position) - 4;
                             }
                         }

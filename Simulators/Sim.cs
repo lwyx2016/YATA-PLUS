@@ -258,7 +258,7 @@ namespace YATA {
 
                 }
             }
-            else if (Form1.APP_ShowUI_preview & Form1.generating_preview)
+            else if (Form1.APP_ShowUI_Sim & Form1.generating_preview)
             {
                 using (Graphics gr = Graphics.FromImage(topImage.Image))
                 {
@@ -299,7 +299,7 @@ namespace YATA {
                     {
                         Image preview = new Bitmap(400, 240);
                         Graphics g = Graphics.FromImage(preview);
-                        if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
+                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
                         preview.Save(save.FileName);
                     }
                     this.Close();
@@ -314,7 +314,7 @@ namespace YATA {
                     {
                         Image preview = new Bitmap(400, 240);
                         Graphics g = Graphics.FromImage(preview);
-                        if (!Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
+                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
                         preview.Save(Form1.Preview_PATH);
                     }
                     this.Close();

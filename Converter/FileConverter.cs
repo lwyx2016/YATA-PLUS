@@ -30,7 +30,8 @@ namespace YATA
             wavTOcwav,
             cwavTowav,
             wavTOcwav_No_opt,
-            nothing
+            nothing,
+            play_file
         }
 
         private void button2_Click(object sender, EventArgs e)

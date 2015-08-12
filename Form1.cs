@@ -14,8 +14,7 @@ namespace YATA
     {
         #region appSettings
         //I decided to use a config.ini file to not leave traces in the pc that runs yata (i'm a portable apps maniac :P)
-        public static bool APP_ShowUI_preview = false;
-        public static bool APP_ShowUI_Sim = false;
+        public static bool APP_ShowUI_Sim = true;
         public static bool APP_AutoGen_preview = false;
         public static string APP_photo_edtor = "";
         public static bool APP_Wait_editor = true;
@@ -44,7 +43,9 @@ namespace YATA
             if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
             if (dll != 0) InitializeComponent();
             try
-            {InitializeComponent();}
+            {
+                InitializeComponent();
+            }
             catch (Exception ex)
             {               
                 MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -1189,17 +1190,13 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_prev=true", "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false"};
+                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false"};
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
             foreach (string line in lines)
             {
-                if (line.ToLower().StartsWith("ui_prev="))
-                {
-                    APP_ShowUI_preview = Convert.ToBoolean(line.ToLower().Substring(8));
-                }
-                else if (line.ToLower().StartsWith("ui_sim="))
+                if (line.ToLower().StartsWith("ui_sim="))
                 {
                     APP_ShowUI_Sim = Convert.ToBoolean(line.ToLower().Substring(7));
                 }
@@ -1223,7 +1220,7 @@ namespace YATA
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start_v3="))
+                else if (line.ToLower().StartsWith("first_start_v4="))
                 {
                     APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
                 }
@@ -1354,27 +1351,7 @@ namespace YATA
                 {
                     if (opn.FileNames.Length == 1)
                     {
-                        SaveFileDialog sv = new SaveFileDialog();
-                        sv.Filter = "CWAVs|*.cwav|Every file|*.*";
-                        sv.Title = "Save the CWAV file";
-                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        {
-                            Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
-                            WaveFormat New = new WaveFormat(8000, 8, 1);
-                            WaveStream Original = new WaveFileReader(opn.FileName);
-                            WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
-                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
-                            WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav", stream);
-                            Process prc = new Process();
-                            prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav\"";
-                            prc.Start();
-                            prc.WaitForExit();
-                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileName) + ".tmp.wav");
-                            stream.Dispose();
-                            Original.Dispose();
-                            MessageBox.Show("Done !");
-                        }
+                        Wav2CWAV(opn.FileName);
                     }
                     else
                     {
@@ -1459,20 +1436,7 @@ namespace YATA
                 {
                     if (opn.FileNames.Length == 1)
                     {
-                        SaveFileDialog sv = new SaveFileDialog();
-                        sv.Filter = "WAV file|*.wav|Every file|*.*";
-                        sv.Title = "Save file";
-                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        {
-                            Process prc = new Process();
-                            prc.StartInfo.FileName = "vgmstream.exe";
-                            prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" " + "\"" + opn.FileName + "\"";
-                            prc.StartInfo.CreateNoWindow = true;
-                            prc.StartInfo.UseShellExecute = false;
-                            prc.Start();
-                            prc.WaitForExit();
-                            MessageBox.Show("Done !");
-                        }
+                        AudioTOWav(opn.FileName);
                     }
                     else
                     {
@@ -1501,14 +1465,61 @@ namespace YATA
         void Form1_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            loadFromDragAndDrop(files);
+        }
+
+        void loadFromDragAndDrop(string[] files)
+        {
             if (File.Exists(files[0]))
-             {
+            {
                 BinaryReader reader = new BinaryReader(File.Open(files[0], FileMode.Open));
                 string[] MAGIC = new string[4] { reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString() };
                 reader.Close();
                 if (MAGIC[0] == "67" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//DEC: 67 83 84 77 = HEX: 43 53 54 4D = STRING: CSTM
                 {
-                    LoadBGM(files[0]);
+                    ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.button2.Enabled = false;
+                    dlg.button5.Enabled = false;
+                    dlg.button7.Enabled = false;
+                    dlg.button6.Enabled = false;
+                    dlg.ShowDialog();
+                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                }
+                else if (MAGIC[0] == "82" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//RSTM
+                {
+                    ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.button2.Enabled = false;
+                    dlg.button5.Enabled = false;
+                    dlg.button7.Enabled = false;
+                    dlg.ShowDialog();
+                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                }
+                else if (MAGIC[0] == "82" && MAGIC[1] == "73" && MAGIC[2] == "70" && MAGIC[3] == "70")//WAV (RIFF)
+                {
+                    ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.button3.Enabled = false;
+                    dlg.button6.Enabled = false;
+                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
+                    dlg.ShowDialog();
+                    if (dlg.RET == FileConverter.ConvertType.play_file) { Player.URL = (files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
+                    else if (dlg.RET == FileConverter.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
+                }
+                else if (MAGIC[0] == "67" && MAGIC[1] == "87" && MAGIC[2] == "65" && MAGIC[3] == "86")//CWAV
+                {
+                    ConvertSETTINGS dlg = new ConvertSETTINGS();
+                    dlg.button6.Enabled = false;
+                    dlg.button2.Enabled = false;
+                    dlg.button5.Enabled = false;
+                    dlg.button7.Enabled = false;
+                    dlg.button8.Enabled = false;
+                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
+                    dlg.ShowDialog();
+                    if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else
                 {
@@ -1537,21 +1548,8 @@ namespace YATA
                 opn.Multiselect = false;
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                        SaveFileDialog sv = new SaveFileDialog();
-                        sv.Filter = "Brstm file|*.brstm";
-                        sv.Title = "Save file";
-                        if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        {
-                            Process prc = new Process();
-                            prc.StartInfo.FileName = "BrstmConv.exe";
-                            prc.StartInfo.Arguments = "\"" + opn.FileName + "\" " + "\"" + sv.FileName + "\"";
-                            prc.StartInfo.CreateNoWindow = true;
-                            prc.StartInfo.UseShellExecute = false;
-                            prc.Start();
-                            prc.WaitForExit();
-                            if (File.Exists(sv.FileName)) MessageBox.Show("Done !");
-                        }
-                    }
+                    wav2BRSTM(opn.FileName);
+                }
              
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
@@ -1564,27 +1562,7 @@ namespace YATA
             opn.Filter = "BRSTM file|*.brstm";
             if (opn.ShowDialog() == DialogResult.OK)
             {
-                SaveFileDialog sav = new SaveFileDialog();
-                sav.Title = "Save the BCSTM file";
-                sav.Filter = "BCSTM file|*.bcstm";
-                if (sav.ShowDialog() == DialogResult.OK)
-                {
-                    StreamReader strm = new StreamReader(opn.FileName);
-                    BinaryReader bin = new BinaryReader(strm.BaseStream);
-                    if (bin.ReadBytes(4) == Encoding.ASCII.GetBytes("RSTM"))
-                    {
-                        bin.Close();
-                        strm.Close();
-                        System.IO.File.WriteAllBytes(sav.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(opn.FileName)));
-                        MessageBox.Show("done !");
-                    }
-                    else
-                    {
-                        bin.Close();
-                        strm.Close();
-                        MessageBox.Show("The input file is not a valid BRSTM file");
-                    }
-                }
+                Brstm2BCSTM(opn.FileName);
             }
         }
 
@@ -1597,6 +1575,143 @@ namespace YATA
             }
             Debug.Print(a);
         }
+
+        private void wAVBCSTMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
+            if (!File.Exists("BrawlLib.dll")) File.WriteAllBytes("BrawlLib.dll", Properties.Resources.BrawlLib);
+            if (File.Exists(Path.GetTempPath() + "tmp.bcstm")) File.Delete(Path.GetTempPath() + "tmp.bcstm");
+            try
+            {
+                OpenFileDialog opn = new OpenFileDialog();
+                opn.Filter = "Wav file|*.wav";
+                opn.Title = "Open file";
+                opn.Multiselect = false;
+                if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Wav2BCSTM(opn.FileName);
+                }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
+        }
+
+        #region Converters
+        void Brstm2BCSTM(string input)
+        {
+            if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
+            if (!File.Exists("BrawlLib.dll")) File.WriteAllBytes("BrawlLib.dll", Properties.Resources.BrawlLib);
+            if (File.Exists(Path.GetTempPath() + "tmp.bcstm")) File.Delete(Path.GetTempPath() + "tmp.bcstm");
+            SaveFileDialog sav = new SaveFileDialog();
+            sav.Title = "Save the BCSTM file";
+            sav.Filter = "BCSTM file|*.bcstm";
+            if (sav.ShowDialog() == DialogResult.OK)
+            {
+                BinaryReader bin = new BinaryReader(File.Open(input, FileMode.Open));
+                bin.BaseStream.Position = 0;
+                string data = bin.ReadByte().ToString() + bin.ReadByte().ToString() + bin.ReadByte().ToString() + bin.ReadByte().ToString();
+                string MAGIC = Encoding.ASCII.GetBytes("R")[0].ToString() + Encoding.ASCII.GetBytes("S")[0].ToString() + Encoding.ASCII.GetBytes("T")[0].ToString() + Encoding.ASCII.GetBytes("M")[0].ToString();
+                if (data == MAGIC)
+                {
+                    bin.Close();
+                    System.IO.File.WriteAllBytes(sav.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(input)));
+                    MessageBox.Show("done !");
+                }
+                else
+                {
+                    bin.Close();
+                    MessageBox.Show("The input file is not a valid BRSTM file");
+                }
+            }
+        }
+        void Wav2BCSTM(string input)
+        {
+            if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
+            if (!File.Exists("BrawlLib.dll")) File.WriteAllBytes("BrawlLib.dll", Properties.Resources.BrawlLib);
+            if (File.Exists(Path.GetTempPath() + "tmp.bcstm")) File.Delete(Path.GetTempPath() + "tmp.bcstm");
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "Bcstm file|*.bcstm";
+            sv.Title = "Save file";
+            if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Process prc = new Process();
+                prc.StartInfo.FileName = "BrstmConv.exe";
+                prc.StartInfo.Arguments = "\"" + input + "\" " + "\"" + Path.GetTempPath() + "tmp.bcstm\"";
+                prc.StartInfo.CreateNoWindow = true;
+                prc.StartInfo.UseShellExecute = false;
+                prc.Start();
+                prc.WaitForExit();
+                File.WriteAllBytes(sv.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(Path.GetTempPath() + "tmp.bcstm")));
+                File.Delete(Path.GetTempPath() + "tmp.bcstm");
+                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+            }
+        }
+        void wav2BRSTM(string input)
+        {
+            if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
+            if (!File.Exists("BrawlLib.dll")) File.WriteAllBytes("BrawlLib.dll", Properties.Resources.BrawlLib);
+            if (File.Exists(Path.GetTempPath() + "tmp.bcstm")) File.Delete(Path.GetTempPath() + "tmp.bcstm");
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "Brstm file|*.brstm";
+            sv.Title = "Save file";
+            if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Process prc = new Process();
+                prc.StartInfo.FileName = "BrstmConv.exe";
+                prc.StartInfo.Arguments = "\"" + input + "\" " + "\"" + sv.FileName + "\"";
+                prc.StartInfo.CreateNoWindow = true;
+                prc.StartInfo.UseShellExecute = false;
+                prc.Start();
+                prc.WaitForExit();
+                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+            }
+        }
+        void AudioTOWav(string input)
+        {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "WAV file|*.wav|Every file|*.*";
+            sv.Title = "Save file";
+            if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Process prc = new Process();
+                prc.StartInfo.FileName = "vgmstream.exe";
+                prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" " + "\"" + input + "\"";
+                prc.StartInfo.CreateNoWindow = true;
+                prc.StartInfo.UseShellExecute = false;
+                prc.Start();
+                prc.WaitForExit();
+                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+            }
+        }
+        void Wav2CWAV(string input)
+        {
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "CWAVs|*.bcwav|Every file|*.*";
+            sv.Title = "Save the CWAV file";
+            if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
+                WaveFormat New = new WaveFormat(8000, 8, 1);
+                WaveStream Original = new WaveFileReader(input);
+                WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
+                if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
+                WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav", stream);
+                Process prc = new Process();
+                prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
+                prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav\"";
+                prc.Start();
+                prc.WaitForExit();
+                if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
+                stream.Dispose();
+                Original.Dispose();
+                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+            }
+        }
+        #endregion
     }
 }
 

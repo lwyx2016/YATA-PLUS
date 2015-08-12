@@ -48,6 +48,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.bGMCONVERTERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wAVBRSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wAVBCSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bRSTMBCSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.cWAVWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +61,7 @@
             this.Debug_menu = new System.Windows.Forms.ToolStripDropDownButton();
             this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printBackArrowColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.openTheFileConverterFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -81,7 +83,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.printBackArrowColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -284,6 +286,8 @@
             // bGMCONVERTERSToolStripMenuItem
             // 
             this.bGMCONVERTERSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wAVBCSTMToolStripMenuItem,
+            this.toolStripSeparator12,
             this.wAVBRSTMToolStripMenuItem,
             this.bRSTMBCSTMToolStripMenuItem});
             this.bGMCONVERTERSToolStripMenuItem.Name = "bGMCONVERTERSToolStripMenuItem";
@@ -296,6 +300,13 @@
             this.wAVBRSTMToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.wAVBRSTMToolStripMenuItem.Text = "WAV -> BRSTM";
             this.wAVBRSTMToolStripMenuItem.Click += new System.EventHandler(this.wAVBRSTMToolStripMenuItem_Click);
+            // 
+            // wAVBCSTMToolStripMenuItem
+            // 
+            this.wAVBCSTMToolStripMenuItem.Name = "wAVBCSTMToolStripMenuItem";
+            this.wAVBCSTMToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.wAVBCSTMToolStripMenuItem.Text = "WAV -> BCSTM";
+            this.wAVBCSTMToolStripMenuItem.Click += new System.EventHandler(this.wAVBCSTMToolStripMenuItem_Click);
             // 
             // bRSTMBCSTMToolStripMenuItem
             // 
@@ -394,6 +405,13 @@
             this.printColorOffsetToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.printColorOffsetToolStripMenuItem.Text = "Print col12 data";
             this.printColorOffsetToolStripMenuItem.Click += new System.EventHandler(this.printColorOffsetToolStripMenuItem_Click);
+            // 
+            // printBackArrowColorDataToolStripMenuItem
+            // 
+            this.printBackArrowColorDataToolStripMenuItem.Name = "printBackArrowColorDataToolStripMenuItem";
+            this.printBackArrowColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
+            this.printBackArrowColorDataToolStripMenuItem.Text = "Print back arrow color data";
+            this.printBackArrowColorDataToolStripMenuItem.Click += new System.EventHandler(this.printBackArrowColorDataToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
@@ -553,12 +571,10 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // printBackArrowColorDataToolStripMenuItem
+            // toolStripSeparator12
             // 
-            this.printBackArrowColorDataToolStripMenuItem.Name = "printBackArrowColorDataToolStripMenuItem";
-            this.printBackArrowColorDataToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
-            this.printBackArrowColorDataToolStripMenuItem.Text = "Print back arrow color data";
-            this.printBackArrowColorDataToolStripMenuItem.Click += new System.EventHandler(this.printBackArrowColorDataToolStripMenuItem_Click);
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(167, 6);
             // 
             // Form1
             // 
@@ -654,6 +670,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem printBackArrowColorDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wAVBCSTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
     }
 }
 

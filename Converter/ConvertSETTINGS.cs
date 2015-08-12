@@ -59,5 +59,16 @@ namespace YATA.Converter
             RET = FileConverter.ConvertType.nothing;
             Close();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            RET = FileConverter.ConvertType.play_file;
+            Close();
+        }
+
+        private void ConvertSETTINGS_Load(object sender, EventArgs e)
+        {
+            System.Media.SystemSounds.Beep.Play();
+        }
     }
 }
