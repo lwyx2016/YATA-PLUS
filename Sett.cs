@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace YATA {
     public partial class Sett : Form {
@@ -257,6 +258,7 @@ namespace YATA {
             tempbytes = Form1.topcol[0];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
+            Debug.Print(tempbytes[0].ToString() + " "+ tempbytes[1].ToString() + " " + tempbytes[2].ToString());
                 numericUpDown2.Value = tempbytes[3];
                 numericUpDown1.Value = tempbytes[4];
                 ColTopScreen = tempcolors.ToArray();

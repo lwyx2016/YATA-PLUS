@@ -9,14 +9,16 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
-namespace YATA {
-    public partial class Sim : Form {
+namespace YATA
+{
+    public partial class Sim : Form
+    {
 
         Bitmap[] imgs;
         Image bottomImg;
         Image topImg;
         Image frame1, frame2, frame3;
-        
+
         Image bat = Properties.Resources.battery;
         Image inter = Properties.Resources.net;
         Image note = Properties.Resources.notes;
@@ -27,12 +29,13 @@ namespace YATA {
 
         int frameCnt = 0;
 
-        public Sim() {
+        public Sim()
+        {
             InitializeComponent();
             imgs = Form1.imageArray;
             Overlay_LR_TOP_img.Parent = topImage;
             Arrows_bottom.Parent = bottomImage;
-            Arrows_bottom.Location = new Point(0,0);
+            Arrows_bottom.Location = new Point(0, 0);
             Top_screen_overlay.Parent = Arrows_bottom;
             Top_screen_overlay.Location = new Point(0, 0);
             if (!Form1.APP_ShowUI_Sim)
@@ -41,8 +44,6 @@ namespace YATA {
                 Arrows_bottom.Visible = false;
                 Top_screen_overlay.Visible = false;
             }
-            if (Form1.topDraw != 3) { imgs[0] = Properties.Resources.prev_unsupported; topImage.SizeMode = PictureBoxSizeMode.StretchImage; }
-            if (Form1.bottomDraw != 3) { imgs[1] = Properties.Resources.prev_unsupported; }
             setColors();
             loadImages();
         }
@@ -59,7 +60,7 @@ namespace YATA {
                 img = new Bitmap(Properties.Resources.top_overlay_background);
                 setColor(img, Color.FromArgb(215, tempbytes[0], tempbytes[1], tempbytes[2]));
                 Overlay_LR_TOP_img.BackgroundImage = img;
-               
+
                 img = new Bitmap(Properties.Resources.top_overlay_text);
                 setColor(img, Color.FromArgb(215, tempbytes[9], tempbytes[10], tempbytes[11]));
                 Overlay_LR_TOP_img.Image = img;
@@ -70,7 +71,7 @@ namespace YATA {
             {
                 tempbytes = Form1.colChunks[4];
                 img = new Bitmap(Properties.Resources.Bottom_arrow_fore);
-                setColor(img, Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));               
+                setColor(img, Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 Arrows_bottom.Image = img;
             }
             if (Form1.enableSec[7] == 1) //If custom color is enabled
@@ -84,7 +85,7 @@ namespace YATA {
             #region iconResizer
             Color back = Color.White;
             Color separator = Color.Gray;
-            Color icon = Color.FromArgb(255, 145, 174, 208);     
+            Color icon = Color.FromArgb(255, 145, 174, 208);
             if (Form1.enableSec[13] == 1) //If custom color is enabled
             {
                 tempbytes = Form1.colChunks[12];
@@ -95,7 +96,7 @@ namespace YATA {
             img = Properties.Resources.bottom_Resizer_mask;
             for (int i = 0; i < img.Width; i++)
             {
-               for (int ii = 0; ii < img.Height; ii++)
+                for (int ii = 0; ii < img.Height; ii++)
                 {
                     Color col = img.GetPixel(i, ii);
                     if (col.A != 0)
@@ -103,16 +104,16 @@ namespace YATA {
                         if (col.R == 255) img.SetPixel(i, ii, separator);
                         else if (col.B == 255) img.SetPixel(i, ii, icon);
                         else img.SetPixel(i, ii, back);
-                    } 
+                    }
                 }
-             }
-             Top_screen_overlay.Image = img;
+            }
+            Top_screen_overlay.Image = img;
             #endregion
             #region BottomBar
-            Color Default = Color.FromArgb(255,224,221,216);
-            Color Shading = Color.White ;
+            Color Default = Color.FromArgb(255, 224, 221, 216);
+            Color Shading = Color.White;
             Color TextShadow = Color.FromArgb(255, 187, 184, 179);
-            Color text = Color.FromArgb(255,72,71,66);
+            Color text = Color.FromArgb(255, 72, 71, 66);
             if (Form1.enableSec[7] == 1) //If custom color is enabled
             {
                 tempbytes = Form1.colChunks[5];
@@ -150,7 +151,7 @@ namespace YATA {
             return screen;
         }
 
-        private Bitmap setColor(Bitmap img, Color col) 
+        private Bitmap setColor(Bitmap img, Color col)
         {
             Bitmap result;
             result = img;
@@ -164,20 +165,29 @@ namespace YATA {
             return result;
         }
 
-        private void loadImages() {
-            bottomImg = new Bitmap(imgs[1]);
-            Rectangle f1 = new Rectangle(0, 0, 320, 240);
-            Rectangle f2 = new Rectangle(320, 0, 320, 240);
-            Rectangle f3 = new Rectangle(640, 0, 320, 240);
-            frame1 = new Bitmap(f1.Width, f1.Height);
-            frame2 = new Bitmap(f2.Width, f2.Height);
-            frame3 = new Bitmap(f3.Width, f3.Height);
-            using (Graphics g = Graphics.FromImage(frame1)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame1.Width, frame1.Height), f1, GraphicsUnit.Pixel);}
-            using (Graphics g = Graphics.FromImage(frame2)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame2.Width, frame2.Height), f2, GraphicsUnit.Pixel); }
-            using (Graphics g = Graphics.FromImage(frame3)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame3.Width, frame3.Height), f3, GraphicsUnit.Pixel); }
-            topImg = new Bitmap(imgs[0]);
-            topImage.Image = topImg;
-            bottomImage.Image = bottomImg;
+        private void loadImages()
+        {
+            if (Form1.bottomDraw != 3) { bottomImage.Image = Properties.Resources.prev_unsupported; }
+            else
+            {
+                bottomImg = new Bitmap(imgs[1]);
+                Rectangle f1 = new Rectangle(0, 0, 320, 240);
+                Rectangle f2 = new Rectangle(320, 0, 320, 240);
+                Rectangle f3 = new Rectangle(640, 0, 320, 240);
+                frame1 = new Bitmap(f1.Width, f1.Height);
+                frame2 = new Bitmap(f2.Width, f2.Height);
+                frame3 = new Bitmap(f3.Width, f3.Height);
+                using (Graphics g = Graphics.FromImage(frame1)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame1.Width, frame1.Height), f1, GraphicsUnit.Pixel); }
+                using (Graphics g = Graphics.FromImage(frame2)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame2.Width, frame2.Height), f2, GraphicsUnit.Pixel); }
+                using (Graphics g = Graphics.FromImage(frame3)) { g.DrawImage(bottomImg, new Rectangle(0, 0, frame3.Width, frame3.Height), f3, GraphicsUnit.Pixel); }
+                bottomImage.Image = bottomImg;
+            }
+            if (Form1.topDraw != 3) { topImage.Image = Properties.Resources.prev_unsupported; topImage.SizeMode = PictureBoxSizeMode.StretchImage; }
+            else
+            {
+                topImg = new Bitmap(imgs[0]);
+                topImage.Image = topImg;
+            }
             updateGUI();
         }
 
@@ -319,7 +329,7 @@ namespace YATA {
                     }
                     this.Close();
                 }
-                else this.Close(); 
+                else this.Close();
             }
         }
 

@@ -104,7 +104,6 @@ namespace YATA
         private uint[] colorOffs;
         public static byte[][] colChunks;
         public static uint topColorOff = 0;
-        private uint addTopTEXTUREOff = 0;
 
         public static byte[][] topcol;
 
@@ -140,6 +139,7 @@ namespace YATA
             colChunks = null;
             imgListBoxLoaded = false;
             pictureBox1.Image = null;
+            removeImageFromTheThemeToolStripMenuItem.Visible = false;
 
             saveAsFile.Enabled = false;
             saveFile.Enabled = false;
@@ -208,8 +208,7 @@ namespace YATA
                 br.BaseStream.Position = 0xC0;  //cwav
                 cwavOff = (br.ReadBytes(4)).ToU32();
                 br.BaseStream.Position = 0x1C;
-                addTopTEXTUREOff = br.ReadBytes(4).ToU32(); //top screen add tex
-                offs.Add(addTopTEXTUREOff);
+                offs.Add(br.ReadBytes(4).ToU32());//top screen add tex
                 br.Close();
                 imgOffs = offs.ToArray();
             }
@@ -286,11 +285,11 @@ namespace YATA
             if (enableSec[2] > 0) lens.Add(0x10000); else lens.Add(0);
             if (enableSec[4] > 0) lens.Add(0x10000); else lens.Add(0);
             if (enableSec[4] > 0) lens.Add(0x4000); else lens.Add(0);
-            if (topDraw == 2) lens.Add(0x8000); else lens.Add(0);
+            if (topDraw == 2 && imgOffs[6] != 0x0) lens.Add(0x8000); else lens.Add(0);
             imgLens = lens.ToArray();
             for (int i = 0; i < imgOffs.Length; i++)
             {
-                if (imgLens[i] == 0x8000) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? BGR888 : RGB565));
+                if (imgLens[i] == 0x8000 || i == 6) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? BGR888 : RGB565));
             }
             if (cwavOff > 0) cwav = getCWAV();
             imageArray = images.ToArray();
@@ -389,7 +388,7 @@ namespace YATA
             dec_br.BaseStream.Position = 0x14;
             topColorOff = dec_br.ReadBytes(4).ToU32();
             dec_br.BaseStream.Position = 0x1C;
-            addTopTEXTUREOff = dec_br.ReadBytes(4).ToU32();
+           // addTopTEXTUREOff = dec_br.ReadBytes(4).ToU32();
 
             dec_br.BaseStream.Position = 0x30;
             offs.Add(dec_br.ReadBytes(4).ToU32());
@@ -462,15 +461,20 @@ namespace YATA
         private void updatePicBox(int i)
         {
             try
-            {                
+            {
+                pictureBox1.Image = null;
+                Debug.Print(imgOffs[i].ToString());
+                if (imgOffs[i] == 0x1 || imgOffs[i] == 0x0) throw new Exception();
                 pictureBox1.Image = imageArray[i];                
                 label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString();
+                if (i == 6) removeImageFromTheThemeToolStripMenuItem.Visible = true;
                 label4.Visible = true;
                 button1.Enabled = true;
                 label5.Visible = false;
             }
             catch (Exception)
             {
+                removeImageFromTheThemeToolStripMenuItem.Visible = false;
                 label5.Visible = true;
                 button1.Enabled = false;
                 label4.Visible = false;
@@ -481,7 +485,7 @@ namespace YATA
         {
             if (imgListBoxLoaded == true)
             {
-                updatePicBox(imgListBox.SelectedIndex);
+                updatePicBox(imgListBox.SelectedIndex);                
             }
         }
 
@@ -501,7 +505,12 @@ namespace YATA
             if (length == 0) { Debug.Print("Get image|| Off:" + offset.ToString() + "  Lenght: 0||"); return null; }
             int red = 0, green = 0, blue = 0;
             int imgWidth = 0, imgHeight = 0;
-            if (offset != imgOffs[4])
+            if (offset == imgOffs[4] && length == 0x10000)
+            {
+                imgWidth = 64;
+                imgHeight = 128;
+            }
+            else
             {
                 switch (length)
                 {
@@ -521,16 +530,11 @@ namespace YATA
                         imgWidth = 32;
                         imgHeight = 64;
                         break;
-                    case 0x8000:
+                    default:
                         imgWidth = 64;
                         imgHeight = 64;
                         break;
                 }
-            }
-            else
-            {
-                imgWidth = 64;
-                imgHeight = 128;
             }
             Debug.Print("Get image|| Off:" + offset.ToString() + "  Lenght:" + length.ToString() + " Type:" + type.ToString() + "  Size:"+ imgWidth.ToString() + "x" + imgHeight.ToString() +  " ||");
             Bitmap img = new Bitmap(imgWidth, imgHeight);
@@ -575,7 +579,7 @@ namespace YATA
                     }
                 }
                 else if (type == A8)
-                {
+                {                    
                     for (uint i = 0; i < length / 8; i++)
                     {
                         d2xy(i % 64, out x, out y);
@@ -585,6 +589,7 @@ namespace YATA
                         y += (uint)(tile / p) * 8;
                         byte data = dec_br.ReadByte();
                         img.SetPixel((int)x, (int)y, Color.FromArgb(0xFF, data, data, data));
+                        if (i == 0) Debug.Print(data.ToString());
                     }
                 }
             }
@@ -747,7 +752,7 @@ namespace YATA
                 bw.Write(topFrame);
                 bw.Write(topColorOff);
                 bw.Write(imgOffs[0]); //imgOffs[0]
-                bw.Write(addTopTEXTUREOff);
+                bw.Write(imgOffs[6]);
                 bw.Write(bottomDraw);
                 bw.Write(bottomFrame);
                 bw.Write(imgOffs[1]); //imgOffs[1]
@@ -823,11 +828,10 @@ namespace YATA
                 //top ALT image
                 oldOFFS = (uint)bw.BaseStream.Position;
                 bw.BaseStream.Position = 0x1C;
-                bw.Write(oldOFFS); //imgOffs[0]
-                addTopTEXTUREOff = oldOFFS;
+                if (imgOffs[6] != 0x0) { bw.Write(oldOFFS); imgOffs[6] = oldOFFS; } else bw.Write(0);
                 bw.BaseStream.Position = oldOFFS;
                 Debug.Print("Top alt image " + bw.BaseStream.Position.ToString());
-                if (topDraw == 2) bw.Write(bitmapToRawImg(imageArray[6], A8));
+                if (topDraw == 2 && imgOffs[6] != 0x0) bw.Write(bitmapToRawImg(imageArray[6], A8));
                 StatusLabel.Text = "Saving theme,please wait.....17%";
                 this.Refresh();
 
@@ -1102,6 +1106,7 @@ namespace YATA
                 if (mBitmap.Size.Height.isPower2() && mBitmap.Size.Width.isPower2())
                 {
                     imageArray[imgListBox.SelectedIndex] = mBitmap;
+                    imgOffs[imgListBox.SelectedIndex] = 0x2; //TO BE DIFFRENT FROM 0
                     updatePicBox(imgListBox.SelectedIndex);
                     if (imgListBox.SelectedIndex == 6 && topDraw != 2) MessageBox.Show("This image will be used only if the top screen draw type is set to 'Solid w/ Texture squares'");
                 }
@@ -1726,6 +1731,28 @@ namespace YATA
             }
         }
         #endregion
+
+        private void lZCOMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.ShowDialog();
+            dsdecmp.Compress(opn.FileName, opn.FileName + ".cmp");
+        }
+
+        private void lZUNCOMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.ShowDialog();
+            dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
+        }
+
+        private void removeImageFromTheThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            imageArray[6] = Properties.Resources.empty;
+            imgOffs[6] = 0x0;
+            updatePicBox(6);
+            MessageBox.Show("The image was removed");
+        }
     }
 }
 
