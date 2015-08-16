@@ -11,11 +11,6 @@ namespace YATA {
     public partial class Prefs : Form {
         public Prefs() {
             InitializeComponent();
-        }
-        bool loading = false;
-        private void Prefs_Load(object sender, EventArgs e)
-        {
-            loading = true;
             checkBox2.Checked = Form1.APP_ShowUI_Sim;
             checkBox3.Checked = Form1.APP_AutoGen_preview;
             checkBox4.Checked = Form1.APP_Wait_editor;
@@ -27,7 +22,6 @@ namespace YATA {
             numericUpDown1.Value = Form1.APP_Move_buttons_colors;
             numericUpDown2.Value = Form1.APP_SETT_SIZE_X;
             numericUpDown3.Value = Form1.APP_SETT_SIZE_Y;
-            loading = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,12 +35,12 @@ namespace YATA {
             checkBox8.Checked = true;
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
-            save_settings();
+            build_settings();
             Form1.load_prefs();
             this.Close();
         }
 
-        void save_settings()
+        public void build_settings()
         {
             string[] lines = new string[12];
             lines[0] = "ui_sim=" + checkBox2.Checked.ToString();
@@ -59,7 +53,7 @@ namespace YATA {
             lines[7] = "shift_btns=" + numericUpDown1.Value.ToString();
             lines[8] = "check_updates=" + checkBox7.Checked.ToString();
             lines[9] = "happy_easter=false";
-            lines[10] = "sett_size=" + numericUpDown2.Value.ToString()+numericUpDown3.Value.ToString();
+            lines[10] = "sett_size=" + numericUpDown2.Value.ToString() + numericUpDown3.Value.ToString();
             lines[11] = "exp_both_screens=" + checkBox8.Checked.ToString();
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
@@ -68,7 +62,7 @@ namespace YATA {
 
         private void button1_Click(object sender, EventArgs e)
         {
-            save_settings();
+            build_settings();
             Form1.load_prefs();
             this.Close();
         }
@@ -83,7 +77,7 @@ namespace YATA {
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (!loading && !checkBox7.Checked) MessageBox.Show("If you don't update YATA+, you may miss some important new features in the next updates....");
+            if (!checkBox7.Checked) MessageBox.Show("If you don't update YATA+, you may miss some important new features in the next updates....");
         }
     }
 }

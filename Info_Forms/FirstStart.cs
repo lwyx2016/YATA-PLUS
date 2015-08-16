@@ -23,12 +23,8 @@ namespace YATA
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] settings = System.IO.File.ReadAllLines("Settings.ini");
-            List<string> NEWsettings = new List<string>();
-            NEWsettings.AddRange(settings);
-            NEWsettings.Add("first_start_v4=false");
-            System.IO.File.Delete("Settings.ini");
-            System.IO.File.WriteAllLines("Settings.ini", NEWsettings.ToArray());
+            Prefs frm = new Prefs();
+            frm.build_settings();
             this.Close();
         }
 

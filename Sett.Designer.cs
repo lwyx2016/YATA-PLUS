@@ -96,6 +96,7 @@
             this.colDialog = new System.Windows.Forms.ColorDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -857,6 +858,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.checkBox2);
             this.groupBox5.Controls.Add(this.checkBox1);
             this.groupBox5.Controls.Add(this.label22);
             this.groupBox5.Controls.Add(this.numericUpDown2);
@@ -879,6 +881,17 @@
             this.checkBox1.TabIndex = 36;
             this.checkBox1.Text = "Use second top screen texture (only for Solid color /w texture)";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Enabled = false;
+            this.checkBox2.Location = new System.Drawing.Point(425, 43);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(126, 17);
+            this.checkBox2.TabIndex = 37;
+            this.checkBox2.Text = "Remove background";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Sett
             // 
@@ -987,5 +1000,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

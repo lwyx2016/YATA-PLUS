@@ -105,6 +105,7 @@ namespace YATA {
             CHK16.Checked = flags[16] == 1 ? true : false;
             CHK17.Checked = Form1.useBGM == 1 ? true : false;
             if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
+            if (Form1.topDraw == 2) checkBox2.Enabled = true;
             checkBox1.Checked = Form1.UseSecondTOPIMG;
         }
 
@@ -258,9 +259,12 @@ namespace YATA {
             tempbytes = Form1.topcol[0];
                 tempcolors = new List<Color>();
                 tempcolors.Add(Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]));
-            Debug.Print(tempbytes[0].ToString() + " "+ tempbytes[1].ToString() + " " + tempbytes[2].ToString());
                 numericUpDown2.Value = tempbytes[3];
                 numericUpDown1.Value = tempbytes[4];
+            if (Form1.topDraw == 2)
+            {
+                if (Form1.imgOffs[6] == 0x0) checkBox2.Checked = true; else checkBox2.Checked = false;
+            }
                 ColTopScreen = tempcolors.ToArray();
             #endregion
         }
@@ -371,6 +375,20 @@ namespace YATA {
             Form1.topcol[0][0] = ColTopScreen[0].R; Form1.topcol[0][1] = ColTopScreen[0].G; Form1.topcol[0][2] = ColTopScreen[0].B;
             Form1.topcol[0][3] = Convert.ToByte(numericUpDown2.Value);
             Form1.topcol[0][4] = Convert.ToByte(numericUpDown1.Value);
+            if (Form1.topDraw == 2)
+            {
+                if (checkBox2.Checked)
+                {
+                    Form1.topcol[0][5] = 0x00;
+                    Form1.topcol[0][6] = 0x64;
+                    Form1.imgOffs[6] = 0x0;
+                }
+                else
+                {
+                    Form1.topcol[0][5] = 0x56;
+                    Form1.topcol[0][6] = 0x56;
+                }
+            }
             #endregion
         }
 

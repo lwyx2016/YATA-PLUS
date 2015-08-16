@@ -38,7 +38,6 @@
             this.EditDropDown = new System.Windows.Forms.ToolStripDropDownButton();
             this.importImage = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeImageFromTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.importCWAVButton = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCWAVButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -199,7 +198,6 @@
             this.EditDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importImage,
             this.saveImage,
-            this.removeImageFromTheThemeToolStripMenuItem,
             this.toolStripSeparator2,
             this.importCWAVButton,
             this.saveCWAVButton,
@@ -222,7 +220,7 @@
             // 
             this.importImage.Enabled = false;
             this.importImage.Name = "importImage";
-            this.importImage.Size = new System.Drawing.Size(239, 22);
+            this.importImage.Size = new System.Drawing.Size(238, 22);
             this.importImage.Text = "Import Image";
             this.importImage.Click += new System.EventHandler(this.importToolstrip_Click);
             // 
@@ -230,28 +228,20 @@
             // 
             this.saveImage.Enabled = false;
             this.saveImage.Name = "saveImage";
-            this.saveImage.Size = new System.Drawing.Size(239, 22);
+            this.saveImage.Size = new System.Drawing.Size(238, 22);
             this.saveImage.Text = "Save Image";
             this.saveImage.Click += new System.EventHandler(this.saveImage_Click);
-            // 
-            // removeImageFromTheThemeToolStripMenuItem
-            // 
-            this.removeImageFromTheThemeToolStripMenuItem.Name = "removeImageFromTheThemeToolStripMenuItem";
-            this.removeImageFromTheThemeToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.removeImageFromTheThemeToolStripMenuItem.Text = "Remove image from the theme";
-            this.removeImageFromTheThemeToolStripMenuItem.Visible = false;
-            this.removeImageFromTheThemeToolStripMenuItem.Click += new System.EventHandler(this.removeImageFromTheThemeToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(235, 6);
             // 
             // importCWAVButton
             // 
             this.importCWAVButton.Enabled = false;
             this.importCWAVButton.Name = "importCWAVButton";
-            this.importCWAVButton.Size = new System.Drawing.Size(239, 22);
+            this.importCWAVButton.Size = new System.Drawing.Size(238, 22);
             this.importCWAVButton.Text = "Import CWAVs chunk";
             this.importCWAVButton.Click += new System.EventHandler(this.importCWAVButton_Click);
             // 
@@ -259,7 +249,7 @@
             // 
             this.saveCWAVButton.Enabled = false;
             this.saveCWAVButton.Name = "saveCWAVButton";
-            this.saveCWAVButton.Size = new System.Drawing.Size(239, 22);
+            this.saveCWAVButton.Size = new System.Drawing.Size(238, 22);
             this.saveCWAVButton.Text = "Export CWAVs chunk";
             this.saveCWAVButton.Click += new System.EventHandler(this.saveCWAVButton_Click);
             // 
@@ -267,34 +257,34 @@
             // 
             this.editCWAVsToolStripMenuItem.Enabled = false;
             this.editCWAVsToolStripMenuItem.Name = "editCWAVsToolStripMenuItem";
-            this.editCWAVsToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.editCWAVsToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.editCWAVsToolStripMenuItem.Text = "Create CWAVs chunk";
             this.editCWAVsToolStripMenuItem.Click += new System.EventHandler(this.editCWAVsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(235, 6);
             // 
             // cWAVsWavToolStripMenuItem
             // 
             this.cWAVsWavToolStripMenuItem.Enabled = false;
             this.cWAVsWavToolStripMenuItem.Name = "cWAVsWavToolStripMenuItem";
-            this.cWAVsWavToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.cWAVsWavToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.cWAVsWavToolStripMenuItem.Text = "CWAVs Dumper";
             this.cWAVsWavToolStripMenuItem.Click += new System.EventHandler(this.cWAVsWavToolStripMenuItem_Click);
             // 
             // wAVsCWAVsToolStripMenuItem
             // 
             this.wAVsCWAVsToolStripMenuItem.Name = "wAVsCWAVsToolStripMenuItem";
-            this.wAVsCWAVsToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.wAVsCWAVsToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.wAVsCWAVsToolStripMenuItem.Text = "WAV -> CWAV";
             this.wAVsCWAVsToolStripMenuItem.Click += new System.EventHandler(this.wAVsCWAVsToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(235, 6);
             // 
             // bGMCONVERTERSToolStripMenuItem
             // 
@@ -304,7 +294,7 @@
             this.wAVBRSTMToolStripMenuItem,
             this.bRSTMBCSTMToolStripMenuItem});
             this.bGMCONVERTERSToolStripMenuItem.Name = "bGMCONVERTERSToolStripMenuItem";
-            this.bGMCONVERTERSToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.bGMCONVERTERSToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.bGMCONVERTERSToolStripMenuItem.Text = "BGM CONVERTERS";
             // 
             // wAVBCSTMToolStripMenuItem
@@ -336,19 +326,19 @@
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(235, 6);
             // 
             // cWAVWAVToolStripMenuItem
             // 
             this.cWAVWAVToolStripMenuItem.Name = "cWAVWAVToolStripMenuItem";
-            this.cWAVWAVToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.cWAVWAVToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.cWAVWAVToolStripMenuItem.Text = "CWAV/BCSTM/BRSTM -> WAV";
             this.cWAVWAVToolStripMenuItem.Click += new System.EventHandler(this.cWAVWAVToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(235, 6);
             // 
             // toolStripSettings
             // 
@@ -710,7 +700,6 @@
         private System.Windows.Forms.ToolStripMenuItem lZCOMPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lZUNCOMPToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
-        private System.Windows.Forms.ToolStripMenuItem removeImageFromTheThemeToolStripMenuItem;
     }
 }
 

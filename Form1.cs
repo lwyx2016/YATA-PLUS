@@ -99,7 +99,7 @@ namespace YATA
         private bool imgListBoxLoaded = false;
         private string path = null;
         private string filename = null;
-        private uint[] imgOffs;
+        public static uint[] imgOffs;
         private uint[] imgLens;
         private uint[] colorOffs;
         public static byte[][] colChunks;
@@ -139,7 +139,6 @@ namespace YATA
             colChunks = null;
             imgListBoxLoaded = false;
             pictureBox1.Image = null;
-            removeImageFromTheThemeToolStripMenuItem.Visible = false;
 
             saveAsFile.Enabled = false;
             saveFile.Enabled = false;
@@ -452,7 +451,7 @@ namespace YATA
             }
             List<byte[]> TopColor = new List<byte[]>();
             dec_br.BaseStream.Position = topColorOff;
-            TopColor.Add(dec_br.ReadBytes(0x5));
+            if (topDraw == 2) { TopColor.Add(dec_br.ReadBytes(0x7)); } else TopColor.Add(dec_br.ReadBytes(0x5));
             topcol = TopColor.ToArray();
             dec_br.Close();
             colChunks = cols.ToArray();
@@ -467,14 +466,12 @@ namespace YATA
                 if (imgOffs[i] == 0x1 || imgOffs[i] == 0x0) throw new Exception();
                 pictureBox1.Image = imageArray[i];                
                 label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString();
-                if (i == 6) removeImageFromTheThemeToolStripMenuItem.Visible = true;
                 label4.Visible = true;
                 button1.Enabled = true;
                 label5.Visible = false;
             }
             catch (Exception)
             {
-                removeImageFromTheThemeToolStripMenuItem.Visible = false;
                 label5.Visible = true;
                 button1.Enabled = false;
                 label4.Visible = false;
@@ -1744,14 +1741,6 @@ namespace YATA
             OpenFileDialog opn = new OpenFileDialog();
             opn.ShowDialog();
             dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
-        }
-
-        private void removeImageFromTheThemeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            imageArray[6] = Properties.Resources.empty;
-            imgOffs[6] = 0x0;
-            updatePicBox(6);
-            MessageBox.Show("The image was removed");
         }
     }
 }
