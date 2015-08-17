@@ -23,13 +23,13 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 4; /*for the update check the application doesn't count the version, but the release number on gbatemp
+        public static int APP_Public_version = 5; /*for the update check the application doesn't count the version, but the release number on gbatemp
                                                     1: First public yata+ version
                                                     2: Yata+ v1.1
                                                     3: Yata+ v1.2
-                                                    4: Yata+ v1.3 (this one)
+                                                    4: Yata+ v1.3
                                                     5,6,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.3 BETA";
+        public static string APP_STRING_version = "YATA+ v1.3.1 BETA";
         public static int APP_SETT_SIZE_X = 656; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
@@ -1657,6 +1657,7 @@ namespace YATA
                 prc.StartInfo.UseShellExecute = false;
                 prc.Start();
                 prc.WaitForExit();
+                if (!File.Exists(Path.GetTempPath() + "tmp.bcstm")) return;
                 File.WriteAllBytes(sv.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(Path.GetTempPath() + "tmp.bcstm")));
                 File.Delete(Path.GetTempPath() + "tmp.bcstm");
                 if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");

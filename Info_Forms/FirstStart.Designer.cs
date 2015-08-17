@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +78,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(39, 349);
+            this.linkLabel1.Location = new System.Drawing.Point(37, 270);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(359, 13);
             this.linkLabel1.TabIndex = 4;
@@ -90,7 +89,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(12, 179);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 139);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(426, 13);
             this.linkLabel2.TabIndex = 5;
@@ -98,17 +97,6 @@
             this.linkLabel2.Text = "https://gbatemp.net/threads/tutorial-creating-a-3ds-custom-theme-from-scratch-wit" +
     "h-yat...";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(2, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(442, 51);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "also, in the same thread there is a opened poll, where you can vote if you want m" +
-    "e to make some videos on how to use yata+ ,hurry up because you can only vote un" +
-    "til August 15\r\n (EXPIRED)";
             // 
             // FirstStart
             // 
@@ -121,7 +109,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FirstStart";
@@ -143,6 +130,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Label label4;
     }
 }
