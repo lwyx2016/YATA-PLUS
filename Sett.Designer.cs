@@ -95,8 +95,9 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.colDialog = new System.Windows.Forms.ColorDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -169,6 +170,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.help15);
             this.groupBox2.Controls.Add(this.help14);
@@ -209,11 +211,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 292);
+            this.textBox1.Location = new System.Drawing.Point(7, 266);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 20);
+            this.textBox1.Size = new System.Drawing.Size(403, 20);
             this.textBox1.TabIndex = 51;
-            this.textBox1.Visible = false;
             // 
             // help15
             // 
@@ -872,16 +873,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Top Screen \"simple themes\" settings";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 44);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(317, 17);
-            this.checkBox1.TabIndex = 36;
-            this.checkBox1.Text = "Use second top screen texture (only for Solid color /w texture)";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
@@ -892,6 +883,27 @@
             this.checkBox2.TabIndex = 37;
             this.checkBox2.Text = "Remove background";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 44);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(317, 17);
+            this.checkBox1.TabIndex = 36;
+            this.checkBox1.Text = "Use second top screen texture (only for Solid color /w texture)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(34, 318);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(367, 39);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "In this version you can\'t edit the colors from the color box, only from the hex\r\n" +
+    "DON\'T TRY TO EDIT OTHER THINGS, IN THIS CUSTOM VERSION YOU\r\nMUST ONLY EDIT THE F" +
+    "OLDER ARROW FROM THE TEXTBOX";
             // 
             // Sett
             // 
@@ -1001,5 +1013,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label23;
     }
 }

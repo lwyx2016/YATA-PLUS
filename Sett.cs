@@ -340,17 +340,17 @@ namespace YATA {
             cols[11][20] = colFolderArrow[6].R; cols[11][21] = colFolderArrow[6].G; cols[11][22] = colFolderArrow[6].B;
             cols[11][23] = colFolderArrow[7].R; cols[11][24] = colFolderArrow[7].G; cols[11][25] = colFolderArrow[7].B;
             cols[11][26] = colFolderArrow[8].R; cols[11][27] = colFolderArrow[8].G; cols[11][28] = colFolderArrow[8].B;
-           /* textBox1.Text = textBox1.Text.Trim();
+            textBox1.Text = textBox1.Text.Trim();
             string[] a = textBox1.Text.Split(Convert.ToChar(" "));
             MessageBox.Show(a.Length.ToString());
-            if (a.Length != 32) { MessageBox.Show("The raw textbox must contain 0x20 bytes (32 bytes in dec)"); }
+            if (a.Length != 32) { MessageBox.Show("The raw textbox must contain 0x20 bytes (32 bytes in dec), each byte must be separated from the other with a space"); }
             else
             {
                 for (int i = 0; i < 32; i++)
                 {
                     cols[11][i] = (byte)Convert.ToInt32(a[i]);
                 }
-            }*/
+            }
             #endregion
             #region colIconResize
             cols[12][0] = colIconResize[0].R; cols[12][1] = colIconResize[0].G; cols[12][2] = colIconResize[0].B;
