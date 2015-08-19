@@ -33,16 +33,7 @@ namespace YATA
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                    System.Net.WebClient d = new System.Net.WebClient();
-                if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > Form1.APP_Public_version)
-                {
-                    MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\n What are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\n You can disable the auto check for updates in the preferences");
-                }
-                else MessageBox.Show("You're on the latest version of YATA+ !!");
-            }
-            catch { MessageBox.Show("Error while searching for updates"); }
+            MessageBox.Show("Updates are disabled in this version of YATA");
         }
 
 

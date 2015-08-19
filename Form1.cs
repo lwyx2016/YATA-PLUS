@@ -29,7 +29,7 @@ namespace YATA
                                                     3: Yata+ v1.2
                                                     4: Yata+ v1.3
                                                     5,6,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.3.1 BETA";
+        public static string APP_STRING_version = "YATA+ TESTING BRANCH based on: v1.3.1 BETA";
         public static int APP_SETT_SIZE_X = 656; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
@@ -1222,9 +1222,9 @@ namespace YATA
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start_v4="))
+                else if (line.ToLower().StartsWith("first_start_testing="))
                 {
-                    APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
+                    APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(20));
                 }
                 else if (line.ToLower().StartsWith("shift_btns="))
                 {
@@ -1263,11 +1263,7 @@ namespace YATA
             {
                 if (APP_check_UPD)
                 {
-                    System.Net.WebClient d = new System.Net.WebClient();
-                    if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > APP_Public_version)
-                    {
-                        MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\nWhat are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\nYou can disable the auto check for updates in the preferences");
-                    }
+                  
                 }
             }
             catch {/*Do nothing*/}

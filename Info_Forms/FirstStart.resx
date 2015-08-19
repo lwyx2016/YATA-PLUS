@@ -125,11 +125,18 @@ If you never made a custom theme or you aren't so "expert" you should check out
 this guide made by me for using YATA+,
 
 
-Changes in this version of YATA+:
- -Fixed a bug in the simulator
- -Now the no background flag is supported for the mood-matrix type themes
+
+
+
+
+
+
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>WARNING:
+this is a custom version of yata only for experimenting with the folder arrow, don't use this version to change other things in the themes, and don't replace this version to YATA+ v1.3.1 or more</value>
   </data>
 </root>

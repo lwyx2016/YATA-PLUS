@@ -49,7 +49,7 @@ namespace YATA {
             lines[3] = "wait_editor=" + checkBox4.Checked.ToString();
             lines[4] = "clean_on_exit=" + checkBox5.Checked.ToString();
             lines[5] = "load_bgm=" + checkBox6.Checked.ToString();
-            lines[6] = "first_start_v4=false";
+            lines[6] = "first_start_testing=false";
             lines[7] = "shift_btns=" + numericUpDown1.Value.ToString();
             lines[8] = "check_updates=" + checkBox7.Checked.ToString();
             lines[9] = "happy_easter=false";

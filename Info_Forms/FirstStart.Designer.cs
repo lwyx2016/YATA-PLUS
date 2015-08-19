@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,14 +72,14 @@
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(0, 385);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.Size = new System.Drawing.Size(123, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "{VERSION}";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(37, 270);
+            this.linkLabel1.Location = new System.Drawing.Point(36, 297);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(359, 13);
             this.linkLabel1.TabIndex = 4;
@@ -98,12 +99,22 @@
     "h-yat...";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(12, 165);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(421, 74);
+            this.label4.TabIndex = 6;
+            this.label4.Text = resources.GetString("label4.Text");
+            // 
             // FirstStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 401);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label3);
@@ -130,5 +141,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label label4;
     }
 }
