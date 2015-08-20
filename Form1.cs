@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using NAudio.Wave;
 using YATA.Converter;
 using System.Text;
+using System.Reflection;
 
 namespace YATA
 {
@@ -23,20 +24,22 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 5; /*for the update check the application doesn't count the version, but the release number on gbatemp
+        public static int APP_Public_version = 6; /*for the update check the application doesn't count the version, but the release number on gbatemp
                                                     1: First public yata+ version
                                                     2: Yata+ v1.1
                                                     3: Yata+ v1.2
-                                                    4: Yata+ v1.3
-                                                    5,6,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.3.1 BETA";
+                                                    4/5: Yata+ v1.3
+                                                    6: Yata+ v1.4 (this one)
+                                                    7,8,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.4 BETA";
         public static int APP_SETT_SIZE_X = 656; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
         #endregion
 
-        public Form1()
+        public Form1(string arg)
         {
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             int dll = 0;
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
@@ -45,6 +48,10 @@ namespace YATA
             try
             {
                 InitializeComponent();
+                if (File.Exists(arg))
+                {
+                    loadFromDragAndDrop(new string[1] { arg });
+                }
             }
             catch (Exception ex)
             {               
@@ -160,7 +167,6 @@ namespace YATA
                 System.IO.File.Delete(path + "dec_" + filename);
             }
             this.Refresh();
-
             path = openFileLZ.FileName.Substring(0, openFileLZ.FileName.LastIndexOf("\\") + 1);
             filename = openFileLZ.FileName.Substring(path.Length, openFileLZ.FileName.Length - path.Length);
             try
@@ -245,6 +251,7 @@ namespace YATA
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
             if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            this.Refresh();
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
             if (filepath.Contains("♪")) MessageBox.Show("The path or the file name contains some special characters, the file won't be loaded");

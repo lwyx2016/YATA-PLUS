@@ -126,8 +126,10 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -Fixed a bug in the simulator
- -Now the no background flag is supported for the mood-matrix type themes
+ -Now the Windows media player embedded in YATA can be disabled (This is still experimental)
+ -Changed from RGB to BGR some values of the folder back arrow in the theme settings
+ -Now YATA supports parametrers (aka you can set it as default application to open themes, see in the preferences)
+ -Other fixes
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>

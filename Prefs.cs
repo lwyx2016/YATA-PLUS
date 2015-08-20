@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ namespace YATA {
     public partial class Prefs : Form {
         public Prefs() {
             InitializeComponent();
+            checkBox1.Checked = File.Exists("NoWMP.txt");
             checkBox2.Checked = Form1.APP_ShowUI_Sim;
             checkBox3.Checked = Form1.APP_AutoGen_preview;
             checkBox4.Checked = Form1.APP_Wait_editor;
@@ -26,6 +28,7 @@ namespace YATA {
 
         private void button2_Click(object sender, EventArgs e)
         {
+            checkBox1.Checked = false;
             checkBox2.Checked = true;
             checkBox3.Checked = false;
             checkBox4.Checked = true;
@@ -55,6 +58,14 @@ namespace YATA {
             lines[9] = "happy_easter=false";
             lines[10] = "sett_size=" + numericUpDown2.Value.ToString() + numericUpDown3.Value.ToString();
             lines[11] = "exp_both_screens=" + checkBox8.Checked.ToString();
+            if (checkBox1.Checked)
+            {
+                if (!File.Exists("NoWMP.txt")) File.WriteAllText("NoWMP.txt", "If this file exists YATA won't load the windows media player");
+            }
+            else
+            {
+                if (File.Exists("NoWMP.txt")) File.Delete("NoWMP.txt");
+            }
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;
