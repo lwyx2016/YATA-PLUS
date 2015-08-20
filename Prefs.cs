@@ -58,14 +58,6 @@ namespace YATA {
             lines[9] = "happy_easter=false";
             lines[10] = "sett_size=" + numericUpDown2.Value.ToString() + numericUpDown3.Value.ToString();
             lines[11] = "exp_both_screens=" + checkBox8.Checked.ToString();
-            if (checkBox1.Checked)
-            {
-                if (!File.Exists("NoWMP.txt")) File.WriteAllText("NoWMP.txt", "If this file exists YATA won't load the windows media player");
-            }
-            else
-            {
-                if (File.Exists("NoWMP.txt")) File.Delete("NoWMP.txt");
-            }
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

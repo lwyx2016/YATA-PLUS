@@ -97,6 +97,12 @@
     <Compile Include="Converter\ConvertSETTINGS.Designer.cs">
       <DependentUpon>ConvertSETTINGS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Info_Forms\AddYATAtoDEFAULT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Info_Forms\AddYATAtoDEFAULT.Designer.cs">
+      <DependentUpon>AddYATAtoDEFAULT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Info_Forms\Credits.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -26,16 +26,6 @@ namespace YATA
         {            
             Prefs frm = new Prefs();
             frm.build_settings();
-            if (checkBox1.Checked)
-            {
-                MessageBox.Show("The application must be restarted, you must reopen it manually");
-                if (!File.Exists("NoWMP.txt")) File.WriteAllText("NoWMP.txt", "If this file exists YATA won't load the windows media player");
-                Application.Exit();
-            }
-            else
-            {
-                if (File.Exists("NoWMP.txt")) File.Delete("NoWMP.txt");
-            }
             this.Close();
         }
 
@@ -47,7 +37,6 @@ namespace YATA
         private void FirstStart_Load(object sender, EventArgs e)
         {
             label3.Text = Form1.APP_STRING_version;
-            checkBox1.Checked = File.Exists("NoWMP.txt");
         }
     }
 }

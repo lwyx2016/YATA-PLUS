@@ -126,7 +126,7 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -Now the Windows media player embedded in YATA can be disabled (This is still experimental)
+ -Released "YATA+ Lite" wich doesn't require windows media player
  -Changed from RGB to BGR some values of the folder back arrow in the theme settings
  -Now YATA supports parametrers (aka you can set it as default application to open themes, see in the preferences)
  -Other fixes
