@@ -32,7 +32,7 @@ namespace YATA
                                                     6: Yata+ v1.4 (this one)
                                                     7,8,etc..: Future updates*/
         public static string APP_STRING_version = "YATA+ v1.4 BETA";
-        public static int APP_SETT_SIZE_X = 656; //To remember the size
+        public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
         #endregion

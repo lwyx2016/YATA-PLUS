@@ -35,13 +35,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(117, 9);
+            this.label1.Location = new System.Drawing.Point(111, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(222, 48);
             this.label1.TabIndex = 0;
@@ -60,7 +61,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(2, 58);
+            this.label2.Location = new System.Drawing.Point(2, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(442, 300);
             this.label2.TabIndex = 2;
@@ -78,7 +79,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(40, 311);
+            this.linkLabel1.Location = new System.Drawing.Point(45, 322);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(359, 13);
             this.linkLabel1.TabIndex = 4;
@@ -89,7 +90,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(12, 139);
+            this.linkLabel2.Location = new System.Drawing.Point(12, 130);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(426, 13);
             this.linkLabel2.TabIndex = 5;
@@ -98,12 +99,24 @@
     "h-yat...";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(144, 216);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(151, 13);
+            this.linkLabel3.TabIndex = 6;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "https://youtu.be/JilVtq_Wd6U";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
             // FirstStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 401);
             this.ControlBox = false;
+            this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label3);
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel3;
     }
 }

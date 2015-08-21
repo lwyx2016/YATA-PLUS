@@ -38,5 +38,10 @@ namespace YATA
         {
             label3.Text = Form1.APP_STRING_version;
         }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(((LinkLabel)sender).Text);
+        }
     }
 }
