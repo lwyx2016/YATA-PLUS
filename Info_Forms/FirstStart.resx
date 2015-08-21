@@ -129,6 +129,7 @@ Changes in this version of YATA+:
  -Released "YATA+ Lite" wich doesn't require windows media player
  -Changed from RGB to BGR some values of the folder back arrow in the theme settings
  -Now YATA supports parametrers (aka you can set it as default application to open themes, see in the preferences)
+ -New icon wooohooo
  -Other fixes
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:

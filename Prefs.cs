@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,7 +13,6 @@ namespace YATA {
     public partial class Prefs : Form {
         public Prefs() {
             InitializeComponent();
-            checkBox1.Checked = File.Exists("NoWMP.txt");
             checkBox2.Checked = Form1.APP_ShowUI_Sim;
             checkBox3.Checked = Form1.APP_AutoGen_preview;
             checkBox4.Checked = Form1.APP_Wait_editor;
@@ -28,7 +28,6 @@ namespace YATA {
 
         private void button2_Click(object sender, EventArgs e)
         {
-            checkBox1.Checked = false;
             checkBox2.Checked = true;
             checkBox3.Checked = false;
             checkBox4.Checked = true;
@@ -81,6 +80,11 @@ namespace YATA {
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             if (!checkBox7.Checked) MessageBox.Show("If you don't update YATA+, you may miss some important new features in the next updates....");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://youtu.be/JilVtq_Wd6U");
         }
     }
 }

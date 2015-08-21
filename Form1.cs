@@ -39,7 +39,7 @@ namespace YATA
 
         public Form1(string arg)
         {
-            Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             int dll = 0;
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
