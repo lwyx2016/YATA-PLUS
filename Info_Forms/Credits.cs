@@ -18,7 +18,8 @@ namespace YATA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Main changes from the previous version of YATA+:\r\n -Fixed a bug in the theme simulator\r\n -Now the no background flag is supported for the mood-matrix type themes");
+            FirstStart dlg = new FirstStart();
+            dlg.ShowDialog();
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -262,6 +262,7 @@
     <None Include="Resources\BrstmConv.exe" />
     <None Include="Resources\space.png" />
     <None Include="Resources\adv.png" />
+    <None Include="Resources\Cursor.png" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>

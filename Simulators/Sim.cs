@@ -137,6 +137,29 @@ namespace YATA
                     }
                 }
             }
+            #endregion
+            #region cursor
+            Bitmap Cursor_img = Properties.Resources.Cursor;
+            tempbytes = Form1.colChunks[0];
+            Color Cursor_main = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);
+            Color Cursor_glow = Color.FromArgb(0xFF, tempbytes[9], tempbytes[10], tempbytes[11]);
+            for (int i = 0; i < Cursor_img.Width; i++)
+            {
+                for (int ii = 0; ii < Cursor_img.Height; ii++)
+                {
+                    Color col = Cursor_img.GetPixel(i, ii);                    
+                    if (col.B == 255 && col.A == 255)
+                    {
+                        Cursor_img.SetPixel(i, ii, Cursor_main);
+                    }
+                    else if (col.A != 0)
+                    {
+                        Cursor_img.SetPixel(i, ii, Cursor_glow);
+                    }
+                }
+            }
+            Graphics g = Graphics.FromImage(img);
+            g.DrawImage(Cursor_img,new Rectangle(24,44, Cursor_img.Width, Cursor_img.Height));
             Top_screen_overlay.BackgroundImage = img;
             #endregion
         }

@@ -130,7 +130,7 @@ Changes in this version of YATA+:
  -Fixed support for back arrow, thanks everyone on gbatemp who figured out how those bytes works
  -Now YATA supports file associations (bin, brstm, bcstm, cwav), see here how:
 
-- Added more elements to simulator
+- Added cursor in the theme simulator
  -New icon wooohooo
  -Other fixes
 
