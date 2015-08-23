@@ -211,6 +211,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\AnimatedBotScreenTemplate.bin" />
     <None Include="Resources\body_empty.bin" />
     <None Include="Resources\friends.png" />
   </ItemGroup>
@@ -239,6 +240,8 @@
     <None Include="Resources\in_vgmstream.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\PanoramicTemplate.bin" />
+    <None Include="Resources\StaticThemeTemplate.bin" />
     <None Include="Resources\test.exe" />
   </ItemGroup>
   <ItemGroup>

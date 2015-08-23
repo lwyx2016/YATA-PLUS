@@ -71,22 +71,22 @@ namespace YATA.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] AnimatedBotScreenTemplate {
+            get {
+                object obj = ResourceManager.GetObject("AnimatedBotScreenTemplate", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap battery {
             get {
                 object obj = ResourceManager.GetObject("battery", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
-        /// </summary>
-        internal static byte[] body_empty {
-            get {
-                object obj = ResourceManager.GetObject("body_empty", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -241,6 +241,16 @@ namespace YATA.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] PanoramicTemplate {
+            get {
+                object obj = ResourceManager.GetObject("PanoramicTemplate", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap prev_unsupported {
@@ -267,6 +277,16 @@ namespace YATA.Properties {
             get {
                 object obj = ResourceManager.GetObject("space", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] StaticThemeTemplate {
+            get {
+                object obj = ResourceManager.GetObject("StaticThemeTemplate", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

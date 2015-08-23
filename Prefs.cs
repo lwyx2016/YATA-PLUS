@@ -84,7 +84,7 @@ namespace YATA {
 
         private void button4_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://youtu.be/JilVtq_Wd6U");
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=-_c-JKx1Lvg");
         }
     }
 }

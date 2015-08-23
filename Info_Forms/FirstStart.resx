@@ -130,8 +130,9 @@ Changes in this version of YATA+:
  -Fixed support for back arrow, thanks everyone on gbatemp who figured out how those bytes works
  -Now YATA supports file associations (bin, brstm, bcstm, cwav), see here how:
 
-- Added cursor in the theme simulator
+ -Added cursor in the theme simulator
  -New icon wooohooo
+ -Now drag and drop supports importing images (only PNGs)
  -Other fixes
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:

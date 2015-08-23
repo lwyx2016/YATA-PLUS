@@ -35,24 +35,40 @@ namespace YATA
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
+        public static string APP_LNG = "ita";
         #endregion
 
         public Form1(string arg)
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            int dll = 0;
+          /*  int dll = 0;
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
             if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
             if (dll != 0) InitializeComponent();
             try
-            {
+            {*/
                 InitializeComponent();
+                string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
+                foreach (string line in lng)
+                {
+                if (!line.StartsWith(";"))
+                {
+                    string[] tmp = line.Split(Convert.ToChar("="));
+                    tmp[1] = tmp[1].Replace(@"\r\n", Environment.NewLine);
+                    if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                    else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                    else if (line.StartsWith("drpdwn")) { (toolStrip1.Items[tmp[0]]).Text = tmp[1]; }
+                    else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                    else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                    else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                }
+                }
                 if (File.Exists(arg))
                 {
                     loadFromDragAndDrop(new string[1] { arg });
                 }
-            }
+            /*}
             catch (Exception ex)
             {               
                 MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -77,7 +93,7 @@ namespace YATA
                 if (sv.ShowDialog() == DialogResult.OK) { System.IO.File.WriteAllLines(sv.FileName, LOG); }
                 MessageBox.Show("You can find more information in the windows' event viewer");
                 InitializeComponent();
-            }
+            }*/
         }
         //Constants
         private const int RGB565 = 0;
@@ -123,19 +139,9 @@ namespace YATA
         public static byte magicByte;
         public static byte[] outFile;
 
-        private void newFile_Click(object sender, EventArgs e)
-        {
-            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
-            {
-                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.body_empty);
-                openFileLZ.FileName = saveTheme.FileName;
-                OPEN_FILE();                
-            }
-        }
-
         void OPEN_FILE() 
         {
-            label6.Visible = false;
+            lbl_DragBgm.Visible = false;
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename)) { System.IO.File.Delete(path + "dec_" + filename); }
             UseSecondTOPIMG = false;
             imgOffs = null;
@@ -147,18 +153,18 @@ namespace YATA
             imgListBoxLoaded = false;
             pictureBox1.Image = null;
 
-            saveAsFile.Enabled = false;
-            saveFile.Enabled = false;
-            saveAsFile.Enabled = false;
-            generatePreviewForCHMMToolStripMenuItem.Enabled = false;
-            importImage.Enabled = false;
-            saveImage.Enabled = false;
-            importCWAVButton.Enabled = false;
-            saveCWAVButton.Enabled = false;
-            editCWAVsToolStripMenuItem.Enabled = false;
-            cWAVsWavToolStripMenuItem.Enabled = false;
-            toolStripSettings.Enabled = false;
-            SimToolStrip.Enabled = false;
+            file_saveAS.Enabled = false;
+            file_save.Enabled = false;
+            file_saveAS.Enabled = false;
+            file_prev.Enabled = false;
+            edit_importIMG.Enabled = false;
+            edit_saveIMG.Enabled = false;
+            edit_impCWAV.Enabled = false;
+            edit_saveCWAV.Enabled = false;
+            edit_createCWAV.Enabled = false;
+            edit_CWAVdump.Enabled = false;
+            drpdwn_settings.Enabled = false;
+            drpdwn_sim.Enabled = false;
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
             if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
@@ -223,17 +229,17 @@ namespace YATA
             loadFlags();
             loadList();
             loadColors();
-            SimToolStrip.Enabled = true;
-            toolStripSettings.Enabled = true;
-            saveFile.Enabled = true;
-            saveAsFile.Enabled = true;
-            saveImage.Enabled = true;
-            generatePreviewForCHMMToolStripMenuItem.Enabled = true;
-            importImage.Enabled = true;
-            saveCWAVButton.Enabled = true;
-            importCWAVButton.Enabled = true;
-            cWAVsWavToolStripMenuItem.Enabled = true;
-            editCWAVsToolStripMenuItem.Enabled = true;
+            drpdwn_sim.Enabled = true;
+            drpdwn_settings.Enabled = true;
+            file_save.Enabled = true;
+            file_saveAS.Enabled = true;
+            edit_saveIMG.Enabled = true;
+            file_prev.Enabled = true;
+            edit_importIMG.Enabled = true;
+            edit_saveCWAV.Enabled = true;
+            edit_impCWAV.Enabled = true;
+            edit_CWAVdump.Enabled = true;
+            edit_createCWAV.Enabled = true;
             if (APP_Auto_Load_bgm && File.Exists(path + "bgm.bcstm")) 
             {
                 if (useBGM != 1) MessageBox.Show("This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!");
@@ -474,13 +480,13 @@ namespace YATA
                 pictureBox1.Image = imageArray[i];                
                 label4.Text = "Image size: " + imageArray[i].Width.ToString() + "x" + imageArray[i].Height.ToString();
                 label4.Visible = true;
-                button1.Enabled = true;
-                label5.Visible = false;
+                btn_photoedit.Enabled = true;
+                lbl_ImgNotInc.Visible = false;
             }
             catch (Exception)
             {
-                label5.Visible = true;
-                button1.Enabled = false;
+                lbl_ImgNotInc.Visible = true;
+                btn_photoedit.Enabled = false;
                 label4.Visible = false;
             }
         }
@@ -1304,9 +1310,9 @@ namespace YATA
             prc.Start();
             if (APP_Wait_editor)
             {
-                label3.Visible = true;
+                lbl_notCrashed.Visible = true;
                 prc.WaitForExit();
-                label3.Visible = false;
+                lbl_notCrashed.Visible = false;
                 Image a = Image.FromFile(Path.GetTempPath() + "THEMEIMG_" + imgListBox.SelectedIndex.ToString() + ".png");
                 if (a != imageArray[imgListBox.SelectedIndex])
                 {
@@ -1544,6 +1550,14 @@ namespace YATA
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
+                else if (MAGIC[0] == "137" && MAGIC[1] == "80" && MAGIC[2] == "78" && MAGIC[3] == "71")//PNG
+                {
+                    if (imgListBox.Items.Count > 0 && imgListBox.SelectedIndex >= 0)
+                    {
+                        import_image(files[0]);
+                    }
+                    else MessageBox.Show("To import an image you must open a theme first");
+                }
                 else
                 {
                     openFileLZ.FileName = files[0];
@@ -1749,6 +1763,36 @@ namespace YATA
             OpenFileDialog opn = new OpenFileDialog();
             opn.ShowDialog();
             dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
+        }
+
+        private void basicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.StaticThemeTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
+        }
+
+        private void panoramicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.PanoramicTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
+        }
+
+        private void bottomScreenAnimatedTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.AnimatedBotScreenTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
         }
     }
 }
