@@ -28,84 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_WavtoCWAV = new System.Windows.Forms.Button();
+            this.btn_convert = new System.Windows.Forms.Button();
+            this.btn_WAVbrstm = new System.Windows.Forms.Button();
+            this.btn_BRSTMbcstm = new System.Windows.Forms.Button();
+            this.btn_WAVbcstm = new System.Windows.Forms.Button();
+            this.btn_play = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_cancel
             // 
-            this.button1.Location = new System.Drawing.Point(309, 242);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_cancel.Location = new System.Drawing.Point(309, 242);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 0;
+            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_WavtoCWAV
             // 
-            this.button2.Location = new System.Drawing.Point(24, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(327, 41);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Convert from WAV to CWAV";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_WavtoCWAV.Location = new System.Drawing.Point(24, 12);
+            this.btn_WavtoCWAV.Name = "btn_WavtoCWAV";
+            this.btn_WavtoCWAV.Size = new System.Drawing.Size(327, 41);
+            this.btn_WavtoCWAV.TabIndex = 1;
+            this.btn_WavtoCWAV.Text = "Convert from WAV to CWAV";
+            this.btn_WavtoCWAV.UseVisualStyleBackColor = true;
+            this.btn_WavtoCWAV.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_convert
             // 
-            this.button3.Location = new System.Drawing.Point(24, 59);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(327, 41);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Convert from CWAV/BCSTM/BRSTM (Vgmstream) to WAV";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_convert.Location = new System.Drawing.Point(24, 59);
+            this.btn_convert.Name = "btn_convert";
+            this.btn_convert.Size = new System.Drawing.Size(327, 41);
+            this.btn_convert.TabIndex = 2;
+            this.btn_convert.Text = "Convert from CWAV/BCSTM/BRSTM (Vgmstream) to WAV";
+            this.btn_convert.UseVisualStyleBackColor = true;
+            this.btn_convert.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button5
+            // btn_WAVbrstm
             // 
-            this.button5.Location = new System.Drawing.Point(24, 106);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(231, 41);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Convert from WAV to BRSTM";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btn_WAVbrstm.Location = new System.Drawing.Point(24, 106);
+            this.btn_WAVbrstm.Name = "btn_WAVbrstm";
+            this.btn_WAVbrstm.Size = new System.Drawing.Size(151, 41);
+            this.btn_WAVbrstm.TabIndex = 4;
+            this.btn_WAVbrstm.Text = "Convert from WAV to BRSTM";
+            this.btn_WAVbrstm.UseVisualStyleBackColor = true;
+            this.btn_WAVbrstm.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button6
+            // btn_BRSTMbcstm
             // 
-            this.button6.Location = new System.Drawing.Point(24, 153);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(327, 41);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Convert from BRSTM to BCSTM";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_BRSTMbcstm.Location = new System.Drawing.Point(24, 153);
+            this.btn_BRSTMbcstm.Name = "btn_BRSTMbcstm";
+            this.btn_BRSTMbcstm.Size = new System.Drawing.Size(327, 41);
+            this.btn_BRSTMbcstm.TabIndex = 5;
+            this.btn_BRSTMbcstm.Text = "Convert from BRSTM to BCSTM";
+            this.btn_BRSTMbcstm.UseVisualStyleBackColor = true;
+            this.btn_BRSTMbcstm.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // btn_WAVbcstm
             // 
-            this.button7.Location = new System.Drawing.Point(261, 106);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(90, 41);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Auto WAV to BCSTM";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btn_WAVbcstm.Location = new System.Drawing.Point(181, 106);
+            this.btn_WAVbcstm.Name = "btn_WAVbcstm";
+            this.btn_WAVbcstm.Size = new System.Drawing.Size(170, 41);
+            this.btn_WAVbcstm.TabIndex = 6;
+            this.btn_WAVbcstm.Text = "Auto WAV to BCSTM";
+            this.btn_WAVbcstm.UseVisualStyleBackColor = true;
+            this.btn_WAVbcstm.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
+            // btn_play
             // 
-            this.button8.Location = new System.Drawing.Point(24, 200);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(327, 23);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Play the file";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btn_play.Location = new System.Drawing.Point(24, 200);
+            this.btn_play.Name = "btn_play";
+            this.btn_play.Size = new System.Drawing.Size(327, 23);
+            this.btn_play.TabIndex = 7;
+            this.btn_play.Text = "Play the file";
+            this.btn_play.UseVisualStyleBackColor = true;
+            this.btn_play.Click += new System.EventHandler(this.button8_Click);
             // 
             // ConvertSETTINGS
             // 
@@ -113,13 +113,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 266);
             this.ControlBox = false;
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_play);
+            this.Controls.Add(this.btn_WAVbcstm);
+            this.Controls.Add(this.btn_BRSTMbcstm);
+            this.Controls.Add(this.btn_WAVbrstm);
+            this.Controls.Add(this.btn_convert);
+            this.Controls.Add(this.btn_WavtoCWAV);
+            this.Controls.Add(this.btn_cancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ConvertSETTINGS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -132,12 +132,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button3;
-        public System.Windows.Forms.Button button5;
-        public System.Windows.Forms.Button button6;
-        public System.Windows.Forms.Button button7;
-        public System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btn_cancel;
+        public System.Windows.Forms.Button btn_WavtoCWAV;
+        public System.Windows.Forms.Button btn_convert;
+        public System.Windows.Forms.Button btn_WAVbrstm;
+        public System.Windows.Forms.Button btn_BRSTMbcstm;
+        public System.Windows.Forms.Button btn_WAVbcstm;
+        public System.Windows.Forms.Button btn_play;
     }
 }

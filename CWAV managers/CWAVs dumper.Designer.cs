@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CWAVs_dumper));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_dump = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_play = new System.Windows.Forms.Button();
+            this.btn_exportCWAV = new System.Windows.Forms.Button();
+            this.btn_exportWAV = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_dump
             // 
-            this.button1.Location = new System.Drawing.Point(12, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Dump from the theme";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_dump.Location = new System.Drawing.Point(12, 230);
+            this.btn_dump.Name = "btn_dump";
+            this.btn_dump.Size = new System.Drawing.Size(164, 42);
+            this.btn_dump.TabIndex = 0;
+            this.btn_dump.Text = "Dump from the theme";
+            this.btn_dump.UseVisualStyleBackColor = true;
+            this.btn_dump.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox1
             // 
@@ -60,38 +60,38 @@
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // button2
+            // btn_play
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(307, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Play";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_play.Enabled = false;
+            this.btn_play.Location = new System.Drawing.Point(307, 12);
+            this.btn_play.Name = "btn_play";
+            this.btn_play.Size = new System.Drawing.Size(75, 23);
+            this.btn_play.TabIndex = 2;
+            this.btn_play.Text = "Play";
+            this.btn_play.UseVisualStyleBackColor = true;
+            this.btn_play.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_exportCWAV
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(307, 134);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 42);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Export all CWAVs\r\n";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_exportCWAV.Enabled = false;
+            this.btn_exportCWAV.Location = new System.Drawing.Point(307, 134);
+            this.btn_exportCWAV.Name = "btn_exportCWAV";
+            this.btn_exportCWAV.Size = new System.Drawing.Size(75, 42);
+            this.btn_exportCWAV.TabIndex = 3;
+            this.btn_exportCWAV.Text = "Export all CWAVs\r\n";
+            this.btn_exportCWAV.UseVisualStyleBackColor = true;
+            this.btn_exportCWAV.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btn_exportWAV
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(307, 182);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 42);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Export all WAVs\r\n";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_exportWAV.Enabled = false;
+            this.btn_exportWAV.Location = new System.Drawing.Point(307, 182);
+            this.btn_exportWAV.Name = "btn_exportWAV";
+            this.btn_exportWAV.Size = new System.Drawing.Size(75, 42);
+            this.btn_exportWAV.TabIndex = 4;
+            this.btn_exportWAV.Text = "Export all WAVs\r\n";
+            this.btn_exportWAV.UseVisualStyleBackColor = true;
+            this.btn_exportWAV.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -122,11 +122,11 @@
             this.ClientSize = new System.Drawing.Size(390, 282);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_exportWAV);
+            this.Controls.Add(this.btn_exportCWAV);
+            this.Controls.Add(this.btn_play);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_dump);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -143,11 +143,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_dump;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_play;
+        private System.Windows.Forms.Button btn_exportCWAV;
+        private System.Windows.Forms.Button btn_exportWAV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private AxWMPLib.AxWindowsMediaPlayer Player;

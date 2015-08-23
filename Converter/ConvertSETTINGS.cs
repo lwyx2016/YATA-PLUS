@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -15,6 +16,18 @@ namespace YATA.Converter
         public ConvertSETTINGS()
         {
             InitializeComponent();
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\CONVERTsettings.txt"))
+            {
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\CONVERTsettings.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

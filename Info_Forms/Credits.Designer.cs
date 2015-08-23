@@ -37,10 +37,11 @@
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_updates = new System.Windows.Forms.Button();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.button2 = new System.Windows.Forms.Button();
+            this.lbl_trs = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -127,16 +128,16 @@
             this.linkLabel5.Text = "Official thread HERE";
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
             // 
-            // button3
+            // btn_updates
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(200, 382);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Check for updates";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_updates.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_updates.Location = new System.Drawing.Point(200, 382);
+            this.btn_updates.Name = "btn_updates";
+            this.btn_updates.Size = new System.Drawing.Size(150, 23);
+            this.btn_updates.TabIndex = 10;
+            this.btn_updates.Text = "Check for updates";
+            this.btn_updates.UseVisualStyleBackColor = true;
+            this.btn_updates.Click += new System.EventHandler(this.button3_Click);
             // 
             // linkLabel6
             // 
@@ -170,14 +171,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // lbl_trs
+            // 
+            this.lbl_trs.AutoSize = true;
+            this.lbl_trs.Location = new System.Drawing.Point(193, 332);
+            this.lbl_trs.Name = "lbl_trs";
+            this.lbl_trs.Size = new System.Drawing.Size(148, 13);
+            this.lbl_trs.TabIndex = 13;
+            this.lbl_trs.Text = "English translation by Exelix11";
+            this.lbl_trs.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 408);
+            this.Controls.Add(this.lbl_trs);
             this.Controls.Add(this.linkLabel7);
             this.Controls.Add(this.linkLabel6);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_updates);
             this.Controls.Add(this.linkLabel5);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.linkLabel3);
@@ -212,9 +224,10 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_updates;
         private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lbl_trs;
     }
 }

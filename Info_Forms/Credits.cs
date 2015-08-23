@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,9 +12,29 @@ namespace YATA
 {
     public partial class Credits : Form
     {
+        List<String> messages = new List<string>() {
+            "Hey, looks like there is a new version of yata+ out there !! \r\n What are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\n You can disable the auto check for updates in the preferences",
+            "You're on the latest version of YATA+ !!",
+            "Error while searching for updates",
+        };
         public Credits()
         {
             InitializeComponent();
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\credits.txt"))
+            {
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\credits.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,11 +60,11 @@ namespace YATA
                     System.Net.WebClient d = new System.Net.WebClient();
                 if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > Form1.APP_Public_version)
                 {
-                    MessageBox.Show("Hey, looks like there is a new version of yata+ out there !! \r\n What are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\n You can disable the auto check for updates in the preferences");
+                    MessageBox.Show(messages[0]);
                 }
-                else MessageBox.Show("You're on the latest version of YATA+ !!");
+                else MessageBox.Show(messages[1]);
             }
-            catch { MessageBox.Show("Error while searching for updates"); }
+            catch { MessageBox.Show(messages[2]); }
         }
 
 

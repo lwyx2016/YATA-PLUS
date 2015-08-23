@@ -24,12 +24,18 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sett));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grp_draw = new System.Windows.Forms.GroupBox();
             this.CB_botDraw = new System.Windows.Forms.ComboBox();
             this.CB_topDraw = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grp_colors = new System.Windows.Forms.GroupBox();
+            this.ArrowNum3 = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ArrowNum2 = new System.Windows.Forms.NumericUpDown();
+            this.ArrowNum1 = new System.Windows.Forms.NumericUpDown();
+            this.label23 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.help15 = new System.Windows.Forms.Button();
             this.help14 = new System.Windows.Forms.Button();
@@ -66,14 +72,14 @@
             this.label22 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
-            this.buttonSaveSett = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.grp_frame = new System.Windows.Forms.GroupBox();
             this.CB_botFrame = new System.Windows.Forms.ComboBox();
             this.CB_topFrame = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grp_flags = new System.Windows.Forms.GroupBox();
             this.CHK17 = new System.Windows.Forms.CheckBox();
             this.CHK16 = new System.Windows.Forms.CheckBox();
             this.CHK15 = new System.Windows.Forms.CheckBox();
@@ -92,41 +98,35 @@
             this.CHK2 = new System.Windows.Forms.CheckBox();
             this.CHK1 = new System.Windows.Forms.CheckBox();
             this.CHK0 = new System.Windows.Forms.CheckBox();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.colDialog = new System.Windows.Forms.ColorDialog();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.ArrowNum1 = new System.Windows.Forms.NumericUpDown();
-            this.ArrowNum2 = new System.Windows.Forms.NumericUpDown();
-            this.ArrowNum3 = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grp_topSIMPLE = new System.Windows.Forms.GroupBox();
+            this.CHK_bg = new System.Windows.Forms.CheckBox();
+            this.CHK_scndtex = new System.Windows.Forms.CheckBox();
+            this.grp_draw.SuspendLayout();
+            this.grp_colors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).BeginInit();
+            this.grp_frame.SuspendLayout();
+            this.grp_flags.SuspendLayout();
+            this.grp_topSIMPLE.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // grp_draw
             // 
-            this.groupBox1.Controls.Add(this.CB_botDraw);
-            this.groupBox1.Controls.Add(this.CB_topDraw);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(5, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 94);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Draw Type";
+            this.grp_draw.Controls.Add(this.CB_botDraw);
+            this.grp_draw.Controls.Add(this.CB_topDraw);
+            this.grp_draw.Controls.Add(this.label2);
+            this.grp_draw.Controls.Add(this.label1);
+            this.grp_draw.Location = new System.Drawing.Point(5, 12);
+            this.grp_draw.Name = "grp_draw";
+            this.grp_draw.Size = new System.Drawing.Size(209, 94);
+            this.grp_draw.TabIndex = 0;
+            this.grp_draw.TabStop = false;
+            this.grp_draw.Text = "Draw Type";
             // 
             // CB_botDraw
             // 
@@ -173,54 +173,116 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Top screen:";
             // 
-            // groupBox2
+            // grp_colors
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grp_colors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.ArrowNum3);
-            this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.ArrowNum2);
-            this.groupBox2.Controls.Add(this.ArrowNum1);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.help15);
-            this.groupBox2.Controls.Add(this.help14);
-            this.groupBox2.Controls.Add(this.help13);
-            this.groupBox2.Controls.Add(this.help12);
-            this.groupBox2.Controls.Add(this.help11);
-            this.groupBox2.Controls.Add(this.help10);
-            this.groupBox2.Controls.Add(this.help9);
-            this.groupBox2.Controls.Add(this.help8);
-            this.groupBox2.Controls.Add(this.help7);
-            this.groupBox2.Controls.Add(this.help6);
-            this.groupBox2.Controls.Add(this.help5);
-            this.groupBox2.Controls.Add(this.help4);
-            this.groupBox2.Controls.Add(this.help3);
-            this.groupBox2.Controls.Add(this.help2);
-            this.groupBox2.Controls.Add(this.help1);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(5, 112);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(416, 423);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Colors";
+            this.grp_colors.Controls.Add(this.ArrowNum3);
+            this.grp_colors.Controls.Add(this.label25);
+            this.grp_colors.Controls.Add(this.label24);
+            this.grp_colors.Controls.Add(this.ArrowNum2);
+            this.grp_colors.Controls.Add(this.ArrowNum1);
+            this.grp_colors.Controls.Add(this.label23);
+            this.grp_colors.Controls.Add(this.textBox1);
+            this.grp_colors.Controls.Add(this.help15);
+            this.grp_colors.Controls.Add(this.help14);
+            this.grp_colors.Controls.Add(this.help13);
+            this.grp_colors.Controls.Add(this.help12);
+            this.grp_colors.Controls.Add(this.help11);
+            this.grp_colors.Controls.Add(this.help10);
+            this.grp_colors.Controls.Add(this.help9);
+            this.grp_colors.Controls.Add(this.help8);
+            this.grp_colors.Controls.Add(this.help7);
+            this.grp_colors.Controls.Add(this.help6);
+            this.grp_colors.Controls.Add(this.help5);
+            this.grp_colors.Controls.Add(this.help4);
+            this.grp_colors.Controls.Add(this.help3);
+            this.grp_colors.Controls.Add(this.help2);
+            this.grp_colors.Controls.Add(this.help1);
+            this.grp_colors.Controls.Add(this.label19);
+            this.grp_colors.Controls.Add(this.label18);
+            this.grp_colors.Controls.Add(this.label17);
+            this.grp_colors.Controls.Add(this.label16);
+            this.grp_colors.Controls.Add(this.label15);
+            this.grp_colors.Controls.Add(this.label14);
+            this.grp_colors.Controls.Add(this.label13);
+            this.grp_colors.Controls.Add(this.label12);
+            this.grp_colors.Controls.Add(this.label11);
+            this.grp_colors.Controls.Add(this.label10);
+            this.grp_colors.Controls.Add(this.label9);
+            this.grp_colors.Controls.Add(this.label8);
+            this.grp_colors.Controls.Add(this.label7);
+            this.grp_colors.Controls.Add(this.label6);
+            this.grp_colors.Controls.Add(this.label5);
+            this.grp_colors.Location = new System.Drawing.Point(5, 112);
+            this.grp_colors.Name = "grp_colors";
+            this.grp_colors.Size = new System.Drawing.Size(416, 423);
+            this.grp_colors.TabIndex = 1;
+            this.grp_colors.TabStop = false;
+            this.grp_colors.Text = "Colors";
+            // 
+            // ArrowNum3
+            // 
+            this.ArrowNum3.Location = new System.Drawing.Point(366, 317);
+            this.ArrowNum3.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.ArrowNum3.Name = "ArrowNum3";
+            this.ArrowNum3.Size = new System.Drawing.Size(44, 20);
+            this.ArrowNum3.TabIndex = 55;
+            // 
+            // label25
+            // 
+            this.label25.Location = new System.Drawing.Point(287, 314);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(83, 32);
+            this.label25.TabIndex = 57;
+            this.label25.Text = "Glow/Shadow Opacity";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(151, 321);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(86, 13);
+            this.label24.TabIndex = 56;
+            this.label24.Text = "Shadow Position";
+            // 
+            // ArrowNum2
+            // 
+            this.ArrowNum2.Location = new System.Drawing.Point(243, 317);
+            this.ArrowNum2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.ArrowNum2.Name = "ArrowNum2";
+            this.ArrowNum2.Size = new System.Drawing.Size(38, 20);
+            this.ArrowNum2.TabIndex = 54;
+            // 
+            // ArrowNum1
+            // 
+            this.ArrowNum1.Location = new System.Drawing.Point(97, 317);
+            this.ArrowNum1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.ArrowNum1.Name = "ArrowNum1";
+            this.ArrowNum1.Size = new System.Drawing.Size(48, 20);
+            this.ArrowNum1.TabIndex = 53;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(7, 321);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(84, 13);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Shadow v offset";
             // 
             // textBox1
             // 
@@ -568,31 +630,31 @@
             this.label21.TabIndex = 32;
             this.label21.Text = "squares opacity:";
             // 
-            // buttonSaveSett
+            // btn_save
             // 
-            this.buttonSaveSett.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveSett.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonSaveSett.Location = new System.Drawing.Point(554, 509);
-            this.buttonSaveSett.Name = "buttonSaveSett";
-            this.buttonSaveSett.Size = new System.Drawing.Size(90, 26);
-            this.buttonSaveSett.TabIndex = 2;
-            this.buttonSaveSett.Text = "Save";
-            this.buttonSaveSett.UseVisualStyleBackColor = true;
-            this.buttonSaveSett.Click += new System.EventHandler(this.buttonSaveSett_Click);
+            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_save.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_save.Location = new System.Drawing.Point(554, 509);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(90, 26);
+            this.btn_save.TabIndex = 2;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.buttonSaveSett_Click);
             // 
-            // groupBox3
+            // grp_frame
             // 
-            this.groupBox3.Controls.Add(this.CB_botFrame);
-            this.groupBox3.Controls.Add(this.CB_topFrame);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Location = new System.Drawing.Point(220, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(202, 94);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Frame Type";
+            this.grp_frame.Controls.Add(this.CB_botFrame);
+            this.grp_frame.Controls.Add(this.CB_topFrame);
+            this.grp_frame.Controls.Add(this.label3);
+            this.grp_frame.Controls.Add(this.label4);
+            this.grp_frame.Controls.Add(this.button1);
+            this.grp_frame.Location = new System.Drawing.Point(220, 12);
+            this.grp_frame.Name = "grp_frame";
+            this.grp_frame.Size = new System.Drawing.Size(202, 94);
+            this.grp_frame.TabIndex = 4;
+            this.grp_frame.TabStop = false;
+            this.grp_frame.Text = "Frame Type";
             // 
             // CB_botFrame
             // 
@@ -649,34 +711,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox4
+            // grp_flags
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grp_flags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.CHK17);
-            this.groupBox4.Controls.Add(this.CHK16);
-            this.groupBox4.Controls.Add(this.CHK15);
-            this.groupBox4.Controls.Add(this.CHK14);
-            this.groupBox4.Controls.Add(this.CHK13);
-            this.groupBox4.Controls.Add(this.CHK12);
-            this.groupBox4.Controls.Add(this.CHK11);
-            this.groupBox4.Controls.Add(this.CHK10);
-            this.groupBox4.Controls.Add(this.CHK9);
-            this.groupBox4.Controls.Add(this.CHK8);
-            this.groupBox4.Controls.Add(this.CHK7);
-            this.groupBox4.Controls.Add(this.CHK6);
-            this.groupBox4.Controls.Add(this.CHK5);
-            this.groupBox4.Controls.Add(this.CHK4);
-            this.groupBox4.Controls.Add(this.CHK3);
-            this.groupBox4.Controls.Add(this.CHK2);
-            this.groupBox4.Controls.Add(this.CHK1);
-            this.groupBox4.Controls.Add(this.CHK0);
-            this.groupBox4.Location = new System.Drawing.Point(427, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(223, 490);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Flags";
+            this.grp_flags.Controls.Add(this.CHK17);
+            this.grp_flags.Controls.Add(this.CHK16);
+            this.grp_flags.Controls.Add(this.CHK15);
+            this.grp_flags.Controls.Add(this.CHK14);
+            this.grp_flags.Controls.Add(this.CHK13);
+            this.grp_flags.Controls.Add(this.CHK12);
+            this.grp_flags.Controls.Add(this.CHK11);
+            this.grp_flags.Controls.Add(this.CHK10);
+            this.grp_flags.Controls.Add(this.CHK9);
+            this.grp_flags.Controls.Add(this.CHK8);
+            this.grp_flags.Controls.Add(this.CHK7);
+            this.grp_flags.Controls.Add(this.CHK6);
+            this.grp_flags.Controls.Add(this.CHK5);
+            this.grp_flags.Controls.Add(this.CHK4);
+            this.grp_flags.Controls.Add(this.CHK3);
+            this.grp_flags.Controls.Add(this.CHK2);
+            this.grp_flags.Controls.Add(this.CHK1);
+            this.grp_flags.Controls.Add(this.CHK0);
+            this.grp_flags.Location = new System.Drawing.Point(427, 12);
+            this.grp_flags.Name = "grp_flags";
+            this.grp_flags.Size = new System.Drawing.Size(223, 490);
+            this.grp_flags.TabIndex = 2;
+            this.grp_flags.TabStop = false;
+            this.grp_flags.Text = "Flags";
             // 
             // CHK17
             // 
@@ -858,169 +920,108 @@
             this.CHK0.Text = "Enable Cursor Color";
             this.CHK0.UseVisualStyleBackColor = true;
             // 
-            // cancelButton
+            // btn_cancel
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(437, 507);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(90, 26);
-            this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cancel.Location = new System.Drawing.Point(437, 507);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(90, 26);
+            this.btn_cancel.TabIndex = 5;
+            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // groupBox5
+            // grp_topSIMPLE
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.grp_topSIMPLE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.checkBox2);
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.numericUpDown2);
-            this.groupBox5.Controls.Add(this.numericUpDown1);
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Location = new System.Drawing.Point(5, 541);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(645, 67);
-            this.groupBox5.TabIndex = 36;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Top Screen \"simple themes\" settings";
+            this.grp_topSIMPLE.Controls.Add(this.CHK_bg);
+            this.grp_topSIMPLE.Controls.Add(this.CHK_scndtex);
+            this.grp_topSIMPLE.Controls.Add(this.label22);
+            this.grp_topSIMPLE.Controls.Add(this.numericUpDown2);
+            this.grp_topSIMPLE.Controls.Add(this.numericUpDown1);
+            this.grp_topSIMPLE.Controls.Add(this.label21);
+            this.grp_topSIMPLE.Controls.Add(this.label20);
+            this.grp_topSIMPLE.Location = new System.Drawing.Point(5, 541);
+            this.grp_topSIMPLE.Name = "grp_topSIMPLE";
+            this.grp_topSIMPLE.Size = new System.Drawing.Size(645, 67);
+            this.grp_topSIMPLE.TabIndex = 36;
+            this.grp_topSIMPLE.TabStop = false;
+            this.grp_topSIMPLE.Text = "Top Screen \"simple themes\" settings";
             // 
-            // checkBox2
+            // CHK_bg
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Enabled = false;
-            this.checkBox2.Location = new System.Drawing.Point(425, 43);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(126, 17);
-            this.checkBox2.TabIndex = 37;
-            this.checkBox2.Text = "Remove background";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.CHK_bg.AutoSize = true;
+            this.CHK_bg.Enabled = false;
+            this.CHK_bg.Location = new System.Drawing.Point(425, 43);
+            this.CHK_bg.Name = "CHK_bg";
+            this.CHK_bg.Size = new System.Drawing.Size(126, 17);
+            this.CHK_bg.TabIndex = 37;
+            this.CHK_bg.Text = "Remove background";
+            this.CHK_bg.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // CHK_scndtex
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 44);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(317, 17);
-            this.checkBox1.TabIndex = 36;
-            this.checkBox1.Text = "Use second top screen texture (only for Solid color /w texture)";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(7, 321);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(84, 13);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "Shadow v offset";
-            // 
-            // ArrowNum1
-            // 
-            this.ArrowNum1.Location = new System.Drawing.Point(97, 317);
-            this.ArrowNum1.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.ArrowNum1.Name = "ArrowNum1";
-            this.ArrowNum1.Size = new System.Drawing.Size(48, 20);
-            this.ArrowNum1.TabIndex = 53;
-            // 
-            // ArrowNum2
-            // 
-            this.ArrowNum2.Location = new System.Drawing.Point(243, 317);
-            this.ArrowNum2.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.ArrowNum2.Name = "ArrowNum2";
-            this.ArrowNum2.Size = new System.Drawing.Size(38, 20);
-            this.ArrowNum2.TabIndex = 54;
-            // 
-            // ArrowNum3
-            // 
-            this.ArrowNum3.Location = new System.Drawing.Point(366, 317);
-            this.ArrowNum3.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.ArrowNum3.Name = "ArrowNum3";
-            this.ArrowNum3.Size = new System.Drawing.Size(44, 20);
-            this.ArrowNum3.TabIndex = 55;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(151, 321);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 13);
-            this.label24.TabIndex = 56;
-            this.label24.Text = "Shadow Position";
-            // 
-            // label25
-            // 
-            this.label25.Location = new System.Drawing.Point(287, 314);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(83, 32);
-            this.label25.TabIndex = 57;
-            this.label25.Text = "Glow/Shadow Opacity";
+            this.CHK_scndtex.AutoSize = true;
+            this.CHK_scndtex.Location = new System.Drawing.Point(6, 44);
+            this.CHK_scndtex.Name = "CHK_scndtex";
+            this.CHK_scndtex.Size = new System.Drawing.Size(317, 17);
+            this.CHK_scndtex.TabIndex = 36;
+            this.CHK_scndtex.Text = "Use second top screen texture (only for Solid color /w texture)";
+            this.CHK_scndtex.UseVisualStyleBackColor = true;
             // 
             // Sett
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 613);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.buttonSaveSett);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grp_topSIMPLE);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.grp_flags);
+            this.Controls.Add(this.grp_frame);
+            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.grp_colors);
+            this.Controls.Add(this.grp_draw);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(678, 652);
             this.Name = "Sett";
             this.Text = "Theme settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FORM_Closing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Load += new System.EventHandler(this.Sett_Load);
+            this.grp_draw.ResumeLayout(false);
+            this.grp_draw.PerformLayout();
+            this.grp_colors.ResumeLayout(false);
+            this.grp_colors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).EndInit();
+            this.grp_frame.ResumeLayout(false);
+            this.grp_frame.PerformLayout();
+            this.grp_flags.ResumeLayout(false);
+            this.grp_flags.PerformLayout();
+            this.grp_topSIMPLE.ResumeLayout(false);
+            this.grp_topSIMPLE.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button buttonSaveSett;
+        private System.Windows.Forms.GroupBox grp_draw;
+        private System.Windows.Forms.GroupBox grp_colors;
+        private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CB_botDraw;
         private System.Windows.Forms.ComboBox CB_topDraw;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grp_frame;
         private System.Windows.Forms.ComboBox CB_botFrame;
         private System.Windows.Forms.ComboBox CB_topFrame;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grp_flags;
         private System.Windows.Forms.CheckBox CHK16;
         private System.Windows.Forms.CheckBox CHK15;
         private System.Windows.Forms.CheckBox CHK14;
@@ -1038,7 +1039,7 @@
         private System.Windows.Forms.CheckBox CHK2;
         private System.Windows.Forms.CheckBox CHK1;
         private System.Windows.Forms.CheckBox CHK0;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -1076,11 +1077,11 @@
         private System.Windows.Forms.Button help4;
         private System.Windows.Forms.Button help3;
         private System.Windows.Forms.Button help2;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox grp_topSIMPLE;
+        private System.Windows.Forms.CheckBox CHK_scndtex;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox CHK_bg;
         private System.Windows.Forms.NumericUpDown ArrowNum3;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;

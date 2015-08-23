@@ -13,6 +13,19 @@ namespace YATA
 {
     public partial class CwavReplace : Form
     {
+        List<string> messages = new List<string> { "Move cursor",
+"Launch App",
+"Create/Delete Folder",
+"Close App",
+"Open 3DS",
+"Bottom screen - frame 1",
+"Bottom screen - frame 2",
+"Bottom screen - frame 3",
+        "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings",
+        "This CWAV is enabled",
+        "This cwav file is invalid !",
+        "This CWAV is not enabled",
+        "Completed"};
         string[] FileList = new string[8] { "", "", "", "", "", "", "", "" };
         bool[] EnabledList = new bool[8] { false, false, false, false, false, false, false, false };
         byte[] LaunchApp;
@@ -28,11 +41,37 @@ namespace YATA
         public CwavReplace()
         {
             InitializeComponent();
+            #region language
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\CwavReplace.txt"))
+            {
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\CwavReplace.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("men_gen")) { men_gen.Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                    }
+                }
+                listBox1.Items.Add(messages[0]);
+                listBox1.Items.Add(messages[1]);
+                listBox1.Items.Add(messages[2]);
+                listBox1.Items.Add(messages[3]);
+                listBox1.Items.Add(messages[4]);
+                listBox1.Items.Add(messages[5]);
+                listBox1.Items.Add(messages[6]);
+                listBox1.Items.Add(messages[7]);
+            }
+            #endregion
         }
 
         private void CwavReplace_Load(object sender, EventArgs e)
         {
-            if (Form1.enableSec[16] == 0) { MessageBox.Show("To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings"); this.Close(); }
+            if (Form1.enableSec[16] == 0) { MessageBox.Show(messages[8]); this.Close(); }
             FileList = new string[8] { "", "", "", "", "", "", "", "" };
             EnabledList = new bool[8] { false, false, false, false, false, false, false, false };
         }
@@ -45,10 +84,10 @@ namespace YATA
                 {
                     FileList[listBox1.SelectedIndex] = openFileDialog1.FileName;
                     EnabledList[listBox1.SelectedIndex] = true;
-                    label4.Text = "This CWAV is enabled";
-                    label4.ForeColor = Color.Green;
+                    lbl_enabled.Text = messages[9];
+                    lbl_enabled.ForeColor = Color.Green;
                 }
-                else { MessageBox.Show("This cwav file is invalid !"); }
+                else { MessageBox.Show(messages[10]); }
             }
         }
 
@@ -56,25 +95,25 @@ namespace YATA
         {
             if (listBox1.SelectedIndex != null && listBox1.SelectedIndex >= 0 && listBox1.SelectedIndex <= 7)
             {
-                button2.Enabled = true;
-                button3.Enabled = true;
-                label4.Visible = true;
+                btn_select.Enabled = true;
+                btn_remove.Enabled = true;
+                lbl_enabled.Visible = true;
                 if (EnabledList[listBox1.SelectedIndex])
                 {
-                    label4.Text = "This CWAV is enabled";
-                    label4.ForeColor = Color.Green;
+                    lbl_enabled.Text = messages[9];
+                    lbl_enabled.ForeColor = Color.Green;
                 }
                 else
                 {
-                    label4.Text = "This CWAV is not enabled";
-                    label4.ForeColor = Color.Red;
+                    lbl_enabled.Text = messages[11];
+                    lbl_enabled.ForeColor = Color.Red;
                 }
             }
             else
             {
-                button2.Enabled = false;
-                button3.Enabled = false;
-                label4.Visible = false;
+                btn_select.Enabled = false;
+                btn_remove.Enabled = false;
+                lbl_enabled.Visible = false;
             }
         }
 
@@ -82,8 +121,8 @@ namespace YATA
         {
             FileList[listBox1.SelectedIndex] = "";
             EnabledList[listBox1.SelectedIndex] = false;
-            label4.ForeColor = Color.Red;
-            label4.Text = "This CWAV is not enabled";
+            lbl_enabled.ForeColor = Color.Red;
+            lbl_enabled.Text = messages[11];
         }
 
         bool importFrames;
@@ -331,7 +370,7 @@ namespace YATA
                 Form1.cwav = File.ReadAllBytes(Path.GetTempPath() + "cwav_tmp.bin");
                 System.IO.File.Delete(Path.GetTempPath() + "cwav_tmp.bin");
             }
-            MessageBox.Show("Completed");
+            MessageBox.Show(messages[12]);
         }
 
         private void generateButDontImportToolStripMenuItem_Click(object sender, EventArgs e)

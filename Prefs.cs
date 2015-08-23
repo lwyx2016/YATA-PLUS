@@ -11,30 +11,62 @@ using System.Windows.Forms;
 
 namespace YATA {
     public partial class Prefs : Form {
+
+        #region strings
+        List<String> messages = new List<string>() {
+            "If you don't update YATA+, you may miss some important new features in the next updates....",
+        "Restart YATA to fully change the language"};
+        #endregion
+
         public Prefs() {
             InitializeComponent();
-            checkBox2.Checked = Form1.APP_ShowUI_Sim;
-            checkBox3.Checked = Form1.APP_AutoGen_preview;
-            checkBox4.Checked = Form1.APP_Wait_editor;
-            checkBox5.Checked = Form1.APP_Clean_On_exit;
-            checkBox6.Checked = Form1.APP_Auto_Load_bgm;
-            checkBox7.Checked = Form1.APP_check_UPD;
-            checkBox8.Checked = Form1.APP_export_both_screens;
+            comboBox1.Items.Add("English");
+            if (Directory.Exists("languages"))
+            {
+                foreach (string dir in Directory.GetDirectories("languages"))
+                {
+                    comboBox1.Items.Add(dir.Remove(0, 10));
+                }
+            }
+            chb_UISim.Checked = Form1.APP_ShowUI_Sim;
+            chb_SavePrev.Checked = Form1.APP_AutoGen_preview;
+            chb_wait.Checked = Form1.APP_Wait_editor;
+            chb_delTempFile.Checked = Form1.APP_Clean_On_exit;
+            chb_loadBGM.Checked = Form1.APP_Auto_Load_bgm;
+            chb_updates.Checked = Form1.APP_check_UPD;
+            chb_ExportBot.Checked = Form1.APP_export_both_screens;
             textBox1.Text = Form1.APP_photo_edtor;
             numericUpDown1.Value = Form1.APP_Move_buttons_colors;
             numericUpDown2.Value = Form1.APP_SETT_SIZE_X;
             numericUpDown3.Value = Form1.APP_SETT_SIZE_Y;
+            comboBox1.Text = Form1.APP_LNG;
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\prefs.txt"))
+            {
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\prefs.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {                        
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("chb")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            checkBox2.Checked = true;
-            checkBox3.Checked = false;
-            checkBox4.Checked = true;
-            checkBox5.Checked = false;
-            checkBox6.Checked = true;
-            checkBox7.Checked = true;
-            checkBox8.Checked = true;
+            chb_UISim.Checked = true;
+            chb_SavePrev.Checked = false;
+            chb_wait.Checked = true;
+            chb_delTempFile.Checked = false;
+            chb_loadBGM.Checked = true;
+            chb_updates.Checked = true;
+            chb_ExportBot.Checked = true;
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
             build_settings();
@@ -44,19 +76,20 @@ namespace YATA {
 
         public void build_settings()
         {
-            string[] lines = new string[12];
-            lines[0] = "ui_sim=" + checkBox2.Checked.ToString();
-            lines[1] = "gen_prev=" + checkBox3.Checked.ToString();
+            string[] lines = new string[13];
+            lines[0] = "ui_sim=" + chb_UISim.Checked.ToString();
+            lines[1] = "gen_prev=" + chb_SavePrev.Checked.ToString();
             lines[2] = "photo_edit=" + textBox1.Text;
-            lines[3] = "wait_editor=" + checkBox4.Checked.ToString();
-            lines[4] = "clean_on_exit=" + checkBox5.Checked.ToString();
-            lines[5] = "load_bgm=" + checkBox6.Checked.ToString();
+            lines[3] = "wait_editor=" + chb_wait.Checked.ToString();
+            lines[4] = "clean_on_exit=" + chb_delTempFile.Checked.ToString();
+            lines[5] = "load_bgm=" + chb_loadBGM.Checked.ToString();
             lines[6] = "first_start_v4=false";
             lines[7] = "shift_btns=" + numericUpDown1.Value.ToString();
-            lines[8] = "check_updates=" + checkBox7.Checked.ToString();
+            lines[8] = "check_updates=" + chb_updates.Checked.ToString();
             lines[9] = "happy_easter=false";
             lines[10] = "sett_size=" + numericUpDown2.Value.ToString() + numericUpDown3.Value.ToString();
-            lines[11] = "exp_both_screens=" + checkBox8.Checked.ToString();
+            lines[11] = "exp_both_screens=" + chb_ExportBot.Checked.ToString();
+            lines[12] = "lng=" + comboBox1.Text;
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;
@@ -64,6 +97,7 @@ namespace YATA {
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (Form1.APP_LNG != comboBox1.Text) MessageBox.Show(messages[1]);
             build_settings();
             Form1.load_prefs();
             this.Close();
@@ -79,12 +113,17 @@ namespace YATA {
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (!checkBox7.Checked) MessageBox.Show("If you don't update YATA+, you may miss some important new features in the next updates....");
+            if (!chb_updates.Checked) MessageBox.Show(messages[0]);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=-_c-JKx1Lvg");
+        }
+
+        private void Prefs_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

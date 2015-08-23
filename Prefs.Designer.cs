@@ -24,79 +24,81 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prefs));
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.chb_UISim = new System.Windows.Forms.CheckBox();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_default = new System.Windows.Forms.Button();
+            this.chb_SavePrev = new System.Windows.Forms.CheckBox();
+            this.lbl_photoedit = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.chb_wait = new System.Windows.Forms.CheckBox();
+            this.chb_delTempFile = new System.Windows.Forms.CheckBox();
+            this.chb_loadBGM = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_shift = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.chb_updates = new System.Windows.Forms.CheckBox();
+            this.lbl_size = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.chb_ExportBot = new System.Windows.Forms.CheckBox();
+            this.btn_setASdef = new System.Windows.Forms.Button();
+            this.lbl_lang = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
-            // checkBox2
+            // chb_UISim
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(15, 26);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(201, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Show Home Menu UI in the simulator\r\n";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chb_UISim.AutoSize = true;
+            this.chb_UISim.Location = new System.Drawing.Point(15, 26);
+            this.chb_UISim.Name = "chb_UISim";
+            this.chb_UISim.Size = new System.Drawing.Size(201, 17);
+            this.chb_UISim.TabIndex = 1;
+            this.chb_UISim.Text = "Show Home Menu UI in the simulator\r\n";
+            this.chb_UISim.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_save
             // 
-            this.button1.Location = new System.Drawing.Point(31, 300);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_save.Location = new System.Drawing.Point(31, 333);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.TabIndex = 2;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_default
             // 
-            this.button2.Location = new System.Drawing.Point(217, 300);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Revert to default";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_default.Location = new System.Drawing.Point(217, 333);
+            this.btn_default.Name = "btn_default";
+            this.btn_default.Size = new System.Drawing.Size(119, 23);
+            this.btn_default.TabIndex = 3;
+            this.btn_default.Text = "Revert to default";
+            this.btn_default.UseVisualStyleBackColor = true;
+            this.btn_default.Click += new System.EventHandler(this.button2_Click);
             // 
-            // checkBox3
+            // chb_SavePrev
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 49);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(277, 17);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Automatically generate preview when saving a theme";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chb_SavePrev.AutoSize = true;
+            this.chb_SavePrev.Location = new System.Drawing.Point(15, 49);
+            this.chb_SavePrev.Name = "chb_SavePrev";
+            this.chb_SavePrev.Size = new System.Drawing.Size(277, 17);
+            this.chb_SavePrev.TabIndex = 4;
+            this.chb_SavePrev.Text = "Automatically generate preview when saving a theme";
+            this.chb_SavePrev.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbl_photoedit
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 149);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Your photo editing program executable:";
+            this.lbl_photoedit.AutoSize = true;
+            this.lbl_photoedit.Location = new System.Drawing.Point(12, 149);
+            this.lbl_photoedit.Name = "lbl_photoedit";
+            this.lbl_photoedit.Size = new System.Drawing.Size(192, 13);
+            this.lbl_photoedit.TabIndex = 5;
+            this.lbl_photoedit.Text = "Your photo editing program executable:";
             // 
             // textBox1
             // 
@@ -120,40 +122,40 @@
             this.openFileDialog1.Filter = "exe files|*.exe";
             this.openFileDialog1.Title = "Open your phot editor";
             // 
-            // checkBox4
+            // chb_wait
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(12, 193);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(227, 17);
-            this.checkBox4.TabIndex = 8;
-            this.checkBox4.Text = "Wait the editor before resuming application";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.chb_wait.AutoSize = true;
+            this.chb_wait.Location = new System.Drawing.Point(12, 193);
+            this.chb_wait.Name = "chb_wait";
+            this.chb_wait.Size = new System.Drawing.Size(227, 17);
+            this.chb_wait.TabIndex = 8;
+            this.chb_wait.Text = "Wait the editor before resuming application";
+            this.chb_wait.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chb_delTempFile
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(15, 95);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(240, 17);
-            this.checkBox5.TabIndex = 9;
-            this.checkBox5.Text = "Delete Body_LZ_dec.bin when closing YATA";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chb_delTempFile.AutoSize = true;
+            this.chb_delTempFile.Location = new System.Drawing.Point(15, 95);
+            this.chb_delTempFile.Name = "chb_delTempFile";
+            this.chb_delTempFile.Size = new System.Drawing.Size(240, 17);
+            this.chb_delTempFile.TabIndex = 9;
+            this.chb_delTempFile.Text = "Delete Body_LZ_dec.bin when closing YATA";
+            this.chb_delTempFile.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // chb_loadBGM
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(15, 116);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(276, 30);
-            this.checkBox6.TabIndex = 10;
-            this.checkBox6.Text = "Automatically load bgm.bcstm when opening a theme\r\n        (This may slow down th" +
+            this.chb_loadBGM.AutoSize = true;
+            this.chb_loadBGM.Location = new System.Drawing.Point(15, 116);
+            this.chb_loadBGM.Name = "chb_loadBGM";
+            this.chb_loadBGM.Size = new System.Drawing.Size(276, 30);
+            this.chb_loadBGM.TabIndex = 10;
+            this.chb_loadBGM.Text = "Automatically load bgm.bcstm when opening a theme\r\n        (This may slow down th" +
     "e loading of themes)";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.chb_loadBGM.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(252, 229);
+            this.numericUpDown1.Location = new System.Drawing.Point(252, 218);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             150,
             0,
@@ -163,43 +165,43 @@
             this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown1.TabIndex = 11;
             // 
-            // label2
+            // lbl_shift
             // 
-            this.label2.Location = new System.Drawing.Point(12, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(234, 48);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Shift color buttons on the right of:\r\n(For computers where the system font isn\'t " +
+            this.lbl_shift.Location = new System.Drawing.Point(12, 218);
+            this.lbl_shift.Name = "lbl_shift";
+            this.lbl_shift.Size = new System.Drawing.Size(234, 48);
+            this.lbl_shift.TabIndex = 12;
+            this.lbl_shift.Text = "Shift color buttons on the right of:\r\n(For computers where the system font isn\'t " +
     "the english default one)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(318, 208);
+            this.label3.Location = new System.Drawing.Point(318, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "px";
             // 
-            // checkBox7
+            // chb_updates
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(15, 3);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(230, 17);
-            this.checkBox7.TabIndex = 14;
-            this.checkBox7.Text = "Automatically check for updates on start up";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.chb_updates.AutoSize = true;
+            this.chb_updates.Location = new System.Drawing.Point(15, 3);
+            this.chb_updates.Name = "chb_updates";
+            this.chb_updates.Size = new System.Drawing.Size(230, 17);
+            this.chb_updates.TabIndex = 14;
+            this.chb_updates.Text = "Automatically check for updates on start up";
+            this.chb_updates.UseVisualStyleBackColor = true;
+            this.chb_updates.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
-            // label4
+            // lbl_size
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 276);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(319, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Set the size for the settings window:   X:                     Y:                " +
+            this.lbl_size.AutoSize = true;
+            this.lbl_size.Location = new System.Drawing.Point(12, 276);
+            this.lbl_size.Name = "lbl_size";
+            this.lbl_size.Size = new System.Drawing.Size(319, 13);
+            this.lbl_size.TabIndex = 15;
+            this.lbl_size.Text = "Set the size for the settings window:   X:                     Y:                " +
     " ";
             // 
             // numericUpDown2
@@ -246,50 +248,69 @@
             0,
             0});
             // 
-            // checkBox8
+            // chb_ExportBot
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(15, 72);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(329, 17);
-            this.checkBox8.TabIndex = 18;
-            this.checkBox8.Text = "When exporting preview include both the top and bottom screen";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chb_ExportBot.AutoSize = true;
+            this.chb_ExportBot.Location = new System.Drawing.Point(15, 72);
+            this.chb_ExportBot.Name = "chb_ExportBot";
+            this.chb_ExportBot.Size = new System.Drawing.Size(329, 17);
+            this.chb_ExportBot.TabIndex = 18;
+            this.chb_ExportBot.Text = "When exporting preview include both the top and bottom screen";
+            this.chb_ExportBot.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_setASdef
             // 
-            this.button4.Location = new System.Drawing.Point(12, 329);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(332, 23);
-            this.button4.TabIndex = 19;
-            this.button4.Text = "How to set YATA as the default app for opening themes";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_setASdef.Location = new System.Drawing.Point(15, 362);
+            this.btn_setASdef.Name = "btn_setASdef";
+            this.btn_setASdef.Size = new System.Drawing.Size(332, 23);
+            this.btn_setASdef.TabIndex = 19;
+            this.btn_setASdef.Text = "How to set YATA as the default app for opening themes";
+            this.btn_setASdef.UseVisualStyleBackColor = true;
+            this.btn_setASdef.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // lbl_lang
+            // 
+            this.lbl_lang.AutoSize = true;
+            this.lbl_lang.Location = new System.Drawing.Point(52, 301);
+            this.lbl_lang.Name = "lbl_lang";
+            this.lbl_lang.Size = new System.Drawing.Size(54, 13);
+            this.lbl_lang.TabIndex = 20;
+            this.lbl_lang.Text = "language:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(125, 298);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(157, 21);
+            this.comboBox1.TabIndex = 21;
             // 
             // Prefs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 357);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.checkBox8);
+            this.ClientSize = new System.Drawing.Size(357, 394);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lbl_lang);
+            this.Controls.Add(this.btn_setASdef);
+            this.Controls.Add(this.chb_ExportBot);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.checkBox7);
+            this.Controls.Add(this.lbl_size);
+            this.Controls.Add(this.chb_updates);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.chb_loadBGM);
+            this.Controls.Add(this.chb_delTempFile);
+            this.Controls.Add(this.chb_wait);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_photoedit);
+            this.Controls.Add(this.chb_SavePrev);
+            this.Controls.Add(this.btn_default);
+            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.chb_UISim);
+            this.Controls.Add(this.lbl_shift);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -297,6 +318,7 @@
             this.Name = "Prefs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preferences";
+            this.Load += new System.EventHandler(this.Prefs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
@@ -306,25 +328,27 @@
         }
 
         #endregion
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chb_UISim;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_default;
+        private System.Windows.Forms.CheckBox chb_SavePrev;
+        private System.Windows.Forms.Label lbl_photoedit;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox chb_wait;
+        private System.Windows.Forms.CheckBox chb_delTempFile;
+        private System.Windows.Forms.CheckBox chb_loadBGM;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_shift;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chb_updates;
+        private System.Windows.Forms.Label lbl_size;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox chb_ExportBot;
+        private System.Windows.Forms.Button btn_setASdef;
+        private System.Windows.Forms.Label lbl_lang;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

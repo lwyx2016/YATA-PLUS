@@ -37,8 +37,23 @@ namespace YATA
         public static bool APP_export_both_screens = true;
         public static string APP_LNG = "ita";
         #endregion
+        #region strings
+        List<String> messages = new List<string>() {
+            "Error on reading file",
+            "This file is not a theme",
+            "This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!",
+            "The path or the file name contains some special characters, the file won't be loaded",
+            "Image size:", "Saving theme,please wait", "Error: Image is not a power of 2.",
+            "Theme saved !",
+            "Hey, looks like there is a new version of yata+ out there !! \r\nWhat are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\nYou can disable the auto check for updates in the preferences",
+            "To use this funcion you must set your photo editor program executable in the preferences (File -> Preferences)",
+            "the image has been modified, do you want to import the new one ?",
+            "To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ",
+            "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings", "If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?",
+            "If you don't save and reload the theme you may encounter some bugs",
+            "The input file is not a valid BRSTM file" };
+        #endregion
 
-        List<String> messages = new List<string>() {"Error on reading file","This file is not a theme", "This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!", "The path or the file name contains some special characters, the file won't be loaded", "Image size:", "Saving theme,please wait", "Error: Image is not a power of 2.", "Theme saved !", "Hey, looks like there is a new version of yata+ out there !! \r\nWhat are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\nYou can disable the auto check for updates in the preferences", "To use this funcion you must set your photo editor program executable in the preferences (File -> Preferences)", "the image has been modified, do you want to import the new one ?", "To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ", "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings", "If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?", "If you don't save and reload the theme you may encounter some bugs", "The input file is not a valid BRSTM file" };
         public Form1(string arg)
         {            
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
@@ -51,7 +66,8 @@ namespace YATA
               try
               {*/
             InitializeComponent();
-              if (APP_LNG  !="english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt")) { 
+              if (APP_LNG  !="english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt")) {
+                messages.Clear();
                 string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
                 foreach (string line in lng)
                 {
@@ -159,6 +175,7 @@ namespace YATA
 
             file_saveAS.Enabled = false;
             file_save.Enabled = false;
+            file_reload.Enabled = false;
             file_saveAS.Enabled = false;
             file_prev.Enabled = false;
             edit_importIMG.Enabled = false;
@@ -237,6 +254,7 @@ namespace YATA
             drpdwn_settings.Enabled = true;
             file_save.Enabled = true;
             file_saveAS.Enabled = true;
+            file_reload.Enabled = true;
             edit_saveIMG.Enabled = true;
             file_prev.Enabled = true;
             edit_importIMG.Enabled = true;
@@ -1506,10 +1524,10 @@ namespace YATA
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
                     dlg.Text = "Convert settings TYPE:BCSTM";
-                    dlg.button2.Enabled = false;
-                    dlg.button5.Enabled = false;
-                    dlg.button7.Enabled = false;
-                    dlg.button6.Enabled = false;
+                    dlg.btn_WavtoCWAV.Enabled = false;
+                    dlg.btn_WAVbrstm.Enabled = false;
+                    dlg.btn_WAVbcstm.Enabled = false;
+                    dlg.btn_BRSTMbcstm.Enabled = false;
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
                     else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
@@ -1518,9 +1536,9 @@ namespace YATA
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
                     dlg.Text = "Convert settings TYPE:BRSTM";
-                    dlg.button2.Enabled = false;
-                    dlg.button5.Enabled = false;
-                    dlg.button7.Enabled = false;
+                    dlg.btn_WavtoCWAV.Enabled = false;
+                    dlg.btn_WAVbrstm.Enabled = false;
+                    dlg.btn_WAVbcstm.Enabled = false;
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
                     else if (dlg.RET == FileConverter.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
@@ -1530,9 +1548,9 @@ namespace YATA
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
                     dlg.Text = "Convert settings TYPE:WAV";
-                    dlg.button3.Enabled = false;
-                    dlg.button6.Enabled = false;
-                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
+                    dlg.btn_convert.Enabled = false;
+                    dlg.btn_BRSTMbcstm.Enabled = false;
+                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.play_file)
                     {
@@ -1548,12 +1566,12 @@ namespace YATA
                 {
                     ConvertSETTINGS dlg = new ConvertSETTINGS();
                     dlg.Text = "Convert settings TYPE:CWAV";
-                    dlg.button6.Enabled = false;
-                    dlg.button2.Enabled = false;
-                    dlg.button5.Enabled = false;
-                    dlg.button7.Enabled = false;
-                    dlg.button8.Enabled = false;
-                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.button2.Enabled = false; }
+                    dlg.btn_BRSTMbcstm.Enabled = false;
+                    dlg.btn_WavtoCWAV.Enabled = false;
+                    dlg.btn_WAVbrstm.Enabled = false;
+                    dlg.btn_WAVbcstm.Enabled = false;
+                    dlg.btn_play.Enabled = false;
+                    if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
@@ -1800,6 +1818,15 @@ namespace YATA
                 openFileLZ.FileName = saveTheme.FileName;
                 OPEN_FILE();
             }
+        }
+
+        private void file_reload_Click(object sender, EventArgs e)
+        {
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
+            StatusLabel.Visible = false;
+            OPEN_FILE();
         }
     }
 }

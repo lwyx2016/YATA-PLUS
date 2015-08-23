@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace YATA {
     public partial class Sett : Form {
@@ -29,7 +30,7 @@ namespace YATA {
         private Color[] colTopOverlay;
         private Color[] colDemoMsg;
         private Color[] ColTopScreen;
-        private string[] description = new string[16] { "1: Shading\r\n2: main color\r\n3: unk\r\n4: expanded glow colour", 
+        List<String> messages = new List<string>() {"1: Shading\r\n2: main color\r\n3: unk\r\n4: expanded glow colour", 
                                                         "1: Shading\r\n2: main color",
                                                         "1: bottom shadow\r\n2: main color\r\n3: highlight",
                                                         "1: highlight\r\n2: main colour\r\n3: shadow",
@@ -44,10 +45,29 @@ namespace YATA {
                                                         "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shding and pressed color\r\n7:Lower edges highlight",
                                                         "1: Overlay background\r\n2/3:Unknown\r\n4: Text color",
                                                         "1: Background color\r\n2: Text color",
-                                                        "" };
+                                                        "None:Static image (both top and bottom screen) \r\nBOTTOM SCREEN: \r\nFlipbook tile:the order of frames will be 1-2-3-2-1-2-3-2 etc..\r\nFlipbook Cyclic:the order of frames will be 1-2-3-1-2-3 etc.." };
 
         public Sett() {
             InitializeComponent();
+            #region language
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
+            {
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\sett.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                    }
+                }
+            }
+            #endregion
             getColors();
             Button[] col1 = AddButtons(4, 0 , colCursor, Form1.enableSec[0] == 1 ? true : false,0,-Form1.APP_Move_buttons_colors);
             Button[] col2 = AddButtons(2, 1, col3DFolder, Form1.enableSec[1] == 1 ? true : false,1, -Form1.APP_Move_buttons_colors);
@@ -68,22 +88,22 @@ namespace YATA {
             ArrowNum1.Enabled = Form1.enableSec[12] == 1 ? true : false;
             ArrowNum2.Enabled = Form1.enableSec[12] == 1 ? true : false;
             ArrowNum3.Enabled = Form1.enableSec[12] == 1 ? true : false;
-            foreach (Button b in col1) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col2) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col3) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col4) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col5) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col6) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col7) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col8) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col9) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col10) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col11) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col12) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col13) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col14) this.groupBox2.Controls.Add(b);
-            foreach (Button b in col15) this.groupBox2.Controls.Add(b);
-            this.groupBox5.Controls.Add(col16[0]);
+            foreach (Button b in col1) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col2) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col3) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col4) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col5) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col6) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col7) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col8) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col9) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col10) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col11) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col12) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col13) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col14) this.grp_colors.Controls.Add(b);
+            foreach (Button b in col15) this.grp_colors.Controls.Add(b);
+            this.grp_topSIMPLE.Controls.Add(col16[0]);
             flags = Form1.enableSec.ToArray();
             CB_topDraw.SelectedIndex = (int)Form1.topDraw;
             CB_topFrame.SelectedIndex = (int)Form1.topFrame;
@@ -107,9 +127,9 @@ namespace YATA {
             CHK15.Checked = flags[15] == 1 ? true : false;
             CHK16.Checked = flags[16] == 1 ? true : false;
             CHK17.Checked = Form1.useBGM == 1 ? true : false;
-            if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
-            if (Form1.topDraw == 2) checkBox2.Enabled = true;
-            checkBox1.Checked = Form1.UseSecondTOPIMG;
+            if (Form1.topDraw == 1 || Form1.topDraw == 2) grp_topSIMPLE.Enabled = true; else grp_topSIMPLE.Enabled = false;
+            if (Form1.topDraw == 2) CHK_bg.Enabled = true;
+            CHK_scndtex.Checked = Form1.UseSecondTOPIMG;
         }
 
         private void getColors() {
@@ -268,7 +288,7 @@ namespace YATA {
                 numericUpDown1.Value = tempbytes[4];
             if (Form1.topDraw == 2)
             {
-                if (Form1.imgOffs[6] == 0x0) checkBox2.Checked = true; else checkBox2.Checked = false;
+                if (Form1.imgOffs[6] == 0x0) CHK_bg.Checked = true; else CHK_bg.Checked = false;
             }
                 ColTopScreen = tempcolors.ToArray();
             #endregion
@@ -384,7 +404,7 @@ namespace YATA {
             Form1.topcol[0][4] = Convert.ToByte(numericUpDown1.Value);
             if (Form1.topDraw == 2)
             {
-                if (checkBox2.Checked)
+                if (CHK_bg.Checked)
                 {
                     Form1.topcol[0][5] = 0x00;
                     Form1.topcol[0][6] = 0x64;
@@ -425,7 +445,7 @@ namespace YATA {
             Form1.topFrame = (uint)CB_topFrame.SelectedIndex;
             Form1.bottomFrame = (uint)CB_botFrame.SelectedIndex;
             Form1.enableSec = flags;
-            Form1.UseSecondTOPIMG = checkBox1.Checked;
+            Form1.UseSecondTOPIMG = CHK_scndtex.Checked;
             closeForm();
         }
 
@@ -440,7 +460,7 @@ namespace YATA {
         private void HelpPressed(object sender, EventArgs e) 
         {
             int button =  Convert.ToInt32((((Button)sender).Name.Substring(4)));
-            MessageBox.Show(description[button - 1]);
+            MessageBox.Show(messages[button - 1]);
         }
 
         private void colorSelect(object sender, EventArgs e) {
@@ -519,18 +539,23 @@ namespace YATA {
 
         private void CB_topDraw_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Form1.topDraw == 1 || Form1.topDraw == 2) groupBox5.Enabled = true; else groupBox5.Enabled = false;
+            if (Form1.topDraw == 1 || Form1.topDraw == 2) grp_topSIMPLE.Enabled = true; else grp_topSIMPLE.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("None:Static image (both top and bottom screen) \r\nBOTTOM SCREEN: \r\nFlipbook tile:the order of frames will be 1-2-3-2-1-2-3-2 etc..\r\nFlipbook Cyclic:the order of frames will be 1-2-3-1-2-3 etc..");
+            MessageBox.Show(messages[15]);
         }
 
         private void FORM_Closing(object sender, FormClosingEventArgs e)
         {
             Form1.APP_SETT_SIZE_X = this.Size.Width;
             Form1.APP_SETT_SIZE_Y = this.Size.Height;
+        }
+
+        private void Sett_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

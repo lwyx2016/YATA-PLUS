@@ -37,14 +37,14 @@
             // 
             this.label1.Location = new System.Drawing.Point(2, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(562, 245);
+            this.label1.Size = new System.Drawing.Size(562, 265);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(158, 254);
+            this.linkLabel1.Location = new System.Drawing.Point(156, 274);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(247, 13);
             this.linkLabel1.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 271);
+            this.ClientSize = new System.Drawing.Size(561, 296);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -66,6 +66,7 @@
             this.Name = "ImgSIZES";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Images size";
+            this.Load += new System.EventHandler(this.ImgSIZES_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,9 +13,30 @@ namespace YATA
 {
     public partial class CWAVs_dumper : Form
     {
+        List<String> messages = new List<string>(){"No files found",
+        "Done !",
+        "Cleaning up...",
+        "This theme doesn't support CWAVs to add them check the 'Enable use of SFX' box in the theme settings and go to 'Create CWAVs chunk'"};
         public CWAVs_dumper()
         {
             InitializeComponent();
+            #region language
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\CwavsDumper.txt"))
+            {
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\CwavsDumper.txt");
+                foreach (string line in lng)
+                {
+                    if (!line.StartsWith(";"))
+                    {
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                    }
+                }
+                label1.Text = messages[0];
+            }
+            #endregion
         }
 
         List<long> source = new List<long>();
@@ -30,10 +51,10 @@ namespace YATA
             clean();
             listBox1.Items.Clear();
             listBox1.Enabled = false;
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
+            btn_dump.Enabled = false;
+            btn_play.Enabled = false;
+            btn_exportCWAV.Enabled = false;
+            btn_exportWAV.Enabled = false;
             label1.Visible = false;
             string[] filesize = new string[4];
             byte[] magic = new byte[4];
@@ -44,7 +65,7 @@ namespace YATA
             SearchBytePattern(CWAVBytes_BIG_end, fs);
             if (source.Count == 0)
             {
-                button1.Enabled = false;
+                btn_dump.Enabled = false;
                 label1.Visible = true;
                 return;
             }
@@ -95,8 +116,8 @@ namespace YATA
             if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
             listBox1.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
+            btn_exportCWAV.Enabled = true;
+            btn_exportWAV.Enabled = true;
         }
 
         public List<int> SearchBytePattern(byte[] pattern, Stream bytes)
@@ -135,7 +156,7 @@ namespace YATA
                 {
                     System.IO.File.Copy(file, folderBrowserDialog1.SelectedPath +"\\"+ System.IO.Path.GetFileName(file), true);
                 }
-                MessageBox.Show("Done !");
+                MessageBox.Show(messages[1]);
             } 
         }
 
@@ -169,7 +190,7 @@ namespace YATA
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            button2.Enabled = true;
+            btn_play.Enabled = true;
         }
 
         void clean() 
@@ -215,13 +236,13 @@ namespace YATA
             {
                 System.IO.File.Copy(ConvertedFile, folderBrowserDialog1.SelectedPath + "\\" + System.IO.Path.GetFileName(ConvertedFile), true);
             }
-            MessageBox.Show("Done !");
+            MessageBox.Show(messages[1]);
         }
 
         private void Frm_closing(object sender, FormClosingEventArgs e)
         {
             label1.Visible = true;
-            label1.Text = "Cleaning up...";
+            label1.Text = messages[2];
             this.Refresh();
             clean();
           /*  if (File.Exists("vgmstream.exe")) File.Delete("vgmstream.exe");

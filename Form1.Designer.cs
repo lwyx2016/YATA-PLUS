@@ -90,6 +90,7 @@
             this.lbl_ImgNotInc = new System.Windows.Forms.Label();
             this.lbl_DragBgm = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.file_reload = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -123,6 +124,7 @@
             this.file_loadbgm,
             this.file_save,
             this.file_saveAS,
+            this.file_reload,
             this.file_prev,
             this.toolStripSeparator4,
             this.file_pref});
@@ -631,6 +633,14 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // file_reload
+            // 
+            this.file_reload.Enabled = false;
+            this.file_reload.Name = "file_reload";
+            this.file_reload.Size = new System.Drawing.Size(189, 22);
+            this.file_reload.Text = "Reload theme";
+            this.file_reload.Click += new System.EventHandler(this.file_reload_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -733,6 +743,7 @@
         private System.Windows.Forms.ToolStripMenuItem new_basicTemp;
         private System.Windows.Forms.ToolStripMenuItem new_pantemp;
         private System.Windows.Forms.ToolStripMenuItem new_botanimtemp;
+        private System.Windows.Forms.ToolStripMenuItem file_reload;
     }
 }
 
