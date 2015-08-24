@@ -103,6 +103,7 @@
             this.grp_topSIMPLE = new System.Windows.Forms.GroupBox();
             this.CHK_bg = new System.Windows.Forms.CheckBox();
             this.CHK_scndtex = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.grp_draw.SuspendLayout();
             this.grp_colors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).BeginInit();
@@ -634,9 +635,9 @@
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_save.Location = new System.Drawing.Point(554, 509);
+            this.btn_save.Location = new System.Drawing.Point(575, 509);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(90, 26);
+            this.btn_save.Size = new System.Drawing.Size(69, 26);
             this.btn_save.TabIndex = 2;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -923,9 +924,9 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.Location = new System.Drawing.Point(437, 507);
+            this.btn_cancel.Location = new System.Drawing.Point(500, 509);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(90, 26);
+            this.btn_cancel.Size = new System.Drawing.Size(69, 26);
             this.btn_cancel.TabIndex = 5;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
@@ -970,11 +971,22 @@
             this.CHK_scndtex.Text = "Use second top screen texture (only for Solid color /w texture)";
             this.CHK_scndtex.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(427, 508);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 27);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Preview";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Sett
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 613);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.grp_topSIMPLE);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.grp_flags);
@@ -1024,21 +1036,16 @@
         private System.Windows.Forms.GroupBox grp_flags;
         private System.Windows.Forms.CheckBox CHK16;
         private System.Windows.Forms.CheckBox CHK15;
-        private System.Windows.Forms.CheckBox CHK14;
-        private System.Windows.Forms.CheckBox CHK13;
         private System.Windows.Forms.CheckBox CHK12;
         private System.Windows.Forms.CheckBox CHK11;
         private System.Windows.Forms.CheckBox CHK10;
         private System.Windows.Forms.CheckBox CHK9;
         private System.Windows.Forms.CheckBox CHK8;
-        private System.Windows.Forms.CheckBox CHK7;
-        private System.Windows.Forms.CheckBox CHK6;
         private System.Windows.Forms.CheckBox CHK5;
         private System.Windows.Forms.CheckBox CHK4;
         private System.Windows.Forms.CheckBox CHK3;
         private System.Windows.Forms.CheckBox CHK2;
         private System.Windows.Forms.CheckBox CHK1;
-        private System.Windows.Forms.CheckBox CHK0;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -1088,5 +1095,11 @@
         private System.Windows.Forms.NumericUpDown ArrowNum2;
         private System.Windows.Forms.NumericUpDown ArrowNum1;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox CHK14;
+        private System.Windows.Forms.CheckBox CHK7;
+        private System.Windows.Forms.CheckBox CHK6;
+        private System.Windows.Forms.CheckBox CHK13;
+        private System.Windows.Forms.CheckBox CHK0;
     }
 }

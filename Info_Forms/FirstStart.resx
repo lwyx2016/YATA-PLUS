@@ -134,7 +134,8 @@ Changes in this version of YATA+:
  -New icon wooohooo
  -Now drag and drop supports importing images (only PNGs)
  -Multi-languages support
- -Other fixes
+ -Realtime color preview in the theme settings
+ -Many other little features and fixes
 
 Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
 </value>

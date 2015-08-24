@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace YATA
 {
-    public partial class Sim : Form
+    public partial class RealTimeSim : Form
     {
 
         Bitmap[] imgs;
@@ -28,9 +28,11 @@ namespace YATA
         Image mii = Properties.Resources.miiverse;
 
         int frameCnt = 0;
+        Sett own;
 
-        public Sim()
+        public RealTimeSim(Sett owner)
         {
+            own = owner;
             InitializeComponent();
             imgs = Form1.imageArray;
             Overlay_LR_TOP_img.Parent = topImage;
@@ -44,39 +46,45 @@ namespace YATA
                 Arrows_bottom.Visible = false;
                 Top_screen_overlay.Visible = false;
             }
-            setColors();
             loadImages();
         }
 
-         void setColors()
+         public void setColors()
         {
-            byte[] tempbytes;
+            Overlay_LR_TOP_img.BackgroundImage = null;
+            Overlay_LR_TOP_img.Image = null;
+            Arrows_bottom.BackgroundImage = null;
+            Arrows_bottom.Image = null;
+            Top_screen_overlay.BackgroundImage = null;
+            Top_screen_overlay.Image = null;
+
+            Color[] tempbytes;
             Bitmap img;
             #region Top_Overlay
             //Top overlay
             if (Form1.enableSec[14] == 1) //If custom color is enabled
             {
-                tempbytes = Form1.colChunks[13];
+                tempbytes = own.colTopOverlay;
                 img = new Bitmap(Properties.Resources.top_overlay_background);
-                setColor(img, Color.FromArgb(215, tempbytes[0], tempbytes[1], tempbytes[2]));
+                setColor(img, tempbytes[0]);
                 Overlay_LR_TOP_img.BackgroundImage = img;
 
                 img = new Bitmap(Properties.Resources.top_overlay_text);
-                setColor(img, Color.FromArgb(215, tempbytes[9], tempbytes[10], tempbytes[11]));
+                setColor(img,  tempbytes[3]);
                 Overlay_LR_TOP_img.Image = img;
             }
             #endregion
             #region Bot_Arrows
             if (Form1.enableSec[6] == 1) //If custom color is enabled
             {
-                tempbytes = Form1.colChunks[4];
+                tempbytes = own.colArrow;
                 img = new Bitmap(Properties.Resources.Bottom_arrow_fore);
-                setColor(img, Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                setColor(img, tempbytes[1]);
                 Arrows_bottom.Image = img;
 
-                tempbytes = Form1.colChunks[3];
+                tempbytes = own.colArrowBut;
                 img = new Bitmap(Properties.Resources.Bottom_arrow_back);
-                setColor(img, Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
+                setColor(img, tempbytes[1]);
                 Arrows_bottom.BackgroundImage = img;
             }
             #endregion
@@ -86,10 +94,10 @@ namespace YATA
             Color icon = Color.FromArgb(255, 145, 174, 208);
             if (Form1.enableSec[13] == 1) //If custom color is enabled
             {
-                tempbytes = Form1.colChunks[12];
-                back = Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]);
-                icon = Color.FromArgb(0xFF, tempbytes[12], tempbytes[13], tempbytes[14]);
-                separator = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);
+                tempbytes = own.colIconResize;
+                back = tempbytes[1];
+                icon = tempbytes[4];
+                separator = tempbytes[0];
             }
             img = Properties.Resources.bottom_Resizer_mask;
             for (int i = 0; i < img.Width; i++)
@@ -114,11 +122,11 @@ namespace YATA
             Color text = Color.FromArgb(255, 72, 71, 66);
             if (Form1.enableSec[7] == 1) //If custom color is enabled
             {
-                tempbytes = Form1.colChunks[5];
-                Default = Color.FromArgb(0xFF, tempbytes[7], tempbytes[8], tempbytes[9]);
-                Shading = Color.FromArgb(0xFF, tempbytes[4], tempbytes[5], tempbytes[6]);
-                TextShadow = Color.FromArgb(0xFF, tempbytes[20], tempbytes[21], tempbytes[22]);
-                text = Color.FromArgb(0xFF, tempbytes[23], tempbytes[24], tempbytes[25]);
+                tempbytes = own.colBotBut;
+                Default = tempbytes[1];
+                Shading = tempbytes[0];
+                TextShadow = tempbytes[3];
+                text = tempbytes[4];
             }
             img = Properties.Resources.sim_bottom_mask;
             for (int i = 0; i < img.Width; i++)
@@ -140,9 +148,9 @@ namespace YATA
             if (Form1.enableSec[0] == 1) //If custom color is enabled
             {
                 Bitmap Cursor_img = Properties.Resources.Cursor;
-                tempbytes = Form1.colChunks[0];
-                Color Cursor_main = Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]);
-                Color Cursor_glow = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);
+                tempbytes = own.colCursor;
+                Color Cursor_main = tempbytes[1];
+                Color Cursor_glow = tempbytes[0];
                 for (int i = 0; i < Cursor_img.Width; i++)
                 {
                     for (int ii = 0; ii < Cursor_img.Height; ii++)
@@ -162,8 +170,8 @@ namespace YATA
                 g.DrawImage(Cursor_img, new Rectangle(24, 44, Cursor_img.Width, Cursor_img.Height));
                 Top_screen_overlay.BackgroundImage = img;
             }
-                #endregion
-            }
+            #endregion
+        }
 
         private Bitmap SaveForm()
         {
@@ -318,43 +326,7 @@ namespace YATA
 
         private void Sim_Load(object sender, EventArgs e)
         {
-            if (Form1.generating_preview)
-            {
-                SaveFileDialog save = new SaveFileDialog();
-                save.Filter = "png file|*.png";
-                save.Title = "save preview";
-                if (Form1.Preview_PATH == null && save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (Form1.APP_export_both_screens)
-                    {
-                        SaveForm().Save(save.FileName);
-                    }
-                    else
-                    {
-                        Image preview = new Bitmap(400, 240);
-                        Graphics g = Graphics.FromImage(preview);
-                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
-                        preview.Save(save.FileName);
-                    }
-                    this.Close();
-                }
-                else if (Form1.Preview_PATH != null)
-                {
-                    if (Form1.APP_export_both_screens)
-                    {
-                        SaveForm().Save(Form1.Preview_PATH);
-                    }
-                    else
-                    {
-                        Image preview = new Bitmap(400, 240);
-                        Graphics g = Graphics.FromImage(preview);
-                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(400, 240)), GraphicsUnit.Pixel); }
-                        preview.Save(Form1.Preview_PATH);
-                    }
-                    this.Close();
-                }
-                else this.Close();
-            }
+           
         }
 
     }

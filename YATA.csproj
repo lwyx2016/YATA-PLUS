@@ -153,6 +153,12 @@
     <Compile Include="Sett.Designer.cs">
       <DependentUpon>Sett.cs</DependentUpon>
     </Compile>
+    <Compile Include="Simulators\RealTimeSim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simulators\RealTimeSim.Designer.cs">
+      <DependentUpon>RealTimeSim.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simulators\Sim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sett.resx">
       <DependentUpon>Sett.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Simulators\RealTimeSim.resx">
+      <DependentUpon>RealTimeSim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulators\Sim.resx">
       <DependentUpon>Sim.cs</DependentUpon>

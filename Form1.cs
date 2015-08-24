@@ -58,13 +58,13 @@ namespace YATA
         {            
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             load_prefs();
-            /*  int dll = 0;
+              int dll = 0;
               if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
               if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
               if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
               if (dll != 0) InitializeComponent();
               try
-              {*/
+              {
             InitializeComponent();
               if (APP_LNG  !="english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt")) {
                 messages.Clear();
@@ -88,7 +88,7 @@ namespace YATA
                 {
                     loadFromDragAndDrop(new string[1] { arg });
                 }
-            /*}
+            }
             catch (Exception ex)
             {               
                 MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -113,7 +113,7 @@ namespace YATA
                 if (sv.ShowDialog() == DialogResult.OK) { System.IO.File.WriteAllLines(sv.FileName, LOG); }
                 MessageBox.Show("You can find more information in the windows' event viewer");
                 InitializeComponent();
-            }*/
+            }
         }
         //Constants
         private const int RGB565 = 0;
@@ -1122,6 +1122,7 @@ namespace YATA
 
         private void importToolstrip_Click(object sender, EventArgs e)
         {
+            openNewImg.FileName = imgEnum[imgListBox.SelectedIndex].ToString();
             if (openNewImg.ShowDialog() == DialogResult.OK)
             {
                 import_image(openNewImg.FileName);
@@ -1176,6 +1177,7 @@ namespace YATA
 
         private void saveAsFile_Click(object sender, EventArgs e)
         {
+            saveTheme.FileName = "body_LZ.bin";
             if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string newpath = saveTheme.FileName.Substring(0, saveTheme.FileName.LastIndexOf("\\") + 1);
@@ -1199,6 +1201,7 @@ namespace YATA
 
         private void saveImage_Click(object sender, EventArgs e)
         {
+            savePng.FileName = imgEnum[imgListBox.SelectedIndex].ToString();
             if (savePng.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 imageArray[imgListBox.SelectedIndex].Save(savePng.FileName, System.Drawing.Imaging.ImageFormat.Png);
@@ -1207,6 +1210,7 @@ namespace YATA
 
         private void saveCWAVButton_Click(object sender, EventArgs e)
         {
+            saveCWAVDialog.FileName = "Cwavs.bin";
             if (saveCWAVDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 BinaryWriter br = new BinaryWriter(File.Create(saveCWAVDialog.FileName));
@@ -1217,6 +1221,7 @@ namespace YATA
 
         private void importCWAVButton_Click(object sender, EventArgs e)
         {
+            openCWAVDialog.FileName = "Cwavs.bin";
             if (openCWAVDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 cwav = File.ReadAllBytes(openCWAVDialog.FileName);
@@ -1792,6 +1797,7 @@ namespace YATA
 
         private void basicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveTheme.FileName = "body_LZ.bin";
             if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.StaticThemeTemplate);
@@ -1802,6 +1808,7 @@ namespace YATA
 
         private void panoramicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveTheme.FileName = "body_LZ.bin";
             if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.PanoramicTemplate);
@@ -1812,6 +1819,7 @@ namespace YATA
 
         private void bottomScreenAnimatedTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveTheme.FileName = "body_LZ.bin";
             if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.AnimatedBotScreenTemplate);

@@ -12,22 +12,23 @@ using System.IO;
 namespace YATA {
     public partial class Sett : Form {
 
+        RealTimeSim sim = null;
         private byte[][] cols = Form1.colChunks;
         private uint[] flags;
-        private Color[] colCursor;
+        public Color[] colCursor;
         private Color[] col3DFolder;
         private Color[] colFiles;
-        private Color[] colArrowBut;
-        private Color[] colArrow;
-        private Color[] colBotBut;
-        private Color[] colClose;
+        public Color[] colArrowBut;
+        public Color[] colArrow;
+        public Color[] colBotBut;
+        public Color[] colClose;
         private Color[] colGameTxt;
         private Color[] colBotSolid;
         private Color[] colBotOuter;
         private Color[] colFolderBG;
         private Color[] colFolderArrow;
-        private Color[] colIconResize;
-        private Color[] colTopOverlay;
+        public Color[] colIconResize;
+        public Color[] colTopOverlay;
         private Color[] colDemoMsg;
         private Color[] ColTopScreen;
         List<String> messages = new List<string>() {"1: Shading\r\n2: main color\r\n3: unk\r\n4: expanded glow colour", 
@@ -517,7 +518,8 @@ namespace YATA {
                     case 15:
                         ColTopScreen[0] = colDialog.Color;
                         break;
-                }
+                 }
+                if (sim!= null && sim.Visible) { sim.Show(); sim.setColors(); }
             }
         }
 
@@ -549,6 +551,7 @@ namespace YATA {
 
         private void FORM_Closing(object sender, FormClosingEventArgs e)
         {
+            sim.Close();
             Form1.APP_SETT_SIZE_X = this.Size.Width;
             Form1.APP_SETT_SIZE_Y = this.Size.Height;
         }
@@ -556,6 +559,12 @@ namespace YATA {
         private void Sett_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (sim == null || !sim.Visible) { sim = new RealTimeSim(this); sim.Show(); } else if (sim.Visible) { sim.Focus(); }
+            sim.setColors();
         }
     }
 }
