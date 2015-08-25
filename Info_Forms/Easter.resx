@@ -117,29 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
-    <value>looks like this is the first time you use this version of yata on your pc,
-as first thing you should go to File -&gt; Preferences and set you photo editor and your preferences.
-
-If you never made a custom theme or you aren't so "expert" you should check out
-this guide made by me for using YATA+,
-
-
-Changes in this version of YATA+:
- -Released "YATA+ Lite" wich doesn't require windows media player
- -Fixed support for back arrow, thanks everyone on gbatemp who figured out how those bytes works
- -Now YATA supports file associations (bin, brstm, bcstm, cwav), see here how:
-
- -Added cursor in the theme simulator
- -New icon wooohooo
- -Now drag and drop supports importing images too (only PNGs)
- -Multi-languages support
- -Realtime color preview in the theme settings
- -WAV -&gt; CWAV conversion now works properly (still need SDK tool)
- -WAV optimization (channel, frequency, bits) before converting to CWAV can be disabled
- -Many other little features and fixes
-
-Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
-</value>
-  </data>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

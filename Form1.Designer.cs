@@ -38,7 +38,7 @@
             this.file_reload = new System.Windows.Forms.ToolStripMenuItem();
             this.file_prev = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
-            this.installThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.File_installTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.file_pref = new System.Windows.Forms.ToolStripMenuItem();
             this.drpdwn_edit = new System.Windows.Forms.ToolStripDropDownButton();
@@ -108,8 +108,8 @@
             this.toolStripSeparator6,
             this.drpdwn_imgszs,
             this.toolStripSeparator7,
-            this.Debug_menu,
-            this.StatusLabel});
+            this.StatusLabel,
+            this.Debug_menu});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(658, 25);
@@ -129,7 +129,7 @@
             this.file_reload,
             this.file_prev,
             this.toolStripSeparator14,
-            this.installThemeToolStripMenuItem,
+            this.File_installTheme,
             this.toolStripSeparator4,
             this.file_pref});
             this.drpdwn_file.Image = ((System.Drawing.Image)(resources.GetObject("drpdwn_file.Image")));
@@ -226,11 +226,11 @@
             this.toolStripSeparator14.Name = "toolStripSeparator14";
             this.toolStripSeparator14.Size = new System.Drawing.Size(186, 6);
             // 
-            // installThemeToolStripMenuItem
+            // File_installTheme
             // 
-            this.installThemeToolStripMenuItem.Name = "installThemeToolStripMenuItem";
-            this.installThemeToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.installThemeToolStripMenuItem.Text = "Install theme";
+            this.File_installTheme.Name = "File_installTheme";
+            this.File_installTheme.Size = new System.Drawing.Size(189, 22);
+            this.File_installTheme.Text = "Install theme";
             // 
             // toolStripSeparator4
             // 
@@ -760,7 +760,7 @@
         private System.Windows.Forms.ToolStripMenuItem new_botanimtemp;
         private System.Windows.Forms.ToolStripMenuItem file_reload;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
-        private System.Windows.Forms.ToolStripMenuItem installThemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem File_installTheme;
     }
 }
 

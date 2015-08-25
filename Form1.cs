@@ -35,7 +35,9 @@ namespace YATA
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
-        public static string APP_LNG = "ita";
+        public static string APP_LNG = "english";
+        public static bool APP_not_Optimize_Cwavs = false;
+        public static int APP_opt_samples = 11025;
         #endregion
         #region strings
         List<String> messages = new List<string>() {
@@ -1232,7 +1234,7 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english"};
+                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english","n_opt_cwavs=false", "opt_samples=11025" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1276,7 +1278,10 @@ namespace YATA
                 }
                 else if (line.ToLower().StartsWith("happy_easter="))
                 {
-                    if (Convert.ToBoolean(line.ToLower().Substring(13))) { MessageBox.Show(" Conglaturation !!!\r\n You found this easter egg. \r\n\r\n And you prooved that you are a easter egg hunter \r\n Now go and rest our hero !", "( ͡° ͜ʖ ͡°)"); MessageBox.Show("i hope you got it :P"); }
+                    if (Convert.ToBoolean(line.ToLower().Substring(13))) {
+                        Info_Forms.Easter es = new Info_Forms.Easter();
+                        es.Show();
+                    }
                 }
                 else if (line.ToLower().StartsWith("sett_size="))
                 {
@@ -1291,6 +1296,14 @@ namespace YATA
                 {
                     APP_LNG = (line.Substring(4));
                 }
+                else if (line.ToLower().StartsWith("n_opt_cwavs="))
+                {
+                    APP_not_Optimize_Cwavs = Convert.ToBoolean(line.ToLower().Substring(12));
+                }
+                else if (line.ToLower().StartsWith("opt_samples="))
+                {
+                    APP_opt_samples = Convert.ToInt32(line.ToLower().Substring(12));
+                }   
             }
             return;
         }
@@ -1402,21 +1415,24 @@ namespace YATA
                     {
                         for (int i = 0; i < opn.FileNames.Length; i++)
                         {
-                            Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
-                            WaveFormat New = new WaveFormat(8000, 8, 1);
-                            WaveStream Original = new WaveFileReader(opn.FileNames[i]);
-                            WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
-                            if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
-                            WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav", stream);
+                            if (!APP_not_Optimize_Cwavs)
+                            {
+                                Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                                WaveFormat New = new WaveFormat(APP_opt_samples, 8, 1);
+                                WaveStream Original = new WaveFileReader(opn.FileNames[i]);
+                                WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
+                                if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                                WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav", stream);
+                                stream.Dispose();
+                                Original.Dispose();
+                            }
                             Process prc = new Process();
                             prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                            prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav\"";
+                            if (!APP_not_Optimize_Cwavs) prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav\""; else prc.StartInfo.Arguments = "-o \"" + opn.FileNames[i] + ".bcwav\" \"" + opn.FileNames[i] + "\"";
                             Debug.Print("Converting CWAV: " + Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
                             prc.Start();
                             prc.WaitForExit();
                             if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
-                            stream.Dispose();
-                            Original.Dispose();
                         }
                         MessageBox.Show("Done !");
                     }
@@ -1432,6 +1448,7 @@ namespace YATA
             frm.ShowDialog();
             if (MessageBox.Show(messages[13], "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                StatusLabel.Visible = true;
                 makeTheme(path + "new_dec_" + filename);
                 dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
                 File.Delete(path + "new_dec_" + filename);
@@ -1762,20 +1779,23 @@ namespace YATA
             sv.Title = "Save the CWAV file";
             if (sv.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
-                WaveFormat New = new WaveFormat(8000, 8, 1);
-                WaveStream Original = new WaveFileReader(input);
-                WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
-                if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
-                WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav", stream);
+                if (!APP_not_Optimize_Cwavs)
+                {
+                    Debug.Print("Optimizing CWAV: " + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
+                    WaveFormat New = new WaveFormat(APP_opt_samples, 8, 1);
+                    WaveStream Original = new WaveFileReader(input);
+                    WaveFormatConversionStream stream = new WaveFormatConversionStream(New, Original);
+                    if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
+                    WaveFileWriter.CreateWaveFile(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav", stream);
+                    stream.Dispose();
+                    Original.Dispose();
+                }
                 Process prc = new Process();
                 prc.StartInfo.FileName = "CTR_WaveConverter32.exe";
-                prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav\"";
+                if (!APP_not_Optimize_Cwavs) prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" + Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav\""; else prc.StartInfo.Arguments = "-o \"" + sv.FileName + "\" \"" +input+ "\"";
                 prc.Start();
                 prc.WaitForExit();
                 if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
-                stream.Dispose();
-                Original.Dispose();
                 if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
             }
         }
@@ -1830,6 +1850,7 @@ namespace YATA
 
         private void file_reload_Click(object sender, EventArgs e)
         {
+            StatusLabel.Visible = true;
             makeTheme(path + "new_dec_" + filename);
             dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
             File.Delete(path + "new_dec_" + filename);

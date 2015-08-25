@@ -51,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(310, 381);
+            this.button1.Location = new System.Drawing.Point(299, 394);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 30);
             this.button1.TabIndex = 1;
@@ -70,9 +70,9 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 396);
+            this.label3.Location = new System.Drawing.Point(-2, 420);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.Size = new System.Drawing.Size(104, 26);
             this.label3.TabIndex = 3;
             this.label3.Text = "{VERSION}";
             // 
@@ -102,7 +102,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(44, 365);
+            this.linkLabel1.Location = new System.Drawing.Point(42, 378);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(359, 13);
             this.linkLabel1.TabIndex = 4;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 413);
+            this.ClientSize = new System.Drawing.Size(445, 436);
             this.ControlBox = false;
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);

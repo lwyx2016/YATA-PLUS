@@ -20,7 +20,7 @@ namespace YATA {
 
         public Prefs() {
             InitializeComponent();
-            comboBox1.Items.Add("English");
+            comboBox1.Items.Add("english");
             if (Directory.Exists("languages"))
             {
                 foreach (string dir in Directory.GetDirectories("languages"))
@@ -28,6 +28,7 @@ namespace YATA {
                     comboBox1.Items.Add(dir.Remove(0, 10));
                 }
             }
+            chb_opt.Checked = Form1.APP_not_Optimize_Cwavs;
             chb_UISim.Checked = Form1.APP_ShowUI_Sim;
             chb_SavePrev.Checked = Form1.APP_AutoGen_preview;
             chb_wait.Checked = Form1.APP_Wait_editor;
@@ -67,6 +68,7 @@ namespace YATA {
             chb_loadBGM.Checked = true;
             chb_updates.Checked = true;
             chb_ExportBot.Checked = true;
+            chb_opt.Checked = false;
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
             build_settings();
@@ -76,7 +78,7 @@ namespace YATA {
 
         public void build_settings()
         {
-            string[] lines = new string[13];
+            string[] lines = new string[15];
             lines[0] = "ui_sim=" + chb_UISim.Checked.ToString();
             lines[1] = "gen_prev=" + chb_SavePrev.Checked.ToString();
             lines[2] = "photo_edit=" + textBox1.Text;
@@ -90,6 +92,8 @@ namespace YATA {
             lines[10] = "sett_size=" + numericUpDown2.Value.ToString() + numericUpDown3.Value.ToString();
             lines[11] = "exp_both_screens=" + chb_ExportBot.Checked.ToString();
             lines[12] = "lng=" + comboBox1.Text;
+            lines[13] = "n_opt_cwavs=" + chb_opt.Checked;
+            lines[15] = "opt_samples=" + Form1.APP_opt_samples;
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;

@@ -465,6 +465,7 @@ namespace YATA {
         }
 
         private void colorSelect(object sender, EventArgs e) {
+            colDialog.FullOpen = true;
             colDialog.Color = ((Button)sender).BackColor;
             if (colDialog.ShowDialog() == DialogResult.OK){
                 ((Button)sender).BackColor = colDialog.Color;
@@ -520,7 +521,7 @@ namespace YATA {
                         ColTopScreen[0] = colDialog.Color;
                         break;
                  }
-                if (sim!= null && sim.Visible) { sim.Show(); sim.setColors(); }
+                if (sim!= null && sim.Visible) { sim.Focus(); sim.setColors(); }
             }
         }
 

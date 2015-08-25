@@ -115,6 +115,12 @@
     <Compile Include="CWAV managers\CWAVs dumper.Designer.cs">
       <DependentUpon>CWAVs dumper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Info_Forms\Easter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Info_Forms\Easter.Designer.cs">
+      <DependentUpon>Easter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Info_Forms\FirstStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CWAV managers\CWAVs dumper.resx">
       <DependentUpon>CWAVs dumper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Info_Forms\Easter.resx">
+      <DependentUpon>Easter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Info_Forms\FirstStart.resx">
       <DependentUpon>FirstStart.cs</DependentUpon>
@@ -275,6 +284,7 @@
     <None Include="Resources\space.png" />
     <None Include="Resources\adv.png" />
     <None Include="Resources\Cursor.png" />
+    <None Include="Resources\clippy_paper.jpg" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>
