@@ -80,7 +80,7 @@ namespace YATA
                         else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
                         else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
                         else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0,1)); }
+                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0,1)); }
                     }
                 }
                }

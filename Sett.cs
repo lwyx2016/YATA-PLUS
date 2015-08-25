@@ -64,7 +64,7 @@ namespace YATA {
                         else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
                         else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
                         else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("@")) { messages.Add(line.Remove(0, 1)); }
+                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
                     }
                 }
             }
@@ -465,7 +465,8 @@ namespace YATA {
         }
 
         private void colorSelect(object sender, EventArgs e) {
-            if(colDialog.ShowDialog() == DialogResult.OK){
+            colDialog.Color = ((Button)sender).BackColor;
+            if (colDialog.ShowDialog() == DialogResult.OK){
                 ((Button)sender).BackColor = colDialog.Color;
                 int buttonSet = Convert.ToInt32((((Button)sender).Name.Split('-'))[0]);
                 int button = Convert.ToInt32((((Button)sender).Name.Split('-'))[1]);
@@ -551,7 +552,7 @@ namespace YATA {
 
         private void FORM_Closing(object sender, FormClosingEventArgs e)
         {
-            sim.Close();
+            if (sim != null) sim.Close();
             Form1.APP_SETT_SIZE_X = this.Size.Width;
             Form1.APP_SETT_SIZE_Y = this.Size.Height;
         }

@@ -35,7 +35,10 @@
             this.file_loadbgm = new System.Windows.Forms.ToolStripMenuItem();
             this.file_save = new System.Windows.Forms.ToolStripMenuItem();
             this.file_saveAS = new System.Windows.Forms.ToolStripMenuItem();
+            this.file_reload = new System.Windows.Forms.ToolStripMenuItem();
             this.file_prev = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.installThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.file_pref = new System.Windows.Forms.ToolStripMenuItem();
             this.drpdwn_edit = new System.Windows.Forms.ToolStripDropDownButton();
@@ -75,7 +78,7 @@
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_images = new System.Windows.Forms.Label();
             this.openFileLZ = new System.Windows.Forms.OpenFileDialog();
             this.saveTheme = new System.Windows.Forms.SaveFileDialog();
             this.savePng = new System.Windows.Forms.SaveFileDialog();
@@ -90,7 +93,6 @@
             this.lbl_ImgNotInc = new System.Windows.Forms.Label();
             this.lbl_DragBgm = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.file_reload = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -126,6 +128,8 @@
             this.file_saveAS,
             this.file_reload,
             this.file_prev,
+            this.toolStripSeparator14,
+            this.installThemeToolStripMenuItem,
             this.toolStripSeparator4,
             this.file_pref});
             this.drpdwn_file.Image = ((System.Drawing.Image)(resources.GetObject("drpdwn_file.Image")));
@@ -201,6 +205,14 @@
             this.file_saveAS.Text = "Save As...";
             this.file_saveAS.Click += new System.EventHandler(this.saveAsFile_Click);
             // 
+            // file_reload
+            // 
+            this.file_reload.Enabled = false;
+            this.file_reload.Name = "file_reload";
+            this.file_reload.Size = new System.Drawing.Size(189, 22);
+            this.file_reload.Text = "Reload theme";
+            this.file_reload.Click += new System.EventHandler(this.file_reload_Click);
+            // 
             // file_prev
             // 
             this.file_prev.Enabled = false;
@@ -208,6 +220,17 @@
             this.file_prev.Size = new System.Drawing.Size(189, 22);
             this.file_prev.Text = "Generate png preview";
             this.file_prev.Click += new System.EventHandler(this.generatePreviewForCHMMToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(186, 6);
+            // 
+            // installThemeToolStripMenuItem
+            // 
+            this.installThemeToolStripMenuItem.Name = "installThemeToolStripMenuItem";
+            this.installThemeToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.installThemeToolStripMenuItem.Text = "Install theme";
             // 
             // toolStripSeparator4
             // 
@@ -513,14 +536,14 @@
             this.imgListBox.TabIndex = 1;
             this.imgListBox.SelectedIndexChanged += new System.EventHandler(this.imgListBox_SelectedIndexChanged);
             // 
-            // label1
+            // lbl_images
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Images:";
+            this.lbl_images.AutoSize = true;
+            this.lbl_images.Location = new System.Drawing.Point(12, 25);
+            this.lbl_images.Name = "lbl_images";
+            this.lbl_images.Size = new System.Drawing.Size(44, 13);
+            this.lbl_images.TabIndex = 2;
+            this.lbl_images.Text = "Images:";
             // 
             // openFileLZ
             // 
@@ -633,14 +656,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // file_reload
-            // 
-            this.file_reload.Enabled = false;
-            this.file_reload.Name = "file_reload";
-            this.file_reload.Size = new System.Drawing.Size(189, 22);
-            this.file_reload.Text = "Reload theme";
-            this.file_reload.Click += new System.EventHandler(this.file_reload_Click);
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -653,7 +668,7 @@
             this.Controls.Add(this.lbl_notCrashed);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_photoedit);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_images);
             this.Controls.Add(this.imgListBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
@@ -682,7 +697,7 @@
         private System.Windows.Forms.ToolStripMenuItem file_openFile;
         private System.Windows.Forms.ToolStripButton drpdwn_sim;
         private System.Windows.Forms.ListBox imgListBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_images;
         private System.Windows.Forms.OpenFileDialog openFileLZ;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripButton drpdwn_settings;
@@ -744,6 +759,8 @@
         private System.Windows.Forms.ToolStripMenuItem new_pantemp;
         private System.Windows.Forms.ToolStripMenuItem new_botanimtemp;
         private System.Windows.Forms.ToolStripMenuItem file_reload;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripMenuItem installThemeToolStripMenuItem;
     }
 }
 

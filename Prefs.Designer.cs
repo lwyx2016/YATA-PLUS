@@ -46,6 +46,7 @@
             this.btn_setASdef = new System.Windows.Forms.Button();
             this.lbl_lang = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -196,13 +197,11 @@
             // 
             // lbl_size
             // 
-            this.lbl_size.AutoSize = true;
-            this.lbl_size.Location = new System.Drawing.Point(12, 276);
+            this.lbl_size.Location = new System.Drawing.Point(12, 266);
             this.lbl_size.Name = "lbl_size";
-            this.lbl_size.Size = new System.Drawing.Size(319, 13);
+            this.lbl_size.Size = new System.Drawing.Size(192, 32);
             this.lbl_size.TabIndex = 15;
-            this.lbl_size.Text = "Set the size for the settings window:   X:                     Y:                " +
-    " ";
+            this.lbl_size.Text = "Set the size for the settings window: ";
             // 
             // numericUpDown2
             // 
@@ -271,7 +270,7 @@
             // lbl_lang
             // 
             this.lbl_lang.AutoSize = true;
-            this.lbl_lang.Location = new System.Drawing.Point(52, 301);
+            this.lbl_lang.Location = new System.Drawing.Point(52, 304);
             this.lbl_lang.Name = "lbl_lang";
             this.lbl_lang.Size = new System.Drawing.Size(54, 13);
             this.lbl_lang.TabIndex = 20;
@@ -280,10 +279,19 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 298);
+            this.comboBox1.Location = new System.Drawing.Point(121, 301);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(157, 21);
             this.comboBox1.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(194, 276);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "X                     Y";
             // 
             // Prefs
             // 
@@ -296,7 +304,6 @@
             this.Controls.Add(this.chb_ExportBot);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.lbl_size);
             this.Controls.Add(this.chb_updates);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown1);
@@ -311,6 +318,8 @@
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.chb_UISim);
             this.Controls.Add(this.lbl_shift);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_size);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -350,5 +359,6 @@
         private System.Windows.Forms.Button btn_setASdef;
         private System.Windows.Forms.Label lbl_lang;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
