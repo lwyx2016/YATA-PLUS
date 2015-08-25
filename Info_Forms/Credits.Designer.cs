@@ -42,6 +42,7 @@
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_trs = new System.Windows.Forms.Label();
+            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -57,9 +58,9 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 98);
+            this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 288);
+            this.label2.Size = new System.Drawing.Size(329, 297);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -67,7 +68,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 392);
+            this.label3.Location = new System.Drawing.Point(0, 399);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 3;
@@ -76,29 +77,31 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(87, 189);
+            this.linkLabel1.Location = new System.Drawing.Point(85, 179);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(168, 13);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://hcs64.com/vgmstream.html";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             this.linkLabel1.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(37, 137);
+            this.linkLabel2.Location = new System.Drawing.Point(35, 127);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(275, 13);
             this.linkLabel2.TabIndex = 6;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "https://gbatemp.net/threads/3ds-cwav-dumper.361437/";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             this.linkLabel2.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(37, 112);
+            this.linkLabel3.Location = new System.Drawing.Point(35, 102);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(275, 13);
             this.linkLabel3.TabIndex = 7;
@@ -109,12 +112,13 @@
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(13, 163);
+            this.linkLabel4.Location = new System.Drawing.Point(11, 153);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(328, 13);
             this.linkLabel4.TabIndex = 8;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "https://gbatemp.net/threads/release-custom-theme-cwavs.381132/";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             this.linkLabel4.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel5
@@ -131,7 +135,7 @@
             // btn_updates
             // 
             this.btn_updates.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_updates.Location = new System.Drawing.Point(200, 382);
+            this.btn_updates.Location = new System.Drawing.Point(200, 389);
             this.btn_updates.Name = "btn_updates";
             this.btn_updates.Size = new System.Drawing.Size(150, 23);
             this.btn_updates.TabIndex = 10;
@@ -142,28 +146,31 @@
             // linkLabel6
             // 
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(87, 215);
+            this.linkLabel6.Location = new System.Drawing.Point(85, 205);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(172, 13);
             this.linkLabel6.TabIndex = 11;
             this.linkLabel6.TabStop = true;
             this.linkLabel6.Text = "https://github.com/naudio/NAudio";
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked);
             this.linkLabel6.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // linkLabel7
             // 
             this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(75, 240);
+            this.linkLabel7.Location = new System.Drawing.Point(73, 230);
             this.linkLabel7.Name = "linkLabel7";
             this.linkLabel7.Size = new System.Drawing.Size(202, 13);
             this.linkLabel7.TabIndex = 12;
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "https://github.com/libertyernie/brawltools";
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
+            this.linkLabel7.Click += new System.EventHandler(this.Link_CLICKED);
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(119, 382);
+            this.button2.Location = new System.Drawing.Point(119, 389);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -181,11 +188,24 @@
             this.lbl_trs.Text = "English translation by Exelix11";
             this.lbl_trs.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // linkLabel8
+            // 
+            this.linkLabel8.AutoSize = true;
+            this.linkLabel8.Location = new System.Drawing.Point(95, 257);
+            this.linkLabel8.Name = "linkLabel8";
+            this.linkLabel8.Size = new System.Drawing.Size(144, 13);
+            this.linkLabel8.TabIndex = 14;
+            this.linkLabel8.TabStop = true;
+            this.linkLabel8.Text = "https://netftp.codeplex.com/";
+            this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel8_LinkClicked);
+            this.linkLabel8.Click += new System.EventHandler(this.Link_CLICKED);
+            // 
             // Credits
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 408);
+            this.ClientSize = new System.Drawing.Size(353, 415);
+            this.Controls.Add(this.linkLabel8);
             this.Controls.Add(this.lbl_trs);
             this.Controls.Add(this.linkLabel7);
             this.Controls.Add(this.linkLabel6);
@@ -229,5 +249,6 @@
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbl_trs;
+        private System.Windows.Forms.LinkLabel linkLabel8;
     }
 }

@@ -65,6 +65,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.drpdwn_imgszs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.Debug_menu = new System.Windows.Forms.ToolStripDropDownButton();
             this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +77,6 @@
             this.lZUNCOMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.imgListBox = new System.Windows.Forms.ListBox();
             this.lbl_images = new System.Windows.Forms.Label();
             this.openFileLZ = new System.Windows.Forms.OpenFileDialog();
@@ -112,7 +112,7 @@
             this.Debug_menu});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(658, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(717, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -228,9 +228,11 @@
             // 
             // File_installTheme
             // 
+            this.File_installTheme.Enabled = false;
             this.File_installTheme.Name = "File_installTheme";
             this.File_installTheme.Size = new System.Drawing.Size(189, 22);
             this.File_installTheme.Text = "Install theme";
+            this.File_installTheme.Click += new System.EventHandler(this.File_installTheme_Click);
             // 
             // toolStripSeparator4
             // 
@@ -434,6 +436,15 @@
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(164, 22);
+            this.StatusLabel.Text = "Saving theme,please wait.....";
+            this.StatusLabel.Visible = false;
+            // 
             // Debug_menu
             // 
             this.Debug_menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -518,15 +529,6 @@
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Text = "Those functions are only for testing, doesn\'t affect the theme ";
             // 
-            // StatusLabel
-            // 
-            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.ForeColor = System.Drawing.Color.Red;
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(164, 22);
-            this.StatusLabel.Text = "Saving theme,please wait.....";
-            this.StatusLabel.Visible = false;
-            // 
             // imgListBox
             // 
             this.imgListBox.FormattingEnabled = true;
@@ -584,7 +586,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(606, 342);
+            this.label2.Location = new System.Drawing.Point(665, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 34);
             this.label2.TabIndex = 5;
@@ -596,7 +598,7 @@
             this.lbl_notCrashed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_notCrashed.BackColor = System.Drawing.Color.Black;
             this.lbl_notCrashed.ForeColor = System.Drawing.Color.White;
-            this.lbl_notCrashed.Location = new System.Drawing.Point(178, 135);
+            this.lbl_notCrashed.Location = new System.Drawing.Point(207, 135);
             this.lbl_notCrashed.Name = "lbl_notCrashed";
             this.lbl_notCrashed.Size = new System.Drawing.Size(305, 87);
             this.lbl_notCrashed.TabIndex = 6;
@@ -620,7 +622,7 @@
             this.Player.Location = new System.Drawing.Point(0, 315);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(658, 44);
+            this.Player.Size = new System.Drawing.Size(717, 44);
             this.Player.TabIndex = 8;
             this.Player.Visible = false;
             // 
@@ -641,7 +643,7 @@
             this.lbl_DragBgm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_DragBgm.BackColor = System.Drawing.Color.Black;
             this.lbl_DragBgm.ForeColor = System.Drawing.Color.White;
-            this.lbl_DragBgm.Location = new System.Drawing.Point(211, 148);
+            this.lbl_DragBgm.Location = new System.Drawing.Point(240, 148);
             this.lbl_DragBgm.Name = "lbl_DragBgm";
             this.lbl_DragBgm.Size = new System.Drawing.Size(234, 62);
             this.lbl_DragBgm.TabIndex = 10;
@@ -661,7 +663,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 358);
+            this.ClientSize = new System.Drawing.Size(717, 358);
             this.Controls.Add(this.lbl_DragBgm);
             this.Controls.Add(this.lbl_ImgNotInc);
             this.Controls.Add(this.label4);
@@ -674,7 +676,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(674, 397);
+            this.MinimumSize = new System.Drawing.Size(733, 397);
             this.Name = "Form1";
             this.Text = "YATA PLUS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
@@ -698,7 +700,6 @@
         private System.Windows.Forms.ToolStripButton drpdwn_sim;
         private System.Windows.Forms.ListBox imgListBox;
         private System.Windows.Forms.Label lbl_images;
-        private System.Windows.Forms.OpenFileDialog openFileLZ;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripButton drpdwn_settings;
         private System.Windows.Forms.ToolStripMenuItem file_pref;
@@ -761,6 +762,7 @@
         private System.Windows.Forms.ToolStripMenuItem file_reload;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem File_installTheme;
+        private System.Windows.Forms.OpenFileDialog openFileLZ;
     }
 }
 

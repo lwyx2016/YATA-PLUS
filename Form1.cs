@@ -175,6 +175,7 @@ namespace YATA
             imgListBoxLoaded = false;
             pictureBox1.Image = null;
 
+            File_installTheme.Enabled = false;
             file_saveAS.Enabled = false;
             file_save.Enabled = false;
             file_reload.Enabled = false;
@@ -264,6 +265,7 @@ namespace YATA
             edit_impCWAV.Enabled = true;
             edit_CWAVdump.Enabled = true;
             edit_createCWAV.Enabled = true;
+            File_installTheme.Enabled = true;
             if (APP_Auto_Load_bgm && File.Exists(path + "bgm.bcstm")) 
             {
                 if (useBGM != 1) MessageBox.Show(messages[2]);
@@ -1856,6 +1858,17 @@ namespace YATA
             File.Delete(path + "new_dec_" + filename);
             StatusLabel.Visible = false;
             OPEN_FILE();
+        }
+
+        private void File_installTheme_Click(object sender, EventArgs e)
+        {
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
+            StatusLabel.Visible = false;
+            this.Refresh();
+            Install dlg = new Install(openFileLZ.FileName);
+            dlg.ShowDialog();
         }
     }
 }

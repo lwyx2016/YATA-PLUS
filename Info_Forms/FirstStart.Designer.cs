@@ -51,7 +51,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(299, 394);
+            this.button1.Location = new System.Drawing.Point(304, 406);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 30);
             this.button1.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(-2, 420);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 26);
+            this.label3.Size = new System.Drawing.Size(108, 30);
             this.label3.TabIndex = 3;
             this.label3.Text = "{VERSION}";
             // 
@@ -91,12 +91,12 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(144, 216);
+            this.linkLabel3.Location = new System.Drawing.Point(91, 217);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(151, 13);
+            this.linkLabel3.Size = new System.Drawing.Size(242, 13);
             this.linkLabel3.TabIndex = 6;
             this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "https://youtu.be/JilVtq_Wd6U";
+            this.linkLabel3.Text = "https://www.youtube.com/watch?v=-_c-JKx1Lvg";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // linkLabel1
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 436);
+            this.ClientSize = new System.Drawing.Size(445, 439);
             this.ControlBox = false;
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);

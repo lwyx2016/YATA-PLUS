@@ -106,10 +106,10 @@
             // 
             // Player
             // 
-            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(-1, 282);
+            this.Player.Location = new System.Drawing.Point(-2, 288);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
             this.Player.Size = new System.Drawing.Size(394, 44);
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 282);
+            this.ClientSize = new System.Drawing.Size(390, 330);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_exportWAV);

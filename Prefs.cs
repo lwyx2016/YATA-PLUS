@@ -78,7 +78,7 @@ namespace YATA {
 
         public void build_settings()
         {
-            string[] lines = new string[15];
+            string[] lines = new string[16];
             lines[0] = "ui_sim=" + chb_UISim.Checked.ToString();
             lines[1] = "gen_prev=" + chb_SavePrev.Checked.ToString();
             lines[2] = "photo_edit=" + textBox1.Text;
