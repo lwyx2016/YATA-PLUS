@@ -1236,7 +1236,7 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english","n_opt_cwavs=false", "opt_samples=11025" };
+                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start_v6=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english","n_opt_cwavs=false", "opt_samples=11025" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1266,7 +1266,7 @@ namespace YATA
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start_v4="))
+                else if (line.ToLower().StartsWith("first_start_v6="))
                 {
                     APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
                 }

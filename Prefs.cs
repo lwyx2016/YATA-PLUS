@@ -85,7 +85,7 @@ namespace YATA {
             lines[3] = "wait_editor=" + chb_wait.Checked.ToString();
             lines[4] = "clean_on_exit=" + chb_delTempFile.Checked.ToString();
             lines[5] = "load_bgm=" + chb_loadBGM.Checked.ToString();
-            lines[6] = "first_start_v4=false";
+            lines[6] = "first_start_v6=false";
             lines[7] = "shift_btns=" + numericUpDown1.Value.ToString();
             lines[8] = "check_updates=" + chb_updates.Checked.ToString();
             lines[9] = "happy_easter=false";
