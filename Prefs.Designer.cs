@@ -75,9 +75,9 @@
             // 
             // btn_default
             // 
-            this.btn_default.Location = new System.Drawing.Point(217, 350);
+            this.btn_default.Location = new System.Drawing.Point(236, 350);
             this.btn_default.Name = "btn_default";
-            this.btn_default.Size = new System.Drawing.Size(119, 23);
+            this.btn_default.Size = new System.Drawing.Size(171, 23);
             this.btn_default.TabIndex = 3;
             this.btn_default.Text = "Revert to default";
             this.btn_default.UseVisualStyleBackColor = true;
@@ -106,12 +106,12 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 184);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(266, 20);
+            this.textBox1.Size = new System.Drawing.Size(359, 20);
             this.textBox1.TabIndex = 6;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(284, 182);
+            this.button3.Location = new System.Drawing.Point(377, 181);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 23);
             this.button3.TabIndex = 7;
@@ -157,7 +157,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(252, 235);
+            this.numericUpDown1.Location = new System.Drawing.Point(323, 235);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             150,
             0,
@@ -171,7 +171,7 @@
             // 
             this.lbl_shift.Location = new System.Drawing.Point(12, 235);
             this.lbl_shift.Name = "lbl_shift";
-            this.lbl_shift.Size = new System.Drawing.Size(234, 48);
+            this.lbl_shift.Size = new System.Drawing.Size(305, 48);
             this.lbl_shift.TabIndex = 12;
             this.lbl_shift.Text = "Shift color buttons on the right of:\r\n(For computers where the system font isn\'t " +
     "the english default one)";
@@ -179,7 +179,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(318, 235);
+            this.label3.Location = new System.Drawing.Point(389, 235);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 13);
             this.label3.TabIndex = 13;
@@ -200,13 +200,13 @@
             // 
             this.lbl_size.Location = new System.Drawing.Point(12, 283);
             this.lbl_size.Name = "lbl_size";
-            this.lbl_size.Size = new System.Drawing.Size(192, 32);
+            this.lbl_size.Size = new System.Drawing.Size(253, 32);
             this.lbl_size.TabIndex = 15;
             this.lbl_size.Text = "Set the size for the settings window: ";
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(210, 281);
+            this.numericUpDown2.Location = new System.Drawing.Point(281, 281);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             999,
             0,
@@ -228,7 +228,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(282, 281);
+            this.numericUpDown3.Location = new System.Drawing.Point(353, 281);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             999,
             0,
@@ -262,7 +262,7 @@
             // 
             this.btn_setASdef.Location = new System.Drawing.Point(15, 379);
             this.btn_setASdef.Name = "btn_setASdef";
-            this.btn_setASdef.Size = new System.Drawing.Size(332, 23);
+            this.btn_setASdef.Size = new System.Drawing.Size(401, 23);
             this.btn_setASdef.TabIndex = 19;
             this.btn_setASdef.Text = "How to set YATA as the default app for opening themes";
             this.btn_setASdef.UseVisualStyleBackColor = true;
@@ -271,16 +271,17 @@
             // lbl_lang
             // 
             this.lbl_lang.AutoSize = true;
-            this.lbl_lang.Location = new System.Drawing.Point(52, 321);
+            this.lbl_lang.Location = new System.Drawing.Point(91, 321);
             this.lbl_lang.Name = "lbl_lang";
             this.lbl_lang.Size = new System.Drawing.Size(54, 13);
             this.lbl_lang.TabIndex = 20;
             this.lbl_lang.Text = "language:";
+            this.lbl_lang.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(121, 318);
+            this.comboBox1.Location = new System.Drawing.Point(183, 318);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(157, 21);
             this.comboBox1.TabIndex = 21;
@@ -288,7 +289,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(200, 283);
+            this.label1.Location = new System.Drawing.Point(271, 283);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 22;
@@ -308,7 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 411);
+            this.ClientSize = new System.Drawing.Size(428, 411);
             this.Controls.Add(this.chb_opt);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lbl_lang);

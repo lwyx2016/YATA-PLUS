@@ -69,6 +69,7 @@ namespace YATA {
             chb_updates.Checked = true;
             chb_ExportBot.Checked = true;
             chb_opt.Checked = false;
+            comboBox1.Text = "english";
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
             build_settings();

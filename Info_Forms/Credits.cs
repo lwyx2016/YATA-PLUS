@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace YATA
 {
+
     public partial class Credits : Form
     {
         List<String> messages = new List<string>() {

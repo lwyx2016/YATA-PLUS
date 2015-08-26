@@ -181,11 +181,11 @@
             // lbl_trs
             // 
             this.lbl_trs.AutoSize = true;
-            this.lbl_trs.Location = new System.Drawing.Point(193, 332);
+            this.lbl_trs.Location = new System.Drawing.Point(73, 336);
             this.lbl_trs.Name = "lbl_trs";
-            this.lbl_trs.Size = new System.Drawing.Size(148, 13);
+            this.lbl_trs.Size = new System.Drawing.Size(147, 13);
             this.lbl_trs.TabIndex = 13;
-            this.lbl_trs.Text = "English translation by Exelix11";
+            this.lbl_trs.Text = "english translation by Exelix11";
             this.lbl_trs.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // linkLabel8
