@@ -568,5 +568,39 @@ namespace YATA {
             if (sim == null || !sim.Visible) { sim = new RealTimeSim(this); sim.Show(); } else if (sim.Visible) { sim.Focus(); }
             sim.setColors();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sv = new SaveFileDialog();
+            sv.Filter = "Color data|*.col";
+            if (sv.ShowDialog() == DialogResult.OK)
+            {
+                List<byte> data = new List<byte>();
+                for (int i = 0; i < cols.Length; i++)
+                {
+                    data.AddRange(cols[i]);
+                }
+                System.IO.File.WriteAllBytes(sv.FileName, data.ToArray());
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.Filter = "Color data|*.col";
+            if (opn.ShowDialog() == DialogResult.OK)
+            {
+                BinaryReader bin = new BinaryReader(File.Open(opn.FileName, FileMode.Open));
+                for (int i = 0; i < cols.Length; i++)
+                {
+                    for (int ii = 0; ii < cols[i].Length; ii++)
+                    {
+                        cols[i][ii] = bin.ReadByte();
+                    }
+                }
+                bin.Close();
+                this.Close();
+            }
+        }
     }
 }

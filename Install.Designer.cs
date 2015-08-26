@@ -36,7 +36,7 @@
             // 
             // btn_send
             // 
-            this.btn_send.Location = new System.Drawing.Point(182, 57);
+            this.btn_send.Location = new System.Drawing.Point(182, 69);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(75, 20);
             this.btn_send.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 57);
+            this.textBox1.Location = new System.Drawing.Point(23, 69);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(153, 20);
             this.textBox1.TabIndex = 1;
@@ -55,13 +55,14 @@
             // 
             this.lbl_1.Location = new System.Drawing.Point(1, 9);
             this.lbl_1.Name = "lbl_1";
-            this.lbl_1.Size = new System.Drawing.Size(283, 45);
+            this.lbl_1.Size = new System.Drawing.Size(283, 57);
             this.lbl_1.TabIndex = 2;
-            this.lbl_1.Text = "Open Ftbrony and write here your 3DS\' ip address, then press send";
+            this.lbl_1.Text = "Open Ftbrony and write here your 3DS\' ip address, then press send, you can get ft" +
+    "pbrony and YATA+ theme installer from the YATA+\'s thread on gbatemp";
             // 
             // lbl_2
             // 
-            this.lbl_2.Location = new System.Drawing.Point(3, 83);
+            this.lbl_2.Location = new System.Drawing.Point(3, 95);
             this.lbl_2.Name = "lbl_2";
             this.lbl_2.Size = new System.Drawing.Size(283, 45);
             this.lbl_2.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 132);
+            this.ClientSize = new System.Drawing.Size(288, 151);
             this.Controls.Add(this.lbl_2);
             this.Controls.Add(this.lbl_1);
             this.Controls.Add(this.textBox1);
