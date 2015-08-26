@@ -168,8 +168,6 @@ namespace YATA
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
             try
             {
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
             if (!Directory.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\")) Directory.CreateDirectory(Path.GetTempPath() + @"DUMP\tmpWAVS\");
             string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\");
             if (File.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav")) File.Delete(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
@@ -180,9 +178,7 @@ namespace YATA
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Player.URL = Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav";
-            if (this.Size != new System.Drawing.Size(406, 364)) this.Size = new System.Drawing.Size(406, 364);
-            Player.Ctlcontrols.play();
+            System.Diagnostics.Process.Start(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
             
@@ -195,8 +191,6 @@ namespace YATA
 
         void clean() 
         {
-            Player.Ctlcontrols.stop();
-            Player.close();
             //if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
             if (Directory.Exists(Path.GetTempPath() + "DUMP")) Directory.Delete(Path.GetTempPath() + "DUMP", true);
             return;

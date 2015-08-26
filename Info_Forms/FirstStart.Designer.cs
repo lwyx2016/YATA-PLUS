@@ -72,7 +72,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(-2, 420);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 30);
+            this.label3.Size = new System.Drawing.Size(153, 30);
             this.label3.TabIndex = 3;
             this.label3.Text = "{VERSION}";
             // 

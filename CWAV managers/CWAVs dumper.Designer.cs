@@ -36,8 +36,6 @@
             this.btn_exportWAV = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_dump
@@ -104,23 +102,11 @@
             this.label1.Text = "No files found";
             this.label1.Visible = false;
             // 
-            // Player
-            // 
-            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(-2, 288);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(394, 44);
-            this.Player.TabIndex = 6;
-            // 
             // CWAVs_dumper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 330);
-            this.Controls.Add(this.Player);
+            this.ClientSize = new System.Drawing.Size(390, 294);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_exportWAV);
             this.Controls.Add(this.btn_exportCWAV);
@@ -135,7 +121,6 @@
             this.Text = "CWAVs dumper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_closing);
             this.Load += new System.EventHandler(this.CWAVs_dumper_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +135,5 @@
         private System.Windows.Forms.Button btn_exportWAV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private AxWMPLib.AxWindowsMediaPlayer Player;
     }
 }

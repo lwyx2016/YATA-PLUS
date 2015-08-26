@@ -31,7 +31,7 @@ namespace YATA
                                                     4/5: Yata+ v1.3
                                                     6: Yata+ v1.4 (this one)
                                                     7,8,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.4 BETA";
+        public static string APP_STRING_version = "YATA+ v1.4 LITE ALPHA";
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
@@ -60,32 +60,29 @@ namespace YATA
         {            
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             load_prefs();
-              int dll = 0;
               if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-              if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-              if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-              if (dll != 0) InitializeComponent();
               try
-              {
-            InitializeComponent();
-              if (APP_LNG  !="english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt")) {
-                messages.Clear();
-                string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
-                foreach (string line in lng)
+            {
+                InitializeComponent();
+                if (APP_LNG != "english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt"))
                 {
-                    if (!line.StartsWith(";"))
+                    messages.Clear();
+                    string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
+                    foreach (string line in lng)
                     {
-                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
-                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("drpdwn")) { (toolStrip1.Items[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0,1)); }
+                        if (!line.StartsWith(";"))
+                        {
+                            string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                            if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("drpdwn")) { (toolStrip1.Items[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
+                        }
                     }
                 }
-               }
                 if (File.Exists(arg))
                 {
                     loadFromDragAndDrop(new string[1] { arg });
@@ -189,8 +186,6 @@ namespace YATA
             edit_CWAVdump.Enabled = false;
             drpdwn_settings.Enabled = false;
             drpdwn_sim.Enabled = false;
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
             if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
@@ -280,8 +275,6 @@ namespace YATA
             if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
 
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
             if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
             this.Refresh();
             Process proc = new Process();
@@ -292,9 +285,7 @@ namespace YATA
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Player.URL = Path.GetTempPath() + "bgm.wav";
-            if (Player.Visible == false) Player.Visible = true;
-            Player.Ctlcontrols.play();
+            System.Diagnostics.Process.Start(Path.GetTempPath() + "bgm.wav");
         }
 
         private void openFile_Click(object sender, EventArgs e)
@@ -1236,7 +1227,7 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english","n_opt_cwavs=false", "opt_samples=11025" };
+                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start_v6=true","shift_btns=10", "check_updates=true","exp_both_screens=true", "happy_easter=false","lng=english","n_opt_cwavs=false", "opt_samples=11025" };
                 System.IO.File.WriteAllLines("Settings.ini", baseSettings);
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
@@ -1266,7 +1257,7 @@ namespace YATA
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start_v4="))
+                else if (line.ToLower().StartsWith("first_start_v6="))
                 {
                     APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
                 }
@@ -1375,8 +1366,6 @@ namespace YATA
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
             if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
@@ -1536,11 +1525,6 @@ namespace YATA
         {
             if (File.Exists(files[0]))
             {
-                if (files[0] == Player.URL)
-                {
-                    Player.Ctlcontrols.stop();
-                    Player.close(); //Releases resource
-                }
                 BinaryReader reader = new BinaryReader(File.Open(files[0], FileMode.Open));
                 string[] MAGIC = new string[4] { reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString() };
                 reader.Close();
@@ -1578,9 +1562,7 @@ namespace YATA
                     dlg.ShowDialog();
                     if (dlg.RET == FileConverter.ConvertType.play_file)
                     {
-                        Player.URL = (files[0]);
-                        if (Player.Visible == false) Player.Visible = true;
-                        Player.Ctlcontrols.play();
+                        System.Diagnostics.Process.Start(files[0]);
                     }
                     else if (dlg.RET == FileConverter.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
                     else if (dlg.RET == FileConverter.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }

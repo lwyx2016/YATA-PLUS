@@ -89,12 +89,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_notCrashed = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.lbl_ImgNotInc = new System.Windows.Forms.Label();
             this.lbl_DragBgm = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -586,7 +584,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(665, 342);
+            this.label2.Location = new System.Drawing.Point(665, 316);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 34);
             this.label2.TabIndex = 5;
@@ -598,7 +596,7 @@
             this.lbl_notCrashed.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_notCrashed.BackColor = System.Drawing.Color.Black;
             this.lbl_notCrashed.ForeColor = System.Drawing.Color.White;
-            this.lbl_notCrashed.Location = new System.Drawing.Point(207, 135);
+            this.lbl_notCrashed.Location = new System.Drawing.Point(207, 122);
             this.lbl_notCrashed.Name = "lbl_notCrashed";
             this.lbl_notCrashed.Size = new System.Drawing.Size(305, 87);
             this.lbl_notCrashed.TabIndex = 6;
@@ -613,18 +611,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 7;
-            // 
-            // Player
-            // 
-            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(0, 315);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(717, 44);
-            this.Player.TabIndex = 8;
-            this.Player.Visible = false;
             // 
             // lbl_ImgNotInc
             // 
@@ -643,7 +629,7 @@
             this.lbl_DragBgm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_DragBgm.BackColor = System.Drawing.Color.Black;
             this.lbl_DragBgm.ForeColor = System.Drawing.Color.White;
-            this.lbl_DragBgm.Location = new System.Drawing.Point(240, 148);
+            this.lbl_DragBgm.Location = new System.Drawing.Point(240, 135);
             this.lbl_DragBgm.Name = "lbl_DragBgm";
             this.lbl_DragBgm.Size = new System.Drawing.Size(234, 62);
             this.lbl_DragBgm.TabIndex = 10;
@@ -663,7 +649,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 358);
+            this.ClientSize = new System.Drawing.Size(717, 332);
             this.Controls.Add(this.lbl_DragBgm);
             this.Controls.Add(this.lbl_ImgNotInc);
             this.Controls.Add(this.label4);
@@ -674,9 +660,8 @@
             this.Controls.Add(this.imgListBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Player);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(733, 397);
+            this.MinimumSize = new System.Drawing.Size(733, 371);
             this.Name = "Form1";
             this.Text = "YATA PLUS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
@@ -685,7 +670,6 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -738,7 +722,6 @@
         private System.Windows.Forms.ToolStripMenuItem printColorOffsetToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem;
-        private AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.ToolStripMenuItem file_loadbgm;
         private System.Windows.Forms.Label lbl_ImgNotInc;
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
