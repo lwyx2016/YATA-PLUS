@@ -220,7 +220,7 @@
             this.grp_colors.Controls.Add(this.label5);
             this.grp_colors.Location = new System.Drawing.Point(5, 112);
             this.grp_colors.Name = "grp_colors";
-            this.grp_colors.Size = new System.Drawing.Size(416, 423);
+            this.grp_colors.Size = new System.Drawing.Size(417, 423);
             this.grp_colors.TabIndex = 1;
             this.grp_colors.TabStop = false;
             this.grp_colors.Text = "Colors";
@@ -637,7 +637,7 @@
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_save.Location = new System.Drawing.Point(581, 509);
+            this.btn_save.Location = new System.Drawing.Point(598, 509);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(69, 26);
             this.btn_save.TabIndex = 2;
@@ -736,9 +736,9 @@
             this.grp_flags.Controls.Add(this.CHK2);
             this.grp_flags.Controls.Add(this.CHK1);
             this.grp_flags.Controls.Add(this.CHK0);
-            this.grp_flags.Location = new System.Drawing.Point(427, 12);
+            this.grp_flags.Location = new System.Drawing.Point(430, 12);
             this.grp_flags.Name = "grp_flags";
-            this.grp_flags.Size = new System.Drawing.Size(223, 434);
+            this.grp_flags.Size = new System.Drawing.Size(237, 434);
             this.grp_flags.TabIndex = 2;
             this.grp_flags.TabStop = false;
             this.grp_flags.Text = "Flags";
@@ -926,7 +926,7 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.Location = new System.Drawing.Point(506, 509);
+            this.btn_cancel.Location = new System.Drawing.Point(523, 509);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(69, 26);
             this.btn_cancel.TabIndex = 5;
@@ -947,7 +947,7 @@
             this.grp_topSIMPLE.Controls.Add(this.label20);
             this.grp_topSIMPLE.Location = new System.Drawing.Point(5, 541);
             this.grp_topSIMPLE.Name = "grp_topSIMPLE";
-            this.grp_topSIMPLE.Size = new System.Drawing.Size(645, 67);
+            this.grp_topSIMPLE.Size = new System.Drawing.Size(662, 67);
             this.grp_topSIMPLE.TabIndex = 36;
             this.grp_topSIMPLE.TabStop = false;
             this.grp_topSIMPLE.Text = "Top Screen \"simple themes\" settings";
@@ -978,7 +978,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(430, 508);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 27);
+            this.button2.Size = new System.Drawing.Size(87, 27);
             this.button2.TabIndex = 37;
             this.button2.Text = "Preview";
             this.button2.UseVisualStyleBackColor = true;
@@ -989,7 +989,7 @@
             this.btn_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_export.Location = new System.Drawing.Point(430, 454);
             this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(220, 23);
+            this.btn_export.Size = new System.Drawing.Size(237, 23);
             this.btn_export.TabIndex = 38;
             this.btn_export.Text = "Export color data";
             this.btn_export.UseVisualStyleBackColor = true;
@@ -1000,7 +1000,7 @@
             this.btn_import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_import.Location = new System.Drawing.Point(430, 483);
             this.btn_import.Name = "btn_import";
-            this.btn_import.Size = new System.Drawing.Size(220, 23);
+            this.btn_import.Size = new System.Drawing.Size(237, 23);
             this.btn_import.TabIndex = 39;
             this.btn_import.Text = "Import color data";
             this.btn_import.UseVisualStyleBackColor = true;
@@ -1010,7 +1010,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 613);
+            this.ClientSize = new System.Drawing.Size(679, 613);
             this.Controls.Add(this.btn_import);
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.button2);
