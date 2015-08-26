@@ -57,49 +57,51 @@ namespace YATA
         #endregion
 
         public Form1(string arg)
-        {            
+        {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             load_prefs();
-              int dll = 0;
-              if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-              if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-              if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-              if (dll != 0) InitializeComponent();
-              try
-              {
-            InitializeComponent();
-              if (APP_LNG  !="english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt")) {
-                messages.Clear();
-                string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
-                foreach (string line in lng)
+            int dll = 0;
+            if (!File.Exists("System.Net.FtpClient.dll")) MessageBox.Show("System.Net.FtpClient.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL you can't install themes via FTP", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            if (dll != 0) InitializeComponent();
+            try
+            { 
+                InitializeComponent();
+                if (APP_LNG != "english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt"))
                 {
-                    if (!line.StartsWith(";"))
+                    messages.Clear();
+                    string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
+                    foreach (string line in lng)
                     {
-                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
-                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("drpdwn")) { (toolStrip1.Items[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
-                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0,1)); }
+                        if (!line.StartsWith(";"))
+                        {
+                            string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                            if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("lbl")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("drpdwn")) { (toolStrip1.Items[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("new")) { (file_newFile.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("file")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
+                        }
                     }
                 }
-               }
                 if (File.Exists(arg))
                 {
                     loadFromDragAndDrop(new string[1] { arg });
                 }
             }
             catch (Exception ex)
-            {               
-                MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            {
+                MessageBox.Show("There was an error in this application", "YATA PLUS ---- FATAL ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show("A log file will be generated, if you have every required dll,please send me the content of this file.");
                 string[] LOG = new string[13];
                 LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
                 LOG[1] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
                 LOG[2] = "-------------------------------------------------";
-                LOG[3] = "msg: "+ ex.Message;
+                LOG[3] = "msg: " + ex.Message;
                 LOG[4] = "-------------------------------------------------";
                 LOG[5] = "InnerException" + ex.InnerException;
                 LOG[6] = "-------------------------------------------------";
