@@ -60,7 +60,8 @@ namespace YATA
         {            
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             load_prefs();
-              if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!File.Exists("System.Net.FtpClient.dll")) MessageBox.Show("System.Net.FtpClient.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL you can't install themes via FTP", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work","MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
               try
             {
                 InitializeComponent();
