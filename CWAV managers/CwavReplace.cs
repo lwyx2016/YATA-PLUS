@@ -57,15 +57,15 @@ namespace YATA
                         else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
                     }
                 }
-                listBox1.Items.Add(messages[0]);
-                listBox1.Items.Add(messages[1]);
-                listBox1.Items.Add(messages[2]);
-                listBox1.Items.Add(messages[3]);
-                listBox1.Items.Add(messages[4]);
-                listBox1.Items.Add(messages[5]);
-                listBox1.Items.Add(messages[6]);
-                listBox1.Items.Add(messages[7]);
             }
+            listBox1.Items.Add(messages[0]);
+            listBox1.Items.Add(messages[1]);
+            listBox1.Items.Add(messages[2]);
+            listBox1.Items.Add(messages[3]);
+            listBox1.Items.Add(messages[4]);
+            listBox1.Items.Add(messages[5]);
+            listBox1.Items.Add(messages[6]);
+            listBox1.Items.Add(messages[7]);
             #endregion
         }
 
