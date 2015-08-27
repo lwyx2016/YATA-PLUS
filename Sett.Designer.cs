@@ -103,7 +103,7 @@
             this.grp_topSIMPLE = new System.Windows.Forms.GroupBox();
             this.CHK_bg = new System.Windows.Forms.CheckBox();
             this.CHK_scndtex = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_prev = new System.Windows.Forms.Button();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
             this.grp_draw.SuspendLayout();
@@ -973,16 +973,16 @@
             this.CHK_scndtex.Text = "Use second top screen texture (only for Solid color /w texture)";
             this.CHK_scndtex.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_prev
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(430, 508);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 27);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Preview";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_prev.Location = new System.Drawing.Point(430, 508);
+            this.btn_prev.Name = "btn_prev";
+            this.btn_prev.Size = new System.Drawing.Size(87, 27);
+            this.btn_prev.TabIndex = 37;
+            this.btn_prev.Text = "Preview";
+            this.btn_prev.UseVisualStyleBackColor = true;
+            this.btn_prev.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_export
             // 
@@ -1013,7 +1013,7 @@
             this.ClientSize = new System.Drawing.Size(679, 613);
             this.Controls.Add(this.btn_import);
             this.Controls.Add(this.btn_export);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.grp_topSIMPLE);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.grp_flags);
@@ -1122,7 +1122,7 @@
         private System.Windows.Forms.NumericUpDown ArrowNum2;
         private System.Windows.Forms.NumericUpDown ArrowNum1;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_prev;
         private System.Windows.Forms.CheckBox CHK14;
         private System.Windows.Forms.CheckBox CHK7;
         private System.Windows.Forms.CheckBox CHK6;
