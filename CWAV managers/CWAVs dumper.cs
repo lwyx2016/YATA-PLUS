@@ -58,8 +58,8 @@ namespace YATA
             label1.Visible = false;
             string[] filesize = new string[4];
             byte[] magic = new byte[4];
-            byte[] CWAVBytes_Little_end = new byte[] { 0x43, 0x57, 0x41, 0x56, 0xFF, 0xFE, 0x40, 0x00 };
-            byte[] CWAVBytes_BIG_end = new byte[] { 0x43, 0x57, 0x41, 0x56, 0xFE, 0xFF, 0x40, 0x00 };
+            byte[] CWAVBytes_Little_end = new byte[] { 0x43, 0x57, 0x41, 0x56};
+            byte[] CWAVBytes_BIG_end = new byte[] { 0x43, 0x57, 0x41, 0x56 };
             FileStream fs = new FileStream(Path.GetTempPath() + "snd_dump.bin", FileMode.Open, FileAccess.ReadWrite);
             SearchBytePattern(CWAVBytes_Little_end, fs);
             SearchBytePattern(CWAVBytes_BIG_end, fs);
