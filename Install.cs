@@ -43,6 +43,7 @@ namespace YATA
                 MessageBox.Show("There was an error initializing the language data for this window, try to set the language to english, if you can't because the settings windows crashes too, delete the languages folder");
                 MessageBox.Show("for translators: 'Lbl_something' is diffrent from 'lbl_something', follow the template");
                 MessageBox.Show("Exception details: " + ex.Message);
+                this.Close();
             }
         }
 
