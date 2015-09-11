@@ -20,6 +20,7 @@ namespace YATA
         public CWAVs_dumper()
         {
             InitializeComponent();
+            try { 
             #region language
             if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\CwavsDumper.txt"))
             {
@@ -36,7 +37,14 @@ namespace YATA
                 }
                 label1.Text = messages[0];
             }
-            #endregion
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error initializing the language data for this window, try to set the language to english, if you can't because the settings windows crashes too, delete the languages folder");
+                MessageBox.Show("for translators: 'Lbl_something' is diffrent from 'lbl_something', follow the template");
+                MessageBox.Show("Exception details: " + ex.Message);
+            }
         }
 
         List<long> source = new List<long>();

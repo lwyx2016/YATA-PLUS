@@ -126,21 +126,10 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -Released "YATA+ Lite" wich doesn't require windows media player
- -Fixed support for back arrow, thanks everyone on gbatemp who figured out how those bytes works
- -Now YATA supports file associations (bin, brstm, bcstm, cwav), see here how:
+ -Some "Stability fixes" to the multi languages system
+ -This is the first stable version of YATA+
 
- -Added cursor in the theme simulator
- -New icon wooohooo
- -Now drag and drop supports importing images too (only PNGs)
- -Multi-languages support
- -Realtime color preview in the theme settings
- -WAV -&gt; CWAV conversion now works properly (still need SDK tool)
- -WAV optimization (channel, frequency, bits) before converting to CWAV can be disabled
- -Remote theme installing
- -Some other little features and fixes
-
-Remember that this is still a beta, so it could crash or corrupt themes, be sure to have always a backup of the theme you are working on and to save often the file, for every problem, question or bug report, here is the official thread:
+For every problem, question or bug report, here is the official thread:
 </value>
   </data>
 </root>

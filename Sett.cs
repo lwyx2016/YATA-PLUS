@@ -50,6 +50,7 @@ namespace YATA {
 
         public Sett() {
             InitializeComponent();
+            try { 
             #region language
             if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
             {
@@ -68,7 +69,14 @@ namespace YATA {
                     }
                 }
             }
-            #endregion
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error initializing the language data for this window, try to set the language to english, if you can't because the settings windows crashes too, delete the languages folder");
+                MessageBox.Show("for translators: 'Lbl_something' is diffrent from 'lbl_something', follow the template");
+                MessageBox.Show("Exception details: " + ex.Message);
+            }
             getColors();
             Button[] col1 = AddButtons(4, 0 , colCursor, Form1.enableSec[0] == 1 ? true : false,0,-Form1.APP_Move_buttons_colors);
             Button[] col2 = AddButtons(2, 1, col3DFolder, Form1.enableSec[1] == 1 ? true : false,1, -Form1.APP_Move_buttons_colors);
