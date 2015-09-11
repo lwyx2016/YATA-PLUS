@@ -12,7 +12,7 @@ namespace YATA.Converter
 {
     public partial class ConvertSETTINGS : Form
     {
-        public FileConverter.ConvertType RET { get; set; }
+        public ConvertType RET { get; set; }
         public ConvertSETTINGS()
         {
             InitializeComponent();
@@ -30,51 +30,65 @@ namespace YATA.Converter
             }
         }
 
+        public enum ConvertType
+        {
+            brstmTOwav,
+            wavTObrstm,
+            wavTObcstm,
+            brstmTObcstm,
+            wavTOcwav,
+            cwavTowav,
+            wavTOcwav_No_opt,
+            nothing,
+            play_file
+        }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.wavTOcwav;
+            RET = ConvertType.wavTOcwav;
             Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.brstmTOwav;
+            RET = ConvertType.brstmTOwav;
             Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.wavTObrstm;
+            RET = ConvertType.wavTObrstm;
             Close();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.wavTObcstm;
+            RET = ConvertType.wavTObcstm;
             Close();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.brstmTObcstm;
+            RET = ConvertType.brstmTObcstm;
             Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.wavTOcwav_No_opt;
+            RET = ConvertType.wavTOcwav_No_opt;
             Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.nothing;
+            RET = ConvertType.nothing;
             Close();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            RET = FileConverter.ConvertType.play_file;
+            RET = ConvertType.play_file;
             Close();
         }
 

@@ -94,12 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter\BRSTM_BCSTM_converter.cs" />
-    <Compile Include="Converter\FileConverter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Converter\FileConverter.Designer.cs">
-      <DependentUpon>FileConverter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Converter\ConvertSETTINGS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,9 +180,6 @@
     <Compile Include="Simulators\Sim.Designer.cs">
       <DependentUpon>Sim.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Converter\FileConverter.resx">
-      <DependentUpon>FileConverter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Converter\ConvertSETTINGS.resx">
       <DependentUpon>ConvertSETTINGS.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AnimatedBotScreenTemplate.bin" />
-    <None Include="Resources\body_empty.bin" />
     <None Include="Resources\friends.png" />
   </ItemGroup>
   <ItemGroup>

@@ -65,6 +65,7 @@ namespace YATA
                 btn_send.Enabled = true;
                 textBox1.Enabled = true;
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
             try
             {

@@ -208,10 +208,6 @@ namespace YATA.Converter
             Data.AddRange(new byte[4] { (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte(), (byte)stream.ReadByte() }.Reverse<byte>());
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
             Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-/*          Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });
-            Data.AddRange(new byte[4] { 0x00, 0x00, 0x00, 0x00 });*/
             stream.Position = 0x150;
             while (Data.Count < DATA_SECTION)
             {

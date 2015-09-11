@@ -1538,8 +1538,8 @@ namespace YATA
                     dlg.btn_WAVbcstm.Enabled = false;
                     dlg.btn_BRSTMbcstm.Enabled = false;
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "82" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//RSTM
                 {
@@ -1549,9 +1549,9 @@ namespace YATA
                     dlg.btn_WAVbrstm.Enabled = false;
                     dlg.btn_WAVbcstm.Enabled = false;
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "82" && MAGIC[1] == "73" && MAGIC[2] == "70" && MAGIC[3] == "70")//WAV (RIFF)
                 {
@@ -1561,13 +1561,13 @@ namespace YATA
                     dlg.btn_BRSTMbcstm.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file)
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file)
                     {
                         System.Diagnostics.Process.Start(files[0]);
                     }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
                 }
                 else if (MAGIC[0] == "67" && MAGIC[1] == "87" && MAGIC[2] == "65" && MAGIC[3] == "86")//CWAV
                 {
@@ -1580,7 +1580,7 @@ namespace YATA
                     dlg.btn_play.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "137" && MAGIC[1] == "80" && MAGIC[2] == "78" && MAGIC[3] == "71")//PNG
                 {
@@ -1600,9 +1600,7 @@ namespace YATA
 
         private void openTheFileConverterFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The form is not implemented");
-            FileConverter conv = new FileConverter();
-            conv.Show();
+            MessageBox.Show("The form has been removed in the stable release");
         }
 
         private void wAVBRSTMToolStripMenuItem_Click(object sender, EventArgs e)
