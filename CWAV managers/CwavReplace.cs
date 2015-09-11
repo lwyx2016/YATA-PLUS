@@ -41,6 +41,7 @@ namespace YATA
         public CwavReplace()
         {
             InitializeComponent();
+            try { 
             #region language
             if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\CwavReplace.txt"))
             {
@@ -66,7 +67,14 @@ namespace YATA
             listBox1.Items.Add(messages[5]);
             listBox1.Items.Add(messages[6]);
             listBox1.Items.Add(messages[7]);
-            #endregion
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error initializing the language data for this window, try to set the language to english, if you can't because the settings windows crashes too, delete the languages folder");
+                MessageBox.Show("for translators: 'Lbl_something' is diffrent from 'lbl_something', follow the template");
+                MessageBox.Show("Exception details: " + ex.Message);
+            }
         }
 
         private void CwavReplace_Load(object sender, EventArgs e)

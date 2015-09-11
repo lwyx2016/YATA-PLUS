@@ -90,23 +90,25 @@ namespace YATA
                 }
             }
             catch (Exception ex)
-            {               
+            {
+                MessageBox.Show("This may be related to a corrupted language file, try to delete the languages folder and restart YATA");
                 MessageBox.Show("There was an error in this application","YATA PLUS ---- FATAL ERROR !!",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 MessageBox.Show("A log file will be generated, if you have every required dll,please send me the content of this file.");
-                string[] LOG = new string[13];
+                string[] LOG = new string[14];
                 LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
-                LOG[1] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
-                LOG[2] = "-------------------------------------------------";
-                LOG[3] = "msg: "+ ex.Message;
-                LOG[4] = "-------------------------------------------------";
-                LOG[5] = "InnerException" + ex.InnerException;
-                LOG[6] = "-------------------------------------------------";
-                LOG[7] = "Source:" + ex.Source;
-                LOG[8] = "-------------------------------------------------";
-                LOG[9] = "StackTrace:" + ex.StackTrace;
-                LOG[10] = "-------------------------------------------------";
-                LOG[11] = "StackTrace:" + ex.TargetSite;
-                LOG[12] = "-------------------------------------------------";
+                LOG[1] = "YATA version: " + APP_STRING_version;
+                LOG[2] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
+                LOG[3] = "-------------------------------------------------";
+                LOG[4] = "msg: " + ex.Message;
+                LOG[5] = "-------------------------------------------------";
+                LOG[6] = "InnerException" + ex.InnerException;
+                LOG[7] = "-------------------------------------------------";
+                LOG[8] = "Source:" + ex.Source;
+                LOG[9] = "-------------------------------------------------";
+                LOG[10] = "StackTrace:" + ex.StackTrace;
+                LOG[11] = "-------------------------------------------------";
+                LOG[12] = "StackTrace:" + ex.TargetSite;
+                LOG[13] = "-------------------------------------------------";
                 SaveFileDialog sv = new SaveFileDialog();
                 sv.Filter = "txt file|*.txt";
                 sv.Title = "Save debug file";

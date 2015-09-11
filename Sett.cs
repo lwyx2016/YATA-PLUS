@@ -50,25 +50,34 @@ namespace YATA {
 
         public Sett() {
             InitializeComponent();
-            #region language
-            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
+            try
             {
-                messages.Clear();
-                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\sett.txt");
-                foreach (string line in lng)
+                #region language
+                if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
                 {
-                    if (!line.StartsWith(";"))
+                    messages.Clear();
+                    string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\sett.txt");
+                    foreach (string line in lng)
                     {
-                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
-                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
+                        if (!line.StartsWith(";"))
+                        {
+                            string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                            if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                            else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
+                        }
                     }
                 }
+                #endregion
             }
-            #endregion
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was an error initializing the language data for this window, try to set the language to english, if you can't because the settings windows crashes too, delete the languages folder");
+                MessageBox.Show("for translators: 'Lbl_something' is diffrent from 'lbl_something', follow the template");
+                MessageBox.Show("Exception details: " + ex.Message);
+            }
             getColors();
             Button[] col1 = AddButtons(4, 0 , colCursor, Form1.enableSec[0] == 1 ? true : false,0,-Form1.APP_Move_buttons_colors);
             Button[] col2 = AddButtons(2, 1, col3DFolder, Form1.enableSec[1] == 1 ? true : false,1, -Form1.APP_Move_buttons_colors);
