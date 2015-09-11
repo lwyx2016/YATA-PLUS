@@ -97,20 +97,21 @@ namespace YATA
             {
                 MessageBox.Show("There was an error in this application", "YATA PLUS ---- FATAL ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 MessageBox.Show("A log file will be generated, if you have every required dll,please send me the content of this file.");
-                string[] LOG = new string[13];
+                string[] LOG = new string[14];
                 LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
-                LOG[1] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
-                LOG[2] = "-------------------------------------------------";
-                LOG[3] = "msg: " + ex.Message;
-                LOG[4] = "-------------------------------------------------";
-                LOG[5] = "InnerException" + ex.InnerException;
-                LOG[6] = "-------------------------------------------------";
-                LOG[7] = "Source:" + ex.Source;
-                LOG[8] = "-------------------------------------------------";
-                LOG[9] = "StackTrace:" + ex.StackTrace;
-                LOG[10] = "-------------------------------------------------";
-                LOG[11] = "StackTrace:" + ex.TargetSite;
-                LOG[12] = "-------------------------------------------------";
+                LOG[1] = "YATA version: " + APP_STRING_version;
+                LOG[2] = "Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem.ToString();
+                LOG[3] = "-------------------------------------------------";
+                LOG[4] = "msg: " + ex.Message;
+                LOG[5] = "-------------------------------------------------";
+                LOG[6] = "InnerException" + ex.InnerException;
+                LOG[7] = "-------------------------------------------------";
+                LOG[8] = "Source:" + ex.Source;
+                LOG[9] = "-------------------------------------------------";
+                LOG[10] = "StackTrace:" + ex.StackTrace;
+                LOG[11] = "-------------------------------------------------";
+                LOG[12] = "StackTrace:" + ex.TargetSite;
+                LOG[13] = "-------------------------------------------------";
                 SaveFileDialog sv = new SaveFileDialog();
                 sv.Filter = "txt file|*.txt";
                 sv.Title = "Save debug file";
@@ -1555,8 +1556,8 @@ namespace YATA
                     dlg.btn_WAVbcstm.Enabled = false;
                     dlg.btn_BRSTMbcstm.Enabled = false;
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "82" && MAGIC[1] == "83" && MAGIC[2] == "84" && MAGIC[3] == "77")//RSTM
                 {
@@ -1566,9 +1567,9 @@ namespace YATA
                     dlg.btn_WAVbrstm.Enabled = false;
                     dlg.btn_WAVbcstm.Enabled = false;
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file) { LoadBGM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file) { LoadBGM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTObcstm) { Brstm2BCSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "82" && MAGIC[1] == "73" && MAGIC[2] == "70" && MAGIC[3] == "70")//WAV (RIFF)
                 {
@@ -1578,15 +1579,15 @@ namespace YATA
                     dlg.btn_BRSTMbcstm.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.play_file)
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.play_file)
                     {
                         Player.URL = (files[0]);
                         if (Player.Visible == false) Player.Visible = true;
                         Player.Ctlcontrols.play();
                     }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
-                    else if (dlg.RET == FileConverter.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
+                    else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTObcstm) { Wav2BCSTM(files[0]); }
                 }
                 else if (MAGIC[0] == "67" && MAGIC[1] == "87" && MAGIC[2] == "65" && MAGIC[3] == "86")//CWAV
                 {
@@ -1599,7 +1600,7 @@ namespace YATA
                     dlg.btn_play.Enabled = false;
                     if (!File.Exists("CTR_WaveConverter32.exe")) { dlg.btn_WavtoCWAV.Enabled = false; }
                     dlg.ShowDialog();
-                    if (dlg.RET == FileConverter.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
+                    if (dlg.RET == ConvertSETTINGS.ConvertType.brstmTOwav) { AudioTOWav(files[0]); }
                 }
                 else if (MAGIC[0] == "137" && MAGIC[1] == "80" && MAGIC[2] == "78" && MAGIC[3] == "71")//PNG
                 {
@@ -1619,9 +1620,7 @@ namespace YATA
 
         private void openTheFileConverterFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The form is not implemented");
-            FileConverter conv = new FileConverter();
-            conv.Show();
+            MessageBox.Show("The form was removed");
         }
 
         private void wAVBRSTMToolStripMenuItem_Click(object sender, EventArgs e)
