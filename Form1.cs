@@ -96,7 +96,7 @@ namespace YATA
             catch (Exception ex)
             {
                 MessageBox.Show("There was an error in this application", "YATA PLUS ---- FATAL ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("This may be related to the language file, try to delete the languages folder and then restarting YATA+");
+                MessageBox.Show("This may be related to the language file, try to delete the languages folder and then restart YATA+");
                 MessageBox.Show("A log file will be generated, if you have every required dll,please send me the content of this file.");
                 string[] LOG = new string[14];
                 LOG[0] = "OSVersion: " + Environment.OSVersion.Version.Major.ToString() + "." + Environment.OSVersion.Version.Minor.ToString();
