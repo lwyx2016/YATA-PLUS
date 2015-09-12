@@ -195,7 +195,7 @@ namespace YATA
             drpdwn_sim.Enabled = false;
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
@@ -286,17 +286,17 @@ namespace YATA
 
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             this.Refresh();
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
             if (filepath.Contains("♪")) MessageBox.Show(messages[3]);
-            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetTempPath() + "bgm.wav\" " + "\"" + filepath + "\"";
+            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetDirectoryName(openFileLZ.FileName) + "\\tmp_bgm.wav\" " + " \"" + filepath + "\"";
             proc.StartInfo.CreateNoWindow = true;
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Player.URL = Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav";
+            Player.URL = Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav";
             if (Player.Visible == false) Player.Visible = true;
             Player.Ctlcontrols.play();
         }
@@ -1381,7 +1381,7 @@ namespace YATA
         {
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
