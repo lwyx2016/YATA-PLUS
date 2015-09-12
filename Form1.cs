@@ -195,7 +195,7 @@ namespace YATA
             drpdwn_sim.Enabled = false;
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
@@ -286,7 +286,7 @@ namespace YATA
 
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
             this.Refresh();
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
@@ -296,7 +296,7 @@ namespace YATA
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Player.URL = Path.GetTempPath() + "bgm.wav";
+            Player.URL = Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav";
             if (Player.Visible == false) Player.Visible = true;
             Player.Ctlcontrols.play();
         }
@@ -1381,7 +1381,7 @@ namespace YATA
         {
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetTempPath() + "bgm.wav")) File.Delete(Path.GetTempPath() + "bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
