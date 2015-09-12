@@ -189,7 +189,7 @@ namespace YATA
             edit_CWAVdump.Enabled = false;
             drpdwn_settings.Enabled = false;
             drpdwn_sim.Enabled = false;
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
@@ -278,17 +278,17 @@ namespace YATA
             if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
 
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             this.Refresh();
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
             if (filepath.Contains("♪")) MessageBox.Show(messages[3]);
-            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetDirectoryName(openFileLZ.FileName) + "\\bgm.wav\" "  + " \"" + filepath + "\"";
+            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetDirectoryName(openFileLZ.FileName) + "\\tmp_bgm.wav\" "  + " \"" + filepath + "\"";
             proc.StartInfo.CreateNoWindow = true;
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            System.Diagnostics.Process.Start(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            System.Diagnostics.Process.Start(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
         }
 
         private void openFile_Click(object sender, EventArgs e)
@@ -1369,7 +1369,7 @@ namespace YATA
 
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
