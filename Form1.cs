@@ -24,14 +24,14 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 6; /*for the update check the application doesn't count the version, but the release number on gbatemp
+        public static int APP_Public_version = 7; /*for the update check the application doesn't count the version, but the release number on gbatemp
                                                     1: First public yata+ version
                                                     2: Yata+ v1.1
                                                     3: Yata+ v1.2
                                                     4/5: Yata+ v1.3
-                                                    6: Yata+ v1.4 (this one)
+                                                    7: Yata+ v1.5 (this one)
                                                     7,8,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.4 BETA";
+        public static string APP_STRING_version = "YATA+ v1.5 STABLE";
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
@@ -195,7 +195,7 @@ namespace YATA
             drpdwn_sim.Enabled = false;
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
+            try { if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav"); } catch (Exception ex) { MessageBox.Show(ex.Message, "ERROR ON DELETING TMP_BGM"); }
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
@@ -1381,7 +1381,7 @@ namespace YATA
         {
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
+            try { if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav"); } catch (Exception ex) { MessageBox.Show(ex.Message, "ERROR ON DELETING TMP_BGM"); }
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
                 System.IO.File.Delete(path + "dec_" + filename);
