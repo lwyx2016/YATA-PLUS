@@ -956,7 +956,7 @@
             // 
             this.CHK_bg.AutoSize = true;
             this.CHK_bg.Enabled = false;
-            this.CHK_bg.Location = new System.Drawing.Point(425, 43);
+            this.CHK_bg.Location = new System.Drawing.Point(6, 44);
             this.CHK_bg.Name = "CHK_bg";
             this.CHK_bg.Size = new System.Drawing.Size(126, 17);
             this.CHK_bg.TabIndex = 37;
@@ -966,12 +966,13 @@
             // CHK_scndtex
             // 
             this.CHK_scndtex.AutoSize = true;
-            this.CHK_scndtex.Location = new System.Drawing.Point(6, 44);
+            this.CHK_scndtex.Location = new System.Drawing.Point(290, 43);
             this.CHK_scndtex.Name = "CHK_scndtex";
             this.CHK_scndtex.Size = new System.Drawing.Size(317, 17);
             this.CHK_scndtex.TabIndex = 36;
             this.CHK_scndtex.Text = "Use second top screen texture (only for Solid color /w texture)";
             this.CHK_scndtex.UseVisualStyleBackColor = true;
+            this.CHK_scndtex.Visible = false;
             // 
             // btn_prev
             // 

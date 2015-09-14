@@ -178,6 +178,7 @@ namespace YATA
             colChunks = null;
             imgListBoxLoaded = false;
             pictureBox1.Image = null;
+            topcol = new byte[1][] { new byte[7] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } };
 
             File_installTheme.Enabled = false;
             file_saveAS.Enabled = false;
@@ -494,8 +495,16 @@ namespace YATA
             }
             List<byte[]> TopColor = new List<byte[]>();
             dec_br.BaseStream.Position = topColorOff;
-            if (topDraw == 2) { TopColor.Add(dec_br.ReadBytes(0x7)); } else TopColor.Add(dec_br.ReadBytes(0x5));
+            if (topDraw == 2) { TopColor.Add(dec_br.ReadBytes(0x7)); } else
+            {
+                List<byte> TopColorData = new List<byte>();
+                TopColorData.AddRange(dec_br.ReadBytes(0x5));
+                TopColorData.Add(0x00);
+                TopColorData.Add(0x00);
+                TopColor.Add(TopColorData.ToArray());
+            }
             topcol = TopColor.ToArray();
+            //Break point when YATA finishes loading data to check variables data
             dec_br.Close();
             colChunks = cols.ToArray();
         }
@@ -773,6 +782,7 @@ namespace YATA
 
         private void makeTheme(string file)
         {
+            if (cwav.Length == 0) { enableSec[16] = 0; cwavLen = 0; } else cwavLen = (uint)cwav.Length;
             using (BinaryWriter bw = new BinaryWriter(File.Create(file)))
             {
                 StatusLabel.Visible = true;
@@ -849,7 +859,17 @@ namespace YATA
                 topColorOff = oldOFFS;
                 bw.BaseStream.Position = oldOFFS;
                 Debug.Print("Top screen colors: " + bw.BaseStream.Position.ToString());
-                bw.Write(topcol[0]);
+                bw.Write(topcol[0][0]);
+                bw.Write(topcol[0][1]);
+                bw.Write(topcol[0][2]);
+                bw.Write(topcol[0][3]);
+                bw.Write(topcol[0][4]);
+                if (topDraw == 2)
+                {
+                    Debug.Print("Writing additional 2 bytes for topdraw 2: " + bw.BaseStream.Position.ToString());
+                    bw.Write(topcol[0][5]);
+                    bw.Write(topcol[0][6]);
+                }
                 StatusLabel.Text = messages[5] + ".....13%";
                 this.Refresh();
 
@@ -861,7 +881,7 @@ namespace YATA
                 bw.BaseStream.Position = oldOFFS;
                 Debug.Print("Top image " + bw.BaseStream.Position.ToString());
                 if (topDraw == 3) bw.Write(bitmapToRawImg(imageArray[0], RGB565));
-                else if (topDraw == 2 && UseSecondTOPIMG) bw.Write(bitmapToRawImg(imageArray[0], A8));
+                else if (topDraw == 2) bw.Write(bitmapToRawImg(imageArray[0], A8));
                 StatusLabel.Text = messages[5] + ".....15%";
                 this.Refresh();
 
@@ -871,7 +891,7 @@ namespace YATA
                 if (imgOffs[6] != 0x0) { bw.Write(oldOFFS); imgOffs[6] = oldOFFS; } else bw.Write(0);
                 bw.BaseStream.Position = oldOFFS;
                 Debug.Print("Top alt image " + bw.BaseStream.Position.ToString());
-                if (topDraw == 2 && imgOffs[6] != 0x0) bw.Write(bitmapToRawImg(imageArray[6], A8));
+                if (topDraw == 2 && imgOffs[6] != 0x0) bw.Write(bitmapToRawImg(imageArray[6], A8)); else bw.Write(bitmapToRawImg(imageArray[0], A8));
                 StatusLabel.Text = messages[5] + ".....17%";
                 this.Refresh();
 
