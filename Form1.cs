@@ -24,14 +24,10 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 7; /*for the update check the application doesn't count the version, but the release number on gbatemp
-                                                    1: First public yata+ version
-                                                    2: Yata+ v1.1
-                                                    3: Yata+ v1.2
-                                                    4/5: Yata+ v1.3
-                                                    7: Yata+ v1.5 (this one)
-                                                    7,8,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.5 STABLE";
+        public static int APP_Public_version = 8; /*for the update check the application doesn't count the version, but the release number on gbatemp
+                                                    8: Yata+ v1.5.1 (this one)
+                                                    9,10,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.5.1";
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
         public static bool APP_export_both_screens = true;
