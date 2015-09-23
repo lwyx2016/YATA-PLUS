@@ -31,18 +31,18 @@ namespace YATA {
         public Color[] colTopOverlay;
         private Color[] colDemoMsg;
         private Color[] ColTopScreen;
-        List<String> messages = new List<string>() {"1: Shading\r\n2: main color\r\n3: unk\r\n4: expanded glow colour", 
+        List<String> messages = new List<string>() {"1: Shading\r\n2: main color\r\n3: Unknown\r\n4: expanded glow colour", 
                                                         "1: Shading\r\n2: main color",
                                                         "1: bottom shadow\r\n2: main color\r\n3: highlight",
                                                         "1: highlight\r\n2: main colour\r\n3: shadow",
                                                         "1: edge color\r\n2: unpressed color\r\n3: pressed color",
                                                         "1: Shading\r\n2: Default\r\n3: Highlight\r\n4: Text shadow\r\n5: Text color\r\n6: Pressed text",
-                                                        "1: Shading\r\n2: Default\r\n3: Highlight\r\n4: Unk (Text shadow ?)\r\n5: Text color\r\n6: Pressed text",
+                                                        "1: Shading\r\n2: Default\r\n3: Highlight\r\n4: Unknown (Text shadow ?)\r\n5: Text color\r\n6: Pressed text",
                                                         "1: Background color\r\n2: Text color",
                                                         "1: Upper empty slot shading\r\n2: Main Color\r\n3: Bottom empty slot shading\r\n4: Unknown",
                                                         "1: Horizontal stripes behind bottom buttons\r\n2: Main Color\r\n3: Edges shadowing",
-                                                        "1: Top shadow\r\n2: Default\r\n3: Bottom shadow\r\n4: Unk ",
-                                                        "1: Button Shading and Outline, Button Pressed Color\r\n2: Button Main Color, Button Pressed Outline\r\n3: Button Highlight\r\n4: Glow/Shadow Color\r\n5: UNK\r\n6: Arrow Shadow\r\n7: Arrow unpressed color\r\n8: Arrow pressed color\r\nShadow v offset: Shadow vertical offset" ,
+                                                        "1: Top shadow\r\n2: Default\r\n3: Bottom shadow\r\n4: Unknown ",
+                                                        "1: Button Shading and Outline, Button Pressed Color\r\n2: Button Main Color, Button Pressed Outline\r\n3: Button Highlight\r\n4: Glow/Shadow Color\r\n5: Unknown\r\n6: Arrow Shadow\r\n7: Arrow unpressed color\r\n8: Arrow pressed color\r\nShadow v offset: Shadow vertical offset" ,
                                                         "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shding and pressed color\r\n7:Lower edges highlight",
                                                         "1: Overlay background\r\n2/3:Unknown\r\n4: Text color",
                                                         "1: Background color\r\n2: Text color",
@@ -50,26 +50,40 @@ namespace YATA {
 
         public Sett() {
             InitializeComponent();
-            try
+            try { 
+            #region language
+            if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
             {
-                #region language
-                if (Form1.APP_LNG.Trim().ToLower() != "english" && File.Exists(@"languages\" + Form1.APP_LNG + @"\sett.txt"))
+                messages.Clear();
+                string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\sett.txt");
+                foreach (string line in lng)
                 {
-                    messages.Clear();
-                    string[] lng = File.ReadAllLines(@"languages\" + Form1.APP_LNG + @"\sett.txt");
-                    foreach (string line in lng)
+                    if (!line.StartsWith(";"))
                     {
-                        if (!line.StartsWith(";"))
-                        {
-                            string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
-                            if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                            else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                            else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                            else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
-                            else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
-                        }
+                        string[] tmp = line.Replace(@"\r\n", Environment.NewLine).Split(Convert.ToChar("="));
+                        if (line.StartsWith("btn")) { ((Button)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("label")) { ((Label)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("CHK")) { ((CheckBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("grp")) { ((GroupBox)this.Controls.Find(tmp[0], true)[0]).Text = tmp[1]; }
+                        else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
                     }
                 }
+            }
+                toolTip1.SetToolTip(label5, messages[0]);
+                toolTip1.SetToolTip(label6, messages[1]);
+                toolTip1.SetToolTip(label18, messages[2]);
+                toolTip1.SetToolTip(label7, messages[3]);
+                toolTip1.SetToolTip(label8, messages[4]);
+                toolTip1.SetToolTip(label9, messages[5]);
+                toolTip1.SetToolTip(label19, messages[6]);
+                toolTip1.SetToolTip(label10, messages[7]);
+                toolTip1.SetToolTip(label11, messages[8]);
+                toolTip1.SetToolTip(label12, messages[9]);
+                toolTip1.SetToolTip(label13, messages[10]);
+                toolTip1.SetToolTip(label14, messages[11]);
+                toolTip1.SetToolTip(label15, messages[12]);
+                toolTip1.SetToolTip(label16, messages[13]);
+                toolTip1.SetToolTip(label17, messages[14]);
                 #endregion
             }
             catch (Exception ex)
