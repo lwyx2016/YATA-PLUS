@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sett));
             this.grp_draw = new System.Windows.Forms.GroupBox();
             this.CB_botDraw = new System.Windows.Forms.ComboBox();
@@ -106,6 +107,7 @@
             this.btn_prev = new System.Windows.Forms.Button();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grp_draw.SuspendLayout();
             this.grp_colors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).BeginInit();
@@ -220,7 +222,7 @@
             this.grp_colors.Controls.Add(this.label5);
             this.grp_colors.Location = new System.Drawing.Point(5, 112);
             this.grp_colors.Name = "grp_colors";
-            this.grp_colors.Size = new System.Drawing.Size(417, 423);
+            this.grp_colors.Size = new System.Drawing.Size(415, 423);
             this.grp_colors.TabIndex = 1;
             this.grp_colors.TabStop = false;
             this.grp_colors.Text = "Colors";
@@ -303,6 +305,7 @@
             this.help15.TabIndex = 50;
             this.help15.Text = "?";
             this.help15.UseVisualStyleBackColor = true;
+            this.help15.Visible = false;
             this.help15.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help14
@@ -313,6 +316,7 @@
             this.help14.TabIndex = 49;
             this.help14.Text = "?";
             this.help14.UseVisualStyleBackColor = true;
+            this.help14.Visible = false;
             this.help14.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help13
@@ -323,6 +327,7 @@
             this.help13.TabIndex = 48;
             this.help13.Text = "?";
             this.help13.UseVisualStyleBackColor = true;
+            this.help13.Visible = false;
             this.help13.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help12
@@ -333,6 +338,7 @@
             this.help12.TabIndex = 47;
             this.help12.Text = "?";
             this.help12.UseVisualStyleBackColor = true;
+            this.help12.Visible = false;
             this.help12.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help11
@@ -343,6 +349,7 @@
             this.help11.TabIndex = 46;
             this.help11.Text = "?";
             this.help11.UseVisualStyleBackColor = true;
+            this.help11.Visible = false;
             this.help11.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help10
@@ -375,6 +382,7 @@
             this.help8.TabIndex = 43;
             this.help8.Text = "?";
             this.help8.UseVisualStyleBackColor = true;
+            this.help8.Visible = false;
             this.help8.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help7
@@ -385,6 +393,7 @@
             this.help7.TabIndex = 42;
             this.help7.Text = "?";
             this.help7.UseVisualStyleBackColor = true;
+            this.help7.Visible = false;
             this.help7.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help6
@@ -395,6 +404,7 @@
             this.help6.TabIndex = 41;
             this.help6.Text = "?";
             this.help6.UseVisualStyleBackColor = true;
+            this.help6.Visible = false;
             this.help6.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help5
@@ -405,6 +415,7 @@
             this.help5.TabIndex = 40;
             this.help5.Text = "?";
             this.help5.UseVisualStyleBackColor = true;
+            this.help5.Visible = false;
             this.help5.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help4
@@ -415,6 +426,7 @@
             this.help4.TabIndex = 39;
             this.help4.Text = "?";
             this.help4.UseVisualStyleBackColor = true;
+            this.help4.Visible = false;
             this.help4.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help3
@@ -425,6 +437,7 @@
             this.help3.TabIndex = 38;
             this.help3.Text = "?";
             this.help3.UseVisualStyleBackColor = true;
+            this.help3.Visible = false;
             this.help3.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help2
@@ -435,6 +448,7 @@
             this.help2.TabIndex = 37;
             this.help2.Text = "?";
             this.help2.UseVisualStyleBackColor = true;
+            this.help2.Visible = false;
             this.help2.Click += new System.EventHandler(this.HelpPressed);
             // 
             // help1
@@ -445,6 +459,7 @@
             this.help1.TabIndex = 36;
             this.help1.Text = "?";
             this.help1.UseVisualStyleBackColor = true;
+            this.help1.Visible = false;
             this.help1.Click += new System.EventHandler(this.HelpPressed);
             // 
             // label19
@@ -637,7 +652,7 @@
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_save.Location = new System.Drawing.Point(598, 509);
+            this.btn_save.Location = new System.Drawing.Point(596, 509);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(69, 26);
             this.btn_save.TabIndex = 2;
@@ -736,7 +751,7 @@
             this.grp_flags.Controls.Add(this.CHK2);
             this.grp_flags.Controls.Add(this.CHK1);
             this.grp_flags.Controls.Add(this.CHK0);
-            this.grp_flags.Location = new System.Drawing.Point(430, 12);
+            this.grp_flags.Location = new System.Drawing.Point(428, 12);
             this.grp_flags.Name = "grp_flags";
             this.grp_flags.Size = new System.Drawing.Size(237, 434);
             this.grp_flags.TabIndex = 2;
@@ -926,7 +941,7 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.Location = new System.Drawing.Point(523, 509);
+            this.btn_cancel.Location = new System.Drawing.Point(521, 509);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(69, 26);
             this.btn_cancel.TabIndex = 5;
@@ -947,7 +962,7 @@
             this.grp_topSIMPLE.Controls.Add(this.label20);
             this.grp_topSIMPLE.Location = new System.Drawing.Point(5, 541);
             this.grp_topSIMPLE.Name = "grp_topSIMPLE";
-            this.grp_topSIMPLE.Size = new System.Drawing.Size(662, 67);
+            this.grp_topSIMPLE.Size = new System.Drawing.Size(660, 67);
             this.grp_topSIMPLE.TabIndex = 36;
             this.grp_topSIMPLE.TabStop = false;
             this.grp_topSIMPLE.Text = "Top Screen \"simple themes\" settings";
@@ -977,7 +992,7 @@
             // btn_prev
             // 
             this.btn_prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_prev.Location = new System.Drawing.Point(430, 508);
+            this.btn_prev.Location = new System.Drawing.Point(428, 508);
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(87, 27);
             this.btn_prev.TabIndex = 37;
@@ -988,7 +1003,7 @@
             // btn_export
             // 
             this.btn_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_export.Location = new System.Drawing.Point(430, 454);
+            this.btn_export.Location = new System.Drawing.Point(428, 454);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(237, 23);
             this.btn_export.TabIndex = 38;
@@ -999,7 +1014,7 @@
             // btn_import
             // 
             this.btn_import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_import.Location = new System.Drawing.Point(430, 483);
+            this.btn_import.Location = new System.Drawing.Point(428, 483);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(237, 23);
             this.btn_import.TabIndex = 39;
@@ -1007,11 +1022,20 @@
             this.btn_import.UseVisualStyleBackColor = true;
             this.btn_import.Click += new System.EventHandler(this.button4_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 1000;
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 300;
+            this.toolTip1.ReshowDelay = 200;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Usage:";
+            // 
             // Sett
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 613);
+            this.ClientSize = new System.Drawing.Size(677, 613);
             this.Controls.Add(this.btn_import);
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.btn_prev);
@@ -1023,7 +1047,7 @@
             this.Controls.Add(this.grp_colors);
             this.Controls.Add(this.grp_draw);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(678, 652);
+            this.MinimumSize = new System.Drawing.Size(693, 652);
             this.Name = "Sett";
             this.Text = "Theme settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FORM_Closing);
@@ -1131,5 +1155,6 @@
         private System.Windows.Forms.CheckBox CHK0;
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Button btn_import;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

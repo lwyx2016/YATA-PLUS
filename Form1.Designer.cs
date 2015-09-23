@@ -619,7 +619,7 @@
             this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(0, 315);
+            this.Player.Location = new System.Drawing.Point(0, 316);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
             this.Player.Size = new System.Drawing.Size(717, 44);

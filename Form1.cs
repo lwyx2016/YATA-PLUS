@@ -49,7 +49,8 @@ namespace YATA
             "To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ",
             "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings", "If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?",
             "If you don't save and reload the theme you may encounter some bugs",
-            "The input file is not a valid BRSTM file" };
+            "The input file is not a valid BRSTM file",
+            "Some cwavs weren't converted"};
         #endregion
 
         public Form1(string arg)
@@ -67,6 +68,8 @@ namespace YATA
                 InitializeComponent();
                 if (APP_LNG != "english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt"))
                 {
+                    int messagesCount = messages.Count;
+                    List<String> messagesBack = messages;
                     messages.Clear();
                     string[] lng = File.ReadAllLines(@"languages\" + APP_LNG + @"\main.txt");
                     foreach (string line in lng)
@@ -82,6 +85,11 @@ namespace YATA
                             else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
                             else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
                         }
+                    }
+                    if (messages.Count < messagesCount)
+                    {
+                        MessageBox.Show("The messages in the translation file (the lines that start with @) for this window are less than the expected number, the default english data will be loaded");
+                        messages = messagesBack;
                     }
                 }
                 if (File.Exists(arg))
@@ -283,17 +291,17 @@ namespace YATA
 
             Player.Ctlcontrols.stop();
             Player.close(); //Releases resource
-            if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav");
+            if (File.Exists(Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav");
             this.Refresh();
             Process proc = new Process();
             proc.StartInfo.FileName = "vgmstream.exe";
-            if (filepath.Contains("♪")) MessageBox.Show(messages[3]);
-            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetDirectoryName(openFileLZ.FileName) + "\\tmp_bgm.wav\" " + " \"" + filepath + "\"";
+            if (filepath.Contains("♪")) MessageBox.Show(messages[3]);            
+            proc.StartInfo.Arguments = "-o " + "\"" + Path.GetDirectoryName(filepath) + "\\tmp_bgm.wav\" " + " \"" + filepath + "\"";
             proc.StartInfo.CreateNoWindow = true;
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            Player.URL = Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav";
+            Player.URL = Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav";
             if (Player.Visible == false) Player.Visible = true;
             Player.Ctlcontrols.play();
         }
@@ -1435,6 +1443,7 @@ namespace YATA
                     }
                     else
                     {
+                        int error = 0;
                         for (int i = 0; i < opn.FileNames.Length; i++)
                         {
                             if (!APP_not_Optimize_Cwavs)
@@ -1455,8 +1464,9 @@ namespace YATA
                             prc.Start();
                             prc.WaitForExit();
                             if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
+                            if (!File.Exists(opn.FileNames[i] + ".bcwav")) error ++;
                         }
-                        MessageBox.Show("Done !");
+                        if (error != 0) MessageBox.Show(messages[13]); else MessageBox.Show("Done !");
                     }
                 }
             }
