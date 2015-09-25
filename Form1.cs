@@ -41,16 +41,21 @@ namespace YATA
             "This file is not a theme",
             "This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!",
             "The path or the file name contains some special characters, the file won't be loaded",
-            "Image size:", "Saving theme,please wait", "Error: Image is not a power of 2.",
+            "Image size:",
+            "Saving theme,please wait",
+            "Error: Image is not a power of 2.",
             "Theme saved !",
             "Hey, looks like there is a new version of yata+ out there !! \r\nWhat are you waiting for ? Go now on the official thread (Credits -> Official thread) and download it !! \r\n\r\nYou can disable the auto check for updates in the preferences",
             "To use this funcion you must set your photo editor program executable in the preferences (File -> Preferences)",
             "the image has been modified, do you want to import the new one ?",
             "To convert a WAV you'll need the 'CTR_WaveConverter32' executable from the leaked sdk, this file is illegal to share, you'll have to find by yourself.\r\n When you'll have it, place it in the same directory as yata, and make sure that his name is 'CTR_WaveConverter32.exe'. \r\nIf you know another method for converting WAVs to CWAVs please contact me on gbatemp so i can implement it ",
-            "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings", "If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?",
+            "To import some CWAVs you must check the 'Enable use of SFX' box in the theme settings",
+            "If you have imported some cwavs, now you should reload the theme in YATA, do you want to (this will save the theme) ?",
             "If you don't save and reload the theme you may encounter some bugs",
             "The input file is not a valid BRSTM file",
-            "Some cwavs weren't converted"};
+            "Some cwavs weren't converted",
+            "This theme has the 'Use BMG' flag checked in the settings, but in its path there's not a bgm.bcstm file, if you try to install this theme without a bgm, or you don't disable it in the theme settings the home menu will crash"};
+        //17
         #endregion
 
         public Form1(string arg)
@@ -181,8 +186,7 @@ namespace YATA
             RGBOffs.Clear();
             colChunks = null;
             imgListBoxLoaded = false;
-            pictureBox1.Image = null;
-            topcol = new byte[1][] { new byte[7] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } };
+            pictureBox1.Image = null;            
 
             File_installTheme.Enabled = false;
             file_saveAS.Enabled = false;
@@ -275,9 +279,10 @@ namespace YATA
             edit_CWAVdump.Enabled = true;
             edit_createCWAV.Enabled = true;
             File_installTheme.Enabled = true;
+            if (useBGM != 1 && File.Exists(path + "bgm.bcstm")) MessageBox.Show(messages[2]);
+            if (useBGM == 1 && !File.Exists(path + "bgm.bcstm")) MessageBox.Show(messages[17]);
             if (APP_Auto_Load_bgm && File.Exists(path + "bgm.bcstm")) 
-            {
-                if (useBGM != 1) MessageBox.Show(messages[2]);
+            {                
                 LoadBGM(path + "bgm.bcstm");
             }
         }
@@ -786,7 +791,8 @@ namespace YATA
 
         private void makeTheme(string file)
         {
-            if (cwav.Length == 0) { enableSec[16] = 0; cwavLen = 0; } else cwavLen = (uint)cwav.Length;
+            if (useBGM == 1 && !File.Exists(path + "bgm.bcstm")) MessageBox.Show(messages[17]);
+            if (cwav.Length == 0) { enableSec[16] = 0; cwavLen = 0; } else cwavLen = (uint)cwav.Length; //Auto diable cwavs if not used
             using (BinaryWriter bw = new BinaryWriter(File.Create(file)))
             {
                 StatusLabel.Visible = true;
