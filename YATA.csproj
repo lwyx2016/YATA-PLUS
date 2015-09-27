@@ -162,6 +162,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SendTheme\InstallCHMM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendTheme\InstallCHMM.Designer.cs">
+      <DependentUpon>InstallCHMM.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendTheme\SendToCHMM2.cs" />
     <Compile Include="Sett.cs">
       <SubType>Form</SubType>
@@ -294,6 +300,8 @@
     <None Include="Resources\adv.png" />
     <None Include="Resources\Cursor.png" />
     <None Include="Resources\clippy_paper.jpg" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\stop.png" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>

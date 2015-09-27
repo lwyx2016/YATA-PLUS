@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.drpdwn_file = new System.Windows.Forms.ToolStripDropDownButton();
@@ -39,6 +40,8 @@
             this.file_prev = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.File_installTheme = new System.Windows.Forms.ToolStripMenuItem();
+            this.install_WithThemeInst = new System.Windows.Forms.ToolStripMenuItem();
+            this.install_WithCHMM2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.file_pref = new System.Windows.Forms.ToolStripMenuItem();
             this.drpdwn_edit = new System.Windows.Forms.ToolStripDropDownButton();
@@ -92,9 +95,17 @@
             this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.lbl_ImgNotInc = new System.Windows.Forms.Label();
             this.lbl_DragBgm = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_Time = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.btn_play = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,11 +239,26 @@
             // 
             // File_installTheme
             // 
+            this.File_installTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.install_WithThemeInst,
+            this.install_WithCHMM2});
             this.File_installTheme.Enabled = false;
             this.File_installTheme.Name = "File_installTheme";
             this.File_installTheme.Size = new System.Drawing.Size(189, 22);
             this.File_installTheme.Text = "Install theme";
-            this.File_installTheme.Click += new System.EventHandler(this.File_installTheme_Click);
+            // 
+            // install_WithThemeInst
+            // 
+            this.install_WithThemeInst.Name = "install_WithThemeInst";
+            this.install_WithThemeInst.Size = new System.Drawing.Size(263, 22);
+            this.install_WithThemeInst.Text = "Install with YATA+ theme installer";
+            this.install_WithThemeInst.Click += new System.EventHandler(this.installWithYATAThemeInstallerToolStripMenuItem_Click);
+            // 
+            // install_WithCHMM2
+            // 
+            this.install_WithCHMM2.Name = "install_WithCHMM2";
+            this.install_WithCHMM2.Size = new System.Drawing.Size(263, 22);
+            this.install_WithCHMM2.Text = "Install with CHMM2 (only ninjhax 1)";
             // 
             // toolStripSeparator4
             // 
@@ -619,7 +645,7 @@
             this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(0, 316);
+            this.Player.Location = new System.Drawing.Point(-3, 58);
             this.Player.Name = "Player";
             this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
             this.Player.Size = new System.Drawing.Size(717, 44);
@@ -650,6 +676,67 @@
             this.lbl_DragBgm.Text = "Drag your theme or BGM here !";
             this.lbl_DragBgm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lbl_Time);
+            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Controls.Add(this.btn_play);
+            this.panel1.Location = new System.Drawing.Point(0, 313);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(717, 44);
+            this.panel1.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(251, 239);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(234, 46);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Player disabled in the settings";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Visible = false;
+            // 
+            // lbl_Time
+            // 
+            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Location = new System.Drawing.Point(677, 8);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(28, 13);
+            this.lbl_Time.TabIndex = 2;
+            this.lbl_Time.Text = "0:00";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(47, 8);
+            this.trackBar1.Maximum = 99;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(624, 30);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // btn_play
+            // 
+            this.btn_play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_play.Image = global::YATA.Properties.Resources.play;
+            this.btn_play.Location = new System.Drawing.Point(3, 3);
+            this.btn_play.Name = "btn_play";
+            this.btn_play.Size = new System.Drawing.Size(38, 38);
+            this.btn_play.TabIndex = 0;
+            this.btn_play.UseVisualStyleBackColor = true;
+            this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(214, 41);
@@ -658,23 +745,31 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(717, 358);
+            this.Controls.Add(this.Player);
             this.Controls.Add(this.lbl_DragBgm);
             this.Controls.Add(this.lbl_ImgNotInc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_notCrashed);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_photoedit);
             this.Controls.Add(this.lbl_images);
             this.Controls.Add(this.imgListBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Player);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(733, 397);
             this.Name = "Form1";
@@ -686,6 +781,9 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -763,6 +861,14 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem File_installTheme;
         private System.Windows.Forms.OpenFileDialog openFileLZ;
+        private System.Windows.Forms.ToolStripMenuItem install_WithThemeInst;
+        private System.Windows.Forms.ToolStripMenuItem install_WithCHMM2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbl_Time;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Button btn_play;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
