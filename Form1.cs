@@ -34,6 +34,7 @@ namespace YATA
         public static bool APP_export_both_screens = true;
         public static string APP_LNG = "english";
         public static bool APP_not_Optimize_Cwavs = false;
+        public static bool APP_use_ext_player = false;
         public static int APP_opt_samples = 11025;
         #endregion
         #region strings
@@ -66,12 +67,11 @@ namespace YATA
             int dll = 0;
             if (!File.Exists("System.Net.FtpClient.dll")) MessageBox.Show("System.Net.FtpClient.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL you can't install themes via FTP", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-            if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+           // if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+          //  if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
             if (dll != 0) InitializeComponent();
             try
-            {
-                InitializeComponent();
+            {    
                 if (APP_LNG != "english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt"))
                 {
                     int messagesCount = messages.Count;
@@ -86,7 +86,9 @@ namespace YATA
                         Prefs dlg = new Prefs();
                         dlg.build_settings();
                         dlg.Dispose();
+                        return;
                     }
+                    InitializeComponent();
                     foreach (string line in lng)
                     {
                         if (!line.StartsWith(";"))
@@ -108,6 +110,7 @@ namespace YATA
                         messages = messagesBack;
                     }
                 }
+                else InitializeComponent();
                 if (File.Exists(arg))
                 {
                     loadFromDragAndDrop(new string[1] { arg });
@@ -213,8 +216,7 @@ namespace YATA
             edit_CWAVdump.Enabled = false;
             drpdwn_settings.Enabled = false;
             drpdwn_sim.Enabled = false;
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
+            DisposeMusic();
             try { if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav"); } catch (Exception ex) { MessageBox.Show(ex.Message, "ERROR ON DELETING TMP_BGM"); }
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
@@ -305,8 +307,7 @@ namespace YATA
             if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
             if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
 
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
+            DisposeMusic();
             if (File.Exists(Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav");
             this.Refresh();
             Process proc = new Process();
@@ -317,9 +318,6 @@ namespace YATA
             proc.StartInfo.UseShellExecute = false;
             proc.Start();
             proc.WaitForExit();
-            /*Player.URL = Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav";
-            if (Player.Visible == false) Player.Visible = true;
-            Player.Ctlcontrols.play();*/
             PlayWave(Path.GetDirectoryName(filepath) + @"\tmp_bgm.wav");
         }
 
@@ -1293,8 +1291,9 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                string[] baseSettings = { "ui_sim=true", "gen_prev=false", "photo_edit=", "wait_editor=true", "clean_on_exit=true", "load_bgm=true", "first_start_v6=true", "shift_btns=10", "check_updates=true", "exp_both_screens=true", "happy_easter=false", "lng=english", "n_opt_cwavs=false", "opt_samples=11025" };
-                System.IO.File.WriteAllLines("Settings.ini", baseSettings);
+                Prefs dlg = new Prefs();
+                dlg.build_settings();
+                dlg.Dispose();
             }
             string[] lines = System.IO.File.ReadAllLines("Settings.ini");
             foreach (string line in lines)
@@ -1364,6 +1363,10 @@ namespace YATA
                 {
                     APP_opt_samples = Convert.ToInt32(line.ToLower().Substring(12));
                 }
+                else if (line.ToLower().StartsWith("ext_player="))
+                {
+                    APP_use_ext_player = Convert.ToBoolean(line.ToLower().Substring(11));                    
+                }
             }
             return;
         }
@@ -1388,6 +1391,7 @@ namespace YATA
                 }
             }
             catch {/*Do nothing*/}
+            if (APP_use_ext_player) lbl_playerDisabled.Visible = true; else Player_panel.Enabled = true;
         }
 
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1435,8 +1439,6 @@ namespace YATA
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
             DisposeMusic();
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
             try { if (File.Exists(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav")) File.Delete(Path.GetDirectoryName(openFileLZ.FileName) + @"\tmp_bgm.wav"); } catch (Exception ex) { MessageBox.Show(ex.Message, "ERROR ON DELETING TMP_BGM"); }
             if (APP_Clean_On_exit && System.IO.File.Exists(path + "dec_" + filename))
             {
@@ -1598,10 +1600,9 @@ namespace YATA
         {
             if (File.Exists(files[0]))
             {
-                if (files[0] == Player.URL)
+                if (files[0] == AUDIOfile)
                 {
-                    Player.Ctlcontrols.stop();
-                    Player.close(); //Releases resource
+                    DisposeMusic();
                 }
                 BinaryReader reader = new BinaryReader(File.Open(files[0], FileMode.Open));
                 string[] MAGIC = new string[4] { reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString(), reader.ReadByte().ToString() };
@@ -1640,9 +1641,7 @@ namespace YATA
                     dlg.ShowDialog();
                     if (dlg.RET == ConvertSETTINGS.ConvertType.play_file)
                     {
-                        Player.URL = (files[0]);
-                        if (Player.Visible == false) Player.Visible = true;
-                        Player.Ctlcontrols.play();
+                        PlayWave(files[0]);
                     }
                     else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTOcwav) { Wav2CWAV(files[0]); }
                     else if (dlg.RET == ConvertSETTINGS.ConvertType.wavTObrstm) { wav2BRSTM(files[0]); }
@@ -1676,7 +1675,7 @@ namespace YATA
                 }
             }
         }
-
+        #region Menu Stuff
         private void openTheFileConverterFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("The form was removed");
@@ -1742,7 +1741,76 @@ namespace YATA
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error"); }
         }
 
-        #region Converters
+        private void lZCOMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.ShowDialog();
+            dsdecmp.Compress(opn.FileName, opn.FileName + ".cmp");
+        }
+
+        private void lZUNCOMPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.ShowDialog();
+            dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
+        }
+
+        private void basicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveTheme.FileName = "body_LZ.bin";
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.StaticThemeTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
+        }
+
+        private void panoramicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveTheme.FileName = "body_LZ.bin";
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.PanoramicTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
+        }
+
+        private void bottomScreenAnimatedTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveTheme.FileName = "body_LZ.bin";
+            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.AnimatedBotScreenTemplate);
+                openFileLZ.FileName = saveTheme.FileName;
+                OPEN_FILE();
+            }
+        }
+
+        private void file_reload_Click(object sender, EventArgs e)
+        {
+            StatusLabel.Visible = true;
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
+            StatusLabel.Visible = false;
+            OPEN_FILE();
+        }
+
+        private void installWithYATAThemeInstallerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
+            StatusLabel.Visible = false;
+            this.Refresh();
+            Install dlg = new Install(openFileLZ.FileName);
+            dlg.ShowDialog();
+        }
+#endregion
+
+        #region Converters Stuff
         void Brstm2BCSTM(string input)
         {
             if (!File.Exists("BrstmConv.exe")) File.WriteAllBytes("BrstmConv.exe", Properties.Resources.BrstmConv);
@@ -1863,89 +1931,28 @@ namespace YATA
         }
         #endregion
 
-        private void lZCOMPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opn = new OpenFileDialog();
-            opn.ShowDialog();
-            dsdecmp.Compress(opn.FileName, opn.FileName + ".cmp");
-        }
-
-        private void lZUNCOMPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opn = new OpenFileDialog();
-            opn.ShowDialog();
-            dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
-        }
-
-        private void basicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveTheme.FileName = "body_LZ.bin";
-            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.StaticThemeTemplate);
-                openFileLZ.FileName = saveTheme.FileName;
-                OPEN_FILE();
-            }
-        }
-
-        private void panoramicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveTheme.FileName = "body_LZ.bin";
-            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.PanoramicTemplate);
-                openFileLZ.FileName = saveTheme.FileName;
-                OPEN_FILE();
-            }
-        }
-
-        private void bottomScreenAnimatedTemplateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveTheme.FileName = "body_LZ.bin";
-            if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                System.IO.File.WriteAllBytes(saveTheme.FileName, Properties.Resources.AnimatedBotScreenTemplate);
-                openFileLZ.FileName = saveTheme.FileName;
-                OPEN_FILE();
-            }
-        }
-
-        private void file_reload_Click(object sender, EventArgs e)
-        {
-            StatusLabel.Visible = true;
-            makeTheme(path + "new_dec_" + filename);
-            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
-            File.Delete(path + "new_dec_" + filename);
-            StatusLabel.Visible = false;
-            OPEN_FILE();
-        }
-
-        private void installWithYATAThemeInstallerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            makeTheme(path + "new_dec_" + filename);
-            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
-            File.Delete(path + "new_dec_" + filename);
-            StatusLabel.Visible = false;
-            this.Refresh();
-            Install dlg = new Install(openFileLZ.FileName);
-            dlg.ShowDialog();
-        }
-
         #region AudioPlayer Stuff
         private IWavePlayer waveOut;
         private WaveFileReader WAVFileReader;
+        string AUDIOfile = "";
+        bool big_change = false;
 
         private void PlayWave(string File)
         {
             DisposeMusic();
-            this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
-            this.WAVFileReader = new WaveFileReader(File);
-            this.waveOut.Init(WAVFileReader);
-            this.waveOut.Play();
-            btn_play.Image = Properties.Resources.stop;
-            timer1.Enabled = true;
-            timer1.Start();
-            this.waveOut.PlaybackStopped += OnPlaybackStopped;
+            AUDIOfile = File;
+            if (APP_use_ext_player) System.Diagnostics.Process.Start(File);
+            else
+            {                
+                this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
+                this.WAVFileReader = new WaveFileReader(File);
+                this.waveOut.Init(WAVFileReader);
+                this.waveOut.Play();
+                btn_play.Image = Properties.Resources.stop;
+                timer1.Enabled = true;
+                timer1.Start();
+                this.waveOut.PlaybackStopped += OnPlaybackStopped;
+            }
         }
 
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
@@ -1958,8 +1965,9 @@ namespace YATA
 
         private void DisposeMusic()
         {
-            if (waveOut != null && WAVFileReader != null)
+            if (waveOut != null && WAVFileReader != null && !APP_use_ext_player)
             {
+                AUDIOfile = "";
                 this.waveOut.Dispose();
                 this.WAVFileReader.Dispose();                
             }
@@ -1976,8 +1984,9 @@ namespace YATA
                 }
                 else if (waveOut.PlaybackState == PlaybackState.Paused)
                 {
+                    if (big_change) { WAVFileReader.CurrentTime = TimeSpan.FromSeconds(WAVFileReader.TotalTime.TotalSeconds * trackBar1.Value / 200.0); big_change = false; }
                     waveOut.Play();
-                    btn_play.Image = Properties.Resources.stop;
+                    btn_play.Image = Properties.Resources.stop;                    
                 }
             }
         }
@@ -1986,7 +1995,8 @@ namespace YATA
         {
             if (waveOut != null)
             {
-                WAVFileReader.CurrentTime = TimeSpan.FromSeconds(WAVFileReader.TotalTime.TotalSeconds * trackBar1.Value / 100.0);
+                WAVFileReader.CurrentTime = TimeSpan.FromSeconds(WAVFileReader.TotalTime.TotalSeconds * trackBar1.Value / 200.0);
+                if (waveOut.PlaybackState != PlaybackState.Playing) big_change = true; else big_change = false;
             }
         }
 
@@ -1995,7 +2005,7 @@ namespace YATA
             if (waveOut != null && WAVFileReader != null)
             {
                 TimeSpan currentTime = (waveOut.PlaybackState == PlaybackState.Stopped) ? TimeSpan.Zero : WAVFileReader.CurrentTime;
-                trackBar1.Value = Math.Min(trackBar1.Maximum, (int)(100 * currentTime.TotalSeconds / WAVFileReader.TotalTime.TotalSeconds));
+                trackBar1.Value = Math.Min(trackBar1.Maximum, (int)(200 * currentTime.TotalSeconds / WAVFileReader.TotalTime.TotalSeconds));
                 lbl_Time.Text = String.Format("{0:00}:{1:00}", (int)currentTime.TotalMinutes,
                     currentTime.Seconds);
             }
@@ -2004,7 +2014,7 @@ namespace YATA
                 trackBar1.Value = 0;
             }
         }
-        #endregion      
+        #endregion
     }
 
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using NAudio.Wave;
 
 namespace YATA
 {
@@ -61,7 +62,7 @@ namespace YATA
             listBox1.Items.Clear();
             listBox1.Enabled = false;
             btn_dump.Enabled = false;
-            btn_play.Enabled = false;
+            play.Enabled = false;
             btn_exportCWAV.Enabled = false;
             btn_exportWAV.Enabled = false;
             label1.Visible = false;
@@ -169,43 +170,14 @@ namespace YATA
             } 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
-            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
-            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
-            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
-            try
-            {
-            Player.Ctlcontrols.stop();
-            Player.close(); //Releases resource
-            if (!Directory.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\")) Directory.CreateDirectory(Path.GetTempPath() + @"DUMP\tmpWAVS\");
-            string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\");
-            if (File.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav")) File.Delete(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
-            Process proc = new Process();
-            proc.StartInfo.FileName = "vgmstream.exe";
-            proc.StartInfo.Arguments = "-o \"" + Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav\" "+ "\"" + files[listBox1.SelectedIndex] + "\"";
-            proc.StartInfo.CreateNoWindow = true;
-            proc.StartInfo.UseShellExecute = false;
-            proc.Start();
-            proc.WaitForExit();
-            Player.URL = Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav";
-            if (this.Size != new System.Drawing.Size(406, 364)) this.Size = new System.Drawing.Size(406, 364);
-            Player.Ctlcontrols.play();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            
-        }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btn_play.Enabled = true;
+            play.Enabled = true;
         }
 
         void clean() 
         {
-            Player.Ctlcontrols.stop();
-            Player.close();
+            DisposeMusic();
             //if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
             if (Directory.Exists(Path.GetTempPath() + "DUMP")) Directory.Delete(Path.GetTempPath() + "DUMP", true);
             return;
@@ -264,5 +236,69 @@ namespace YATA
         {
             if (Form1.enableSec[16] == 0) { MessageBox.Show("This theme doesn't support CWAVs to add them check the 'Enable use of SFX' box in the theme settings and go to 'Create CWAVs chunk'"); this.Close(); }
         }
+
+        #region AudioPlayer Stuff
+        private IWavePlayer waveOut;
+        private WaveFileReader WAVFileReader;
+        string AUDIOfile = "";
+
+        private void PlayWave(string File)
+        {
+            DisposeMusic();
+            AUDIOfile = File;
+            if (Form1.APP_use_ext_player) System.Diagnostics.Process.Start(File);
+            else
+            {
+                this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
+                this.WAVFileReader = new WaveFileReader(File);
+                this.waveOut.Init(WAVFileReader);
+                this.waveOut.Play();
+                this.waveOut.PlaybackStopped += OnPlaybackStopped;
+            }
+        }
+
+        private void OnPlaybackStopped(object sender, StoppedEventArgs e)
+        {
+            WAVFileReader.CurrentTime = TimeSpan.FromSeconds(0);
+            this.waveOut.Play();
+            waveOut.Pause();
+            play.Image = Properties.Resources.play;
+        }
+
+        private void DisposeMusic()
+        {
+            if (waveOut != null && WAVFileReader != null && !Form1.APP_use_ext_player)
+            {
+                AUDIOfile = "";
+                this.waveOut.Dispose();
+                this.WAVFileReader.Dispose();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!File.Exists("vgmstream.exe")) File.WriteAllBytes("vgmstream.exe", Properties.Resources.test);
+            if (!File.Exists("libg7221_decode.dll")) File.WriteAllBytes("libg7221_decode.dll", Properties.Resources.libg7221_decode);
+            if (!File.Exists("libmpg123-0.dll")) File.WriteAllBytes("libmpg123-0.dll", Properties.Resources.libmpg123_0);
+            if (!File.Exists("libvorbis.dll")) File.WriteAllBytes("libvorbis.dll", Properties.Resources.libvorbis);
+            try
+            {
+                DisposeMusic();
+                if (!Directory.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\")) Directory.CreateDirectory(Path.GetTempPath() + @"DUMP\tmpWAVS\");
+                string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\");
+                if (File.Exists(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav")) File.Delete(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
+                Process proc = new Process();
+                proc.StartInfo.FileName = "vgmstream.exe";
+                proc.StartInfo.Arguments = "-o \"" + Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav\" " + "\"" + files[listBox1.SelectedIndex] + "\"";
+                proc.StartInfo.CreateNoWindow = true;
+                proc.StartInfo.UseShellExecute = false;
+                proc.Start();
+                proc.WaitForExit();                
+                PlayWave(Path.GetTempPath() + @"DUMP\tmpWAVS\" + Path.GetFileName(files[listBox1.SelectedIndex]) + ".wav");
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        #endregion
     }
 }

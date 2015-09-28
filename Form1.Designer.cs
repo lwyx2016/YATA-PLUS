@@ -92,21 +92,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_notCrashed = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
             this.lbl_ImgNotInc = new System.Windows.Forms.Label();
             this.lbl_DragBgm = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbl_Time = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.btn_play = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbl_playerDisabled = new System.Windows.Forms.Label();
+            this.btn_play = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.lbl_Time = new System.Windows.Forms.Label();
+            this.Player_panel = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.Player_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -640,18 +638,6 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 7;
             // 
-            // Player
-            // 
-            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(-3, 58);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(717, 44);
-            this.Player.TabIndex = 8;
-            this.Player.Visible = false;
-            // 
             // lbl_ImgNotInc
             // 
             this.lbl_ImgNotInc.BackColor = System.Drawing.Color.Black;
@@ -676,67 +662,6 @@
             this.lbl_DragBgm.Text = "Drag your theme or BGM here !";
             this.lbl_DragBgm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.lbl_Time);
-            this.panel1.Controls.Add(this.trackBar1);
-            this.panel1.Controls.Add(this.btn_play);
-            this.panel1.Location = new System.Drawing.Point(0, 313);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(717, 44);
-            this.panel1.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.BackColor = System.Drawing.Color.Black;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(251, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(234, 46);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Player disabled in the settings";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Visible = false;
-            // 
-            // lbl_Time
-            // 
-            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Time.AutoSize = true;
-            this.lbl_Time.Location = new System.Drawing.Point(677, 8);
-            this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(28, 13);
-            this.lbl_Time.TabIndex = 2;
-            this.lbl_Time.Text = "0:00";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Location = new System.Drawing.Point(47, 8);
-            this.trackBar1.Maximum = 99;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(624, 30);
-            this.trackBar1.TabIndex = 1;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // btn_play
-            // 
-            this.btn_play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_play.Image = global::YATA.Properties.Resources.play;
-            this.btn_play.Location = new System.Drawing.Point(3, 3);
-            this.btn_play.Name = "btn_play";
-            this.btn_play.Size = new System.Drawing.Size(38, 38);
-            this.btn_play.TabIndex = 0;
-            this.btn_play.UseVisualStyleBackColor = true;
-            this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(214, 41);
@@ -750,6 +675,68 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lbl_playerDisabled
+            // 
+            this.lbl_playerDisabled.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_playerDisabled.BackColor = System.Drawing.Color.Black;
+            this.lbl_playerDisabled.ForeColor = System.Drawing.Color.White;
+            this.lbl_playerDisabled.Location = new System.Drawing.Point(249, 320);
+            this.lbl_playerDisabled.Name = "lbl_playerDisabled";
+            this.lbl_playerDisabled.Size = new System.Drawing.Size(250, 24);
+            this.lbl_playerDisabled.TabIndex = 12;
+            this.lbl_playerDisabled.Text = "Player disabled in the settings";
+            this.lbl_playerDisabled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_playerDisabled.Visible = false;
+            // 
+            // btn_play
+            // 
+            this.btn_play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_play.Image = global::YATA.Properties.Resources.play;
+            this.btn_play.Location = new System.Drawing.Point(3, 3);
+            this.btn_play.Name = "btn_play";
+            this.btn_play.Size = new System.Drawing.Size(38, 38);
+            this.btn_play.TabIndex = 0;
+            this.btn_play.UseVisualStyleBackColor = true;
+            this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(47, 8);
+            this.trackBar1.Maximum = 199;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(624, 30);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lbl_Time
+            // 
+            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Location = new System.Drawing.Point(677, 8);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(28, 13);
+            this.lbl_Time.TabIndex = 2;
+            this.lbl_Time.Text = "0:00";
+            // 
+            // Player_panel
+            // 
+            this.Player_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Player_panel.Controls.Add(this.lbl_Time);
+            this.Player_panel.Controls.Add(this.trackBar1);
+            this.Player_panel.Controls.Add(this.btn_play);
+            this.Player_panel.Enabled = false;
+            this.Player_panel.Location = new System.Drawing.Point(0, 313);
+            this.Player_panel.Name = "Player_panel";
+            this.Player_panel.Size = new System.Drawing.Size(717, 44);
+            this.Player_panel.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -757,19 +744,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(717, 358);
-            this.Controls.Add(this.Player);
+            this.Controls.Add(this.lbl_playerDisabled);
             this.Controls.Add(this.lbl_DragBgm);
             this.Controls.Add(this.lbl_ImgNotInc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_notCrashed);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_photoedit);
             this.Controls.Add(this.lbl_images);
             this.Controls.Add(this.imgListBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Player_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(733, 397);
             this.Name = "Form1";
@@ -780,11 +766,10 @@
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.Player_panel.ResumeLayout(false);
+            this.Player_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -836,7 +821,6 @@
         private System.Windows.Forms.ToolStripMenuItem printColorOffsetToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem;
-        private AxWMPLib.AxWindowsMediaPlayer Player;
         private System.Windows.Forms.ToolStripMenuItem file_loadbgm;
         private System.Windows.Forms.Label lbl_ImgNotInc;
         private System.Windows.Forms.ToolStripMenuItem cWAVWAVToolStripMenuItem;
@@ -863,12 +847,12 @@
         private System.Windows.Forms.OpenFileDialog openFileLZ;
         private System.Windows.Forms.ToolStripMenuItem install_WithThemeInst;
         private System.Windows.Forms.ToolStripMenuItem install_WithCHMM2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbl_Time;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button btn_play;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lbl_playerDisabled;
+        private System.Windows.Forms.Button btn_play;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label lbl_Time;
+        private System.Windows.Forms.Panel Player_panel;
     }
 }
 

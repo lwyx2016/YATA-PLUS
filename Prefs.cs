@@ -36,6 +36,7 @@ namespace YATA {
             chb_loadBGM.Checked = Form1.APP_Auto_Load_bgm;
             chb_updates.Checked = Form1.APP_check_UPD;
             chb_ExportBot.Checked = Form1.APP_export_both_screens;
+            chb_extplayer.Checked = Form1.APP_use_ext_player;
             textBox1.Text = Form1.APP_photo_edtor;
             numericUpDown1.Value = Form1.APP_Move_buttons_colors;
             numericUpDown2.Value = Form1.APP_SETT_SIZE_X;
@@ -80,6 +81,7 @@ namespace YATA {
             chb_updates.Checked = true;
             chb_ExportBot.Checked = true;
             chb_opt.Checked = false;
+            chb_extplayer.Checked = false;
             comboBox1.Text = "english";
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
@@ -90,7 +92,7 @@ namespace YATA {
 
         public void build_settings()
         {
-            string[] lines = new string[15];
+            string[] lines = new string[16];
             lines[0] = "ui_sim=" + chb_UISim.Checked.ToString();
             lines[1] = "gen_prev=" + chb_SavePrev.Checked.ToString();
             lines[2] = "photo_edit=" + textBox1.Text;
@@ -106,6 +108,7 @@ namespace YATA {
             lines[12] = "lng=" + comboBox1.Text;
             lines[13] = "n_opt_cwavs=" + chb_opt.Checked;
             lines[14] = "opt_samples=" + Form1.APP_opt_samples;
+            lines[14] = "ext_player=" + chb_extplayer.Checked;
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;
