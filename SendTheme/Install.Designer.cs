@@ -81,10 +81,10 @@
             this.Controls.Add(this.btn_send);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Install";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Install theme";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Install_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

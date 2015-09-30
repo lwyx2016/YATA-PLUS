@@ -56,8 +56,9 @@ namespace YATA
             "If you don't save and reload the theme you may encounter some bugs",
             "The input file is not a valid BRSTM file",
             "Some cwavs weren't converted",
-            "This theme has the 'Use BMG' flag checked in the settings, but in its path there's not a bgm.bcstm file, if you try to install this theme without a bgm, or you don't disable it in the theme settings the home menu will crash"};
-        //17
+            "This theme has the 'Use BMG' flag checked in the settings, but in its path there's not a bgm.bcstm file, if you try to install this theme without a bgm, or you don't disable it in the theme settings the home menu will crash",
+            "bgm.bcstm was not found, the bgm will be disabled"};
+        //LAST: 18 COUNT = 19 
         #endregion
 
         public Form1(string arg)
@@ -1800,6 +1801,11 @@ namespace YATA
 
         private void installWithYATAThemeInstallerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(path + "bgm.bcstm"))
+            {
+                if (useBGM == 1) MessageBox.Show(messages[18]);
+                useBGM = 0;
+            }
             makeTheme(path + "new_dec_" + filename);
             dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
             File.Delete(path + "new_dec_" + filename);
@@ -2015,6 +2021,22 @@ namespace YATA
             }
         }
         #endregion
+
+        private void install_WithCHMM2_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(path + "bgm.bcstm"))
+            {
+                if (useBGM == 1) MessageBox.Show(messages[18]);
+                useBGM = 0;
+            }
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
+            StatusLabel.Visible = false;
+            this.Refresh();
+            SendTheme.InstallCHMM dlg = new SendTheme.InstallCHMM(openFileLZ.FileName);
+            dlg.ShowDialog();
+        }
     }
 
 

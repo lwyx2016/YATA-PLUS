@@ -15,7 +15,7 @@ namespace YATA {
         #region strings
         List<String> messages = new List<string>() {
             "If you don't update YATA+, you may miss some important new features in the next updates....",
-        "Restart YATA to fully change the language"};
+        "Restart YATA+ to fully apply the settings"};
         #endregion
 
         public Prefs() {
@@ -116,9 +116,9 @@ namespace YATA {
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Form1.APP_LNG != comboBox1.Text) MessageBox.Show(messages[1]);
             build_settings();
             Form1.load_prefs();
+            MessageBox.Show(messages[1]);
             this.Close();
         }
 
