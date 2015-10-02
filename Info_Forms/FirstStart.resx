@@ -126,9 +126,13 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -Some "Stability fixes" to the multi languages system
- -This is the first stable version of YATA+
- -Fixed some bugs related to the the temp files of YATA+
+ -Fixed a overflow bug when editing the colors in a theme
+ -Replaced Windows Media Player with an embedded player
+ -Now you can disable the player and use your default player
+ -Added option to send themes to CHMM2 by Rinnegatamante
+ -Added tooltips in the theme settings windows
+ -Added support for "custom colors" in the color dialog for the theme settings window
+ -Fixed the preview of the theme, now the top and bottom images are aligned
 
 For every problem, question or bug report, here is the official thread:
 </value>

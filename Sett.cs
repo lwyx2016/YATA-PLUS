@@ -488,10 +488,13 @@ namespace YATA {
             MessageBox.Show(messages[button - 1]);
         }
 
+        int[] customCol;
         private void colorSelect(object sender, EventArgs e) {
             colDialog.FullOpen = true;
             colDialog.Color = ((Button)sender).BackColor;
+            colDialog.CustomColors = customCol;
             if (colDialog.ShowDialog() == DialogResult.OK){
+                customCol = colDialog.CustomColors;
                 ((Button)sender).BackColor = colDialog.Color;
                 int buttonSet = Convert.ToInt32((((Button)sender).Name.Split('-'))[0]);
                 int button = Convert.ToInt32((((Button)sender).Name.Split('-'))[1]);
@@ -561,6 +564,7 @@ namespace YATA {
                 btnArray[i].Enabled = enab;
                 btnArray[i].ForeColor = enab == true ? Color.Black : Color.Gray;
                 if (enab) btnArray[i].BackColor = cols[i];
+                if (yPosNAME < 15) toolTip1.SetToolTip(btnArray[i], messages[yPosNAME]);
             }
             return btnArray;
         }

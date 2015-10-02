@@ -24,35 +24,46 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sim));
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Top_screen_overlay = new System.Windows.Forms.PictureBox();
             this.Arrows_bottom = new System.Windows.Forms.PictureBox();
             this.Overlay_LR_TOP_img = new System.Windows.Forms.PictureBox();
             this.topImage = new System.Windows.Forms.PictureBox();
             this.bottomImage = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::YATA.Properties.Resources.adv;
+            this.pictureBox2.Location = new System.Drawing.Point(363, 240);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(37, 240);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::YATA.Properties.Resources.space;
             this.pictureBox1.Location = new System.Drawing.Point(0, 240);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 240);
+            this.pictureBox1.Size = new System.Drawing.Size(46, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // Top_screen_overlay
             // 
             this.Top_screen_overlay.BackColor = System.Drawing.Color.Transparent;
-            this.Top_screen_overlay.Location = new System.Drawing.Point(40, 240);
+            this.Top_screen_overlay.Location = new System.Drawing.Point(46, 240);
             this.Top_screen_overlay.Name = "Top_screen_overlay";
             this.Top_screen_overlay.Size = new System.Drawing.Size(320, 240);
             this.Top_screen_overlay.TabIndex = 5;
@@ -63,7 +74,7 @@
             this.Arrows_bottom.BackColor = System.Drawing.Color.Transparent;
             this.Arrows_bottom.BackgroundImage = global::YATA.Properties.Resources.Bottom_arrow_back;
             this.Arrows_bottom.Image = global::YATA.Properties.Resources.Bottom_arrow_fore;
-            this.Arrows_bottom.Location = new System.Drawing.Point(40, 240);
+            this.Arrows_bottom.Location = new System.Drawing.Point(46, 240);
             this.Arrows_bottom.Name = "Arrows_bottom";
             this.Arrows_bottom.Size = new System.Drawing.Size(320, 240);
             this.Arrows_bottom.TabIndex = 4;
@@ -90,20 +101,11 @@
             // 
             // bottomImage
             // 
-            this.bottomImage.Location = new System.Drawing.Point(40, 240);
+            this.bottomImage.Location = new System.Drawing.Point(46, 240);
             this.bottomImage.Name = "bottomImage";
             this.bottomImage.Size = new System.Drawing.Size(320, 240);
             this.bottomImage.TabIndex = 1;
             this.bottomImage.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::YATA.Properties.Resources.adv;
-            this.pictureBox2.Location = new System.Drawing.Point(360, 240);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 240);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
             // 
             // Sim
             // 
@@ -125,13 +127,13 @@
             this.Text = "Theme Simulator";
             this.Load += new System.EventHandler(this.Sim_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Sim_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

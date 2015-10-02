@@ -49,35 +49,37 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(36, 9);
+            this.label1.Location = new System.Drawing.Point(72, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(274, 80);
             this.label1.TabIndex = 1;
-            this.label1.Text = "                  YATA PLUS:\r\nYet Another Theme Application +\r\n\r\n                " +
-    "   Thanks to:";
+            this.label1.Text = "YATA PLUS:\r\nYet Another Theme Application +\r\n\r\nThanks to:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 297);
+            this.label2.Size = new System.Drawing.Size(385, 311);
             this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(0, 399);
+            this.label3.Location = new System.Drawing.Point(-1, 413);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 20);
+            this.label3.Size = new System.Drawing.Size(150, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "{VERSION}";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(85, 179);
+            this.linkLabel1.Location = new System.Drawing.Point(121, 180);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(168, 13);
             this.linkLabel1.TabIndex = 5;
@@ -89,7 +91,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(35, 127);
+            this.linkLabel2.Location = new System.Drawing.Point(64, 129);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(275, 13);
             this.linkLabel2.TabIndex = 6;
@@ -101,7 +103,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(35, 102);
+            this.linkLabel3.Location = new System.Drawing.Point(64, 103);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(275, 13);
             this.linkLabel3.TabIndex = 7;
@@ -112,7 +114,7 @@
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(11, 153);
+            this.linkLabel4.Location = new System.Drawing.Point(34, 153);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(328, 13);
             this.linkLabel4.TabIndex = 8;
@@ -124,7 +126,7 @@
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(125, 52);
+            this.linkLabel5.Location = new System.Drawing.Point(161, 52);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(105, 13);
             this.linkLabel5.TabIndex = 9;
@@ -135,7 +137,7 @@
             // btn_updates
             // 
             this.btn_updates.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_updates.Location = new System.Drawing.Point(200, 389);
+            this.btn_updates.Location = new System.Drawing.Point(247, 403);
             this.btn_updates.Name = "btn_updates";
             this.btn_updates.Size = new System.Drawing.Size(150, 23);
             this.btn_updates.TabIndex = 10;
@@ -146,7 +148,7 @@
             // linkLabel6
             // 
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(85, 205);
+            this.linkLabel6.Location = new System.Drawing.Point(121, 205);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(172, 13);
             this.linkLabel6.TabIndex = 11;
@@ -158,7 +160,7 @@
             // linkLabel7
             // 
             this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(73, 230);
+            this.linkLabel7.Location = new System.Drawing.Point(105, 230);
             this.linkLabel7.Name = "linkLabel7";
             this.linkLabel7.Size = new System.Drawing.Size(202, 13);
             this.linkLabel7.TabIndex = 12;
@@ -170,7 +172,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(119, 389);
+            this.button2.Location = new System.Drawing.Point(166, 403);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -181,7 +183,7 @@
             // lbl_trs
             // 
             this.lbl_trs.AutoSize = true;
-            this.lbl_trs.Location = new System.Drawing.Point(73, 336);
+            this.lbl_trs.Location = new System.Drawing.Point(130, 324);
             this.lbl_trs.Name = "lbl_trs";
             this.lbl_trs.Size = new System.Drawing.Size(147, 13);
             this.lbl_trs.TabIndex = 13;
@@ -191,7 +193,7 @@
             // linkLabel8
             // 
             this.linkLabel8.AutoSize = true;
-            this.linkLabel8.Location = new System.Drawing.Point(95, 257);
+            this.linkLabel8.Location = new System.Drawing.Point(130, 257);
             this.linkLabel8.Name = "linkLabel8";
             this.linkLabel8.Size = new System.Drawing.Size(144, 13);
             this.linkLabel8.TabIndex = 14;
@@ -204,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 415);
+            this.ClientSize = new System.Drawing.Size(407, 429);
             this.Controls.Add(this.linkLabel8);
             this.Controls.Add(this.lbl_trs);
             this.Controls.Add(this.linkLabel7);

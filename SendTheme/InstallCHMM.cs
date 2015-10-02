@@ -28,13 +28,13 @@ namespace YATA.SendTheme
 
         private void InstallCHMM_Load(object sender, EventArgs e)
         {
-
+            textBox1.Text = Path.GetFileNameWithoutExtension(theme);
         }
 
         void CreatePackage()
         {
             if (File.Exists("file.zip")) File.Delete("file.zip");
-            string ZIPThemepath = @"Package\" + Path.GetFileName(theme);
+            string ZIPThemepath = @"Package\" + textBox1.Text.Trim();
             Directory.CreateDirectory("Package");
             Directory.CreateDirectory(ZIPThemepath);
             File.Copy(theme, ZIPThemepath + @"\body_LZ.bin");            
@@ -85,7 +85,27 @@ namespace YATA.SendTheme
                 }
                 else
                 {
+                    chb_smdhinfo.Checked = false;
+                    SMDH = "";
+                }
+            }
+        }
 
+        private void chb_bmgprev_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chb_bmgprev.Checked)
+            {
+                OpenFileDialog opn = new OpenFileDialog();
+                opn.Filter = "Ogg file |*.ogg";
+                opn.Title = "Select a ogg file";
+                if (opn.ShowDialog() == DialogResult.OK)
+                {
+                    ogg = opn.FileName;
+                }
+                else
+                {
+                    chb_bmgprev.Checked = false;
+                    ogg = "";
                 }
             }
         }

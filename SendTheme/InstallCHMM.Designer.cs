@@ -50,9 +50,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 53);
+            this.textBox1.Location = new System.Drawing.Point(125, 53);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 20);
+            this.textBox1.Size = new System.Drawing.Size(182, 20);
             this.textBox1.TabIndex = 5;
             // 
             // btn_send
@@ -84,6 +84,7 @@
             this.chb_bmgprev.TabIndex = 8;
             this.chb_bmgprev.Text = "Add bmg preview";
             this.chb_bmgprev.UseVisualStyleBackColor = true;
+            this.chb_bmgprev.CheckedChanged += new System.EventHandler(this.chb_bmgprev_CheckedChanged);
             // 
             // chb_smdhinfo
             // 
@@ -98,9 +99,9 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(97, 79);
+            this.textBox2.Location = new System.Drawing.Point(125, 79);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 20);
+            this.textBox2.Size = new System.Drawing.Size(182, 20);
             this.textBox2.TabIndex = 10;
             // 
             // label1
@@ -125,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 204);
+            this.ClientSize = new System.Drawing.Size(312, 199);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);

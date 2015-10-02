@@ -50,14 +50,15 @@
             this.pictureBox1.Image = global::YATA.Properties.Resources.space;
             this.pictureBox1.Location = new System.Drawing.Point(0, 240);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 240);
+            this.pictureBox1.Size = new System.Drawing.Size(46, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
             // Top_screen_overlay
             // 
             this.Top_screen_overlay.BackColor = System.Drawing.Color.Transparent;
-            this.Top_screen_overlay.Location = new System.Drawing.Point(40, 240);
+            this.Top_screen_overlay.Location = new System.Drawing.Point(46, 240);
             this.Top_screen_overlay.Name = "Top_screen_overlay";
             this.Top_screen_overlay.Size = new System.Drawing.Size(320, 240);
             this.Top_screen_overlay.TabIndex = 5;
@@ -68,7 +69,7 @@
             this.Arrows_bottom.BackColor = System.Drawing.Color.Transparent;
             this.Arrows_bottom.BackgroundImage = global::YATA.Properties.Resources.Bottom_arrow_back;
             this.Arrows_bottom.Image = global::YATA.Properties.Resources.Bottom_arrow_fore;
-            this.Arrows_bottom.Location = new System.Drawing.Point(40, 240);
+            this.Arrows_bottom.Location = new System.Drawing.Point(46, 240);
             this.Arrows_bottom.Name = "Arrows_bottom";
             this.Arrows_bottom.Size = new System.Drawing.Size(320, 240);
             this.Arrows_bottom.TabIndex = 4;
@@ -95,7 +96,7 @@
             // 
             // bottomImage
             // 
-            this.bottomImage.Location = new System.Drawing.Point(40, 240);
+            this.bottomImage.Location = new System.Drawing.Point(46, 240);
             this.bottomImage.Name = "bottomImage";
             this.bottomImage.Size = new System.Drawing.Size(320, 240);
             this.bottomImage.TabIndex = 1;
@@ -104,9 +105,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::YATA.Properties.Resources.adv;
-            this.pictureBox2.Location = new System.Drawing.Point(360, 240);
+            this.pictureBox2.Location = new System.Drawing.Point(366, 240);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 240);
+            this.pictureBox2.Size = new System.Drawing.Size(34, 240);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             // 

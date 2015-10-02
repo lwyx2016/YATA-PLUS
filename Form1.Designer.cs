@@ -26,28 +26,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
-            this.imgListBox = new System.Windows.Forms.ListBox();
-            this.lbl_images = new System.Windows.Forms.Label();
-            this.openFileLZ = new System.Windows.Forms.OpenFileDialog();
-            this.saveTheme = new System.Windows.Forms.SaveFileDialog();
-            this.savePng = new System.Windows.Forms.SaveFileDialog();
-            this.openNewImg = new System.Windows.Forms.OpenFileDialog();
-            this.saveCWAVDialog = new System.Windows.Forms.SaveFileDialog();
-            this.openCWAVDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btn_photoedit = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_notCrashed = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbl_ImgNotInc = new System.Windows.Forms.Label();
-            this.lbl_DragBgm = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbl_playerDisabled = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.lbl_Time = new System.Windows.Forms.Label();
-            this.Player_panel = new System.Windows.Forms.Panel();
             this.drpdwn_file = new System.Windows.Forms.ToolStripDropDownButton();
             this.file_newFile = new System.Windows.Forms.ToolStripMenuItem();
             this.new_basicTemp = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +65,10 @@
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.drpdwn_settings = new System.Windows.Forms.ToolStripButton();
             this.drpdwn_sim = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.drpdwn_imgszs = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.StatusLabel = new System.Windows.Forms.ToolStripLabel();
             this.Debug_menu = new System.Windows.Forms.ToolStripDropDownButton();
             this.printColorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printColorOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,8 +80,27 @@
             this.lZUNCOMPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgListBox = new System.Windows.Forms.ListBox();
+            this.lbl_images = new System.Windows.Forms.Label();
+            this.openFileLZ = new System.Windows.Forms.OpenFileDialog();
+            this.saveTheme = new System.Windows.Forms.SaveFileDialog();
+            this.savePng = new System.Windows.Forms.SaveFileDialog();
+            this.openNewImg = new System.Windows.Forms.OpenFileDialog();
+            this.saveCWAVDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openCWAVDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btn_photoedit = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_notCrashed = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_ImgNotInc = new System.Windows.Forms.Label();
+            this.lbl_DragBgm = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbl_playerDisabled = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.lbl_Time = new System.Windows.Forms.Label();
+            this.Player_panel = new System.Windows.Forms.Panel();
             this.btn_play = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.Player_panel.SuspendLayout();
@@ -124,189 +124,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(717, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.ForeColor = System.Drawing.Color.Red;
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(164, 22);
-            this.StatusLabel.Text = "Saving theme,please wait.....";
-            this.StatusLabel.Visible = false;
-            // 
-            // imgListBox
-            // 
-            this.imgListBox.FormattingEnabled = true;
-            this.imgListBox.Location = new System.Drawing.Point(12, 41);
-            this.imgListBox.Name = "imgListBox";
-            this.imgListBox.Size = new System.Drawing.Size(196, 225);
-            this.imgListBox.TabIndex = 1;
-            this.imgListBox.SelectedIndexChanged += new System.EventHandler(this.imgListBox_SelectedIndexChanged);
-            // 
-            // lbl_images
-            // 
-            this.lbl_images.AutoSize = true;
-            this.lbl_images.Location = new System.Drawing.Point(12, 25);
-            this.lbl_images.Name = "lbl_images";
-            this.lbl_images.Size = new System.Drawing.Size(44, 13);
-            this.lbl_images.TabIndex = 2;
-            this.lbl_images.Text = "Images:";
-            // 
-            // openFileLZ
-            // 
-            this.openFileLZ.FileName = "body_LZ.bin";
-            // 
-            // saveTheme
-            // 
-            this.saveTheme.Filter = "body_LZ.bin|*.bin";
-            // 
-            // savePng
-            // 
-            this.savePng.Filter = "PNG Image|*.png";
-            // 
-            // openNewImg
-            // 
-            this.openNewImg.Filter = "PNG Image|*.png";
-            // 
-            // saveCWAVDialog
-            // 
-            this.saveCWAVDialog.Filter = "CTR Wave Chunk|*.bin";
-            // 
-            // openCWAVDialog
-            // 
-            this.openCWAVDialog.Filter = "CTR Wave Chunk|*.bin";
-            // 
-            // btn_photoedit
-            // 
-            this.btn_photoedit.Enabled = false;
-            this.btn_photoedit.Location = new System.Drawing.Point(12, 274);
-            this.btn_photoedit.Name = "btn_photoedit";
-            this.btn_photoedit.Size = new System.Drawing.Size(196, 23);
-            this.btn_photoedit.TabIndex = 4;
-            this.btn_photoedit.Text = "open in your photo editor";
-            this.btn_photoedit.UseVisualStyleBackColor = true;
-            this.btn_photoedit.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(665, 342);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 34);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Credits";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // lbl_notCrashed
-            // 
-            this.lbl_notCrashed.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_notCrashed.BackColor = System.Drawing.Color.Black;
-            this.lbl_notCrashed.ForeColor = System.Drawing.Color.White;
-            this.lbl_notCrashed.Location = new System.Drawing.Point(207, 135);
-            this.lbl_notCrashed.Name = "lbl_notCrashed";
-            this.lbl_notCrashed.Size = new System.Drawing.Size(305, 87);
-            this.lbl_notCrashed.TabIndex = 6;
-            this.lbl_notCrashed.Text = resources.GetString("lbl_notCrashed.Text");
-            this.lbl_notCrashed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_notCrashed.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(158, 300);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 13);
-            this.label4.TabIndex = 7;
-            // 
-            // lbl_ImgNotInc
-            // 
-            this.lbl_ImgNotInc.BackColor = System.Drawing.Color.Black;
-            this.lbl_ImgNotInc.ForeColor = System.Drawing.Color.White;
-            this.lbl_ImgNotInc.Location = new System.Drawing.Point(331, 135);
-            this.lbl_ImgNotInc.Name = "lbl_ImgNotInc";
-            this.lbl_ImgNotInc.Size = new System.Drawing.Size(210, 62);
-            this.lbl_ImgNotInc.TabIndex = 9;
-            this.lbl_ImgNotInc.Text = "This theme doesn\'t include this image !";
-            this.lbl_ImgNotInc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_ImgNotInc.Visible = false;
-            // 
-            // lbl_DragBgm
-            // 
-            this.lbl_DragBgm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_DragBgm.BackColor = System.Drawing.Color.Black;
-            this.lbl_DragBgm.ForeColor = System.Drawing.Color.White;
-            this.lbl_DragBgm.Location = new System.Drawing.Point(240, 148);
-            this.lbl_DragBgm.Name = "lbl_DragBgm";
-            this.lbl_DragBgm.Size = new System.Drawing.Size(234, 62);
-            this.lbl_DragBgm.TabIndex = 10;
-            this.lbl_DragBgm.Text = "Drag your theme or BGM here !";
-            this.lbl_DragBgm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lbl_playerDisabled
-            // 
-            this.lbl_playerDisabled.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_playerDisabled.BackColor = System.Drawing.Color.Black;
-            this.lbl_playerDisabled.ForeColor = System.Drawing.Color.White;
-            this.lbl_playerDisabled.Location = new System.Drawing.Point(249, 320);
-            this.lbl_playerDisabled.Name = "lbl_playerDisabled";
-            this.lbl_playerDisabled.Size = new System.Drawing.Size(250, 24);
-            this.lbl_playerDisabled.TabIndex = 12;
-            this.lbl_playerDisabled.Text = "Player disabled in the settings";
-            this.lbl_playerDisabled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_playerDisabled.Visible = false;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.Location = new System.Drawing.Point(47, 8);
-            this.trackBar1.Maximum = 199;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(624, 30);
-            this.trackBar1.TabIndex = 1;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // lbl_Time
-            // 
-            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Time.AutoSize = true;
-            this.lbl_Time.Location = new System.Drawing.Point(677, 8);
-            this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(28, 13);
-            this.lbl_Time.TabIndex = 2;
-            this.lbl_Time.Text = "0:00";
-            // 
-            // Player_panel
-            // 
-            this.Player_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Player_panel.Controls.Add(this.lbl_Time);
-            this.Player_panel.Controls.Add(this.trackBar1);
-            this.Player_panel.Controls.Add(this.btn_play);
-            this.Player_panel.Enabled = false;
-            this.Player_panel.Location = new System.Drawing.Point(0, 313);
-            this.Player_panel.Name = "Player_panel";
-            this.Player_panel.Size = new System.Drawing.Size(717, 44);
-            this.Player_panel.TabIndex = 11;
             // 
             // drpdwn_file
             // 
@@ -624,6 +441,11 @@
             this.drpdwn_sim.Text = "Simulate";
             this.drpdwn_sim.Click += new System.EventHandler(this.SimToolStrip_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
             // drpdwn_imgszs
             // 
             this.drpdwn_imgszs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -633,6 +455,20 @@
             this.drpdwn_imgszs.Size = new System.Drawing.Size(71, 22);
             this.drpdwn_imgszs.Text = "Images size";
             this.drpdwn_imgszs.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(164, 22);
+            this.StatusLabel.Text = "Saving theme,please wait.....";
+            this.StatusLabel.Visible = false;
             // 
             // Debug_menu
             // 
@@ -718,13 +554,169 @@
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Size = new System.Drawing.Size(399, 22);
             this.thoseFunctionsAreOnlyForTestingDoesntAffectTheThemeToolStripMenuItem.Text = "Those functions are only for testing, doesn\'t affect the theme ";
             // 
-            // pictureBox1
+            // imgListBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(214, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(971, 256);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.imgListBox.FormattingEnabled = true;
+            this.imgListBox.Location = new System.Drawing.Point(12, 41);
+            this.imgListBox.Name = "imgListBox";
+            this.imgListBox.Size = new System.Drawing.Size(196, 225);
+            this.imgListBox.TabIndex = 1;
+            this.imgListBox.SelectedIndexChanged += new System.EventHandler(this.imgListBox_SelectedIndexChanged);
+            // 
+            // lbl_images
+            // 
+            this.lbl_images.AutoSize = true;
+            this.lbl_images.Location = new System.Drawing.Point(12, 25);
+            this.lbl_images.Name = "lbl_images";
+            this.lbl_images.Size = new System.Drawing.Size(44, 13);
+            this.lbl_images.TabIndex = 2;
+            this.lbl_images.Text = "Images:";
+            // 
+            // openFileLZ
+            // 
+            this.openFileLZ.FileName = "body_LZ.bin";
+            // 
+            // saveTheme
+            // 
+            this.saveTheme.Filter = "body_LZ.bin|*.bin";
+            // 
+            // savePng
+            // 
+            this.savePng.Filter = "PNG Image|*.png";
+            // 
+            // openNewImg
+            // 
+            this.openNewImg.Filter = "PNG Image|*.png";
+            // 
+            // saveCWAVDialog
+            // 
+            this.saveCWAVDialog.Filter = "CTR Wave Chunk|*.bin";
+            // 
+            // openCWAVDialog
+            // 
+            this.openCWAVDialog.Filter = "CTR Wave Chunk|*.bin";
+            // 
+            // btn_photoedit
+            // 
+            this.btn_photoedit.Enabled = false;
+            this.btn_photoedit.Location = new System.Drawing.Point(12, 274);
+            this.btn_photoedit.Name = "btn_photoedit";
+            this.btn_photoedit.Size = new System.Drawing.Size(196, 23);
+            this.btn_photoedit.TabIndex = 4;
+            this.btn_photoedit.Text = "open in your photo editor";
+            this.btn_photoedit.UseVisualStyleBackColor = true;
+            this.btn_photoedit.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(665, 342);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 34);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Credits";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // lbl_notCrashed
+            // 
+            this.lbl_notCrashed.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_notCrashed.BackColor = System.Drawing.Color.Black;
+            this.lbl_notCrashed.ForeColor = System.Drawing.Color.White;
+            this.lbl_notCrashed.Location = new System.Drawing.Point(207, 135);
+            this.lbl_notCrashed.Name = "lbl_notCrashed";
+            this.lbl_notCrashed.Size = new System.Drawing.Size(305, 87);
+            this.lbl_notCrashed.TabIndex = 6;
+            this.lbl_notCrashed.Text = resources.GetString("lbl_notCrashed.Text");
+            this.lbl_notCrashed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_notCrashed.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(158, 300);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 7;
+            // 
+            // lbl_ImgNotInc
+            // 
+            this.lbl_ImgNotInc.BackColor = System.Drawing.Color.Black;
+            this.lbl_ImgNotInc.ForeColor = System.Drawing.Color.White;
+            this.lbl_ImgNotInc.Location = new System.Drawing.Point(331, 135);
+            this.lbl_ImgNotInc.Name = "lbl_ImgNotInc";
+            this.lbl_ImgNotInc.Size = new System.Drawing.Size(210, 62);
+            this.lbl_ImgNotInc.TabIndex = 9;
+            this.lbl_ImgNotInc.Text = "This theme doesn\'t include this image !";
+            this.lbl_ImgNotInc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_ImgNotInc.Visible = false;
+            // 
+            // lbl_DragBgm
+            // 
+            this.lbl_DragBgm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_DragBgm.BackColor = System.Drawing.Color.Black;
+            this.lbl_DragBgm.ForeColor = System.Drawing.Color.White;
+            this.lbl_DragBgm.Location = new System.Drawing.Point(240, 148);
+            this.lbl_DragBgm.Name = "lbl_DragBgm";
+            this.lbl_DragBgm.Size = new System.Drawing.Size(234, 62);
+            this.lbl_DragBgm.TabIndex = 10;
+            this.lbl_DragBgm.Text = "Drag your theme or BGM here !";
+            this.lbl_DragBgm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbl_playerDisabled
+            // 
+            this.lbl_playerDisabled.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_playerDisabled.BackColor = System.Drawing.Color.Black;
+            this.lbl_playerDisabled.ForeColor = System.Drawing.Color.White;
+            this.lbl_playerDisabled.Location = new System.Drawing.Point(249, 320);
+            this.lbl_playerDisabled.Name = "lbl_playerDisabled";
+            this.lbl_playerDisabled.Size = new System.Drawing.Size(250, 24);
+            this.lbl_playerDisabled.TabIndex = 12;
+            this.lbl_playerDisabled.Text = "Player disabled in the settings";
+            this.lbl_playerDisabled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_playerDisabled.Visible = false;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(47, 8);
+            this.trackBar1.Maximum = 199;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(624, 30);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lbl_Time
+            // 
+            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Location = new System.Drawing.Point(677, 8);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(28, 13);
+            this.lbl_Time.TabIndex = 2;
+            this.lbl_Time.Text = "0:00";
+            // 
+            // Player_panel
+            // 
+            this.Player_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Player_panel.Controls.Add(this.lbl_Time);
+            this.Player_panel.Controls.Add(this.trackBar1);
+            this.Player_panel.Controls.Add(this.btn_play);
+            this.Player_panel.Enabled = false;
+            this.Player_panel.Location = new System.Drawing.Point(0, 313);
+            this.Player_panel.Name = "Player_panel";
+            this.Player_panel.Size = new System.Drawing.Size(717, 44);
+            this.Player_panel.TabIndex = 11;
             // 
             // btn_play
             // 
@@ -737,6 +729,14 @@
             this.btn_play.TabIndex = 0;
             this.btn_play.UseVisualStyleBackColor = true;
             this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(214, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(971, 256);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 

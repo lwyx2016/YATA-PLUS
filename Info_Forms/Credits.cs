@@ -88,7 +88,7 @@ namespace YATA
 
         private void Credits_Load(object sender, EventArgs e)
         {
-            label3.Text = Form1.APP_STRING_version;
+            label3.Text = Form1.APP_STRING_FULL_version;
         }
 
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -119,6 +119,13 @@ namespace YATA
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            string[] build = label3.Text.Split('.');
+            string date = new DateTime(0, DateTimeKind.Local).AddDays(Convert.ToInt32(build[2])).AddYears(1999).AddSeconds(Convert.ToInt32(build[3]) * 2).ToString();
+            MessageBox.Show("Build date: " + date);
         }
     }
 }
