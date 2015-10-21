@@ -69,11 +69,11 @@ namespace YATA
             int dll = 0;
             if (!File.Exists("System.Net.FtpClient.dll")) MessageBox.Show("System.Net.FtpClient.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL you can't install themes via FTP", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           // if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-          //  if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            // if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            //  if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
             if (dll != 0) InitializeComponent();
             try
-            {    
+            {
                 if (APP_LNG != "english" && File.Exists(@"languages\" + APP_LNG + @"\main.txt"))
                 {
                     int messagesCount = messages.Count;
@@ -1367,7 +1367,7 @@ namespace YATA
                 }
                 else if (line.ToLower().StartsWith("ext_player="))
                 {
-                    APP_use_ext_player = Convert.ToBoolean(line.ToLower().Substring(11));                    
+                    APP_use_ext_player = Convert.ToBoolean(line.ToLower().Substring(11));
                 }
             }
             return;
@@ -1375,7 +1375,7 @@ namespace YATA
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            APP_STRING_FULL_version = "YATA+ v"+ FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion.ToString();
+            APP_STRING_FULL_version = "YATA+ v" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion.ToString();
             Debug_menu.Visible = Debugger.IsAttached;
             if (APP_First_Start)
             {
@@ -1816,7 +1816,7 @@ namespace YATA
             Install dlg = new Install(openFileLZ.FileName);
             dlg.ShowDialog();
         }
-#endregion
+        #endregion
 
         #region Converters Stuff
         void Brstm2BCSTM(string input)
@@ -1939,6 +1939,7 @@ namespace YATA
         }
         #endregion
 
+        
         #region AudioPlayer Stuff
         private IWavePlayer waveOut;
         private WaveFileReader WAVFileReader;
@@ -1947,21 +1948,21 @@ namespace YATA
 
         private void PlayWave(string File)
         {
-            DisposeMusic();
-            AUDIOfile = File;
-            if (APP_use_ext_player) System.Diagnostics.Process.Start(File);
-            else
-            {                
-                this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
-                this.WAVFileReader = new WaveFileReader(File);
-                this.waveOut.Init(WAVFileReader);
-                this.waveOut.Play();
-                btn_play.Image = Properties.Resources.stop;
-                timer1.Enabled = true;
-                timer1.Start();
-                this.waveOut.PlaybackStopped += OnPlaybackStopped;
+                DisposeMusic();
+                AUDIOfile = File;
+                if (APP_use_ext_player) System.Diagnostics.Process.Start(File);
+                else
+                {
+                    this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
+                    this.WAVFileReader = new WaveFileReader(File);
+                    this.waveOut.Init(WAVFileReader);
+                    this.waveOut.Play();
+                    btn_play.Image = Properties.Resources.stop;
+                    timer1.Enabled = true;
+                    timer1.Start();
+                    this.waveOut.PlaybackStopped += OnPlaybackStopped;
+                }
             }
-        }
 
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
         {
@@ -1977,7 +1978,7 @@ namespace YATA
             {
                 AUDIOfile = "";
                 this.waveOut.Dispose();
-                this.WAVFileReader.Dispose();                
+                this.WAVFileReader.Dispose();
             }
         }
 
@@ -1994,7 +1995,7 @@ namespace YATA
                 {
                     if (big_change) { WAVFileReader.CurrentTime = TimeSpan.FromSeconds(WAVFileReader.TotalTime.TotalSeconds * trackBar1.Value / 200.0); big_change = false; }
                     waveOut.Play();
-                    btn_play.Image = Properties.Resources.stop;                    
+                    btn_play.Image = Properties.Resources.stop;
                 }
             }
         }

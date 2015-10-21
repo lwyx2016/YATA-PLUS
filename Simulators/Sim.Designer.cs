@@ -43,9 +43,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::YATA.Properties.Resources.adv;
-            this.pictureBox2.Location = new System.Drawing.Point(363, 240);
+            this.pictureBox2.Location = new System.Drawing.Point(364, 240);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(37, 240);
+            this.pictureBox2.Size = new System.Drawing.Size(36, 240);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;

@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 //This script isn't tested and will be used later
 //Debug info will be removed
@@ -16,38 +17,59 @@ namespace YATA.SendTheme
 {
     class SendToCHMM2
     {
-        public int send(string Address, string file, int port)
+        List<String> LOG = new List<string>();
+
+        public int send(string Address, string file, int port, bool SaveLog)
         {
             try
-            {
-                Debug.Print("Starting send....");
+            {                
+                LOG.Add("Starting sender....");
                 IPEndPoint ipEndPoint = CreateIPEndPoint(Address + ":" + port.ToString());
-                Debug.Print("IpEndPoint created");
+                LOG.Add("IpEndPoint created");
                 Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                Debug.Print("client created");
+                LOG.Add("client created");
                 client.Connect(ipEndPoint);
-                Debug.Print("Connected");
+                LOG.Add("Connected");
                 byte[] data = new byte[11];
-                Debug.Print("data created");
+                LOG.Add("data created");
                 client.Receive(data);
-                Debug.Print("Recieved data");
-                if (data != GetBytes("YATA SENDER")) return 1;
-                Debug.Print("data matches YATA SENDER");
-                if (!File.Exists(file)) return 2;
-                Debug.Print("File exists");
+                LOG.Add("Recieved data:");
+                string RecivedData = "";
+                for (int i = 0; i < data.Length; i++) RecivedData = RecivedData + data[i].ToString();             
+                LOG.Add(RecivedData);
+                string ShouldRecive = "";
+                for (int i = 0; i < Encoding.UTF8.GetBytes("YATA SENDER").Length; i++) ShouldRecive = ShouldRecive + Encoding.UTF8.GetBytes("YATA SENDER")[i].ToString();
+                if (!RecivedData.Contains(ShouldRecive)) { if (SaveLog) File.WriteAllLines("SENDLOG.txt", LOG); return 1;}
+                LOG.Add("data matches YATA SENDER");
+                if (!File.Exists(file)) { if (SaveLog) File.WriteAllLines("SENDLOG.txt", LOG); return 2; }
+                LOG.Add("File exists");
                 client.SendFile(file);
-                Debug.Print("Sent file");
+                ShouldRecive = "";
+                for (int i = 0; i < Encoding.UTF8.GetBytes("YATA TERM").Length; i++) ShouldRecive = ShouldRecive + Encoding.UTF8.GetBytes("YATA TERM")[i].ToString();
+                data = new byte[9];
+                client.Receive(data);
+                RecivedData = "";
+                for (int i = 0; i < data.Length; i++) RecivedData = RecivedData + data[i].ToString();
+                LOG.Add(RecivedData);
+                if (!RecivedData.Contains(ShouldRecive)) { LOG.Add("YATA TERM not recived"); return 2; }
                 client.Shutdown(SocketShutdown.Both);
-                Debug.Print("Shutdown OK");
+                LOG.Add("Client shutdown");
                 client.Close();
-                Debug.Print("Connection closed");
+                LOG.Add("Client close");
+                if (SaveLog) File.WriteAllLines("SENDLOG.txt", LOG);
                 return 0;
             }
             catch (Exception ex)
             {
-                Debug.Print("Exception: " + ex.Message);
+                LOG.Add("Exception:");
+                LOG.Add("Message" + ex.Message);
+                LOG.Add("Inner exception" + ex.InnerException);
+                LOG.Add(ex.ToString());
+                // MessageBox.Show("There was an error: " + ex.Message + "\r\n" + ex.InnerException);
+                if (SaveLog) File.WriteAllLines("SENDLOG.txt", LOG);
                 return -1;
             }
+           
         }
 
         public static byte[] GetBytes(string str)

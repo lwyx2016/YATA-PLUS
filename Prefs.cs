@@ -15,7 +15,7 @@ namespace YATA {
         #region strings
         List<String> messages = new List<string>() {
             "If you don't update YATA+, you may miss some important new features in the next updates....",
-        "Restart YATA+ to fully apply the settings"};
+        "You may need YATA+ to fully apply the settings"};
         #endregion
 
         public Prefs() {

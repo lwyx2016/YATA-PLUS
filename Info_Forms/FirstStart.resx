@@ -128,7 +128,7 @@ this guide made by me for using YATA+,
 Changes in this version of YATA+:
  -Fixed a overflow bug when editing the colors in a theme
  -Replaced Windows Media Player with an embedded player
- -Now you can disable the player and use your default player
+ -Now you can disable the player and use your default player like YATA+ lite
  -Added option to send themes to CHMM2 by Rinnegatamante
  -Added tooltips in the theme settings windows
  -Added support for "custom colors" in the color dialog for the theme settings window

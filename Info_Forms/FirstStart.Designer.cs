@@ -70,7 +70,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(-2, 345);
+            this.label3.Location = new System.Drawing.Point(-2, 341);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 30);
             this.label3.TabIndex = 3;
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 362);
+            this.ClientSize = new System.Drawing.Size(445, 358);
             this.ControlBox = false;
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);

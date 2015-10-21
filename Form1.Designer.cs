@@ -575,10 +575,11 @@
             // openFileLZ
             // 
             this.openFileLZ.FileName = "body_LZ.bin";
+            this.openFileLZ.Filter = "Bin files|*.bin";
             // 
             // saveTheme
             // 
-            this.saveTheme.Filter = "body_LZ.bin|*.bin";
+            this.saveTheme.Filter = "Bin files|*.bin";
             // 
             // savePng
             // 

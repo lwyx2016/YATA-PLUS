@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_send = new System.Windows.Forms.Button();
@@ -35,8 +36,12 @@
             this.chb_bmgprev = new System.Windows.Forms.CheckBox();
             this.chb_smdhinfo = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_themename = new System.Windows.Forms.Label();
+            this.lbl_ip = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sendAndSaveDebugInformationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_wait = new System.Windows.Forms.Label();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_1
@@ -57,6 +62,7 @@
             // 
             // btn_send
             // 
+            this.btn_send.ContextMenuStrip = this.contextMenuStrip1;
             this.btn_send.Location = new System.Drawing.Point(125, 172);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(75, 20);
@@ -70,9 +76,9 @@
             this.chb_pngprev.AutoSize = true;
             this.chb_pngprev.Location = new System.Drawing.Point(12, 108);
             this.chb_pngprev.Name = "chb_pngprev";
-            this.chb_pngprev.Size = new System.Drawing.Size(131, 17);
+            this.chb_pngprev.Size = new System.Drawing.Size(136, 17);
             this.chb_pngprev.TabIndex = 7;
-            this.chb_pngprev.Text = "Generate png preview";
+            this.chb_pngprev.Text = "Generate PNG preview";
             this.chb_pngprev.UseVisualStyleBackColor = true;
             // 
             // chb_bmgprev
@@ -91,9 +97,9 @@
             this.chb_smdhinfo.AutoSize = true;
             this.chb_smdhinfo.Location = new System.Drawing.Point(12, 154);
             this.chb_smdhinfo.Name = "chb_smdhinfo";
-            this.chb_smdhinfo.Size = new System.Drawing.Size(93, 17);
+            this.chb_smdhinfo.Size = new System.Drawing.Size(100, 17);
             this.chb_smdhinfo.TabIndex = 9;
-            this.chb_smdhinfo.Text = "Add smdh info";
+            this.chb_smdhinfo.Text = "Add SMDH info";
             this.chb_smdhinfo.UseVisualStyleBackColor = true;
             this.chb_smdhinfo.CheckedChanged += new System.EventHandler(this.chb_smdhinfo_CheckedChanged);
             // 
@@ -103,32 +109,58 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(182, 20);
             this.textBox2.TabIndex = 10;
+            this.textBox2.Text = "192.168.";
             // 
-            // label1
+            // lbl_themename
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Theme name:";
+            this.lbl_themename.AutoSize = true;
+            this.lbl_themename.Location = new System.Drawing.Point(9, 56);
+            this.lbl_themename.Name = "lbl_themename";
+            this.lbl_themename.Size = new System.Drawing.Size(72, 13);
+            this.lbl_themename.TabIndex = 11;
+            this.lbl_themename.Text = "Theme name:";
             // 
-            // label2
+            // lbl_ip
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "3DS ip address:";
+            this.lbl_ip.AutoSize = true;
+            this.lbl_ip.Location = new System.Drawing.Point(9, 82);
+            this.lbl_ip.Name = "lbl_ip";
+            this.lbl_ip.Size = new System.Drawing.Size(82, 13);
+            this.lbl_ip.TabIndex = 12;
+            this.lbl_ip.Text = "3DS ip address:";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendAndSaveDebugInformationsToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(258, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // sendAndSaveDebugInformationsToolStripMenuItem
+            // 
+            this.sendAndSaveDebugInformationsToolStripMenuItem.Name = "sendAndSaveDebugInformationsToolStripMenuItem";
+            this.sendAndSaveDebugInformationsToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.sendAndSaveDebugInformationsToolStripMenuItem.Text = "Send and save debug informations";
+            // 
+            // lbl_wait
+            // 
+            this.lbl_wait.AutoSize = true;
+            this.lbl_wait.Location = new System.Drawing.Point(97, 195);
+            this.lbl_wait.Name = "lbl_wait";
+            this.lbl_wait.Size = new System.Drawing.Size(145, 13);
+            this.lbl_wait.TabIndex = 15;
+            this.lbl_wait.Text = "Wait, this may take a while....";
+            this.lbl_wait.Visible = false;
             // 
             // InstallCHMM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 199);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(312, 212);
+            this.Controls.Add(this.lbl_wait);
+            this.Controls.Add(this.lbl_ip);
+            this.Controls.Add(this.lbl_themename);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.chb_smdhinfo);
             this.Controls.Add(this.chb_bmgprev);
@@ -143,6 +175,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Install theme";
             this.Load += new System.EventHandler(this.InstallCHMM_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,7 +189,10 @@
         private System.Windows.Forms.CheckBox chb_bmgprev;
         private System.Windows.Forms.CheckBox chb_smdhinfo;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_themename;
+        private System.Windows.Forms.Label lbl_ip;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sendAndSaveDebugInformationsToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_wait;
     }
 }
