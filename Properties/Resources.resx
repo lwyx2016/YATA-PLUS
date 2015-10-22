@@ -160,9 +160,6 @@
   <data name="test" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\test.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="adv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="libg7221_decode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\libg7221_decode.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -177,9 +174,6 @@
   </data>
   <data name="StaticThemeTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StaticThemeTemplate.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="space" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\space.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bottom_arrow_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bottom_arrow_back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

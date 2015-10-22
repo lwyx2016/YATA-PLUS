@@ -300,7 +300,6 @@
     <None Include="Resources\BrawlLib.dll" />
     <None Include="Resources\BrstmConv.exe" />
     <None Include="Resources\space.png" />
-    <None Include="Resources\adv.png" />
     <None Include="Resources\Cursor.png" />
     <None Include="Resources\clippy_paper.jpg" />
     <None Include="Resources\play.png" />

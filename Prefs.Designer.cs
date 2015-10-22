@@ -123,7 +123,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "exe files|*.exe";
-            this.openFileDialog1.Title = "Open your phot editor";
+            this.openFileDialog1.Title = "Open your photo editor";
             // 
             // chb_wait
             // 

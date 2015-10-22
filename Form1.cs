@@ -15,7 +15,7 @@ namespace YATA
     public partial class Form1 : Form
     {
         #region appSettings
-        //I decided to use a config.ini file to not leave traces in the pc that runs yata (i'm a portable apps maniac :P)
+        //I decided to use a config.ini file to not leave traces in the pc that runs yata
         public static bool APP_ShowUI_Sim = true;
         public static bool APP_AutoGen_preview = false;
         public static string APP_photo_edtor = "";
@@ -25,7 +25,7 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 7; /*for the update check the application doesn't count the version, but the release number on gbatemp
+        public static int APP_Public_version = 8; /*for the update check the application doesn't count the version, but the release number on gbatemp
                                                     8: Yata+ v1.6 (this one)
                                                     9,10,etc..: Future updates*/
         public static string APP_STRING_version = "YATA+ v1.6";
@@ -69,8 +69,8 @@ namespace YATA
             int dll = 0;
             if (!File.Exists("System.Net.FtpClient.dll")) MessageBox.Show("System.Net.FtpClient.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL you can't install themes via FTP", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (!File.Exists("NAudio.dll")) MessageBox.Show("NAudio.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL the conversion WAV->CWAV won't work", "MISSING DLL", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            // if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
-            //  if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; }
+            // if (!File.Exists("AxInterop.WMPLib.dll")) { MessageBox.Show("AxInterop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; } //Dll removed with YATA+ 1.6
+            //  if (!File.Exists("Interop.WMPLib.dll")) { MessageBox.Show("Interop.WMPLib.dll was not found, please re-download YATA+ from the official thread and extract the file here, without this DLL YATA+ will crash after this message", "MISSING IMPORTANT DLL", MessageBoxButtons.OK, MessageBoxIcon.Error); dll++; } //Dll removed with YATA+ 1.6
             if (dll != 0) InitializeComponent();
             try
             {
