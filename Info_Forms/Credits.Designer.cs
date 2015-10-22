@@ -177,7 +177,7 @@
             // lbl_trs
             // 
             this.lbl_trs.AutoSize = true;
-            this.lbl_trs.Location = new System.Drawing.Point(130, 337);
+            this.lbl_trs.Location = new System.Drawing.Point(129, 348);
             this.lbl_trs.Name = "lbl_trs";
             this.lbl_trs.Size = new System.Drawing.Size(147, 13);
             this.lbl_trs.TabIndex = 13;
