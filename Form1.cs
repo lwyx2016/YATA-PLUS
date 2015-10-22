@@ -20,7 +20,7 @@ namespace YATA
         public static bool APP_AutoGen_preview = false;
         public static string APP_photo_edtor = "";
         public static bool APP_Wait_editor = true;
-        public static bool APP_Clean_On_exit = false;
+        public static bool APP_Clean_On_exit = true;
         public static bool APP_Auto_Load_bgm = true;
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
