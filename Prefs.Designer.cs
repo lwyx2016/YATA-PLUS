@@ -49,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chb_opt = new System.Windows.Forms.CheckBox();
             this.chb_extplayer = new System.Windows.Forms.CheckBox();
+            this.lbl_optSample = new System.Windows.Forms.Label();
+            this.Cmb_OPT = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -66,7 +68,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(28, 371);
+            this.btn_save.Location = new System.Drawing.Point(28, 393);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 2;
@@ -76,7 +78,7 @@
             // 
             // btn_default
             // 
-            this.btn_default.Location = new System.Drawing.Point(233, 371);
+            this.btn_default.Location = new System.Drawing.Point(233, 393);
             this.btn_default.Name = "btn_default";
             this.btn_default.Size = new System.Drawing.Size(171, 23);
             this.btn_default.TabIndex = 3;
@@ -97,7 +99,7 @@
             // lbl_photoedit
             // 
             this.lbl_photoedit.AutoSize = true;
-            this.lbl_photoedit.Location = new System.Drawing.Point(12, 166);
+            this.lbl_photoedit.Location = new System.Drawing.Point(12, 188);
             this.lbl_photoedit.Name = "lbl_photoedit";
             this.lbl_photoedit.Size = new System.Drawing.Size(192, 13);
             this.lbl_photoedit.TabIndex = 5;
@@ -105,16 +107,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 184);
+            this.textBox1.Location = new System.Drawing.Point(12, 206);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(359, 20);
             this.textBox1.TabIndex = 6;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(377, 181);
+            this.button3.Location = new System.Drawing.Point(377, 206);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(39, 23);
+            this.button3.Size = new System.Drawing.Size(39, 20);
             this.button3.TabIndex = 7;
             this.button3.Text = "...";
             this.button3.UseVisualStyleBackColor = true;
@@ -128,7 +130,7 @@
             // chb_wait
             // 
             this.chb_wait.AutoSize = true;
-            this.chb_wait.Location = new System.Drawing.Point(12, 210);
+            this.chb_wait.Location = new System.Drawing.Point(12, 232);
             this.chb_wait.Name = "chb_wait";
             this.chb_wait.Size = new System.Drawing.Size(227, 17);
             this.chb_wait.TabIndex = 8;
@@ -158,7 +160,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(320, 256);
+            this.numericUpDown1.Location = new System.Drawing.Point(320, 278);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             150,
             0,
@@ -170,7 +172,7 @@
             // 
             // lbl_shift
             // 
-            this.lbl_shift.Location = new System.Drawing.Point(9, 256);
+            this.lbl_shift.Location = new System.Drawing.Point(9, 278);
             this.lbl_shift.Name = "lbl_shift";
             this.lbl_shift.Size = new System.Drawing.Size(305, 48);
             this.lbl_shift.TabIndex = 12;
@@ -199,7 +201,7 @@
             // 
             // lbl_size
             // 
-            this.lbl_size.Location = new System.Drawing.Point(9, 304);
+            this.lbl_size.Location = new System.Drawing.Point(9, 326);
             this.lbl_size.Name = "lbl_size";
             this.lbl_size.Size = new System.Drawing.Size(253, 32);
             this.lbl_size.TabIndex = 15;
@@ -207,7 +209,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(278, 302);
+            this.numericUpDown2.Location = new System.Drawing.Point(278, 324);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             999,
             0,
@@ -229,7 +231,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(350, 302);
+            this.numericUpDown3.Location = new System.Drawing.Point(350, 324);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             999,
             0,
@@ -261,7 +263,7 @@
             // 
             // btn_setASdef
             // 
-            this.btn_setASdef.Location = new System.Drawing.Point(12, 400);
+            this.btn_setASdef.Location = new System.Drawing.Point(12, 422);
             this.btn_setASdef.Name = "btn_setASdef";
             this.btn_setASdef.Size = new System.Drawing.Size(401, 23);
             this.btn_setASdef.TabIndex = 19;
@@ -272,7 +274,7 @@
             // lbl_lang
             // 
             this.lbl_lang.AutoSize = true;
-            this.lbl_lang.Location = new System.Drawing.Point(88, 342);
+            this.lbl_lang.Location = new System.Drawing.Point(88, 364);
             this.lbl_lang.Name = "lbl_lang";
             this.lbl_lang.Size = new System.Drawing.Size(54, 13);
             this.lbl_lang.TabIndex = 20;
@@ -282,7 +284,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(180, 339);
+            this.comboBox1.Location = new System.Drawing.Point(180, 361);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(157, 21);
             this.comboBox1.TabIndex = 21;
@@ -290,7 +292,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(268, 304);
+            this.label1.Location = new System.Drawing.Point(268, 326);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 22;
@@ -309,18 +311,41 @@
             // chb_extplayer
             // 
             this.chb_extplayer.AutoSize = true;
-            this.chb_extplayer.Location = new System.Drawing.Point(12, 233);
+            this.chb_extplayer.Location = new System.Drawing.Point(12, 255);
             this.chb_extplayer.Name = "chb_extplayer";
             this.chb_extplayer.Size = new System.Drawing.Size(160, 17);
             this.chb_extplayer.TabIndex = 24;
             this.chb_extplayer.Text = "Use an external audio player";
             this.chb_extplayer.UseVisualStyleBackColor = true;
             // 
+            // lbl_optSample
+            // 
+            this.lbl_optSample.AutoSize = true;
+            this.lbl_optSample.Location = new System.Drawing.Point(36, 166);
+            this.lbl_optSample.Name = "lbl_optSample";
+            this.lbl_optSample.Size = new System.Drawing.Size(192, 13);
+            this.lbl_optSample.TabIndex = 25;
+            this.lbl_optSample.Text = "When optimizing set the sample rate to:";
+            // 
+            // Cmb_OPT
+            // 
+            this.Cmb_OPT.FormattingEnabled = true;
+            this.Cmb_OPT.Items.AddRange(new object[] {
+            "8000",
+            "11025",
+            "16000"});
+            this.Cmb_OPT.Location = new System.Drawing.Point(295, 163);
+            this.Cmb_OPT.Name = "Cmb_OPT";
+            this.Cmb_OPT.Size = new System.Drawing.Size(121, 21);
+            this.Cmb_OPT.TabIndex = 26;
+            // 
             // Prefs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 426);
+            this.ClientSize = new System.Drawing.Size(428, 448);
+            this.Controls.Add(this.Cmb_OPT);
+            this.Controls.Add(this.lbl_optSample);
             this.Controls.Add(this.chb_extplayer);
             this.Controls.Add(this.chb_opt);
             this.Controls.Add(this.comboBox1);
@@ -387,5 +412,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chb_opt;
         private System.Windows.Forms.CheckBox chb_extplayer;
+        private System.Windows.Forms.Label lbl_optSample;
+        private System.Windows.Forms.ComboBox Cmb_OPT;
     }
 }

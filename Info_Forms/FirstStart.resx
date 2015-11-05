@@ -127,6 +127,7 @@ this guide made by me for using YATA+,
 
 Changes in this version of YATA+:
  -Fixed a bug that makes YATA+ corrupt themes
+ -Now you can change the sample rate optimization when converting WAVs to CWAVs
 
 For every problem, question or bug report, here is the official thread:
 </value>

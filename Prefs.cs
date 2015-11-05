@@ -15,7 +15,8 @@ namespace YATA {
         #region strings
         List<String> messages = new List<string>() {
             "If you don't update YATA+, you may miss some important new features in the next updates....",
-        "You may need YATA+ to fully apply the settings"};
+        "You may need YATA+ to fully apply the settings",
+        "Using a sample rate not included in the list may corrupt the sound"};
         #endregion
 
         public Prefs() {
@@ -37,6 +38,7 @@ namespace YATA {
             chb_updates.Checked = Form1.APP_check_UPD;
             chb_ExportBot.Checked = Form1.APP_export_both_screens;
             chb_extplayer.Checked = Form1.APP_use_ext_player;
+            Cmb_OPT.Text = Form1.APP_opt_samples.ToString();
             textBox1.Text = Form1.APP_photo_edtor;
             numericUpDown1.Value = Form1.APP_Move_buttons_colors;
             numericUpDown2.Value = Form1.APP_SETT_SIZE_X;
@@ -82,6 +84,7 @@ namespace YATA {
             chb_ExportBot.Checked = true;
             chb_opt.Checked = false;
             chb_extplayer.Checked = false;
+            Cmb_OPT.Text = "11025";
             comboBox1.Text = "english";
             numericUpDown1.Value = 10;
             Form1.APP_photo_edtor = "";
@@ -107,8 +110,9 @@ namespace YATA {
             lines[11] = "exp_both_screens=" + chb_ExportBot.Checked.ToString();
             lines[12] = "lng=" + comboBox1.Text;
             lines[13] = "n_opt_cwavs=" + chb_opt.Checked;
-            lines[14] = "opt_samples=" + Form1.APP_opt_samples;
-            lines[14] = "ext_player=" + chb_extplayer.Checked;
+            if (!Cmb_OPT.Items.Contains(Cmb_OPT.Text)) MessageBox.Show(messages[2], "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            lines[14] = "opt_samples=" + Convert.ToInt32(Cmb_OPT.Text).ToString();
+            lines[15] = "ext_player=" + chb_extplayer.Checked;
             System.IO.File.Delete("Settings.ini");
             System.IO.File.WriteAllLines("Settings.ini", lines);
             return;
