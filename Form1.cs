@@ -1293,7 +1293,7 @@ namespace YATA
         {
             if (!System.IO.File.Exists("Settings.ini"))
             {
-                Prefs dlg = new Prefs();
+                Prefs dlg = new Prefs(true);
                 dlg.build_settings();
                 dlg.Dispose();
             }
@@ -1324,7 +1324,7 @@ namespace YATA
                 {
                     APP_Auto_Load_bgm = Convert.ToBoolean(line.ToLower().Substring(9));
                 }
-                else if (line.ToLower().StartsWith("first_start_v6="))
+                else if (line.ToLower().StartsWith("first_start_v7="))
                 {
                     APP_First_Start = Convert.ToBoolean(line.ToLower().Substring(15));
                 }
