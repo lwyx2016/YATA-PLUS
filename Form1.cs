@@ -230,6 +230,7 @@ namespace YATA
             path = Path.GetDirectoryName(openFileLZ.FileName);
             path = path + @"\";
             filename = Path.GetFileName(openFileLZ.FileName);
+            this.Text = "YATA PLUS - " + path + filename;
             try
             {
                 BinaryReader reader = new BinaryReader(File.Open(openFileLZ.FileName, FileMode.Open));

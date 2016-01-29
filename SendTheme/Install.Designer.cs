@@ -117,7 +117,7 @@
             this.lbl_1.Size = new System.Drawing.Size(295, 41);
             this.lbl_1.TabIndex = 18;
             this.lbl_1.Text = "Open any FTP client and click send to put the theme on your 3ds, then you can ins" +
-    "tall the theme with CHMM2 or you favorite theme installer";
+    "tall the theme with CHMM2 or your favorite theme installer";
             // 
             // textBox1
             // 
