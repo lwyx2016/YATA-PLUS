@@ -25,15 +25,15 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sim));
             this.Top_screen_overlay = new System.Windows.Forms.PictureBox();
-            this.Arrows_bottom = new System.Windows.Forms.PictureBox();
             this.Overlay_LR_TOP_img = new System.Windows.Forms.PictureBox();
             this.topImage = new System.Windows.Forms.PictureBox();
             this.bottomImage = new System.Windows.Forms.PictureBox();
+            this.Arrows_bottom = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).BeginInit();
             this.SuspendLayout();
             // 
             // Top_screen_overlay
@@ -44,17 +44,6 @@
             this.Top_screen_overlay.Size = new System.Drawing.Size(320, 240);
             this.Top_screen_overlay.TabIndex = 5;
             this.Top_screen_overlay.TabStop = false;
-            // 
-            // Arrows_bottom
-            // 
-            this.Arrows_bottom.BackColor = System.Drawing.Color.Transparent;
-            this.Arrows_bottom.BackgroundImage = global::YATA.Properties.Resources.Bottom_arrow_back;
-            this.Arrows_bottom.Image = global::YATA.Properties.Resources.Bottom_arrow_fore;
-            this.Arrows_bottom.Location = new System.Drawing.Point(46, 240);
-            this.Arrows_bottom.Name = "Arrows_bottom";
-            this.Arrows_bottom.Size = new System.Drawing.Size(320, 240);
-            this.Arrows_bottom.TabIndex = 4;
-            this.Arrows_bottom.TabStop = false;
             // 
             // Overlay_LR_TOP_img
             // 
@@ -83,6 +72,17 @@
             this.bottomImage.TabIndex = 1;
             this.bottomImage.TabStop = false;
             // 
+            // Arrows_bottom
+            // 
+            this.Arrows_bottom.BackColor = System.Drawing.Color.Transparent;
+            this.Arrows_bottom.BackgroundImage = global::YATA.Properties.Resources.Bottom_arrow_back;
+            this.Arrows_bottom.Image = global::YATA.Properties.Resources.Bottom_arrow_fore;
+            this.Arrows_bottom.Location = new System.Drawing.Point(46, 240);
+            this.Arrows_bottom.Name = "Arrows_bottom";
+            this.Arrows_bottom.Size = new System.Drawing.Size(320, 240);
+            this.Arrows_bottom.TabIndex = 4;
+            this.Arrows_bottom.TabStop = false;
+            // 
             // Sim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -102,10 +102,10 @@
             this.Load += new System.EventHandler(this.Sim_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Sim_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.Top_screen_overlay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Overlay_LR_TOP_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bottomImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Arrows_bottom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,7 +115,7 @@
         private System.Windows.Forms.PictureBox topImage;
         private System.Windows.Forms.PictureBox bottomImage;
         private System.Windows.Forms.PictureBox Overlay_LR_TOP_img;
-        private System.Windows.Forms.PictureBox Arrows_bottom;
         private System.Windows.Forms.PictureBox Top_screen_overlay;
+        private System.Windows.Forms.PictureBox Arrows_bottom;
     }
 }

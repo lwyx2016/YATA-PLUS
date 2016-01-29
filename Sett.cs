@@ -630,5 +630,10 @@ namespace YATA {
                 this.Close();
             }
         }
+
+        private void CB_botDraw_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

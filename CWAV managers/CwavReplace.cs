@@ -136,12 +136,14 @@ namespace YATA
 
         bool importFrames;
 
-        void Generate(bool import, string filename = "") //filename is used only if import = false
+        void Generate(bool import, string filename = "nothing.n") //filename is used only if import = false
         {
+            FileStream writer = new FileStream(filename, FileMode.Create);
+            BinaryWriter binWRITER = new BinaryWriter(writer);
+            MemoryStream mem = new MemoryStream();
             if (import)
             {
-                if (System.IO.File.Exists(Path.GetTempPath() + "cwav_tmp.bin")) System.IO.File.Delete(Path.GetTempPath() + "cwav_tmp.bin");
-                filename = Path.GetTempPath() + "cwav_tmp.bin";
+                binWRITER = new BinaryWriter(mem);
             }
             //Loads the selected cwavs in memory
             #region loadCWAVs
@@ -203,15 +205,13 @@ namespace YATA
             }
             else frame3 = null;
             #endregion
-            //Thanks to Custom themes cwavs for this part :)
-            FileStream writer = new FileStream(filename, FileMode.Create);
-            BinaryWriter binWRITER = new BinaryWriter(writer);
+            //Thanks to Custom themes cwavs for this part :)           
             binWRITER.Write(2);
-            binWRITER.Write(UInt32.Parse("64", System.Globalization.NumberStyles.HexNumber));
+            binWRITER.Write(0x64);
             if (EnabledList[0])
             {
                 binWRITER.Write(CwavCheck(FileList[0]));
-                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                binWRITER.Write(0x50);
                 binWRITER.Write(cursor);
             }
             else
@@ -222,7 +222,7 @@ namespace YATA
             if (EnabledList[1])
             {
                 binWRITER.Write(CwavCheck(FileList[1]));
-                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                binWRITER.Write(0x50);
                 binWRITER.Write(LaunchApp);
             }
             else
@@ -233,7 +233,7 @@ namespace YATA
             if (EnabledList[2])
             {
                 binWRITER.Write(CwavCheck(FileList[2]));
-                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                binWRITER.Write(0x50);
                 binWRITER.Write(Folder);
             }
             else
@@ -244,7 +244,7 @@ namespace YATA
             if (EnabledList[3])
             {
                 binWRITER.Write(CwavCheck(FileList[3]));
-                binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                binWRITER.Write(0x50);
                 binWRITER.Write(CloseApp);
             }
             else
@@ -257,30 +257,30 @@ namespace YATA
                 if (EnabledList[5])
                 {
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(CwavCheck(FileList[5]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(frame1);
                 }
                 else
                 {
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
@@ -290,7 +290,7 @@ namespace YATA
                 if (EnabledList[6])
                 {
                     binWRITER.Write(CwavCheck(FileList[6]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(frame2);
                 }
                 else
@@ -301,7 +301,7 @@ namespace YATA
                 if (EnabledList[7])
                 {
                     binWRITER.Write(CwavCheck(FileList[7]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(frame3);
                 }
                 else
@@ -312,7 +312,7 @@ namespace YATA
                 if (EnabledList[4])
                 {
                     binWRITER.Write(CwavCheck(FileList[4]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(Open3DS);
                 }
             }
@@ -321,30 +321,30 @@ namespace YATA
                 if (EnabledList[5])
                 {
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(CwavCheck(FileList[5]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(frame1);
                 }
                 else
                 {
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
-                    binWRITER.Write(UInt32.Parse("64", NumberStyles.HexNumber));
+                    binWRITER.Write(0x64);
+                    binWRITER.Write(0x64);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
                     binWRITER.Write(0);
@@ -358,11 +358,10 @@ namespace YATA
                 if (EnabledList[4])
                 {
                     binWRITER.Write(CwavCheck(FileList[4]));
-                    binWRITER.Write(UInt32.Parse("50", NumberStyles.HexNumber));
+                    binWRITER.Write(0x50);
                     binWRITER.Write(Open3DS);
                 }
             }
-
 
             if (!binWRITER.BaseStream.Position.ToString("X").EndsWith("0"))
             {
@@ -372,13 +371,21 @@ namespace YATA
                 }
 
             }
-            binWRITER.Close();
-            binWRITER.Close();
             if (import)
             {
-                Form1.cwav = File.ReadAllBytes(Path.GetTempPath() + "cwav_tmp.bin");
-                System.IO.File.Delete(Path.GetTempPath() + "cwav_tmp.bin");
+                if (mem.Length < 0x2DC00)
+                {
+                    Form1.cwav = mem.ToArray();
+                    Form1.cwavLen = (uint)mem.Length;
+                }
+                else
+                {
+                    MessageBox.Show("The size of the generated cwav chunk is too big, remove some cwav or lower the quality of them !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    binWRITER.Close();
+                    return;
+                }
             }
+            binWRITER.Close();
             MessageBox.Show(messages[12]);
         }
 
@@ -405,7 +412,7 @@ namespace YATA
                 }
             }
             else { if (EnabledList[5] && EnabledList[6] && EnabledList[7]) importFrames = true; }
-            Generate(true, "");
+            Generate(true);
         }
 
         private byte[] CwavCheck(String cwav)

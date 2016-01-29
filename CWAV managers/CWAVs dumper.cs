@@ -70,7 +70,7 @@ namespace YATA
             byte[] magic = new byte[4];
             byte[] CWAVBytes_Little_end = new byte[] { 0x43, 0x57, 0x41, 0x56};
             byte[] CWAVBytes_BIG_end = new byte[] { 0x43, 0x57, 0x41, 0x56 };
-            FileStream fs = new FileStream(Path.GetTempPath() + "snd_dump.bin", FileMode.Open, FileAccess.ReadWrite);
+            MemoryStream fs = new MemoryStream(Form1.cwav);
             SearchBytePattern(CWAVBytes_Little_end, fs);
             SearchBytePattern(CWAVBytes_BIG_end, fs);
             if (source.Count == 0)
@@ -114,8 +114,7 @@ namespace YATA
                 bytes = null;//forcefully destroy any data left and make the array become invalid until it is recreated.
             }
             fs.Close();
-            fs.Dispose();
-            if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
+            fs.Dispose();           
             string[] files = Directory.GetFiles(Path.GetTempPath() + "DUMP\\" );
             foreach (string file in files)
             {

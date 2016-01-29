@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -65,6 +66,16 @@ namespace YATA
                 setColor(img, Color.FromArgb(215, tempbytes[9], tempbytes[10], tempbytes[11]));
                 Overlay_LR_TOP_img.Image = img;
             }
+            else
+            {
+                img = new Bitmap(Properties.Resources.top_overlay_background);
+                setColor(img, Color.FromArgb(0xFF, 226, 228, 227));
+                Overlay_LR_TOP_img.BackgroundImage = img;
+
+                img = new Bitmap(Properties.Resources.top_overlay_text);
+                setColor(img, Color.FromArgb(0xFF, 72, 73, 78));
+                Overlay_LR_TOP_img.Image = img;
+            }
             #endregion
             #region Bot_Arrows
             if (Form1.enableSec[6] == 1) //If custom color is enabled
@@ -79,9 +90,19 @@ namespace YATA
                 setColor(img, Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]));
                 Arrows_bottom.BackgroundImage = img;
             }
+            else
+            {
+                img = new Bitmap(Properties.Resources.Bottom_arrow_fore);
+                setColor(img, Color.FromArgb(0xFF, 159,191,187));
+                Arrows_bottom.Image = img;
+                
+                img = new Bitmap(Properties.Resources.Bottom_arrow_back);
+                setColor(img, Color.FromArgb(0xFF, 219, 217, 218));
+                Arrows_bottom.BackgroundImage = img;
+            }
             #endregion
             #region iconResizer
-            Color back = Color.White;
+            Color back = Color.FromArgb(255, 220, 224, 225);
             Color separator = Color.Gray;
             Color icon = Color.FromArgb(255, 145, 174, 208);
             if (Form1.enableSec[13] == 1) //If custom color is enabled
@@ -137,33 +158,37 @@ namespace YATA
             }
             #endregion
             #region cursor
+            Color Cursor_main = Color.FromArgb(0xFF, 45, 233, 156);
+            Color Cursor_glow = Color.FromArgb(0xFF, 66, 243, 175);
             if (Form1.enableSec[0] == 1) //If custom color is enabled
-            {
-                Bitmap Cursor_img = Properties.Resources.Cursor;
+            {                
                 tempbytes = Form1.colChunks[0];
-                Color Cursor_main = Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]);
-                Color Cursor_glow = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);
-                for (int i = 0; i < Cursor_img.Width; i++)
+                Cursor_main = Color.FromArgb(0xFF, tempbytes[3], tempbytes[4], tempbytes[5]);
+                Cursor_glow = Color.FromArgb(0xFF, tempbytes[0], tempbytes[1], tempbytes[2]);                    
+            }
+            Bitmap Cursor_img = Properties.Resources.Cursor;
+            for (int i = 0; i < Cursor_img.Width; i++)
+            {
+                for (int ii = 0; ii < Cursor_img.Height; ii++)
                 {
-                    for (int ii = 0; ii < Cursor_img.Height; ii++)
+                    Color col = Cursor_img.GetPixel(i, ii);
+                    if (col.B > 10 && col.A != 0)
                     {
-                        Color col = Cursor_img.GetPixel(i, ii);
-                        if (col.B == 255 && col.A == 255)
-                        {
-                            Cursor_img.SetPixel(i, ii, Cursor_main);
-                        }
-                        else if (col.A != 0)
-                        {
-                            Cursor_img.SetPixel(i, ii, Cursor_glow);
-                        }
+                        Color final = Color.FromArgb(col.A, Cursor_main.R, Cursor_main.G, Cursor_main.B);
+                        Cursor_img.SetPixel(i, ii, final);
+                    }
+                    else if (col.R > 10 && col.A != 0)
+                    {
+                        Color final = Color.FromArgb(col.A, Cursor_glow.R, Cursor_glow.G, Cursor_glow.B);
+                        Cursor_img.SetPixel(i, ii, final);
                     }
                 }
-                Graphics g = Graphics.FromImage(img);
-                g.DrawImage(Cursor_img, new Rectangle(24, 44, Cursor_img.Width, Cursor_img.Height));
-                Top_screen_overlay.BackgroundImage = img;
             }
-                #endregion
-            }
+            Graphics g = Graphics.FromImage(img);
+            g.DrawImage(Cursor_img, new Rectangle(24, 44, Cursor_img.Width, Cursor_img.Height));
+            #endregion
+            Top_screen_overlay.BackgroundImage = img;
+        }
 
         private Bitmap SaveForm()
         {
@@ -270,92 +295,91 @@ namespace YATA
 
         private void updateGUI()
         {
-            if (Form1.APP_ShowUI_Sim & !Form1.generating_preview)
+            using (Graphics gr = Graphics.FromImage(topImage.Image))
             {
-                using (Graphics gr = Graphics.FromImage(topImage.Image))
-                {
-                    gr.DrawImage(bat, new Point(368, -6));
-                    gr.DrawImage(inter, new Point(1, 0));
-                    gr.Flush();
-                    gr.Dispose();
-                }
-                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
-                {
-
-                    gr.DrawImage(note, new Point(63, 3));
-                    gr.DrawImage(friend, new Point(104, 3));
-                    gr.DrawImage(news, new Point(146, 3));
-                    gr.DrawImage(web, new Point(188, 3));
-                    gr.DrawImage(mii, new Point(228, 3));
-                    gr.Flush();
-                    gr.Dispose();
-
-                }
+                gr.DrawImage(bat, new Point(368, -6));
+                gr.DrawImage(inter, new Point(1, 0));
+                gr.Flush();
+                gr.Dispose();
             }
-            else if (Form1.APP_ShowUI_Sim & Form1.generating_preview)
+            using (Graphics gr = Graphics.FromImage(bottomImage.Image))
             {
-                using (Graphics gr = Graphics.FromImage(topImage.Image))
-                {
-                    gr.DrawImage(bat, new Point(368, -6));
-                    gr.DrawImage(inter, new Point(1, 0));
-                    gr.Flush();
-                    gr.Dispose();
-                }
-                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
-                {
 
-                    gr.DrawImage(note, new Point(63, 3));
-                    gr.DrawImage(friend, new Point(104, 3));
-                    gr.DrawImage(news, new Point(146, 3));
-                    gr.DrawImage(web, new Point(188, 3));
-                    gr.DrawImage(mii, new Point(228, 3));
-                    gr.Flush();
-                    gr.Dispose();
+                gr.DrawImage(note, new Point(63, 3));
+                gr.DrawImage(friend, new Point(104, 3));
+                gr.DrawImage(news, new Point(146, 3));
+                gr.DrawImage(web, new Point(188, 3));
+                gr.DrawImage(mii, new Point(228, 3));
+                gr.Flush();
+                gr.Dispose();
 
-                }
             }
         }
 
         private void Sim_Load(object sender, EventArgs e)
         {
-            if (Form1.generating_preview)
-            {
-                SaveFileDialog save = new SaveFileDialog();
-                save.Filter = "png file|*.png";
-                save.Title = "save preview";
-                if (Form1.Preview_PATH == null && save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (Form1.APP_export_both_screens)
-                    {
-                        SaveForm().Save(save.FileName);
-                    }
-                    else
-                    {
-                        Image preview = new Bitmap(400, 240);
-                        Graphics g = Graphics.FromImage(preview);
-                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); }
-                        preview.Save(save.FileName);
-                    }
-                    this.Close();
-                }
-                else if (Form1.Preview_PATH != null)
-                {
-                    if (Form1.APP_export_both_screens)
-                    {
-                        SaveForm().Save(Form1.Preview_PATH);
-                    }
-                    else
-                    {
-                        Image preview = new Bitmap(400, 240);
-                        Graphics g = Graphics.FromImage(preview);
-                        if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); }
-                        preview.Save(Form1.Preview_PATH);
-                    }
-                    this.Close();
-                }
-                else this.Close();
-            }
+
         }
 
+        public void GeneratePreview(string Preview_PATH, bool close = true)
+        {
+            this.Refresh();
+            this.Focus();
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "png file|*.png";
+            save.Title = "save preview";
+            if (Preview_PATH == null && save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Form1.APP_export_both_screens)
+                {
+                    SaveForm().Save(save.FileName);
+                }
+                else
+                {
+                    Image preview = new Bitmap(400, 240);
+                    Graphics g = Graphics.FromImage(preview);
+                    if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); }
+                    preview.Save(save.FileName);
+                }
+            }
+            else if (Preview_PATH != null)
+            {
+                if (Form1.APP_export_both_screens)
+                {
+                    SaveForm().Save(Preview_PATH);
+                }
+                else
+                {
+                    Image preview = new Bitmap(400, 240);
+                    Graphics g = Graphics.FromImage(preview);
+                    if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); }
+                    preview.Save(Preview_PATH);
+                }
+            }
+            if (close) this.Close();
+        }
+
+        public byte[] GeneratePreview(bool close = true)
+        {
+            this.Refresh();
+            this.Focus();
+            if (Form1.APP_export_both_screens)
+            {
+                MemoryStream ms = new MemoryStream();
+                SaveForm().Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                if (close) this.Close();
+                return ms.ToArray();
+            }
+            else
+            {
+                Image preview = new Bitmap(400, 240);
+                Graphics g = Graphics.FromImage(preview);
+                if (Form1.APP_ShowUI_Sim) { g.DrawImage(topImg, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); } else { g.DrawImage(topImage.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.BackgroundImage, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); g.DrawImage(Overlay_LR_TOP_img.Image, 0, 0, new Rectangle(new Point(0, 0), new Size(416, 240)), GraphicsUnit.Pixel); }
+                MemoryStream ms = new MemoryStream();
+                preview.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                if (close) this.Close();
+                return ms.ToArray();
+            }            
+        }
     }
 }

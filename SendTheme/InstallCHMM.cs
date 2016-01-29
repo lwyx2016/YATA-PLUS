@@ -57,10 +57,8 @@ namespace YATA.SendTheme
             if (chb_pngprev.Checked)
             {
                 Sim frm = new Sim();
-                Form1.Preview_PATH = ZIPThemepath + @"\Preview.png";
-                Form1.generating_preview = true;
-                frm.ShowDialog();
-                Form1.generating_preview = false;
+                frm.Show();
+                frm.GeneratePreview(ZIPThemepath + @"\Preview.png");
             }
             if (File.Exists(Path.GetDirectoryName(theme) + @"\bgm.bcstm"))
             {
@@ -87,10 +85,22 @@ namespace YATA.SendTheme
                 lbl_wait.Visible = true;
                 this.Refresh();
                 CreatePackage();
-                SendToCHMM2 Sender = new SendToCHMM2();
-                int ret = Sender.send(textBox2.Text, "file.zip", 5000,false);
-                if (ret == 0) MessageBox.Show("Done");
+                //SendToCHMM2 Sender = new SendToCHMM2();
+                //int ret = Sender.send(textBox2.Text, "file.zip", 5000,false);
+                if (!File.Exists("theme_sender.exe")) File.WriteAllBytes("theme_sender.exe", YATA.Properties.Resources.theme_sender);
+                if (!File.Exists("cygwin1.dll")) File.WriteAllBytes("cygwin1.dll", Properties.Resources.cygwin1);
+                Process Proc = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = "theme_sender.exe";
+                startInfo.Arguments = textBox2.Text;
+                startInfo.CreateNoWindow = true;
+                Proc.StartInfo = startInfo;
+                Proc.Start();
+                Proc.WaitForExit();
+                Debug.WriteLine(Proc.ExitCode.ToString());
+                if (Proc.ExitCode == 1) MessageBox.Show(Form1.messages[19]);
                 else /*if (ret != -1)*/ MessageBox.Show("There was an error, the theme was not sent");
+              //  if (File.Exists("file.zip")) File.Delete("file.zip");
                 lbl_wait.Visible = false;
             }
             else { MessageBox.Show("You must enter a valid name and ip address"); }
@@ -144,7 +154,7 @@ namespace YATA.SendTheme
                 CreatePackage();
                 SendToCHMM2 Sender = new SendToCHMM2();
                 int ret = Sender.send(textBox2.Text, "file.zip", 5000,true);
-                if (ret == 0) MessageBox.Show("Done");
+                if (ret == 0) MessageBox.Show(Form1.messages[19]);
                 else /*if (ret != -1)*/ MessageBox.Show("There was an error, the theme was not sent");
                 try
                 {

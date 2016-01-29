@@ -151,6 +151,16 @@ namespace YATA.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] cygwin1 {
+            get {
+                object obj = ResourceManager.GetObject("cygwin1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap empty {
@@ -306,6 +316,16 @@ namespace YATA.Properties {
         internal static byte[] test {
             get {
                 object obj = ResourceManager.GetObject("test", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] theme_sender {
+            get {
+                object obj = ResourceManager.GetObject("theme_sender", resourceCulture);
                 return ((byte[])(obj));
             }
         }

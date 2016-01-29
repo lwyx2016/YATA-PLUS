@@ -101,6 +101,9 @@
             this.Player_panel = new System.Windows.Forms.Panel();
             this.btn_play = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.edit_tools = new System.Windows.Forms.ToolStripMenuItem();
+            this.tools_comp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tools_dec = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.Player_panel.SuspendLayout();
@@ -257,6 +260,7 @@
             this.install_WithCHMM2.Name = "install_WithCHMM2";
             this.install_WithCHMM2.Size = new System.Drawing.Size(263, 22);
             this.install_WithCHMM2.Text = "Install with CHMM2 (only ninjhax 1)";
+            this.install_WithCHMM2.Visible = false;
             this.install_WithCHMM2.Click += new System.EventHandler(this.install_WithCHMM2_Click);
             // 
             // toolStripSeparator4
@@ -288,7 +292,8 @@
             this.edit_BGMconv,
             this.toolStripSeparator10,
             this.cWAVWAVToolStripMenuItem,
-            this.toolStripSeparator11});
+            this.toolStripSeparator11,
+            this.edit_tools});
             this.drpdwn_edit.Image = ((System.Drawing.Image)(resources.GetObject("drpdwn_edit.Image")));
             this.drpdwn_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drpdwn_edit.Name = "drpdwn_edit";
@@ -739,6 +744,29 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // edit_tools
+            // 
+            this.edit_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tools_comp,
+            this.tools_dec});
+            this.edit_tools.Name = "edit_tools";
+            this.edit_tools.Size = new System.Drawing.Size(238, 22);
+            this.edit_tools.Text = "Tools";
+            // 
+            // tools_comp
+            // 
+            this.tools_comp.Name = "tools_comp";
+            this.tools_comp.Size = new System.Drawing.Size(154, 22);
+            this.tools_comp.Text = "LZ compress";
+            this.tools_comp.Click += new System.EventHandler(this.lZCOMPToolStripMenuItem_Click);
+            // 
+            // tools_dec
+            // 
+            this.tools_dec.Name = "tools_dec";
+            this.tools_dec.Size = new System.Drawing.Size(154, 22);
+            this.tools_dec.Text = "LZ decompress";
+            this.tools_dec.Click += new System.EventHandler(this.lZUNCOMPToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -855,6 +883,9 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label lbl_Time;
         private System.Windows.Forms.Panel Player_panel;
+        private System.Windows.Forms.ToolStripMenuItem edit_tools;
+        private System.Windows.Forms.ToolStripMenuItem tools_comp;
+        private System.Windows.Forms.ToolStripMenuItem tools_dec;
     }
 }
 

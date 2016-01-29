@@ -69,7 +69,7 @@
             // 
             // btn_WAVbrstm
             // 
-            this.btn_WAVbrstm.Location = new System.Drawing.Point(24, 106);
+            this.btn_WAVbrstm.Location = new System.Drawing.Point(27, 106);
             this.btn_WAVbrstm.Name = "btn_WAVbrstm";
             this.btn_WAVbrstm.Size = new System.Drawing.Size(151, 41);
             this.btn_WAVbrstm.TabIndex = 4;
@@ -79,9 +79,9 @@
             // 
             // btn_BRSTMbcstm
             // 
-            this.btn_BRSTMbcstm.Location = new System.Drawing.Point(24, 153);
+            this.btn_BRSTMbcstm.Location = new System.Drawing.Point(197, 106);
             this.btn_BRSTMbcstm.Name = "btn_BRSTMbcstm";
-            this.btn_BRSTMbcstm.Size = new System.Drawing.Size(327, 41);
+            this.btn_BRSTMbcstm.Size = new System.Drawing.Size(151, 41);
             this.btn_BRSTMbcstm.TabIndex = 5;
             this.btn_BRSTMbcstm.Text = "Convert from BRSTM to BCSTM";
             this.btn_BRSTMbcstm.UseVisualStyleBackColor = true;
@@ -89,11 +89,11 @@
             // 
             // btn_WAVbcstm
             // 
-            this.btn_WAVbcstm.Location = new System.Drawing.Point(181, 106);
+            this.btn_WAVbcstm.Location = new System.Drawing.Point(24, 153);
             this.btn_WAVbcstm.Name = "btn_WAVbcstm";
-            this.btn_WAVbcstm.Size = new System.Drawing.Size(170, 41);
+            this.btn_WAVbcstm.Size = new System.Drawing.Size(327, 41);
             this.btn_WAVbcstm.TabIndex = 6;
-            this.btn_WAVbcstm.Text = "Auto WAV to BCSTM";
+            this.btn_WAVbcstm.Text = "Convert from WAV to BCSTM";
             this.btn_WAVbcstm.UseVisualStyleBackColor = true;
             this.btn_WAVbcstm.Click += new System.EventHandler(this.button7_Click);
             // 

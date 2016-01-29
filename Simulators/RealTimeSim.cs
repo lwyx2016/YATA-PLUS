@@ -70,7 +70,17 @@ namespace YATA
                 Overlay_LR_TOP_img.BackgroundImage = img;
 
                 img = new Bitmap(Properties.Resources.top_overlay_text);
-                setColor(img,  tempbytes[3]);
+                setColor(img, tempbytes[3]);
+                Overlay_LR_TOP_img.Image = img;
+            }
+            else
+            {
+                img = new Bitmap(Properties.Resources.top_overlay_background);
+                setColor(img, Color.FromArgb(0xFF, 226, 228, 227));
+                Overlay_LR_TOP_img.BackgroundImage = img;
+
+                img = new Bitmap(Properties.Resources.top_overlay_text);
+                setColor(img, Color.FromArgb(0xFF, 72, 73, 78));
                 Overlay_LR_TOP_img.Image = img;
             }
             #endregion
@@ -87,9 +97,19 @@ namespace YATA
                 setColor(img, tempbytes[1]);
                 Arrows_bottom.BackgroundImage = img;
             }
+            else
+            {
+                img = new Bitmap(Properties.Resources.Bottom_arrow_fore);
+                setColor(img, Color.FromArgb(0xFF, 159, 191, 187));
+                Arrows_bottom.Image = img;
+
+                img = new Bitmap(Properties.Resources.Bottom_arrow_back);
+                setColor(img, Color.FromArgb(0xFF, 219, 217, 218));
+                Arrows_bottom.BackgroundImage = img;
+            }
             #endregion
             #region iconResizer
-            Color back = Color.White;
+            Color back = Color.FromArgb(255, 220, 224, 225);
             Color separator = Color.Gray;
             Color icon = Color.FromArgb(255, 145, 174, 208);
             if (Form1.enableSec[13] == 1) //If custom color is enabled
@@ -145,31 +165,35 @@ namespace YATA
             }
             #endregion
             #region cursor
+            Bitmap Cursor_img = Properties.Resources.Cursor;
+            Color Cursor_main = Color.FromArgb(0xFF, 45, 233, 156);
+            Color Cursor_glow = Color.FromArgb(0xFF, 66, 243, 175);
             if (Form1.enableSec[0] == 1) //If custom color is enabled
             {
-                Bitmap Cursor_img = Properties.Resources.Cursor;
                 tempbytes = own.colCursor;
-                Color Cursor_main = tempbytes[1];
-                Color Cursor_glow = tempbytes[0];
-                for (int i = 0; i < Cursor_img.Width; i++)
+                Cursor_main = tempbytes[1];
+                Cursor_glow = tempbytes[0];
+            }
+            for (int i = 0; i < Cursor_img.Width; i++)
+            {
+                for (int ii = 0; ii < Cursor_img.Height; ii++)
                 {
-                    for (int ii = 0; ii < Cursor_img.Height; ii++)
+                    Color col = Cursor_img.GetPixel(i, ii);
+                    if (col.B > 10 && col.A != 0)
                     {
-                        Color col = Cursor_img.GetPixel(i, ii);
-                        if (col.B == 255 && col.A == 255)
-                        {
-                            Cursor_img.SetPixel(i, ii, Cursor_main);
-                        }
-                        else if (col.A != 0)
-                        {
-                            Cursor_img.SetPixel(i, ii, Cursor_glow);
-                        }
+                        Color final = Color.FromArgb(col.A, Cursor_main.R, Cursor_main.G, Cursor_main.B);
+                        Cursor_img.SetPixel(i, ii, final);
+                    }
+                    else if (col.R > 10 && col.A != 0)
+                    {
+                        Color final = Color.FromArgb(col.A, Cursor_glow.R, Cursor_glow.G, Cursor_glow.B);
+                        Cursor_img.SetPixel(i, ii, final);
                     }
                 }
-                Graphics g = Graphics.FromImage(img);
-                g.DrawImage(Cursor_img, new Rectangle(24, 44, Cursor_img.Width, Cursor_img.Height));
-                Top_screen_overlay.BackgroundImage = img;
             }
+            Graphics g = Graphics.FromImage(img);
+            g.DrawImage(Cursor_img, new Rectangle(24, 44, Cursor_img.Width, Cursor_img.Height));
+            Top_screen_overlay.BackgroundImage = img;
             #endregion
         }
 
@@ -278,49 +302,24 @@ namespace YATA
 
         private void updateGUI()
         {
-            if (Form1.APP_ShowUI_Sim & !Form1.generating_preview)
+            using (Graphics gr = Graphics.FromImage(topImage.Image))
             {
-                using (Graphics gr = Graphics.FromImage(topImage.Image))
-                {
-                    gr.DrawImage(bat, new Point(368, -6));
-                    gr.DrawImage(inter, new Point(1, 0));
-                    gr.Flush();
-                    gr.Dispose();
-                }
-                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
-                {
-
-                    gr.DrawImage(note, new Point(63, 3));
-                    gr.DrawImage(friend, new Point(104, 3));
-                    gr.DrawImage(news, new Point(146, 3));
-                    gr.DrawImage(web, new Point(188, 3));
-                    gr.DrawImage(mii, new Point(228, 3));
-                    gr.Flush();
-                    gr.Dispose();
-
-                }
+                gr.DrawImage(bat, new Point(368, -6));
+                gr.DrawImage(inter, new Point(1, 0));
+                gr.Flush();
+                gr.Dispose();
             }
-            else if (Form1.APP_ShowUI_Sim & Form1.generating_preview)
+            using (Graphics gr = Graphics.FromImage(bottomImage.Image))
             {
-                using (Graphics gr = Graphics.FromImage(topImage.Image))
-                {
-                    gr.DrawImage(bat, new Point(368, -6));
-                    gr.DrawImage(inter, new Point(1, 0));
-                    gr.Flush();
-                    gr.Dispose();
-                }
-                using (Graphics gr = Graphics.FromImage(bottomImage.Image))
-                {
 
-                    gr.DrawImage(note, new Point(63, 3));
-                    gr.DrawImage(friend, new Point(104, 3));
-                    gr.DrawImage(news, new Point(146, 3));
-                    gr.DrawImage(web, new Point(188, 3));
-                    gr.DrawImage(mii, new Point(228, 3));
-                    gr.Flush();
-                    gr.Dispose();
+                gr.DrawImage(note, new Point(63, 3));
+                gr.DrawImage(friend, new Point(104, 3));
+                gr.DrawImage(news, new Point(146, 3));
+                gr.DrawImage(web, new Point(188, 3));
+                gr.DrawImage(mii, new Point(228, 3));
+                gr.Flush();
+                gr.Dispose();
 
-                }
             }
         }
 

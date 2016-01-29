@@ -25,10 +25,10 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 9; /*for the update check the application doesn't count the version, but the release number on gbatemp
-                                                    9: Yata+ v1.6.1 (this one)
-                                                    10,11,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.6.1";
+        public static int APP_Public_version = 10; /*for the update check the application doesn't count the version, but the release number on gbatemp
+                                                    10: Yata+ v1.7 (this one)
+                                                    11,12,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.7";
         public static string APP_STRING_FULL_version = "YATA+";
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
@@ -39,7 +39,7 @@ namespace YATA
         public static int APP_opt_samples = 11025;
         #endregion
         #region strings
-        List<String> messages = new List<string>() {
+        public static List<String> messages = new List<string>() {
             "Error on reading file",
             "This file is not a theme",
             "This theme has a bgm.bcstm file, but it doesn't have the 'Use BMG' flag checked in the settings, the home menu won't load the music if you don't enable it !!!",
@@ -58,8 +58,9 @@ namespace YATA
             "The input file is not a valid BRSTM file",
             "Some cwavs weren't converted",
             "This theme has the 'Use BMG' flag checked in the settings, but in its path there's not a bgm.bcstm file, if you try to install this theme without a bgm, or you don't disable it in the theme settings the home menu will crash",
-            "bgm.bcstm was not found, the bgm will be disabled"};
-        //LAST: 18 COUNT = 19 
+            "bgm.bcstm was not found, the bgm will be disabled",
+            "Done !"};
+        //LAST: 19 COUNT = 20
         #endregion
 
         public Form1(string arg)
@@ -103,6 +104,7 @@ namespace YATA
                             else if (line.StartsWith("file") || line.StartsWith("File")) { (drpdwn_file.DropDownItems[tmp[0]]).Text = tmp[1]; }
                             else if (line.StartsWith("install_")) { (File_installTheme.DropDownItems[tmp[0]]).Text = tmp[1]; }
                             else if (line.StartsWith("edit")) { (drpdwn_edit.DropDownItems[tmp[0]]).Text = tmp[1]; }
+                            else if (line.StartsWith("tools")) { (edit_tools.DropDownItems[tmp[0]]).Text = tmp[1]; }
                             else if (line.StartsWith("@")) { messages.Add(line.Replace(@"\r\n", Environment.NewLine).Remove(0, 1)); }
                         }
                     }
@@ -185,7 +187,7 @@ namespace YATA
         private static List<uint> RGBOffs = new List<uint>();
         private uint unk = 0;
         private uint cwavOff = 0;
-        private uint cwavLen = 0;
+        public static uint cwavLen = 0;
         public static byte[] cwav; //For importing from CwavReplace
         public static byte magicByte;
         public static byte[] outFile;
@@ -225,8 +227,9 @@ namespace YATA
                 System.IO.File.Delete(path + "dec_" + filename);
             }
             this.Refresh();
-            path = openFileLZ.FileName.Substring(0, openFileLZ.FileName.LastIndexOf("\\") + 1);
-            filename = openFileLZ.FileName.Substring(path.Length, openFileLZ.FileName.Length - path.Length);
+            path = Path.GetDirectoryName(openFileLZ.FileName);
+            path = path + @"\";
+            filename = Path.GetFileName(openFileLZ.FileName);
             try
             {
                 BinaryReader reader = new BinaryReader(File.Open(openFileLZ.FileName, FileMode.Open));
@@ -356,6 +359,7 @@ namespace YATA
                 if (imgLens[i] == 0x8000 || i == 6) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? BGR888 : RGB565));
             }
             if (cwavOff > 0) cwav = getCWAV();
+            cwavLen = (uint)cwav.Length;
             imageArray = images.ToArray();
             imgListBoxLoaded = true;
             updatePicBox(0);
@@ -805,7 +809,7 @@ namespace YATA
         private void makeTheme(string file)
         {
             if (useBGM == 1 && !File.Exists(path + "bgm.bcstm")) MessageBox.Show(messages[17]);
-            if (cwav.Length == 0) { enableSec[16] = 0; cwavLen = 0; } else cwavLen = (uint)cwav.Length; //Auto diable cwavs if not used
+            if (cwav == null || cwav.Length == 0 || cwav.Length > 0x2DC00) { enableSec[16] = 0; cwavLen = 0; } else cwavLen = (uint)cwav.Length; //Auto diable cwavs if not used or if they are too big
             using (BinaryWriter bw = new BinaryWriter(File.Create(file)))
             {
                 StatusLabel.Visible = true;
@@ -1203,23 +1207,18 @@ namespace YATA
             }
             return;
         }
-
-        public static bool generating_preview = false; //This is the best i could come up with...
-        public static string Preview_PATH = null;
-
+       
         private void saveFile_Click(object sender, EventArgs e)
         {
             makeTheme(path + "new_dec_" + filename);
+            Debug.WriteLine("ThemeOK");
             dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
             File.Delete(path + "new_dec_" + filename);
             if (APP_AutoGen_preview)
             {
                 Sim frm = new Sim();
-                Preview_PATH = path + filename + ".png";
-                generating_preview = true;
-                frm.ShowDialog();
-                generating_preview = false;
-                Preview_PATH = null;
+                frm.Show();
+                frm.GeneratePreview(path + filename + ".png");
             }
             StatusLabel.Visible = false;
             this.Refresh();
@@ -1230,19 +1229,19 @@ namespace YATA
         {
             saveTheme.FileName = "body_LZ.bin";
             if (saveTheme.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string newpath = saveTheme.FileName.Substring(0, saveTheme.FileName.LastIndexOf("\\") + 1);
-                makeTheme(newpath + "new_dec_" + filename);
-                dsdecmp.Compress(newpath + "new_dec_" + filename, saveTheme.FileName);
-                File.Delete(newpath + "new_dec_" + filename);
+            {                
+                path = Path.GetDirectoryName(saveTheme.FileName);
+                path = path + @"\";
+                filename = Path.GetFileName(saveTheme.FileName);
+                makeTheme(path + "new_dec_" + filename);
+                dsdecmp.Compress(path + "new_dec_" + filename, saveTheme.FileName);
+                File.Delete(path + "new_dec_" + filename);
+                openFileLZ.FileName = path + filename;
                 if (APP_AutoGen_preview)
                 {
                     Sim frm = new Sim();
-                    Preview_PATH = path + filename + ".png";
-                    generating_preview = true;
-                    frm.ShowDialog();
-                    generating_preview = false;
-                    Preview_PATH = null;
+                    frm.Show();
+                    frm.GeneratePreview(path + filename + ".png");
                 }
                 StatusLabel.Visible = false;
                 this.Refresh();
@@ -1265,7 +1264,7 @@ namespace YATA
             if (saveCWAVDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 BinaryWriter br = new BinaryWriter(File.Create(saveCWAVDialog.FileName));
-                br.Write(getCWAV());
+                br.Write(cwav);
                 br.Close();
             }
         }
@@ -1275,7 +1274,17 @@ namespace YATA
             openCWAVDialog.FileName = "Cwavs.bin";
             if (openCWAVDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                cwav = File.ReadAllBytes(openCWAVDialog.FileName);
+                byte[] tmp = File.ReadAllBytes(openCWAVDialog.FileName);
+                if (tmp.Length < 0x2DC00)
+                {
+                    cwav = tmp;
+                    cwavLen = (uint)cwav.Length;
+                }
+                else
+                {
+                    MessageBox.Show("The size of the cwav chunk is too big !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
 
@@ -1390,10 +1399,8 @@ namespace YATA
         private void generatePreviewForCHMMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Sim frm = new Sim();
-            Preview_PATH = null;
-            generating_preview = true;
-            frm.ShowDialog();
-            generating_preview = false;
+            frm.Show();
+            frm.GeneratePreview(null);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1441,10 +1448,6 @@ namespace YATA
 
         private void cWAVsWavToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Path.GetTempPath() + "snd_dump.bin")) File.Delete(Path.GetTempPath() + "snd_dump.bin");
-            BinaryWriter br = new BinaryWriter(File.Create(Path.GetTempPath() + "snd_dump.bin"));
-            br.Write(getCWAV());
-            br.Close();
             CWAVs_dumper frm = new CWAVs_dumper();
             frm.ShowDialog();
         }
@@ -1493,7 +1496,7 @@ namespace YATA
                             if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(opn.FileNames[i]) + ".tmp.wav");
                             if (!File.Exists(opn.FileNames[i] + ".bcwav")) error++;
                         }
-                        if (error != 0) MessageBox.Show(messages[13]); else MessageBox.Show("Done !");
+                        if (error != 0) MessageBox.Show(messages[13]); else MessageBox.Show(messages[19]);
                     }
                 }
             }
@@ -1571,7 +1574,7 @@ namespace YATA
                             prc.Start();
                             prc.WaitForExit();
                         }
-                        MessageBox.Show("Done !");
+                        MessageBox.Show(messages[19]);
                     }
                 }
             }
@@ -1739,6 +1742,7 @@ namespace YATA
             OpenFileDialog opn = new OpenFileDialog();
             opn.ShowDialog();
             dsdecmp.Compress(opn.FileName, opn.FileName + ".cmp");
+            MessageBox.Show(messages[19]);
         }
 
         private void lZUNCOMPToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1746,6 +1750,7 @@ namespace YATA
             OpenFileDialog opn = new OpenFileDialog();
             opn.ShowDialog();
             dsdecmp.Decompress(opn.FileName, opn.FileName + ".dcmp");
+            MessageBox.Show(messages[19]);
         }
 
         private void basicThemeTemplateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1798,9 +1803,9 @@ namespace YATA
                 if (useBGM == 1) MessageBox.Show(messages[18]);
                 useBGM = 0;
             }
-            makeTheme(path + "new_dec_" + filename);
-            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
-            File.Delete(path + "new_dec_" + filename);
+           // makeTheme(path + "new_dec_" + filename);
+          //  dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+           // File.Delete(path + "new_dec_" + filename);
             StatusLabel.Visible = false;
             this.Refresh();
             Install dlg = new Install(openFileLZ.FileName);
@@ -1827,7 +1832,7 @@ namespace YATA
                 {
                     bin.Close();
                     System.IO.File.WriteAllBytes(sav.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(input)));
-                    MessageBox.Show("done !");
+                    MessageBox.Show(messages[19]);
                 }
                 else
                 {
@@ -1856,7 +1861,7 @@ namespace YATA
                 if (!File.Exists(Path.GetTempPath() + "tmp.bcstm")) return;
                 File.WriteAllBytes(sv.FileName, BRSTM_BCSTM_converter.Create_BCSTM(File.ReadAllBytes(Path.GetTempPath() + "tmp.bcstm")));
                 File.Delete(Path.GetTempPath() + "tmp.bcstm");
-                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+                if (File.Exists(sv.FileName)) MessageBox.Show(messages[19]); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
             }
         }
         void wav2BRSTM(string input)
@@ -1876,7 +1881,7 @@ namespace YATA
                 prc.StartInfo.UseShellExecute = false;
                 prc.Start();
                 prc.WaitForExit();
-                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+                if (File.Exists(sv.FileName)) MessageBox.Show(messages[19]); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
             }
         }
         void AudioTOWav(string input)
@@ -1897,7 +1902,7 @@ namespace YATA
                 prc.StartInfo.UseShellExecute = false;
                 prc.Start();
                 prc.WaitForExit();
-                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+                if (File.Exists(sv.FileName)) MessageBox.Show(messages[19]); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
             }
         }
         void Wav2CWAV(string input)
@@ -1924,7 +1929,7 @@ namespace YATA
                 prc.Start();
                 prc.WaitForExit();
                 if (System.IO.File.Exists(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav")) File.Delete(Path.GetTempPath() + Path.GetFileName(input) + ".tmp.wav");
-                if (File.Exists(sv.FileName)) MessageBox.Show("Done !"); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
+                if (File.Exists(sv.FileName)) MessageBox.Show(messages[19]); else MessageBox.Show("Error while converting the file, run the command in the cmd to check the output");
             }
         }
         #endregion
@@ -1938,21 +1943,21 @@ namespace YATA
 
         private void PlayWave(string File)
         {
-                DisposeMusic();
-                AUDIOfile = File;
-                if (APP_use_ext_player) System.Diagnostics.Process.Start(File);
-                else
-                {
-                    this.waveOut = new WaveOut(); // or new WaveOutEvent() if you are not using WinForms/WPF
-                    this.WAVFileReader = new WaveFileReader(File);
-                    this.waveOut.Init(WAVFileReader);
-                    this.waveOut.Play();
-                    btn_play.Image = Properties.Resources.stop;
-                    timer1.Enabled = true;
-                    timer1.Start();
-                    this.waveOut.PlaybackStopped += OnPlaybackStopped;
-                }
+            DisposeMusic();
+            AUDIOfile = File;
+            if (APP_use_ext_player) System.Diagnostics.Process.Start(File);
+            else
+            {
+                this.waveOut = new WaveOut();
+                this.WAVFileReader = new WaveFileReader(File);
+                this.waveOut.Init(WAVFileReader);
+                this.waveOut.Play();
+                btn_play.Image = Properties.Resources.stop;
+                timer1.Enabled = true;
+                timer1.Start();
+                this.waveOut.PlaybackStopped += OnPlaybackStopped;
             }
+        }
 
         private void OnPlaybackStopped(object sender, StoppedEventArgs e)
         {
@@ -2022,9 +2027,9 @@ namespace YATA
                 if (useBGM == 1) MessageBox.Show(messages[18]);
                 useBGM = 0;
             }
-            makeTheme(path + "new_dec_" + filename);
-            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
-            File.Delete(path + "new_dec_" + filename);
+            //makeTheme(path + "new_dec_" + filename);
+            //dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            //File.Delete(path + "new_dec_" + filename);
             StatusLabel.Visible = false;
             this.Refresh();
             SendTheme.InstallCHMM dlg = new SendTheme.InstallCHMM(openFileLZ.FileName);

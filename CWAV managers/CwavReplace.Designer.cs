@@ -125,11 +125,12 @@
             // 
             // lbl_enabled
             // 
-            this.lbl_enabled.Location = new System.Drawing.Point(270, 219);
+            this.lbl_enabled.Location = new System.Drawing.Point(256, 202);
             this.lbl_enabled.Name = "lbl_enabled";
-            this.lbl_enabled.Size = new System.Drawing.Size(123, 13);
+            this.lbl_enabled.Size = new System.Drawing.Size(143, 41);
             this.lbl_enabled.TabIndex = 7;
-            this.lbl_enabled.Text = "This cwav is not enabed";
+            this.lbl_enabled.Text = "This CWAV is not enabled";
+            this.lbl_enabled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_enabled.Visible = false;
             // 
             // btn_remove

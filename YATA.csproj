@@ -189,9 +189,11 @@
     </Compile>
     <EmbeddedResource Include="Converter\ConvertSETTINGS.resx">
       <DependentUpon>ConvertSETTINGS.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Info_Forms\Credits.resx">
       <DependentUpon>Credits.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CWAV managers\CwavReplace.resx">
       <DependentUpon>CwavReplace.cs</DependentUpon>
@@ -201,9 +203,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Info_Forms\Easter.resx">
       <DependentUpon>Easter.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Info_Forms\FirstStart.resx">
       <DependentUpon>FirstStart.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -304,6 +308,8 @@
     <None Include="Resources\clippy_paper.jpg" />
     <None Include="Resources\play.png" />
     <None Include="Resources\stop.png" />
+    <None Include="Resources\theme_sender.exe" />
+    <None Include="Resources\cygwin1.dll" />
     <Content Include="yata.ico" />
   </ItemGroup>
   <ItemGroup>
