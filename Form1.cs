@@ -1381,18 +1381,7 @@ namespace YATA
                 FirstStart dlg = new FirstStart();
                 dlg.ShowDialog();
             }
-            try
-            {
-                if (APP_check_UPD)
-                {
-                    System.Net.WebClient d = new System.Net.WebClient();
-                    if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > APP_Public_version)
-                    {
-                        MessageBox.Show(messages[8]);
-                    }
-                }
-            }
-            catch {/*Do nothing*/}
+            if (APP_check_UPD) CheckUpdates.RunWorkerAsync();
             if (APP_use_ext_player) lbl_playerDisabled.Visible = true; else Player_panel.Enabled = true;
         }
 
@@ -1803,9 +1792,9 @@ namespace YATA
                 if (useBGM == 1) MessageBox.Show(messages[18]);
                 useBGM = 0;
             }
-           // makeTheme(path + "new_dec_" + filename);
-          //  dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
-           // File.Delete(path + "new_dec_" + filename);
+            makeTheme(path + "new_dec_" + filename);
+            dsdecmp.Compress(path + "new_dec_" + filename, path + filename);
+            File.Delete(path + "new_dec_" + filename);
             StatusLabel.Visible = false;
             this.Refresh();
             Install dlg = new Install(openFileLZ.FileName);
@@ -2034,6 +2023,19 @@ namespace YATA
             this.Refresh();
             SendTheme.InstallCHMM dlg = new SendTheme.InstallCHMM(openFileLZ.FileName);
             dlg.ShowDialog();
+        }
+
+        private void CheckUpdates_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                System.Net.WebClient d = new System.Net.WebClient();
+                if (Convert.ToInt32(d.DownloadString("https://raw.githubusercontent.com/exelix11/YATA-PLUS/master/PublicVersion.txt")) > APP_Public_version)
+                {
+                    MessageBox.Show(messages[8]);
+                }
+            }
+            catch {/*Do nothing*/}
         }
     }
 

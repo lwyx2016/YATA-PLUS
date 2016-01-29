@@ -63,6 +63,9 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.cWAVWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.edit_tools = new System.Windows.Forms.ToolStripMenuItem();
+            this.tools_comp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tools_dec = new System.Windows.Forms.ToolStripMenuItem();
             this.drpdwn_settings = new System.Windows.Forms.ToolStripButton();
             this.drpdwn_sim = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -101,9 +104,7 @@
             this.Player_panel = new System.Windows.Forms.Panel();
             this.btn_play = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.edit_tools = new System.Windows.Forms.ToolStripMenuItem();
-            this.tools_comp = new System.Windows.Forms.ToolStripMenuItem();
-            this.tools_dec = new System.Windows.Forms.ToolStripMenuItem();
+            this.CheckUpdates = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.Player_panel.SuspendLayout();
@@ -252,7 +253,7 @@
             // 
             this.install_WithThemeInst.Name = "install_WithThemeInst";
             this.install_WithThemeInst.Size = new System.Drawing.Size(263, 22);
-            this.install_WithThemeInst.Text = "Install with YATA+ theme installer";
+            this.install_WithThemeInst.Text = "Send the theme via FTP on a 3DS";
             this.install_WithThemeInst.Click += new System.EventHandler(this.installWithYATAThemeInstallerToolStripMenuItem_Click);
             // 
             // install_WithCHMM2
@@ -423,6 +424,29 @@
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(235, 6);
+            // 
+            // edit_tools
+            // 
+            this.edit_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tools_comp,
+            this.tools_dec});
+            this.edit_tools.Name = "edit_tools";
+            this.edit_tools.Size = new System.Drawing.Size(238, 22);
+            this.edit_tools.Text = "Tools";
+            // 
+            // tools_comp
+            // 
+            this.tools_comp.Name = "tools_comp";
+            this.tools_comp.Size = new System.Drawing.Size(154, 22);
+            this.tools_comp.Text = "LZ compress";
+            this.tools_comp.Click += new System.EventHandler(this.lZCOMPToolStripMenuItem_Click);
+            // 
+            // tools_dec
+            // 
+            this.tools_dec.Name = "tools_dec";
+            this.tools_dec.Size = new System.Drawing.Size(154, 22);
+            this.tools_dec.Text = "LZ decompress";
+            this.tools_dec.Click += new System.EventHandler(this.lZUNCOMPToolStripMenuItem_Click);
             // 
             // drpdwn_settings
             // 
@@ -744,28 +768,9 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // edit_tools
+            // CheckUpdates
             // 
-            this.edit_tools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tools_comp,
-            this.tools_dec});
-            this.edit_tools.Name = "edit_tools";
-            this.edit_tools.Size = new System.Drawing.Size(238, 22);
-            this.edit_tools.Text = "Tools";
-            // 
-            // tools_comp
-            // 
-            this.tools_comp.Name = "tools_comp";
-            this.tools_comp.Size = new System.Drawing.Size(154, 22);
-            this.tools_comp.Text = "LZ compress";
-            this.tools_comp.Click += new System.EventHandler(this.lZCOMPToolStripMenuItem_Click);
-            // 
-            // tools_dec
-            // 
-            this.tools_dec.Name = "tools_dec";
-            this.tools_dec.Size = new System.Drawing.Size(154, 22);
-            this.tools_dec.Text = "LZ decompress";
-            this.tools_dec.Click += new System.EventHandler(this.lZUNCOMPToolStripMenuItem_Click);
+            this.CheckUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.CheckUpdates_DoWork);
             // 
             // Form1
             // 
@@ -886,6 +891,7 @@
         private System.Windows.Forms.ToolStripMenuItem edit_tools;
         private System.Windows.Forms.ToolStripMenuItem tools_comp;
         private System.Windows.Forms.ToolStripMenuItem tools_dec;
+        private System.ComponentModel.BackgroundWorker CheckUpdates;
     }
 }
 
