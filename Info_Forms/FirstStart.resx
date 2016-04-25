@@ -126,10 +126,9 @@ this guide made by me for using YATA+,
 
 
 Changes in this version of YATA+:
- -Faster startup: the update check is now done in background
- -Added size checks for the CWAV chunk (sometimes if the section is too big the CWAVs won't play)
- -Theme sender now sends the themes via FTP in the themes folder (or another one) in the sd without using zip files, so it doesn't require anymore the YATA+ theme installer
- -Some other minor fixes in the simulator and the main window
+ -Added scrollbars in the theme settings window for PCs with small screens, now that window can be resized
+ -Fixed loading themes with Cwav = null
+ -Some other minor fixes
 
 For every problem, question or bug report, here is the official thread:
 </value>

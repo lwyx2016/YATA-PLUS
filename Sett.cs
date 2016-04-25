@@ -635,5 +635,10 @@ namespace YATA {
         {
 
         }
+
+        private void FormResize_end(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

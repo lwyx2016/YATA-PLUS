@@ -25,10 +25,10 @@ namespace YATA
         public static int APP_Move_buttons_colors = 10;
         public static bool APP_First_Start = true; //if true this is the first start, else it isn't
         public static bool APP_check_UPD = true;
-        public static int APP_Public_version = 10; /*for the update check the application doesn't count the version, but the release number on gbatemp
-                                                    10: Yata+ v1.7 (this one)
-                                                    11,12,etc..: Future updates*/
-        public static string APP_STRING_version = "YATA+ v1.7";
+        public static int APP_Public_version = 11; /*for the update check the application doesn't count the version, but the release number
+                                                    11: Yata+ v1.8 (this one)
+                                                    12,13,etc..: Future updates*/
+        public static string APP_STRING_version = "YATA+ v1.8";
         public static string APP_STRING_FULL_version = "YATA+";
         public static int APP_SETT_SIZE_X = 678; //To remember the size
         public static int APP_SETT_SIZE_Y = 625;
@@ -360,7 +360,7 @@ namespace YATA
                 if (imgLens[i] == 0x8000 || i == 6) images.Add(getImage(imgOffs[i], imgLens[i], A8)); else images.Add(getImage(imgOffs[i], imgLens[i], i > 1 ? BGR888 : RGB565));
             }
             if (cwavOff > 0) cwav = getCWAV();
-            cwavLen = (uint)cwav.Length;
+            if (cwav == null) cwavLen = 0; else cwavLen = (uint)cwav.Length;
             imageArray = images.ToArray();
             imgListBoxLoaded = true;
             updatePicBox(0);

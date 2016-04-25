@@ -108,6 +108,8 @@
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_import = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.grp_draw.SuspendLayout();
             this.grp_colors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowNum3)).BeginInit();
@@ -118,6 +120,8 @@
             this.grp_frame.SuspendLayout();
             this.grp_flags.SuspendLayout();
             this.grp_topSIMPLE.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_draw
@@ -221,9 +225,10 @@
             this.grp_colors.Controls.Add(this.help3);
             this.grp_colors.Controls.Add(this.help2);
             this.grp_colors.Controls.Add(this.help1);
-            this.grp_colors.Location = new System.Drawing.Point(5, 112);
+            this.grp_colors.Location = new System.Drawing.Point(3, 3);
+            this.grp_colors.MinimumSize = new System.Drawing.Size(411, 120);
             this.grp_colors.Name = "grp_colors";
-            this.grp_colors.Size = new System.Drawing.Size(415, 423);
+            this.grp_colors.Size = new System.Drawing.Size(437, 443);
             this.grp_colors.TabIndex = 1;
             this.grp_colors.TabStop = false;
             this.grp_colors.Text = "Colors";
@@ -653,7 +658,7 @@
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_save.Location = new System.Drawing.Point(596, 509);
+            this.btn_save.Location = new System.Drawing.Point(603, 531);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(69, 26);
             this.btn_save.TabIndex = 2;
@@ -732,7 +737,8 @@
             // 
             // grp_flags
             // 
-            this.grp_flags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grp_flags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grp_flags.Controls.Add(this.CHK17);
             this.grp_flags.Controls.Add(this.CHK16);
@@ -752,9 +758,10 @@
             this.grp_flags.Controls.Add(this.CHK2);
             this.grp_flags.Controls.Add(this.CHK1);
             this.grp_flags.Controls.Add(this.CHK0);
-            this.grp_flags.Location = new System.Drawing.Point(428, 12);
+            this.grp_flags.Location = new System.Drawing.Point(3, 3);
+            this.grp_flags.MinimumSize = new System.Drawing.Size(228, 147);
             this.grp_flags.Name = "grp_flags";
-            this.grp_flags.Size = new System.Drawing.Size(237, 434);
+            this.grp_flags.Size = new System.Drawing.Size(228, 447);
             this.grp_flags.TabIndex = 2;
             this.grp_flags.TabStop = false;
             this.grp_flags.Text = "Flags";
@@ -942,7 +949,7 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.Location = new System.Drawing.Point(521, 509);
+            this.btn_cancel.Location = new System.Drawing.Point(528, 531);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(69, 26);
             this.btn_cancel.TabIndex = 5;
@@ -961,9 +968,9 @@
             this.grp_topSIMPLE.Controls.Add(this.numericUpDown1);
             this.grp_topSIMPLE.Controls.Add(this.label21);
             this.grp_topSIMPLE.Controls.Add(this.label20);
-            this.grp_topSIMPLE.Location = new System.Drawing.Point(5, 541);
+            this.grp_topSIMPLE.Location = new System.Drawing.Point(5, 563);
             this.grp_topSIMPLE.Name = "grp_topSIMPLE";
-            this.grp_topSIMPLE.Size = new System.Drawing.Size(660, 67);
+            this.grp_topSIMPLE.Size = new System.Drawing.Size(667, 67);
             this.grp_topSIMPLE.TabIndex = 36;
             this.grp_topSIMPLE.TabStop = false;
             this.grp_topSIMPLE.Text = "Top Screen \"simple themes\" settings";
@@ -993,7 +1000,7 @@
             // btn_prev
             // 
             this.btn_prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_prev.Location = new System.Drawing.Point(428, 508);
+            this.btn_prev.Location = new System.Drawing.Point(435, 530);
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(87, 27);
             this.btn_prev.TabIndex = 37;
@@ -1004,7 +1011,7 @@
             // btn_export
             // 
             this.btn_export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_export.Location = new System.Drawing.Point(428, 454);
+            this.btn_export.Location = new System.Drawing.Point(435, 476);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(237, 23);
             this.btn_export.TabIndex = 38;
@@ -1015,7 +1022,7 @@
             // btn_import
             // 
             this.btn_import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_import.Location = new System.Drawing.Point(428, 483);
+            this.btn_import.Location = new System.Drawing.Point(435, 505);
             this.btn_import.Name = "btn_import";
             this.btn_import.Size = new System.Drawing.Size(237, 23);
             this.btn_import.TabIndex = 39;
@@ -1032,27 +1039,54 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Usage:";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoScrollMinSize = new System.Drawing.Size(411, 421);
+            this.panel1.Controls.Add(this.grp_colors);
+            this.panel1.Location = new System.Drawing.Point(5, 112);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(424, 445);
+            this.panel1.TabIndex = 40;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.AutoScrollMinSize = new System.Drawing.Size(228, 408);
+            this.panel2.Controls.Add(this.grp_flags);
+            this.panel2.Location = new System.Drawing.Point(435, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(237, 453);
+            this.panel2.TabIndex = 41;
+            // 
             // Sett
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 613);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(677, 641);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_import);
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.grp_topSIMPLE);
             this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.grp_flags);
             this.Controls.Add(this.grp_frame);
             this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.grp_colors);
             this.Controls.Add(this.grp_draw);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(693, 652);
+            this.MinimumSize = new System.Drawing.Size(693, 380);
             this.Name = "Sett";
             this.Text = "Theme settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FORM_Closing);
             this.Load += new System.EventHandler(this.Sett_Load);
+            this.ResizeEnd += new System.EventHandler(this.FormResize_end);
             this.grp_draw.ResumeLayout(false);
             this.grp_draw.PerformLayout();
             this.grp_colors.ResumeLayout(false);
@@ -1068,6 +1102,8 @@
             this.grp_flags.PerformLayout();
             this.grp_topSIMPLE.ResumeLayout(false);
             this.grp_topSIMPLE.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1157,5 +1193,7 @@
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Button btn_import;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

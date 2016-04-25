@@ -55,16 +55,6 @@ namespace YATA
             dlg.ShowDialog();
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://gbatemp.net/threads/release-yet-another-theme-application-yata.379209/");
-        }
-
-        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://gbatemp.net/threads/relase-yet-another-theme-application-plus-yata-3ds-theme-editor.393355/");
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             try
@@ -96,6 +86,16 @@ namespace YATA
             string[] build = label3.Text.Split('.');
             string date = new DateTime(0, DateTimeKind.Local).AddDays(Convert.ToInt32(build[2])).AddYears(1999).AddSeconds(Convert.ToInt32(build[3]) * 2).ToString();
             MessageBox.Show("Build date: " + date);
+        }
+
+        private void linkLabel5_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://gbatemp.net/threads/relase-yet-another-theme-application-plus-yata-3ds-theme-editor.393355/");
+        }
+
+        private void linkLabel3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://gbatemp.net/threads/release-yet-another-theme-application-yata.379209/");
         }
     }
 }

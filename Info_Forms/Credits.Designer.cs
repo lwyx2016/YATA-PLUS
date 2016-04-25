@@ -108,6 +108,7 @@
             this.linkLabel3.TabIndex = 7;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "https://gbatemp.net/threads/release-yet-another-them....";
+            this.linkLabel3.Click += new System.EventHandler(this.linkLabel3_Click);
             // 
             // linkLabel4
             // 
@@ -123,12 +124,13 @@
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(161, 52);
+            this.linkLabel5.Location = new System.Drawing.Point(153, 52);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(105, 13);
             this.linkLabel5.TabIndex = 9;
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "Official thread HERE";
+            this.linkLabel5.Click += new System.EventHandler(this.linkLabel5_Click);
             // 
             // btn_updates
             // 
