@@ -43,7 +43,7 @@ namespace YATA {
                                                         "1: Horizontal stripes behind bottom buttons\r\n2: Main Color\r\n3: Edges shadowing",
                                                         "1: Top shadow\r\n2: Default\r\n3: Bottom shadow\r\n4: Unknown ",
                                                         "1: Button Shading and Outline, Button Pressed Color\r\n2: Button Main Color, Button Pressed Outline\r\n3: Button Highlight\r\n4: Glow/Shadow Color\r\n5: Unknown\r\n6: Arrow Shadow\r\n7: Arrow unpressed color\r\n8: Arrow pressed color\r\nShadow v offset: Shadow vertical offset" ,
-                                                        "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shding and pressed color\r\n7:Lower edges highlight",
+                                                        "1: Larger/Smaller divider\r\n2: Default\r\n3: Highlight\r\n4: Shading\r\n5: Icon\r\n6: Icon shading and pressed color\r\n7:Lower edges highlight",
                                                         "1: Overlay background\r\n2/3:Unknown\r\n4: Text color",
                                                         "1: Background color\r\n2: Text color",
                                                         "None:Static image (both top and bottom screen) \r\nBOTTOM SCREEN: \r\nFlipbook tile:the order of frames will be 1-2-3-2-1-2-3-2 etc..\r\nFlipbook Cyclic:the order of frames will be 1-2-3-1-2-3 etc.." };
