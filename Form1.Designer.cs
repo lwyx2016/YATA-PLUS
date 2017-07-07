@@ -438,14 +438,14 @@
             // 
             this.tools_comp.Name = "tools_comp";
             this.tools_comp.Size = new System.Drawing.Size(154, 22);
-            this.tools_comp.Text = "LZ compress";
+            this.tools_comp.Text = "LZ11 compress";
             this.tools_comp.Click += new System.EventHandler(this.lZCOMPToolStripMenuItem_Click);
             // 
             // tools_dec
             // 
             this.tools_dec.Name = "tools_dec";
-            this.tools_dec.Size = new System.Drawing.Size(154, 22);
-            this.tools_dec.Text = "LZ decompress";
+            this.tools_dec.Size = new System.Drawing.Size(166, 22);
+            this.tools_dec.Text = "LZ11 decompress";
             this.tools_dec.Click += new System.EventHandler(this.lZUNCOMPToolStripMenuItem_Click);
             // 
             // drpdwn_settings
