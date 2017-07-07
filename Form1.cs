@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -1530,7 +1530,7 @@ namespace YATA
         {
             OpenFileDialog opn = new OpenFileDialog();
             opn.Title = "Load BGM";
-            opn.Filter = "Bcstm files| *.bcstm";
+            opn.Filter = "Every supported file|*.bcstm;*.brstm;*.bcwav;";
             if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK) LoadBGM(opn.FileName);
         }
 
@@ -1543,7 +1543,7 @@ namespace YATA
             try
             {
                 OpenFileDialog opn = new OpenFileDialog();
-                opn.Filter = "Every supported file|*.*";
+                opn.Filter = "Every supported file|*.bcstm;*.bcwav;*.brstm";
                 opn.Title = "Open file";
                 opn.Multiselect = true;
                 if (opn.ShowDialog() == System.Windows.Forms.DialogResult.OK)
