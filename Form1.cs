@@ -329,10 +329,10 @@ namespace YATA
 
         private void openFile_Click(object sender, EventArgs e)
         {
-            if (openFileLZ.ShowDialog() == DialogResult.OK)
-            {
-                OPEN_FILE();
-            }
+            OpenFileDialog OPEN = new OpenFileDialog();
+            OPEN.Title = "OPEN";
+            OPEN.Filter = "3DS Theme|body_LZ.bin";
+            if (OPEN.ShowDialog() == System.Windows.Forms.DialogResult.OK) LoadBGM(OPEN.FileName);
         }
 
         private void loadList()
